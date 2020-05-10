@@ -6,7 +6,7 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: Nikit Kozodoi
+title: Nikita Kozodoi
 description: My personal blog on machine learning and data science
 github_username: kozodoi
 # you can comment the below line out if your repo name is not different than your baseurl
@@ -38,7 +38,7 @@ baseurl: "/blog" # the subpath of your site, e.g. "/blog".
 
 # Github and twitter are optional:
 minima:
-  social_links
+  social_links:
     twitter: n_kozodoi
     github: kozodoi
 
