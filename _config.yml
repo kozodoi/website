@@ -41,6 +41,8 @@ minima:
   social_links:
     twitter: n_kozodoi
     github: kozodoi
+    linkedin: kozodoi
+
 
 # Set this to true to get LaTeX math equation support
 use_math: 
