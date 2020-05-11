@@ -1,13 +1,13 @@
 ---
 layout: page
-title: About Me
+title: About
 permalink: /about/
 ---
 
-This is where you put the contents of your *About* page. Like all your pages, it's in [Markdown](https://guides.github.com/features/mastering-markdown/) format.
+I am a PhD student at Humboldt University of Berlin and research associate at Monedo. 
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+I am passionate about machine learning and data science. My latest work focuses on machine learning applications in the field of credit risk analytics. I also enjoy participating at machine learning competitions and hackathons.
 
+This website hosts my blog with machine learning tutorials, competition solutions and findings from different projects. It also provides links to my publications and software packages.
 
-
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+If you want to chat, please connect with me on social media.
