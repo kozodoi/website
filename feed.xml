@@ -1,4 +1,358 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kozodoi.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kozodoi.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-05-11T15:25:19-05:00</updated><id>https://kozodoi.github.io/blog/feed.xml</id><title type="html">Nikita Kozodoi</title><subtitle>Personal blog</subtitle><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://kozodoi.github.io/blog/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://kozodoi.github.io/blog/jupyter/2020/02/20/test</id><content type="html" xml:base="https://kozodoi.github.io/blog/jupyter/2020/02/20/test.html">&lt;!--
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kozodoi.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kozodoi.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-05-11T15:45:20-05:00</updated><id>https://kozodoi.github.io/blog/feed.xml</id><title type="html">Nikita Kozodoi</title><subtitle>Personal blog</subtitle><entry><title type="html">Fairness Package Tutorial</title><link href="https://kozodoi.github.io/blog/2020/05/11/Fairness-package-tutorial.html" rel="alternate" type="text/html" title="Fairness Package Tutorial" /><published>2020-05-11T00:00:00-05:00</published><updated>2020-05-11T00:00:00-05:00</updated><id>https://kozodoi.github.io/blog/2020/05/11/Fairness-package-tutorial</id><content type="html" xml:base="https://kozodoi.github.io/blog/2020/05/11/Fairness-package-tutorial.html">&lt;p&gt;To date, a number of algorithmic group fairness metrics have been
+proposed. Demographic parity, proportional parity, equalized odds and
+predictive rate parity are the most commonly used metrics to evaluate
+fairness between groups in classification problems (supervised machine
+learning algorithms). Multiple other metrics have been proposed that use
+various metrics from the confusion matrix (e.g. false positive rate
+parity, false negative rate parity). The fairness R package provides a
+tool to easily calculate these metrics for given predicted probabilities
+or predicted classes between sensitive groups of populations. The
+package also provides visualizations that makes it easier to comprehend
+these metrics and biases between subgroups of the data.&lt;/p&gt;
+
+&lt;p&gt;Disclaimer! None of the implemented metrics are supposed to replace
+critical thinking about the problem in question.&lt;/p&gt;
+
+&lt;h2 id=&quot;installation-of-the-fairness-r-package&quot;&gt;Installation of the fairness R package&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;install.packages('fairness')
+library(fairness)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;description-of-data&quot;&gt;Description of data&lt;/h2&gt;
+
+&lt;p&gt;This package includes two datasets to study algorithmic fairness:
+&lt;em&gt;compas&lt;/em&gt; and &lt;em&gt;germancredit&lt;/em&gt;. In this tutorial, you will be able to use a
+simplified version of the landmark COMPAS dataset. You can read more
+about the dataset &lt;a href=&quot;https://github.com/propublica/compas-analysis&quot;&gt;here&lt;/a&gt;.
+To load the dataset, all you need to do is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data('compas')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The compas dataframe contains nine columns: The outcome is
+&lt;em&gt;Two_yr_Recidivism&lt;/em&gt;, i.e. whether an individual will commit a crime in
+two years or not. Variables exist in the data about prior criminal
+record (&lt;em&gt;Number_of_Priors&lt;/em&gt; and &lt;em&gt;Misdemeanor&lt;/em&gt;) and basic features such
+as age, categorized (&lt;em&gt;Age_Above_FourtyFive&lt;/em&gt; and
+&lt;em&gt;Age_Below_TwentyFive&lt;/em&gt;), sex (&lt;em&gt;Female&lt;/em&gt;) and ethnicity (&lt;em&gt;ethnicity&lt;/em&gt;).
+You don’t really need to delve into the data much, we have already ran a
+prediction model using &lt;strong&gt;all variables&lt;/strong&gt; to predict
+&lt;em&gt;Two_yr_Recidivism&lt;/em&gt; and concatenated the predicted probabilities
+(&lt;em&gt;probability&lt;/em&gt;) and predicted classes (&lt;em&gt;predicted&lt;/em&gt;) to the data. You
+will be able to use the &lt;em&gt;probability&lt;/em&gt; and &lt;em&gt;predicted&lt;/em&gt; columns directly
+in your analysis.&lt;/p&gt;
+
+&lt;p&gt;However, please feel free to set up other prediction models
+(e.g. excluding sensitive group information, such as sex and ethnicity)
+and use your generated predicted probabilities or classes to assess
+group fairness.&lt;/p&gt;
+
+&lt;p&gt;As mentioned earlier, another dataset, &lt;em&gt;germancredit&lt;/em&gt; is also included
+in this package. This dataset includes 20 potential predictor features
+and an outcome (target) column named &lt;em&gt;BAD&lt;/em&gt;. Similarly to the &lt;em&gt;compas&lt;/em&gt;
+dataset, this data also includes two pre-made columns named
+&lt;em&gt;probability&lt;/em&gt; and &lt;em&gt;predicted&lt;/em&gt;. Feel free to play wit this data as well!
+You can of course load it with:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data('germancredit')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;algorithmic-group-fairness-metrics&quot;&gt;Algorithmic group fairness metrics&lt;/h2&gt;
+
+&lt;p&gt;The package currently includes nine fairness metrics and two other
+comparisons implemented. Many of these metrics are mutually exclusive -
+results from a given classification most often cannot be fair in terms
+of all evaluated group fairness metrics. Below, all these functions will
+be introduced in detail - for the sake of simplicity, we will use
+predicted probabilities for all these functions instead of predicted
+classes. Note that for all functions, in case of defining predicted
+probabilities, a cutoff needs to be defined in order to generate
+positive (1) or negative (0) predicted classes. Also, for all functions,
+a base group needs to be defined - all other groups will be compared to
+this subgroup in terms of fairness metrics.&lt;/p&gt;
+
+&lt;h3 id=&quot;an-outlook-on-the-confusion-matrix&quot;&gt;An outlook on the confusion matrix&lt;/h3&gt;
+
+&lt;p&gt;Most fairness metrics use various measures calculated from the confusion
+matrix. The confusion matrix is comprised of four distinct classes:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;True positives (TP)&lt;/strong&gt;: True class positive and predicted positive
+(correct classification)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;False positives (FP)&lt;/strong&gt;: True class negative and predicted positive
+(incorrect classification)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;True negatives (TN)&lt;/strong&gt;: True class negative and predicted negative
+(correct classification)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;False negatives (FN)&lt;/strong&gt;: True class positive and predicted negative
+(incorrect classification)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;All fairness metrics are calculated using one or more of these measures.
+For a detailed overview of various measures and precise definitions,
+please click &lt;a href=&quot;https://en.wikipedia.org/wiki/Confusion_matrix&quot;&gt;here&lt;/a&gt;,
+&lt;a href=&quot;https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62&quot;&gt;here&lt;/a&gt;
+or
+&lt;a href=&quot;https://www.geeksforgeeks.org/confusion-matrix-machine-learning/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;demographic-parity&quot;&gt;&lt;em&gt;Demographic parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Demographic parity is achieved if the absolute number of positive
+predictions in the subgroups are close to each other. This measure does
+not take true class into consideration, only positive predictions.&lt;br /&gt;
+Formula: &lt;strong&gt;(TP + FP)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dem_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism',
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           cutoff  = 0.5, 
+           base    = 'Caucasian')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;proportional-parity&quot;&gt;&lt;em&gt;Proportional parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Proportional parity is very similar to Demographic parity. Proportional
+parity is achieved if the proportion of positive predictions in the
+subgroups are close to each other. This measure does not take true class
+into consideration, only positive predictions.&lt;br /&gt;
+Formula: &lt;strong&gt;(TP + FP) / (TP + FP + TN + FN)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;prop_parity(data    = compas, 
+            outcome = 'Two_yr_Recidivism',
+            group   = 'ethnicity',
+            probs   = 'probability', 
+            preds_levels = c('no','yes'), 
+            cutoff  = 0.5, 
+            base    = 'Caucasian')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;All the rest of the functions take the true class into consideration.&lt;/p&gt;
+
+&lt;h3 id=&quot;equalized-odds&quot;&gt;&lt;em&gt;Equalized odds&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Equalized odds are achieved if the sensitivities (true positives divided
+by all positives) in the subgroups are close to each other.&lt;br /&gt;
+Formula: &lt;strong&gt;TP / (TP + FN)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;equal_odds(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           cutoff = 0.5, 
+           base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;predictive-rate-parity&quot;&gt;&lt;em&gt;Predictive rate parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Predictive rate parity is achieved if the precisions or positive
+predictive values (true positives divided by all predicted positive) in
+the subgroups are close to each other.&lt;br /&gt;
+Formula: &lt;strong&gt;TP / (TP + FP)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pred_rate_parity(data    = compas, 
+                 outcome = 'Two_yr_Recidivism', 
+                 group   = 'ethnicity',
+                 probs   = 'probability', 
+                 preds_levels = c('no','yes'), 
+                 cutoff = 0.5, 
+                 base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;accuracy-parity&quot;&gt;&lt;em&gt;Accuracy parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Accuracy parity is achieved if the accuracies (all accurately classified
+divided by all predictions) in the subgroups are close to each other.&lt;br /&gt;
+Formula: &lt;strong&gt;(TP + TN) / (TP + FP + TN + FN)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;acc_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds   = NULL,
+           preds_levels = c('no','yes'), 
+           cutoff = 0.5, 
+           base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;false-negative-rate-parity&quot;&gt;&lt;em&gt;False negative rate parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;False negative rate parity is achieved if the false negative rates
+(division of false negatives with all positives) in the subgroups are
+close to each other.&lt;br /&gt;
+Formula: &lt;strong&gt;FN / (TP + FN)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fnr_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           cutoff = 0.5, 
+           base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;false-positive-rate-parity&quot;&gt;&lt;em&gt;False positive rate parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;False positive rate parity is achieved if the false positive rates
+(division of false positives with all negatives) in the subgroups are
+close to each other.&lt;br /&gt;
+Formula: &lt;strong&gt;FP / (TN + FP)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fpr_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           cutoff = 0.5, 
+           base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;negative-predictive-value-parity&quot;&gt;&lt;em&gt;Negative predictive value parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Negative predictive value parity is achieved if the negative predictive
+values (division of true negatives with all predicted negatives) in the
+subgroups are close to each other. This function can be considered the
+‘inverse’ of Predictive rate parity.&lt;br /&gt;
+Formula: &lt;strong&gt;TN / (TN + FN)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npv_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           cutoff = 0.5, 
+           base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;specificity-parity&quot;&gt;&lt;em&gt;Specificity parity&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;Specificity parity is achieved if the specificities (division of true
+negatives with all negatives) in the subgroups are close to each other.
+This function can be considered the ‘inverse’ of Equalized odds.&lt;br /&gt;
+Formula: &lt;strong&gt;TN / (TN + FP)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;spec_parity(data    = compas, 
+            outcome = 'Two_yr_Recidivism', 
+            group   = 'ethnicity',
+            probs   = 'probability', 
+            preds_levels = c('no','yes'), 
+            cutoff = 0.5, 
+            base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Two additional comparisons are implemented, namely ROC AUC and Matthews
+correlation coefficient comparisons.&lt;/p&gt;
+
+&lt;h3 id=&quot;roc-auc-comparison&quot;&gt;&lt;em&gt;ROC AUC comparison&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;This function calculates ROC AUC and visualizes ROC curves for all
+subgroups. Note that probabilities must be defined for this function.
+Also, as ROC evaluates all possible cutoffs, the cutoff argument is
+excluded from this function.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;roc_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           base = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;matthews-correlation-coefficient-comparison&quot;&gt;&lt;em&gt;Matthews correlation coefficient comparison&lt;/em&gt;&lt;/h3&gt;
+
+&lt;p&gt;The Matthews correlation coefficient takes all 4 classes of the
+confusion matrix into consideration. According to some, it is the single
+most powerful metric in binary classification problems, especially for
+data with class imbalances.&lt;br /&gt;
+Formula: &lt;strong&gt;(TP×TN-FP×FN)/√((TP+FP)×(TP+FN)×(TN+FP)×(TN+FN))&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mcc_parity(data    = compas, 
+           outcome = 'Two_yr_Recidivism', 
+           group   = 'ethnicity',
+           probs   = 'probability', 
+           preds_levels = c('no','yes'), 
+           cutoff = 0.5, 
+           base   = 'African_American')
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;output-and-visualizations&quot;&gt;Output and visualizations&lt;/h2&gt;
+
+&lt;p&gt;All functions output results and matching barcharts that provide visual
+cues about the parity metrics for the defined sensitive subgroups. For
+instance, let’s look at predictive rate parity with ethnicity being set
+as the sensitive group and considering Caucasians as the ‘base’ group:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output$Metric
+#&amp;gt;                        Caucasian African_American     Asian  Hispanic
+#&amp;gt; Precision              0.6967156        0.6828704 0.7777778 0.7194444
+#&amp;gt; Predictive Rate Parity 1.0000000        0.9801279 1.1163490 1.0326229
+#&amp;gt;                        Native_American     Other
+#&amp;gt; Precision                    0.6666667 0.7209302
+#&amp;gt; Predictive Rate Parity       0.9568706 1.0347554
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the upper row, the raw precision values are shown for all
+ethnicities, and in the row below, the relative precisions compared to
+Caucasians (1) are shown. Note that in case an other ethnic group is set
+as the base group (e.g. Hispanic), the raw precision values do not
+change, only the relative metrics:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output$Metric
+#&amp;gt;                         Hispanic Caucasian African_American     Asian
+#&amp;gt; Precision              0.7194444 0.6967156        0.6828704 0.7777778
+#&amp;gt; Predictive Rate Parity 1.0000000 0.9684078        0.9491634 1.0810811
+#&amp;gt;                        Native_American     Other
+#&amp;gt; Precision                    0.6666667 0.7209302
+#&amp;gt; Predictive Rate Parity       0.9266409 1.0020652
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;A standard output is a barchart that shows the relative metrics for all
+subgroups. For the previous case (when Hispanic is defined as the base
+group), this plot would look like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output$Metric_plot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;fairness_files/figure-markdown_strict/unnamed-chunk-20-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When probabilities are defined, an extra density plot will be output
+with the distributions of probabilities of all subgroups and the
+user-defined cutoff:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output$Probability_plot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;fairness_files/figure-markdown_strict/unnamed-chunk-21-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Another example would be comparing males vs. females in terms of
+recidivism prediction and defining a 0.4 cutoff:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output$Probability_plot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;fairness_files/figure-markdown_strict/unnamed-chunk-23-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The function related to ROC AUC comparisons will output ROC curves for
+each subgroups. Let’s look at the plot, also comparing males
+vs. females:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;output$ROCAUC_plot
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;fairness_files/figure-markdown_strict/unnamed-chunk-25-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;closing-words&quot;&gt;Closing words&lt;/h2&gt;
+
+&lt;p&gt;You have read through the fairness R package tutorial and by now, you
+have a solid grip on algorithmic group fairness metrics. We hope that
+you will be able to use this R package in your data analysis! Please let
+us know if you have any issues here - &lt;a href=&quot;https://github.com/kozodoi/Fairness/issues&quot;&gt;fairness
+GitHub&lt;/a&gt; - or contact the
+authors if you have any feedback!&lt;/p&gt;
+
+&lt;p&gt;– authors of the fairness R package&lt;/p&gt;</content><author><name></name></author><summary type="html">To date, a number of algorithmic group fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between groups in classification problems (supervised machine learning algorithms). Multiple other metrics have been proposed that use various metrics from the confusion matrix (e.g. false positive rate parity, false negative rate parity). The fairness R package provides a tool to easily calculate these metrics for given predicted probabilities or predicted classes between sensitive groups of populations. The package also provides visualizations that makes it easier to comprehend these metrics and biases between subgroups of the data.</summary></entry><entry><title type="html">Fastpages Notebook Blog Post</title><link href="https://kozodoi.github.io/blog/jupyter/2020/02/20/test.html" rel="alternate" type="text/html" title="Fastpages Notebook Blog Post" /><published>2020-02-20T00:00:00-06:00</published><updated>2020-02-20T00:00:00-06:00</updated><id>https://kozodoi.github.io/blog/jupyter/2020/02/20/test</id><content type="html" xml:base="https://kozodoi.github.io/blog/jupyter/2020/02/20/test.html">&lt;!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
