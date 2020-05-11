@@ -28,8 +28,8 @@
 
   
       ,"page1": {
-          "title": "About Me",
-          "content": "This is where you put the contents of your About page. Like all your pages, it’s in Markdown format. . This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
+          "title": "About",
+          "content": "I am a PhD student at Humboldt University of Berlin and research associate at Monedo. . I am passionate about machine learning and data science. My latest work focuses on machine learning applications in the field of credit risk analytics. I also enjoy participating at machine learning competitions and hackathons. . This website hosts my blog with machine learning tutorials, competition solutions and findings from different projects. It also provides links to my publications and software packages. . If you want to chat, please connect with me on social media. .",
           "url": "https://kozodoi.github.io/blog/about/",
           "relUrl": "/about/",
           "date": ""
@@ -40,6 +40,28 @@
   
 
   
+      ,"page3": {
+          "title": "Packages",
+          "content": "This page provides a list of the Python and R packages I have developed. Follow me on GitHub to see my latest projects. . Packages . dptools: Python package with helper functions for data processing and feature engineering. See on GitHub or PyPi . fairness: R package for computing different measures of algorithmic fairness. See on GitHub or CRAN .",
+          "url": "https://kozodoi.github.io/blog/packages/",
+          "relUrl": "/packages/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page4": {
+          "title": "Publications",
+          "content": "This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on ResearchGate or Google Scholar to see all of my latest work. . Publications . Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., &amp; Papakonstantinou, K. (2019). Shallow Self-Learning for Reject Inference in Credit Scoring. arXiv preprint arXiv:1909.06108. See on ResearchGate . Kozodoi, N., Lessmann, S., Papakonstantinou, K., Gatsoulis, Y., &amp; Baesens, B. (2019). A multi-objective approach for profit-driven feature selection in credit scoring. Decision Support Systems, 120, 106-117. See on ResearchGate or on publisher’s website . Kozodoi, N., Lessmann, S., Baesens, B., &amp; Papakonstantinou, K. (2019). Profit-Oriented Feature Selection in Credit Scoring Applications. In Operations Research Proceedings 2018 (pp. 59-65). Springer, Cham. See on ResearchGate or on publisher’s website .",
+          "url": "https://kozodoi.github.io/blog/publications/",
+          "relUrl": "/publications/",
+          "date": ""
+      }
+      
+  
+
+  
   
 
   
@@ -59,7 +81,7 @@
   
 
   
-      ,"page10": {
+      ,"page12": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://kozodoi.github.io/blog/robots.txt",
