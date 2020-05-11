@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a PhD student at Humboldt University of Berlin and research associate at Monedo. 
+Hi, I am Nikita. I am a PhD student at Humboldt University of Berlin and research associate at Monedo. 
 
 I am passionate about machine learning and data science. My latest work focuses on machine learning applications in the field of credit risk analytics. I also enjoy participating at machine learning competitions and hackathons.
 
