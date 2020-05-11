@@ -9,14 +9,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Brief tutorial on using fairness R package." />
 <meta property="og:description" content="Brief tutorial on using fairness R package." />
-<link rel="canonical" href="https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html" />
-<meta property="og:url" content="https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html" />
+<link rel="canonical" href="https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html" />
+<meta property="og:url" content="https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
-<meta property="og:image" content="https://kozodoi.github.io/blog/images/fairness_preview.png" />
+<meta property="og:image" content="https://kozodoi.github.io/blog/images/fairness_plot.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-09-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Brief tutorial on using fairness R package.","@type":"BlogPosting","image":"https://kozodoi.github.io/blog/images/fairness_preview.png","url":"https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html","headline":"Algorithmic Fairness in R","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html"},"@context":"https://schema.org"}</script>
+{"description":"Brief tutorial on using fairness R package.","@type":"BlogPosting","image":"https://kozodoi.github.io/blog/images/fairness_plot.png","url":"https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html","headline":"Algorithmic Fairness in R","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.github.io/blog/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -31,14 +31,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Brief tutorial on using fairness R package." />
 <meta property="og:description" content="Brief tutorial on using fairness R package." />
-<link rel="canonical" href="https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html" />
-<meta property="og:url" content="https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html" />
+<link rel="canonical" href="https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html" />
+<meta property="og:url" content="https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
-<meta property="og:image" content="https://kozodoi.github.io/blog/images/fairness_preview.png" />
+<meta property="og:image" content="https://kozodoi.github.io/blog/images/fairness_plot.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-09-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"description":"Brief tutorial on using fairness R package.","@type":"BlogPosting","image":"https://kozodoi.github.io/blog/images/fairness_preview.png","url":"https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html","headline":"Algorithmic Fairness in R","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.github.io/blog/markdown/2019/09/29/fairness-tutorial.html"},"@context":"https://schema.org"}</script>
+{"description":"Brief tutorial on using fairness R package.","@type":"BlogPosting","image":"https://kozodoi.github.io/blog/images/fairness_plot.png","url":"https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html","headline":"Algorithmic Fairness in R","dateModified":"2019-09-29T00:00:00-05:00","datePublished":"2019-09-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.github.io/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -113,6 +113,12 @@ window.onload = wrap_img;
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
         <a class="category-tags-link" href="/blog/categories/#markdown">markdown</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#r">r</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/blog/categories/#fairness">fairness</a>
         
       
       </p>
@@ -418,15 +424,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </head>
 
 <body>
-
-
-
-
-<h1 class="title toc-ignore">A complete tutorial to the fairness R package</h1>
-<h4 class="author">Tibor V. Varga &amp; Nikita Kozodoi</h4>
-<h4 class="date">2020-05-11</h4>
-
-
+<h4 class="author"> Nikita Kozodoi &amp; Tibor V. Varga  </h4>
 
 <p>To date, a number of algorithmic group fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between groups in classification problems (supervised machine learning algorithms). Multiple other metrics have been proposed that use various metrics from the confusion matrix (e.g. false positive rate parity, false negative rate parity). The fairness R package provides a tool to easily calculate these metrics for given predicted probabilities or predicted classes between sensitive groups of populations. The package also provides visualizations that makes it easier to comprehend these metrics and biases between subgroups of the data.</p>
 <p>Disclaimer! None of the implemented metrics are supposed to replace critical thinking about the problem in question.</p>
@@ -650,7 +648,7 @@ Formula: <strong>(TP×TN-FP×FN)/√((TP+FP)×(TP+FN)×(TN+FP)×(TN+FN))</strong
 </body>
 </html>
 
-  </div><a class="u-url" href="/blog/markdown/2019/09/29/fairness-tutorial.html" hidden></a>
+  </div><a class="u-url" href="/blog/markdown/r/fairness/2019/09/29/fairness-tutorial.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
