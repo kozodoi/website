@@ -40,9 +40,7 @@
   
 
   
-
-  
-      ,"page4": {
+      ,"page3": {
           "title": "Packages",
           "content": "This page provides a list of the Python and R packages I have developed. Follow me on GitHub to see my latest projects. . dptools: Python package with helper functions for data processing and feature engineering. See on GitHub or PyPi. . | fairness: R package for computing different measures of algorithmic fairness. See on GitHub or CRAN. . | .",
           "url": "https://kozodoi.github.io/blog/packages/",
@@ -53,7 +51,7 @@
   
 
   
-      ,"page5": {
+      ,"page4": {
           "title": "Publications",
           "content": "This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on ResearchGate or Google Scholar to see all of my latest work. . Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., &amp; Papakonstantinou, K. (2019). Shallow Self-Learning for Reject Inference in Credit Scoring. arXiv preprint arXiv:1909.06108. See on ResearchGate. . | Kozodoi, N., Lessmann, S., Papakonstantinou, K., Gatsoulis, Y., &amp; Baesens, B. (2019). A multi-objective approach for profit-driven feature selection in credit scoring. Decision Support Systems, 120, 106-117. See on ResearchGate or on publisher’s website. . | Kozodoi, N., Lessmann, S., Baesens, B., &amp; Papakonstantinou, K. (2019). Profit-Oriented Feature Selection in Credit Scoring Applications. In Operations Research Proceedings 2018 (pp. 59-65). Springer, Cham. See on ResearchGate or on publisher’s website. . | .",
           "url": "https://kozodoi.github.io/blog/publications/",
@@ -83,7 +81,7 @@
   
 
   
-      ,"page13": {
+      ,"page12": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://kozodoi.github.io/blog/robots.txt",
