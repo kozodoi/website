@@ -485,4 +485,6 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 .inner { max-width: 100%; }
 
+.page { width: 100%; }
+
 /*# sourceMappingURL=style.css.map */
