@@ -11,10 +11,4 @@
 @import "minima/fastpages-dracula-highlight"; 
 
 // Change page width
-.inner {
-  max-width: 100%;
-}
-
-.page {
-  width: 100%;
-}
+$content-width: 100%;
