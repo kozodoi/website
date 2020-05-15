@@ -8,7 +8,7 @@ Hi, I am Nikita!
 
 I am a PhD student at Humboldt University of Berlin and research associate at Monedo. 
 
-![photo][../images/photo.jpg]
+![photo](../images/photo.jpg)
 
 ---
 
