@@ -4,6 +4,10 @@
 
 ---
 
-# My Blog
+# Blog
 
-The blog is available at https://kozodoi.github.io/blog/
+This repository contains files and scripts necessary for hosting my personal blog.
+
+The blog is available at https://kozodoi.github.io/
+
+Check out my blog for machine learning tutorials, competition solutions and findings from different projects. If you are interested, check out other website sections to see my work and connect with me on social media.
