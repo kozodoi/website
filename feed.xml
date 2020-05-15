@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kozodoi.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kozodoi.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-05-15T11:35:20-05:00</updated><id>https://kozodoi.github.io/blog/feed.xml</id><title type="html">Nikita Kozodoi</title><subtitle>Personal blog</subtitle><entry><title type="html">Algorithmic Fairness in R</title><link href="https://kozodoi.github.io/blog/r/fairness/2019/09/29/fairness-tutorial.html" rel="alternate" type="text/html" title="Algorithmic Fairness in R" /><published>2019-09-29T00:00:00-05:00</published><updated>2019-09-29T00:00:00-05:00</updated><id>https://kozodoi.github.io/blog/r/fairness/2019/09/29/fairness-tutorial</id><content type="html" xml:base="https://kozodoi.github.io/blog/r/fairness/2019/09/29/fairness-tutorial.html">&lt;!DOCTYPE html&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kozodoi.github.io/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kozodoi.github.io/blog/" rel="alternate" type="text/html" /><updated>2020-05-15T11:49:24-05:00</updated><id>https://kozodoi.github.io/blog/feed.xml</id><title type="html">Nikita Kozodoi</title><subtitle>Personal blog</subtitle><entry><title type="html">Algorithmic Fairness in R</title><link href="https://kozodoi.github.io/blog/r/fairness/2019/09/29/fairness-tutorial.html" rel="alternate" type="text/html" title="Algorithmic Fairness in R" /><published>2019-09-29T00:00:00-05:00</published><updated>2019-09-29T00:00:00-05:00</updated><id>https://kozodoi.github.io/blog/r/fairness/2019/09/29/fairness-tutorial</id><content type="html" xml:base="https://kozodoi.github.io/blog/r/fairness/2019/09/29/fairness-tutorial.html">&lt;!DOCTYPE html&gt;
 
 &lt;html&gt;
 
@@ -295,7 +295,6 @@ code &gt; span.er { color: #a61717; background-color: #e3d2d2; }
 &lt;/head&gt;
 
 &lt;body&gt;
-&lt;h4 class=&quot;author&quot;&gt;Nikita Kozodoi &amp;amp; Tibor V. Varga  &lt;/h4&gt;
 
 &lt;p&gt;How to measure fairness of a machine learning model?&lt;/p&gt;
 &lt;p&gt;To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between sensitive groups in binary classification problems. Multiple other metrics have been proposed that use various metrics from the confusion matrix (e.g., false positive rate parity, false negative rate parity).&lt;/p&gt;
@@ -505,7 +504,9 @@ Formula: &lt;strong&gt;(TP×TN-FP×FN)/√((TP+FP)×(TP+FN)×(TN+FP)×(TN+FN))&l
 &lt;div id=&quot;closing-words&quot; class=&quot;section level2&quot;&gt;
 &lt;h2&gt;Closing words&lt;/h2&gt;
 &lt;p&gt;You have read through the fairness R package tutorial and by now, you have a solid grip on algorithmic group fairness metrics. We hope that you will be able to use this R package in your data analysis! Please let us know if you have any issues here - &lt;a href=&quot;https://github.com/kozodoi/Fairness/issues&quot;&gt;fairness GitHub&lt;/a&gt; - or contact the authors if you have any feedback!&lt;/p&gt;
-&lt;p&gt;– authors of the fairness R package&lt;/p&gt;
+
+&lt;p&gt;Nikita Kozodoi &amp;amp; Tibor V. Varga&lt;/p&gt;
+
 &lt;/div&gt;
 
 
