@@ -6,12 +6,9 @@ permalink: /about/
 
 Hi, I am Nikita!
 
-<img src = "../images/photo.jpeg"
-     align  = "left" 
-     width  = "250" 
-     height = "250"/>
-
 I am a PhD student at Humboldt University of Berlin and research associate at Monedo. 
+
+![photo][../images/photo.jpg]
 
 ---
 

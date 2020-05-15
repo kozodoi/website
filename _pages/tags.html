@@ -22,8 +22,6 @@ Browse blogposts by tags.
   {% endfor %}
   </ul>
 
-  ---
-
   {% for category in categories %}
       <h3 id ="{{ category }}"><i class="fas fa-tags category-tags-icon"></i></i> {{ category }}</h3>
       <a name="{{ category | slugize }}"></a>
