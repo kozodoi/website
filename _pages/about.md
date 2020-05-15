@@ -4,13 +4,12 @@ title: About
 permalink: /about/
 ---
 
+Hi, I am Nikita!
+
 <img src = "../images/photo.jpeg"
      align  = "left" 
-     width  = "200" 
-     height = "200"
-     style  = "float: left; margin-right: 10px;" />
-
-Hi, I am Nikita!
+     width  = "250" 
+     height = "250"/>
 
 I am a PhD student at Humboldt University of Berlin and research associate at Monedo. 
 

@@ -6,6 +6,8 @@ permalink: /publications/
 
 This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on [ResearchGate](http://researchgate.net/profile/Nikita_Kozodoi) or [Google Scholar](https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ) to see all of my latest work. 
 
+---
+
 - Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., & Papakonstantinou, K. (2019). Shallow Self-Learning for Reject Inference in Credit Scoring. arXiv preprint arXiv:1909.06108.
 See on [ResearchGate](https://www.researchgate.net/publication/335833057_Shallow_Self-Learning_for_Reject_Inference_in_Credit_Scoring).
 
