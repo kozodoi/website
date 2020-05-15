@@ -1,5 +1,5 @@
 ---
-toc: false
+toc: true
 layout: post
 description: Brief tutorial on using fairness R package.
 categories: [r,fairness]
@@ -229,7 +229,7 @@ background-color: #f7f7f7;
 }
 code {
 font-family: Consolas, Monaco, 'Courier New', monospace;
-font-size: 85%;
+font-size: 100%;
 }
 p > code, li > code {
 padding: 2px 0px;
@@ -305,27 +305,35 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </head>
 
 <body>
-<h4 class="author"> Nikita Kozodoi &amp; Tibor V. Varga  </h4>
+<h4 class="author">Nikita Kozodoi &amp; Tibor V. Varga  </h4>
 
-<p>To date, a number of algorithmic group fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between groups in classification problems (supervised machine learning algorithms). Multiple other metrics have been proposed that use various metrics from the confusion matrix (e.g. false positive rate parity, false negative rate parity). The fairness R package provides a tool to easily calculate these metrics for given predicted probabilities or predicted classes between sensitive groups of populations. The package also provides visualizations that makes it easier to comprehend these metrics and biases between subgroups of the data.</p>
+<p>How to measure fairness of a machine learning model?</p>
+<p>To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between sensitive groups in binary classification problems. Multiple other metrics have been proposed that use various metrics from the confusion matrix (e.g., false positive rate parity, false negative rate parity).</p>
+<p>The fairness R package provides tools to easily calculate algorithmic fairness metrics for given predicted probabilities or predicted classes between different sensitive groups. It also provides opportunities to visualize and compare other prediction metrics between the subgroups.</p>
 <p>Disclaimer! None of the implemented metrics are supposed to replace critical thinking about the problem in question.</p>
 <div id="installation-of-the-fairness-r-package" class="section level2">
-<h2>Installation of the fairness R package</h2>
+<h2>Installation</h2>
+<p>You can instal the latest stable package version from CRAN by running:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">'fairness'</span>)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(fairness)</a></code></pre></div>
 </div>
+<p>You may also install the development version from Github:</p>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(devtools)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">devtools::install_github</span>(<span class="st">'kozodoi/fairness'</span>)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(fairness)</a></code></pre></div>
+</div>
 <div id="description-of-data" class="section level2">
-<h2>Description of data</h2>
-<p>This package includes two datasets to study algorithmic fairness: <em>compas</em> and <em>germancredit</em>. In this tutorial, you will be able to use a simplified version of the landmark COMPAS dataset. You can read more about the dataset <a href="https://github.com/propublica/compas-analysis">here</a>. To load the dataset, all you need to do is:</p>
+<h2>Data description</h2>
+<p>This package includes two data sets to study algorithmic fairness: <em>compas</em> and <em>germancredit</em>. In this tutorial, you will be able to use a simplified version of the landmark COMPAS data set containing containing criminal history of defendants from Broward County. You can read more about the data set <a href="https://github.com/propublica/compas-analysis">here</a>. To load the data set, all you need to do is:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">data</span>(<span class="st">'compas'</span>)</a></code></pre></div>
-<p>The compas dataframe contains nine columns: The outcome is <em>Two_yr_Recidivism</em>, i.e. whether an individual will commit a crime in two years or not. Variables exist in the data about prior criminal record (<em>Number_of_Priors</em> and <em>Misdemeanor</em>) and basic features such as age, categorized (<em>Age_Above_FourtyFive</em> and <em>Age_Below_TwentyFive</em>), sex (<em>Female</em>) and ethnicity (<em>ethnicity</em>). You don’t really need to delve into the data much, we have already ran a prediction model using <strong>all variables</strong> to predict <em>Two_yr_Recidivism</em> and concatenated the predicted probabilities (<em>probability</em>) and predicted classes (<em>predicted</em>) to the data. You will be able to use the <em>probability</em> and <em>predicted</em> columns directly in your analysis.</p>
-<p>However, please feel free to set up other prediction models (e.g. excluding sensitive group information, such as sex and ethnicity) and use your generated predicted probabilities or classes to assess group fairness.</p>
-<p>As mentioned earlier, another dataset, <em>germancredit</em> is also included in this package. This dataset includes 20 potential predictor features and an outcome (target) column named <em>BAD</em>. Similarly to the <em>compas</em> dataset, this data also includes two pre-made columns named <em>probability</em> and <em>predicted</em>. Feel free to play wit this data as well! You can of course load it with:</p>
+<p>The compas data set contains nine variables. The outcome variable is <em>Two_yr_Recidivism</em>, which is a binary indicator showing whether an individual commited a crime in the two-year period. The data also includes features on prior criminal record (<em>Number_of_Priors</em> and <em>Misdemeanor</em>) and other features describing age (<em>Age_Above_FourtyFive</em> and <em>Age_Below_TwentyFive</em>), sex (<em>Female</em>) and ethnicity (<em>ethnicity</em>).</p>
+<p>You don’t really need to delve into the data much. To simplify illustration, we have already ran a prediction model that uses <strong>all features</strong> to predict <em>Two_yr_Recidivism</em> and concatenated the predicted probabilities (<em>probability</em>) and predicted classes (<em>predicted</em>) to the data. You will be able to use the <em>probability</em> and <em>predicted</em> columns directly in your analysis. Please feel free to set up other prediction models (e.g. excluding sensitive group information, such as sex and ethnicity) and use your generated predicted probabilities or classes to assess group fairness.</p>
+<p>The second data set included in the package is a credit scoring data set labeled as <em>germancredit</em>. The data set includes 20 potential predictor features describing yhe loan applicants and an outcome variables named <em>BAD</em>, which is a binary indicator showing whether the applicant defaulted on a loan. Similarly to the <em>compas</em> data set, this data also includes two pre-made columns with model predictions named <em>probability</em> and <em>predicted</em>. Feel free to play wit this data as well! You can load it with:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">data</span>(<span class="st">'germancredit'</span>)</a></code></pre></div>
 </div>
 <div id="algorithmic-group-fairness-metrics" class="section level2">
 <h2>Algorithmic group fairness metrics</h2>
-<p>The package currently includes nine fairness metrics and two other comparisons implemented. Many of these metrics are mutually exclusive - results from a given classification most often cannot be fair in terms of all evaluated group fairness metrics. Below, all these functions will be introduced in detail - for the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, for all functions, a base group needs to be defined - all other groups will be compared to this subgroup in terms of fairness metrics.</p>
+<p>The package currently includes nine fairness metrics and two other comparisons implemented. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Below, all these functions will be introduced in detail. For the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, for all functions, a base group needs to be defined. All other groups will be compared to this base group in terms of fairness metrics.</p>
 <div id="an-outlook-on-the-confusion-matrix" class="section level3">
 <h3>An outlook on the confusion matrix</h3>
 <p>Most fairness metrics use various measures calculated from the confusion matrix. The confusion matrix is comprised of four distinct classes:</p>
@@ -345,24 +353,24 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <p>Demographic parity is achieved if the absolute number of positive predictions in the subgroups are close to each other. This measure does not take true class into consideration, only positive predictions.<br />
 Formula: <strong>(TP + FP)</strong></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">dem_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>,</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">           <span class="dt">cutoff  =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">           <span class="dt">base    =</span> <span class="st">'Caucasian'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb4-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>,</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">            <span class="dt">cutoff  =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">            <span class="dt">base    =</span> <span class="st">'Caucasian'</span>)</a></code></pre></div>
 </div>
 <div id="proportional-parity" class="section level3">
 <h3><em>Proportional parity</em></h3>
 <p>Proportional parity is very similar to Demographic parity. Proportional parity is achieved if the proportion of positive predictions in the subgroups are close to each other. This measure does not take true class into consideration, only positive predictions.<br />
 Formula: <strong>(TP + FP) / (TP + FP + TN + FN)</strong></p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">prop_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">            <span class="dt">cutoff  =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">            <span class="dt">base    =</span> <span class="st">'Caucasian'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-2" data-line-number="2">             <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>,</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">             <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">             <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">             <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">             <span class="dt">cutoff  =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">             <span class="dt">base    =</span> <span class="st">'Caucasian'</span>)</a></code></pre></div>
 <p>All the rest of the functions take the true class into consideration.</p>
 </div>
 <div id="equalized-odds" class="section level3">
@@ -370,108 +378,107 @@ Formula: <strong>(TP + FP) / (TP + FP + TN + FN)</strong></p>
 <p>Equalized odds are achieved if the sensitivities (true positives divided by all positives) in the subgroups are close to each other.<br />
 Formula: <strong>TP / (TP + FN)</strong></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">equal_odds</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">           <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">           <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb6-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="predictive-rate-parity" class="section level3">
 <h3><em>Predictive rate parity</em></h3>
 <p>Predictive rate parity is achieved if the precisions or positive predictive values (true positives divided by all predicted positive) in the subgroups are close to each other.<br />
 Formula: <strong>TP / (TP + FP)</strong></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">pred_rate_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">                 <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">                 <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">                 <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">                 <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">                 <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">                 <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb7-2" data-line-number="2">                  <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">                  <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">                  <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">                  <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">                  <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">                  <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="accuracy-parity" class="section level3">
 <h3><em>Accuracy parity</em></h3>
 <p>Accuracy parity is achieved if the accuracies (all accurately classified divided by all predictions) in the subgroups are close to each other.<br />
 Formula: <strong>(TP + TN) / (TP + FP + TN + FN)</strong></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">acc_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">           <span class="dt">preds   =</span> <span class="ot">NULL</span>,</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb8-7" data-line-number="7">           <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">           <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb8-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb8-6" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb8-7" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb8-8" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="false-negative-rate-parity" class="section level3">
 <h3><em>False negative rate parity</em></h3>
 <p>False negative rate parity is achieved if the false negative rates (division of false negatives with all positives) in the subgroups are close to each other.<br />
 Formula: <strong>FN / (TP + FN)</strong></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">fnr_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb9-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">           <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">           <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb9-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="false-positive-rate-parity" class="section level3">
 <h3><em>False positive rate parity</em></h3>
 <p>False positive rate parity is achieved if the false positive rates (division of false positives with all negatives) in the subgroups are close to each other.<br />
 Formula: <strong>FP / (TN + FP)</strong></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">fpr_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb10-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb10-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb10-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb10-6" data-line-number="6">           <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb10-7" data-line-number="7">           <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb10-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="negative-predictive-value-parity" class="section level3">
 <h3><em>Negative predictive value parity</em></h3>
 <p>Negative predictive value parity is achieved if the negative predictive values (division of true negatives with all predicted negatives) in the subgroups are close to each other. This function can be considered the ‘inverse’ of Predictive rate parity.<br />
 Formula: <strong>TN / (TN + FN)</strong></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">npv_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb11-6" data-line-number="6">           <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">           <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb11-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="specificity-parity" class="section level3">
 <h3><em>Specificity parity</em></h3>
 <p>Specificity parity is achieved if the specificities (division of true negatives with all negatives) in the subgroups are close to each other. This function can be considered the ‘inverse’ of Equalized odds.<br />
 Formula: <strong>TN / (TN + FP)</strong></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">spec_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb12-2" data-line-number="2">             <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">             <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">             <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">             <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">             <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">             <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 <p>Two additional comparisons are implemented, namely ROC AUC and Matthews correlation coefficient comparisons.</p>
 </div>
 <div id="roc-auc-comparison" class="section level3">
 <h3><em>ROC AUC comparison</em></h3>
 <p>This function calculates ROC AUC and visualizes ROC curves for all subgroups. Note that probabilities must be defined for this function. Also, as ROC evaluates all possible cutoffs, the cutoff argument is excluded from this function.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">roc_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb13-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb13-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb13-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb13-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb13-6" data-line-number="6">           <span class="dt">base =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb13-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb13-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb13-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb13-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb13-6" data-line-number="6">            <span class="dt">base =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 <div id="matthews-correlation-coefficient-comparison" class="section level3">
 <h3><em>Matthews correlation coefficient comparison</em></h3>
 <p>The Matthews correlation coefficient takes all 4 classes of the confusion matrix into consideration. According to some, it is the single most powerful metric in binary classification problems, especially for data with class imbalances.<br />
 Formula: <strong>(TP×TN-FP×FN)/√((TP+FP)×(TP+FN)×(TN+FP)×(TN+FN))</strong></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">mcc_parity</span>(<span class="dt">data    =</span> compas, </a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">           <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
-<a class="sourceLine" id="cb14-3" data-line-number="3">           <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
-<a class="sourceLine" id="cb14-4" data-line-number="4">           <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
-<a class="sourceLine" id="cb14-5" data-line-number="5">           <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">           <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">           <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" data-line-number="2">            <span class="dt">outcome =</span> <span class="st">'Two_yr_Recidivism'</span>, </a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">            <span class="dt">group   =</span> <span class="st">'ethnicity'</span>,</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">            <span class="dt">probs   =</span> <span class="st">'probability'</span>, </a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">            <span class="dt">preds_levels =</span> <span class="kw">c</span>(<span class="st">'no'</span>,<span class="st">'yes'</span>), </a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">            <span class="dt">cutoff =</span> <span class="fl">0.5</span>, </a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">            <span class="dt">base   =</span> <span class="st">'African_American'</span>)</a></code></pre></div>
 </div>
 </div>
 <div id="output-and-visualizations" class="section level2">
