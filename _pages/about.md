@@ -6,7 +6,7 @@ permalink: /about/
 
 Hi, I am Nikita!
 
-I am a PhD student at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/professuren/quantitativ/wi/standardseite-en?set_language=en) and research associate at the [Monedo](https://www.monedo.com) data science team.
+I am a PhD student at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/professuren/quantitativ/wi/standardseite-en?set_language=en) and research associate at the [Monedo](https://www.monedo.com) data science team. Please [click here](https://kozodoi.github.io/blog/cv.pdf) to check my CV. 
 
 ![photo](../images/photo.jpg)
 
@@ -27,7 +27,6 @@ If you want to chat or see more of my work, please feel free to connect with me 
   <li><a href="https://www.researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a></li>
   <li><a href="https://www.kaggle.com/kozodoi">Kaggle</a></li>
 </ul>
-
 
 ---
 
