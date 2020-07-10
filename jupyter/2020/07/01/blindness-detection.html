@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Detecting Blindness with Deep Learning | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Detecting Blindness with Deep Learning" />
+<meta name="author" content="Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using CNNs to detect diabetic retinopathy in retina photos." />
+<meta property="og:description" content="Using CNNs to detect diabetic retinopathy in retina photos." />
+<link rel="canonical" href="https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html" />
+<meta property="og:url" content="https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.github.io/blog/images/posts/retina.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Using CNNs to detect diabetic retinopathy in retina photos.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html"},"@type":"BlogPosting","image":"https://kozodoi.github.io/blog/images/posts/retina.png","url":"https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html","headline":"Detecting Blindness with Deep Learning","dateModified":"2020-07-01T00:00:00-05:00","datePublished":"2020-07-01T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/blog/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.github.io/blog/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="apple-touch-icon" sizes="120x120" href="/blog/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/blog/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/blog/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="/blog/images/favicons/site.webmanifest">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Detecting Blindness with Deep Learning | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Detecting Blindness with Deep Learning" />
+<meta name="author" content="Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Using CNNs to detect diabetic retinopathy in retina photos." />
+<meta property="og:description" content="Using CNNs to detect diabetic retinopathy in retina photos." />
+<link rel="canonical" href="https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html" />
+<meta property="og:url" content="https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.github.io/blog/images/posts/retina.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-01T00:00:00-05:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Using CNNs to detect diabetic retinopathy in retina photos.","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html"},"@type":"BlogPosting","image":"https://kozodoi.github.io/blog/images/posts/retina.png","url":"https://kozodoi.github.io/blog/jupyter/2020/07/01/blindness-detection.html","headline":"Detecting Blindness with Deep Learning","dateModified":"2020-07-01T00:00:00-05:00","datePublished":"2020-07-01T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.github.io/blog/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/blog/">Nikita Kozodoi</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/blog/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/blog/packages/">Packages</a><a class="page-link" href="/blog/publications/">Publications</a><a class="page-link" href="/blog/search/">Search</a><a class="page-link" href="/blog/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Detecting Blindness with Deep Learning</h1><p class="page-description">Using CNNs to detect diabetic retinopathy in retina photos.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-01T00:00:00-05:00" itemprop="datePublished">
+        Jul 1, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nikita Kozodoi</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/blog/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/kozodoi/blog/tree/master/_notebooks/2020-07-01-blindness-detection.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/blog/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/kozodoi/blog/master?filepath=_notebooks%2F2020-07-01-blindness-detection.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/kozodoi/blog/blob/master/_notebooks/2020-07-01-blindness-detection.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/blog/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#1.-Overview">1. Overview </a></li>
+<li class="toc-entry toc-h1"><a href="#2.-Data-preparation">2. Data preparation </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#2.1.-Data-exploration">2.1. Data exploration </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-07-01-blindness-detection.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="1.-Overview">
+<a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Can deep learning help to detect blindenss?</p>
+<p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. The World Health Organization reports that more than 300 million people worldwide have diabetes (Wong et al 2016). According to a recent study from International Diabetes Federation, the global prevalence of DR among the individuals with diabetes for the period from 2015 to 2019 was at more than 25% (Thomas et al 2019). The disease prevalence has been rising rapidly in developing countries.</p>
+<p>Early detection and treatment are crucial steps towards preventing DR. The screening procedure requires a trained clinical expert to examine the fundus photographs of the patient's retina. This creates delays in diagnosis and treatment of the disease. This is especially relevant for developing countries, which often lack qualified medical stuff to perform the diagnosis. Automated detection of DR can speed up the efficiency and coverage of the screening programs.</p>
+<p>This blogpost describes the pipeline of the project that develops a convolutional neural network (CNN) for predicting the severity of DR disease based on the patient's retina photograph. The project was completed within the scope of the Udacity Machine Learning Engineer program and the Kaggle competition hosted by the Asia Pacific Tele-Ophthalmology Society (APTOS). The blogpost covers such steps as:</p>
+<ul>
+<li>data exploration and preprocessing to normalize images from different clinics</li>
+<li>using transfer learning to pre-train a CNN on a large data set and fine-tune the model on target data</li>
+<li>implementing techniques such as learnung rate scheduler, test-time augmentation and others to improve the performance</li>
+</ul>
+<p>The codes for this project and a PDF report are available on Github. The modeling is done using PyTorch.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2.-Data-preparation">
+<a class="anchor" href="#2.-Data-preparation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Data preparation<a class="anchor-link" href="#2.-Data-preparation"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Data exploration and preprocessing is very important step that is frequently underestimated. The quality of the input data directly impact the resulting performance of the machine learning models bult on theat data. Therefore, it is crucial to take some time to look at the data and think about possible issues that should be addressed before moving on to the modeling stage.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.1.-Data-exploration">
+<a class="anchor" href="#2.1.-Data-exploration" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1. Data exploration<a class="anchor-link" href="#2.1.-Data-exploration"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data set is provided by APTOS and is available for the download at the <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/data">competition's website</a>. The data set includes 3,662 labeled retina images of clinical patients and a test set with 1,928 images.</p>
+<p>The images are taken using a fundus photography technique and labeled by a clinical expert. The integer labels indicate the severity of DR on a scale from 0 to 4, where 0 indicates no disease and 5 is the proliferative stage of DR.</p>
+<p>First, let us import the data and looak at the class ditribution.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+
+<span class="c1">############ LIBRARIES</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torchvision</span>
+
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span><span class="p">,</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageFile</span>
+<span class="n">ImageFile</span><span class="o">.</span><span class="n">LOAD_TRUNCATED_IMAGES</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm_notebook</span> <span class="k">as</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+
+
+<span class="c1">########## SETTINGS</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">'display.max_columns'</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+
+
+
+<span class="c1">############ CHECK DIMENSIONS</span>
+
+<span class="c1"># import data</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/aptos2019-blindness-detection/train.csv'</span><span class="p">)</span>
+<span class="n">test</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/aptos2019-blindness-detection/sample_submission.csv'</span><span class="p">)</span>
+
+<span class="c1"># check shape</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">'diagnosis'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+
+
+
+<span class="c1">############ CLASS DISTRIBUTION</span>
+
+<span class="c1"># plot</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">'diagnosis'</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Class Distribution'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Number of examples'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Diagnosis'</span><span class="p">)</span>
+
+<span class="c1"># export</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'fig_class_distribution.pdf'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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%0A">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The data set is imbalanced. 49% of the images are healthy patients. The remaining 51\% are pictures with different stages of DR. The least common class is 3 (severe stage) with only 5% of the total examples.</p>
+<p>The data is collected from multiple clinics in India using a variety of different camera models, which creates discrepancies in the image resolution, aspect ratio and other parameters. This is demonstrated in the fogire below, where we plot the histograms of image width, height and aspect ratio. A high variety in the image parameters requires to be accounted for during the data prepossessing.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"0e541176c8f04bb79cf4bb3c1e525ef1": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "159b8413aa00480e8ad91a46046fc7e9": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_464c364c93434011a46a1d8bd6365904", "placeholder": "\u200b", "style": "IPY_MODEL_8ec5d9c4da304abf87e0e6239e0eda63", "value": " 3662/3662 [04:56&lt;00:00, 12.34it/s]"}}, "2016cb60541a4d00b926ce23a107d8e2": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "100%", "description_tooltip": null, "layout": "IPY_MODEL_0e541176c8f04bb79cf4bb3c1e525ef1", "max": 3662, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_35edb5bfea814611b721e486a3807142", "value": 3662}}, "30637eb546ab41848cf1ba6347d5ff1c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_2016cb60541a4d00b926ce23a107d8e2", "IPY_MODEL_159b8413aa00480e8ad91a46046fc7e9"], "layout": "IPY_MODEL_78fca7c58b344d1ebd93c6afb3e4927d"}}, "35edb5bfea814611b721e486a3807142": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": "initial"}}, "464c364c93434011a46a1d8bd6365904": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "78fca7c58b344d1ebd93c6afb3e4927d": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8ec5d9c4da304abf87e0e6239e0eda63": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="kozodoi/blog"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/blog/jupyter/2020/07/01/blindness-detection.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/blog/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/blog/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/blog/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Personal blog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.instagram.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#instagram"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#linkedin"></use></svg></a></li><li><a rel="me" href="https://twitter.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/blog/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
