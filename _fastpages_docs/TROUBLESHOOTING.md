@@ -27,10 +27,9 @@ See the [Upgrading guide](https://github.com/fastai/fastpages/blob/master/_fastp
 
 ## Step 4: See if there are errors in the build process of GitHub Actions.
 
-- [ ] In your GitHub repository, you will have a tab called **Actions**.  To find build errors, click on the `Event` dropdown list and select `push`.  Browse through tthe logs to see if you can find an error.
+- [ ] In your GitHub repository, you will have a tab called **Actions**.  To find build errors, click on the `Event` dropdown list and select `push`.  Browse through tthe logs to see if you can find an error.  If you receive an error, read the error message and try to debug.
 
-
-## Step 5: Once you have performed all the above steps, post your issue in the fastai formus or a GitHub Issue.
+## Step 5: Once you have performed all the above steps, post your issue in the fastai forums or a GitHub Issue.
 
 - [ ] Use the [nbdev & blogging category](https://forums.fast.ai/c/fastai-users/nbdev/48) to specify your problem if posting on the fastpages forums.
 - [ ] If you cannot find a similar issue create a new thread instead of commenting on an unrelated one.
