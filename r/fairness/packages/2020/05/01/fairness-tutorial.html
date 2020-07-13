@@ -140,7 +140,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#1-overview">1. Overview</a></li>
 <li class="toc-entry toc-h2"><a href="#2-installation">2. Installation</a></li>
 <li class="toc-entry toc-h2"><a href="#3-data-description">3. Data description</a></li>
-<li class="toc-entry toc-h2"><a href="#4-algorithmic-group-fairness-metrics">4. Algorithmic group fairness metrics</a>
+<li class="toc-entry toc-h2"><a href="#4-algorithmic-fairness-metrics">4. Algorithmic fairness metrics</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#an-outlook-on-the-confusion-matrix">An outlook on the confusion matrix</a></li>
 <li class="toc-entry toc-h3"><a href="#demographic-parity">Demographic parity</a></li>
@@ -270,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <style type="text/css">body {
 background-color: #fff;
 margin: 1em auto;
-max-width: 1200px;
+max-width: 80%;
 overflow: visible;
 padding-left: 2em;
 padding-right: 2em;
@@ -486,7 +486,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="algorithmic-group-fairness-metrics" class="section level2">
 <h2>
-<a class="anchor" href="#4-algorithmic-group-fairness-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Algorithmic group fairness metrics</h2>
+<a class="anchor" href="#4-algorithmic-fairness-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Algorithmic fairness metrics</h2>
 <p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Depending on the context, it is important to select an appropriate metric to evaluate fairness.</p>
 <p>Below, we intrdocue functions that are used to compute the implemented metrics. For the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, we need to defina a base group with respect to which we will compute the fairness metrics.</p>
 <div id="an-outlook-on-the-confusion-matrix" class="section level3">
