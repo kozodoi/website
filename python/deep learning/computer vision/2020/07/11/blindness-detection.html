@@ -114,7 +114,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      38 min read
+      37 min read
     
 </span></p>
 
@@ -205,10 +205,10 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Can deep learning help to detect blindness?</p>
 <p>This blogpost describes the pipeline of the project that develops a convolutional neural network (CNN) for predicting the severity of the diabetic retinopathy based on the patient's retina photograph. The project was completed within the scope of the <a href="https://confirm.udacity.com/LMMJDA7C">Udacity Machine Learning Engineer</a> nano-degree program and the <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/data">Kaggle competition</a> hosted by the Asia Pacific Tele-Ophthalmology Society (APTOS).</p>
-<p>The blogpost provides a project walkthrough covering the important modeling steps:</p>
+<p>The blogpost provides a project walkthrough covering the following steps:</p>
 <ul>
 <li>data exploration and image preprocessing to normalize images from different clinics</li>
-<li>using transfer learning to pre-train CNN on a large data set</li>
+<li>using transfer learning to pre-train CNN on a larger data set</li>
 <li>employing techniques such as learning rate scheduler, test-time augmentation and others</li>
 </ul>
 <p>The modeling is performed in <code>PyTorch</code>. All Jupyter notebooks and a PDF report are <a href="https://github.com/kozodoi/Udacity_Blindness_Detection">available on Github</a>.</p>
@@ -228,8 +228,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. The World Health Organization reports that more than 300 million people worldwide have diabetes (Wong et al 2016). According to a recent study from International Diabetes Federation, the global prevalence of DR among the individuals with diabetes for the period from 2015 to 2019 was at more than 25% (Thomas et al 2019). The disease prevalence has been rising rapidly in developing countries.</p>
-<p>Early detection and treatment are crucial steps towards preventing DR. The screening procedure requires a trained clinical expert to examine the fundus photographs of the patient's retina. This creates delays in diagnosis and treatment of the disease. This is especially relevant for developing countries, which often lack qualified medical stuff to perform the diagnosis. Automated detection of DR can speed up the efficiency and coverage of the screening programs.</p>
+<p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. The World Health Organization reports that more than 300 million people worldwide have diabetes (Wong et al 2016). The global prevalence of DR among the individuals with diabetes for the period from 2015 to 2019 was at more than 25% (Thomas et al 2019). The disease prevalence has also been rising rapidly in developing countries.</p>
+<p>Early detection and treatment are crucial steps towards preventing DR. The screening procedure requires a trained clinical expert to examine the fundus photographs of the patient's retina. This creates delays in diagnosis and treatment. This is especially relevant for developing countries, which often lack qualified medical stuff to perform the diagnosis. Automated detection of DR can speed up the efficiency and coverage of the screening programs.</p>
 
 </div>
 </div>
@@ -245,8 +245,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Image source: <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">Ophthalmology Physicians &amp; Surgeons</a></em></p>
-
+<center>
+*Image source: [Ophthalmology Physicians &amp; Surgeons](https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy)*
+</center>
 </div>
 </div>
 </div>
@@ -262,7 +263,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Data preparation is a very important step that is frequently underestimated. The quality of the input data can have a strong impact on the resulting performance of the developed machine learning models. Therefore, it is crucial to take some time to look at the data and think about possible issues that should be addressed before moving on to the modeling stage.</p>
+<p>Data preparation is a very important step that is frequently underestimated. The quality of the input data can have a strong impact on the resulting performance of the developed machine learning models. Therefore, it is crucial to take some time to look at the data and think about possible issues that should be addressed before moving on to the modeling stage. Let's do that!</p>
 
 </div>
 </div>
@@ -281,7 +282,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The data set is available for the download at the <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/data">competition's website</a>. The data includes 3,662 labeled retina images of clinical patients and a test set with 1,928 images with unknown labels.</p>
 <p>The images are labeled by a clinical expert. The integer labels indicate the severity of DR on a scale from 0 to 4, where 0 indicates no disease and 5 is the proliferative stage of DR.</p>
-<p>Let us import the data and look at the class ditribution.</p>
+<p>Let's start by importing the data and looking at the class ditribution.</p>
 
 </div>
 </div>
@@ -385,8 +386,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The data set is imbalanced. 49% of the images are healthy patients. The remaining 51\% are pictures with different stages of DR. The least common class is 3 (severe stage) with only 5% of the total examples.</p>
-<p>The data is collected from multiple clinics in India using a variety of different camera models, which creates discrepancies in the image resolution, aspect ratio and other parameters. This is demonstrated in the snippet below, where we plot the histograms of image width, height and aspect ratio.</p>
+<p>The data is imbalanced: 49% images are from healthy patients. The remaining 51% refer to different stages of DR. The least common class is 3 (severe stage) with only 5% of the total examples.</p>
+<p>The data is collected from multiple clinics in India using a variety of camera models, which creates discrepancies in the image resolution, aspect ratio and other parameters. This is demonstrated in the snippet below, where we plot histograms of image width, height and aspect ratio.</p>
 
 </div>
 </div>
@@ -480,8 +481,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A high variety in the image parameters requires to be accounted for during the data prepossessing.</p>
-<p>Now, let us take a look at the actual images. The code below creates the <code>EyeData</code> dataset class to import images using <code>opencv</code> library. We also create a <code>DataLoader</code> object to load sample images and visualize the first batch.</p>
+<p>Now, let's look into the actual eyes! The code below creates the <code>EyeData</code> dataset class to import images. We also create a <code>DataLoader</code> object to load sample images and visualize the first batch.</p>
 
 </div>
 </div>
@@ -593,8 +593,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The illustration further emphasizes the difference between the photographs in terms of aspect ratio, lighting conditions and camera quality.</p>
-<p>The severity of DR is diagnosed by the presence of different visual cues on the retina photographs, such as abnormal blood vessels, hard exudates and so-called cotton wool spots. You can reed more about the diagnosing <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">here</a>. Comparing the sample images, we can see the presence of exudates and cotton wool spots on some of the retina photographs of sick patients.</p>
+<p>The illustration further emphasizes the difference between the photos in terms of aspect ratio and lighting conditions.</p>
+<p>The severity of DR is diagnosed by the presence of different visual cues on the retina photos, such as abnormal blood vessels, hard exudates and so-called cotton wool spots. You can reed more about the diagnosing process <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">here</a>. Comparing the sample images, we can see the presence of exudates and cotton wool spots on some of the retina images of sick patients.</p>
 
 </div>
 </div>
@@ -829,8 +829,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This looks much better! Comparing the retina images to the ones before the preprocessing, we can see that the apparent discrepancies between the photographs are now fixed. The eyes now have a similar circular shape and the color scheme is more consistent. This should help the model to detect the signs of the DR on the photographs.</p>
-<p>Check out <a href="https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy">this notebook</a> by Nakhon Ratchasima for more ideas on the image preprocessing for retina photographs. The functions in this project are largely inspired by his work suring the competition.</p>
+<p>This looks much better! Comparing the retina images to the ones before the preprocessing, we can see that the apparent discrepancies between the photos are now fixed. The eyes now have a similar circular shape and the color scheme is more consistent. This should help the model to detect the signs of the DR on the images.</p>
+<p>Check out <a href="https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy">this notebook</a> by Nakhon Ratchasima for more ideas on the image preprocessing for retina photos. The functions in this project are largely inspired by his work during the competition.</p>
 
 </div>
 </div>
@@ -847,8 +847,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>CNNs achieve state-of-the-art performance in computer vision tasks such as image classification. Recent medical research also shows a high potential of CNNs in the DR classification task (Gulshan et al 2016). Furthermore, using CNNs allows to take advantage of transfer learning techniques, which is relevant given a small sample size of the considered data set.</p>
-<p>We employ the EfficientNet architecture for the CNN model. <a href="https://arxiv.org/abs/1905.11946">EfficientNet</a> is one of the recent state-of-the-art image classification models (Tan et al 2019). EfficientNet encompasses 8 architecture variants (B0 to B7) which differ in the model complexity and default image size.</p>
+<p>CNNs achieve state-of-the-art performance in computer vision tasks such as image classification. Recent medical research also shows a high potential of CNNs in the DR classification task (Gulshan et al 2016).</p>
+<p>In this project, we employ the CNN model with the EfficientNet architecture. <a href="https://arxiv.org/abs/1905.11946">EfficientNet</a> is one of the recent state-of-the-art image classification models (Tan et al 2019). It encompasses 8 architecture variants (B0 to B7) which differ in the model complexity and default image size.</p>
 <p>The architecture of EfficientNet B0 is visualized below. We test multiple EfficientNet neural network architectures and use the one that demonstrates the best performance.</p>
 
 </div>
@@ -865,7 +865,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The modeling pipeline consists of the three stages:</p>
+<p>The modeling pipeline consists of three stages:</p>
 <ul>
 <li>
 <strong>Pre-training</strong>. The data set has a limited number of images (N = 3,662). We pre-train the CNN model on a larger data set from the previous Kaggle competition.</li>
@@ -890,14 +890,14 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Due to a small sample size of the data set, we can not train a complex neural architecture from scratch. This is where transfer learning comes in handy. The idea of transfer learning is to pre-train a model on a different data (source domain) and then fine-tune on the relevant data set (target domain).</p>
+<p>Due to a small sample size, we can not train a complex neural architecture from scratch. This is where transfer learning comes in handy. The idea of transfer learning is to pre-train a model on a different data (source domain) and then fine-tune on the relevant data set (target domain).</p>
 <p>A good candidate for the source domain is the <a href="http://www.image-net.org">ImageNet database</a>. Most published CNN models are trained on that data. However, ImageNet images are substantially different from the retina images we want to classify. Although intializing the CNN with ImageNet weights might help the network to transfer the knowledge of basic image patterns such as shapes and edges, we still need to learn a lot from the target domain.</p>
 <p>It turns out that APTOS has also hosted another Kaggle competition on the DR classification in 2015. The data set of the 2015 competition features 35,126 retina images labeled by a clinician using the same scale as the target data set. The data is available for the download <a href="https://www.kaggle.com/c/diabetic-retinopathy-detection/data">here</a>.</p>
-<p>Our final stretagy would be as foloows:</p>
+<p>We use the following pipeline:</p>
 <ul>
-<li>Initialize weights from the model trained on the ImageNet database.</li>
-<li>Train the model on the 2015 data set.</li>
-<li>Fine-tune the model on the 2019 data set.</li>
+<li>Initialize weights from a CNN trained on the ImageNet database.</li>
+<li>Train the CNN on the 2015 data set.</li>
+<li>Fine-tune the CNN on the 2019 data set.</li>
 </ul>
 
 </div>
@@ -906,7 +906,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, we move on to the modeling! First, we enable GPU support and fix the random seeds. The function <code>seed_everything()</code> sets seed for multiple libraries including <code>numpy</code> and <code>pytorch</code> to ensure reproducibility.</p>
+<p>Let's move on to the modeling! First, we enable GPU support and fix the random seeds. The function <code>seed_everything()</code> sets seed for multiple libraries including <code>numpy</code> and <code>pytorch</code> to ensure reproducibility.</p>
 
 </div>
 </div>
@@ -993,7 +993,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let us take a quick look at the class distribution in the 2015 data set.</p>
+<p>Let's take a quick look at the class distribution in the 2015 data set.</p>
 
 </div>
 </div>
@@ -1062,7 +1062,7 @@ Name: diagnosis, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The imbalance in the source data set is stronger than in the target data: 73% of images represent healthy patients, whereas the most severe stage of the DR is only found in 2% of the images. To address the imbalance, we will use the target 2019 data set as a validation sample during training.</p>
+<p>The imbalance in the source data is stronger than in the target data: 73% of images represent healthy patients, whereas the most severe stage of the DR is only found in 2% of the images. To address the imbalance, we will use the target data set as a validation sample during training.</p>
 
 </div>
 </div>
@@ -1070,7 +1070,7 @@ Name: diagnosis, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We create two Dataset objects to enable different data augmentations on the training and inference stages: <code>EyeTrainData</code> and <code>EyeTestData</code>. The training data set includes a random crop that is skipped for the test data.</p>
+<p>We create two <code>Dataset</code> objects to enable different data augmentations on the training and inference stages: <code>EyeTrainData</code> and <code>EyeTestData</code>. The former includes a random crop that is skipped for the test data.</p>
 
 </div>
 </div>
@@ -1142,10 +1142,10 @@ Name: diagnosis, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We use a batch size of 20 and set the image size of 256. The choice of these parameters is a trade-off between a predictive performance and resource capacity. Feel free to try larger image and batch sizes if you have resources.</p>
+<p>We use a batch size of 20 and set the image size of 256. The choice of these parameters is a trade-off between performance and resource capacity. Feel free to try larger image and batch sizes if you have resources.</p>
 <p>We use the following data augmentations during training:</p>
 <ul>
-<li>random horizontal flip (p = 0.5)</li>
+<li>random horizontal flip (probability = 0.5)</li>
 <li>random vertical flip (p = 0.5)</li>
 <li>random image rotation in the range of [-360 degrees, 360 degrees]</li>
 </ul>
@@ -1212,9 +1212,8 @@ Name: diagnosis, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we instantiate the EfficentNet model. Let us use the B4 architecture, which is a trade-off between the training time and performance. We initialize the model weights using the parameters pre-trained on ImageNet by downloading the model architecture and weights in the <code>PyTorch</code> format.</p>
-<p>The convolutional part of the network responsible for feature extraction outputs a tensor with <code>1792</code> features. To adapt the EfficentNet to our task, we replace the last fully-connected classification layer with a <code>(1792, 5)</code> fully-connected layer.</p>
-<p>The function <code>init_model()</code> instantiates the CNN model. The argument <code>train</code> ensures that we load the ImageNet weights on the training stage and turn off the gradient computation on the inference stage.</p>
+<p>Next, let's instantiate the EfficentNet model. We use the B4 architecture and initialize pre-trained ImageNet weights by downloading the model parameters in the <code>PyTorch</code> format. The convolutional part of the network responsible for feature extraction outputs a tensor with <code>1792</code> features. To adapt the CNN to our task, we replace the last fully-connected classification layer with a <code>(1792, 5)</code> fully-connected layer.</p>
+<p>The function <code>init_model()</code> instantiates the model. The argument <code>train</code> ensures that we load the ImageNet weights on the training stage and turn off the gradient computation on the inference stage.</p>
 
 </div>
 </div>
@@ -1278,9 +1277,9 @@ Name: diagnosis, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since we are dealing with a multiple classification problem, we use cross-entropy as a loss function. We implement <code>nn.CrossEntropyLoss()</code> function which combines logsoftmax and negative log-likelihood loss and applies them to the output of the last network layer.</p>
-<p>The Kaggle competition uses <a href="https://towardsdatascience.com/cohens-kappa-9786ceceab58">Cohen's kappa</a> for evaluation. Kappa measures the agreement between the actual and predicted labels. Since Kappa is non-differentiable, we can not use it as a loss function. At the same time, we can use Kappa to evaluate the performance and early stop the training epochs of CNN.</p>
-<p>We use adaptive learning rate optimization algorithm (<code>Adam</code>) with a starting learning rate of 0.001. During training, we use a learning rate scheduler, which multiplies the learning rate by 0.5 after every 5 epochs. This helps to make smaller changes to the network weights when we are getting closer to the optimum.</p>
+<p>Since we are dealing with a multiple classification problem, we use cross-entropy as a loss function. We use <code>nn.CrossEntropyLoss()</code> which combines logsoftmax and negative log-likelihood loss and applies them to the output of the last network layer.</p>
+<p>The Kaggle competition uses <a href="https://towardsdatascience.com/cohens-kappa-9786ceceab58">Cohen's kappa</a> for evaluation. Kappa measures the agreement between the actual and predicted labels. Since Kappa is non-differentiable, we can not use it as a loss function. At the same time, we can use Kappa to evaluate the performance and early stop the training epochs.</p>
+<p>We use adaptive learning rate optimization algorithm <code>Adam</code> with a starting learning rate of 0.001. During training, we use a learning rate scheduler, which multiplies the learning rate by 0.5 after every 5 epochs. This helps to make smaller changes to the network weights when we are getting closer to the optimum.</p>
 
 </div>
 </div>
@@ -1331,7 +1330,7 @@ Name: diagnosis, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After each training epoch, we validate the model on the target data. We extract class scores from the last fully-connected layer and predict the image class corresponding to the highest score. We train the network for 15 epochs, tracking the validation loss and Cohen's kappa. If the kappa does not increase for 5 consecutive epochs, we terminate the training process and save model weights for the epoch which is associated with the highest validation kappa.</p>
+<p>After each training epoch, we validate the model on the target data. We extract class scores from the last fully-connected layer and predict the image class corresponding to the highest score. We train the network for 15 epochs, tracking the validation loss and Cohen's kappa. If the kappa does not increase for 5 consecutive epochs, we terminate the training process and save model weights for the epoch associated with the highest validation kappa.</p>
 <p>The modeling loop is provided in the snippet below.</p>
 
 </div>
@@ -1530,7 +1529,7 @@ Finished in 429.16 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Training on the Kaggle GPU-enabled machine took us about 7 hours! Let us visualize the training and validation loss over the training epochs.</p>
+<p>Training on the Kaggle GPU-enabled machine took us about 7 hours! Let's visualize the training and validation loss dynamics.</p>
 
 </div>
 </div>
@@ -1587,7 +1586,8 @@ Finished in 429.16 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Below, we construct the confusion matrix of the trained model on validation set. The numbers in the table cells are percentages. According to the results, the model does a poor job in distinguishing the mild and moderate stages of DR: 86\% of images with mild DR are classified as moderate DR by the model. The best performance is observed for classifying the retina photographs of healthy people. Overall, we see that the model tends to confuse nearby severity stages but rarely missclassifies the proliferate and mild stages.</p>
+<p>The cross-entropy loss on validation set reaches minimum already after 3 epochs. At the same time, kappa continues to increase up to the 15th epoch. Since we use kappa to evaluate the quality of our solution, we save weights after 15 epochs.</p>
+<p>We also construct a confusion matrix of the trained model on validation set. The numbers in the cells are percentages. According to the results, the model does a poor job in distinguishing the mild and moderate stages of DR: 86% of images with mild DR are classified as moderate DR by the model. The best performance is observed for the healthy patients. Overall, we see that the model tends to confuse nearby severity stages but rarely missclassifies the proliferate and mild stages.</p>
 
 </div>
 </div>
@@ -1596,14 +1596,6 @@ Finished in 429.16 minutes
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/blog/images/copied_from_nb/images/fig_cm_pre_training.png" alt=""></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The cross-entropy loss on validation sample reaches a minimum already after 3 epochs and does not improve with further training. At the same time, kappa continues to increase up to the 15th epoch. Since we use kappa to evaluate the quality of our solution, we save model weights after 15 epochs.</p>
 
 </div>
 </div>
@@ -1620,69 +1612,17 @@ Finished in 429.16 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Fine-tuning on the target data set is performed using cross-validation with 4 folds. To ensure that we have enough examples of each class in the training sample, we perform cross-validation with stratification. On each iteration, we instantiate an EfficientNet B4 model with the same architecture as described in the previous section. Next, we load the saved weights from the model pre-trained on the source data.</p>
-<p>We freeze all network layers except for the last fully-connected classification layer. The weights in this layer are fine-tuned during training. As on the pre-training stage, we use <code>Adam</code> with a learning rate of 0.001 and implement a learning rate scheduler which multiplies the learning rate by 0.5 after every 5 epochs. We also track the model performance on the validation fold and stop the training if kappa does not increase for 5 consecutive epochs. This process is repeated for each of the 4 folds, and the best model weights are saved for each combination of the training folds.</p>
+<p>Fine-tuning on the target data is performed within 4-fold cross-validation. To ensure that we have enough examples of each class, we perform cross-validation with stratification.</p>
+<p>On each iteration, we instantiate the EfficientNet B4 model with the same architecture as described in the previous section. Next, we load the saved weights from the model pre-trained on the source data. We freeze weights on all network layers except for the last fully-connected layer. The weights in this layer are fine-tuned. As on the pre-training stage, we use <code>Adam</code> optimizer and implement a learning rate scheduler. We also track the model performance on the validation folds and stop training if kappa does not increase for 5 consecutive epochs.</p>
+<p>The process is repeated for each of the 4 folds, and the best model weights are saved for each combination of the training folds.</p>
 
 </div>
 </div>
 </div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
-
-<span class="c1">############ CHECK DIMENSIONS</span>
-
-<span class="c1"># import data</span>
-<span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/aptos2019-blindness-detection/train.csv'</span><span class="p">)</span>
-<span class="n">test</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/aptos2019-blindness-detection/sample_submission.csv'</span><span class="p">)</span>
-
-<span class="c1"># check shape</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'-'</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">'diagnosis'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-    </details>
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>(3662, 2) (1928, 2)
----------------
-0    0.492900
-2    0.272802
-1    0.101038
-4    0.080557
-3    0.052703
-Name: diagnosis, dtype: float64
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <code>init_model()</code> function needs to be updated. First, we now load the weights saved on the pre-training stage. Second, we freeze the first layers of the network in the training regime to make sure that fine-tuning is only performed on the last classification layer.</p>
+<p>The <code>init_model()</code> is updated to load the weights saved on the pre-training stage and freeze the first layers of the network in the training regime.</p>
 
 </div>
 </div>
@@ -2070,7 +2010,7 @@ Finished in 181.29 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let us visualize the confusion matrix of the best model after fine tuning. The matrix illustrates the advantages of the fine-tuned model over the pre-trained CNN and indicates a better performance in classifying mild stages of the DR. However, we also observe that the model classifies too many examples as a moderate stage of DR (class = 2). We try to address this issue on the inference stage by manipulating the thresholds.</p>
+<p>Let's look at the confusion matrix of the best model after fine-tuning. The matrix illustrates the advantages of the fine-tuned model over the pre-trained CNN and indicates a better performance in classifying mild stages of the DR. However, we also observe that the model classifies too many examples as moderate stage (class = 2).</p>
 
 </div>
 </div>
@@ -2228,7 +2168,7 @@ Finished in 181.29 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We also use test-time augmentations by creating 4 versions of the test images with random augmentations (horizontal and vertical flips) and average predictions over the image variants. The final prediction is therefore the average of 4 models $\times$ 4 test image variants.</p>
+<p>We also use test-time augmentations by creating 4 versions of the test images with random augmentations (horizontal and vertical flips) and average predictions over the image variants. The final prediction is therefore the average of 4 models times 4 test image variants.</p>
 
 </div>
 </div>
@@ -2296,7 +2236,7 @@ Finished in 181.29 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let us have a look at the distribution of predictions.</p>
+<p>Let's have a look at the distribution of predictions.</p>
 
 </div>
 </div>
@@ -2449,8 +2389,7 @@ Name: 3, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The model classifies a lot of images as moderate DR (class = 2).</p>
-<p>To slightly reduce the number of such examples, we can change thresholds used to round the averaged predictions into classes. We use the following vector of thresholds: [0.5, 1.75, 2.25, 3.5]. The final prediction is set to zero if the average value is below 0.5; set to one if the average value lies in [0.5, 1.75), etc. This reduces the share of images classified as moderate DR in the test sample.</p>
+<p>The model classifies a lot of images as moderate DR (class = 2). To reduce the number of such examples, we can change thresholds used to round the averaged predictions into classes. We use the following vector of thresholds: [0.5, 1.75, 2.25, 3.5]. The final prediction is set to zero if the average value is below 0.5; set to one if the average value lies in [0.5, 1.75), etc. This reduces the share of images classified as moderate DR in the test sample.</p>
 
 </div>
 </div>
@@ -2498,7 +2437,7 @@ Name: 3, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We are done! We can now export <code>test_preds</code> as a csv file to submit it to the competition.</p>
+<p>We are done! We can now export <code>test_preds</code> as a csv file and submit it to the competition.</p>
 
 </div>
 </div>
@@ -2516,9 +2455,9 @@ Name: 3, dtype: float64
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This blogpost provides a complete walkthrough on the project on detecting blindness in the retina images using CNNs. We use image preprocessing to reduce discrepancies across images taken in different clinics, apply transfer learning to leverage knowledge learned on larger data sets and implement different techniques to improve performance.</p>
-<p>If you are still reading this post, you might be wondering about potential ways to further improve the solution. There are multiple ways to do that. First, employing a larger neural network architecture and extending the number of training epochs on the pre-training stage has a high potential for demonstrating a better performance. At the same time, this direction would require more computing power, which might not be optimal when considering the possible use of the automated retina image classification in practice.</p>
+<p>If you are still reading this post, you might be wondering about potential ways to further improve the solution. There are multiple ways to do that. First, employing a larger network architecture and extending the number of training epochs on the pre-training stage has a high potential for achieving a better performance. At the same time, this direction would require more computing power, which might not be optimal when considering the possible use of the automated retina image classification in practice.</p>
 <p>Second, image preprocessing can be further improved. During the refinement process, the largest performance gains were attributed to including certain preprocessing steps when working with image data. This is a more efficient way to further improve the performance.</p>
-<p>Finally, the best solutions of other teams in the Kaggle competition rely on model ensembles trained on different image sizes and/or model architectures. Incorporating multiple heterogeneous models and blending their predictions could also improve the predictive performance of the proposed solution. Ensembling predictions of models similar to the one discussed in this blogpost helped me to place in the top 9% of the competition.</p>
+<p>Finally, the best solutions of other teams in the Kaggle competition rely on model ensembles trained on different image sizes and/or model architectures. Incorporating multiple heterogeneous models and blending their predictions could also improve the predictive performance of the proposed solution. Ensembling predictions of models similar to the one discussed in this blogpost is what helped me to place in the top 9% of the competition.</p>
 
 </div>
 </div>
