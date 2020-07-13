@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://kozodoi.github.io/blog/r/fairness/packages/2019/09/29/fairness-tutorial.html</loc>
-<lastmod>2019-09-29T00:00:00-05:00</lastmod>
+<loc>https://kozodoi.github.io/blog/r/fairness/packages/2020/05/01/fairness-tutorial.html</loc>
+<lastmod>2020-05-01T00:00:00-05:00</lastmod>
 </url>
 <url>
 <loc>https://kozodoi.github.io/blog/python/deep%20learning/computer%20vision/2020/07/11/blindness-detection.html</loc>
@@ -28,6 +28,6 @@
 </url>
 <url>
 <loc>https://kozodoi.github.io/blog/cv.pdf</loc>
-<lastmod>2020-07-13T06:21:00-05:00</lastmod>
+<lastmod>2020-07-13T06:24:57-05:00</lastmod>
 </url>
 </urlset>
