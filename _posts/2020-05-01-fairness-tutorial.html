@@ -122,7 +122,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <style type="text/css">body {
 background-color: #fff;
 margin: 1em auto;
-max-width: 1200px;
+max-width: 80%;
 overflow: visible;
 padding-left: 2em;
 padding-right: 2em;
@@ -334,7 +334,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">data</span>(<span class="st">'germancredit'</span>)</a></code></pre></div>
 </div>
 <div id="algorithmic-group-fairness-metrics" class="section level2">
-<h2>4. Algorithmic group fairness metrics</h2>
+<h2>4. Algorithmic fairness metrics</h2>
 <p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Depending on the context, it is important to select an appropriate metric to evaluate fairness.</p>
 <p>Below, we intrdocue functions that are used to compute the implemented metrics. For the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, we need to defina a base group with respect to which we will compute the fairness metrics.</p>
 <div id="an-outlook-on-the-confusion-matrix" class="section level3">
