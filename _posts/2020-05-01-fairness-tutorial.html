@@ -365,7 +365,8 @@ Formula: <strong>(TP + FP)</strong></p>
 <a class="sourceLine" id="cb4-6" data-line-number="6">            <span class="dt">cutoff  =</span> <span class="fl">0.5</span>, </a>
 <a class="sourceLine" id="cb4-7" data-line-number="7">            <span class="dt">base    =</span> <span class="st">'Caucasian'</span>)</a></code></pre></div>
 </div>
-<p>You can find more details on each of the fairness metric functions in the package documentation. Please don't hesitate to type <code>?fairnes::dem_parity</code> to see further details and examples on the metrics.</p> 
+<p>You can find more details on each of the fairness metric functions in the package documentation. Please don't hesitate to use the built-in helper to see further details and examples on the implemented metrics:</p> 
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">?fairness::dem_parity</a></code></pre></div>
 <div id="proportional-parity" class="section level3">
 <h3><em>Proportional parity</em></h3>
 <p>Proportional parity is very similar to the demographic parity. Proportional parity is achieved if the proportion of positive predictions in the subgroups are close to each other. Similar to the demographic parity, this measure also does not depend on the true labels.<br />
