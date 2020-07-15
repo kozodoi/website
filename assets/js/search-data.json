@@ -42,7 +42,7 @@
   
       ,"page3": {
           "title": "Packages",
-          "content": "This page provides a list of the Python and R packages I have developed. Follow me on GitHub to see my latest projects. . . dptools: Python package with helper functions for data processing and feature engineering. See on GitHub or PyPi. . | fairness: R package for computing different measures of algorithmic fairness. See on GitHub or CRAN. The tutorial on the package is available in this blogpost. . | .",
+          "content": "This page provides a list of the Python and R packages I have developed. Follow me on GitHub to see my latest projects. . . dptools: Python package with helper functions for data processing and feature engineering. See on GitHub or PyPi. . | fairness: R package for computing different measures of algorithmic fairness. See on GitHub or CRAN. The tutorial is available in this blogpost. . | .",
           "url": "https://kozodoi.github.io/blog/packages/",
           "relUrl": "/packages/",
           "date": ""
