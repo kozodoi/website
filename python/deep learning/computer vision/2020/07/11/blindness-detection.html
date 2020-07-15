@@ -245,7 +245,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Image source: <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">Ophthalmology Physicians &amp; Surgeons</a></em></p>
+<p>Image source: <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy</a></p>
 
 </div>
 </div>
@@ -394,14 +394,14 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
+<details class="description">
       <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
         <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
 <span class="c1">############ IMAGE SIZES</span>
 
@@ -1229,8 +1229,6 @@ Name: diagnosis, dtype: float64
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
 
-<span class="c1">############ MODEL ARCHITECTURE</span>
-
 <span class="c1"># model name</span>
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">'enet_b4'</span>
 
@@ -1545,8 +1543,6 @@ Finished in 429.16 minutes
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
 
-<span class="c1">########## PLOT LOSS AND KAPPA DYNAMICS</span>
-
 <span class="c1"># plot size</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
@@ -1637,8 +1633,6 @@ Finished in 429.16 minutes
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1">############ MODEL ARCHITECTURE</span>
 
 <span class="c1"># model name</span>
 <span class="n">model_name</span> <span class="o">=</span> <span class="s1">'enet_b4'</span>
@@ -2026,8 +2020,6 @@ Finished in 181.29 minutes
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
-<span class="c1">########## CONFUSION MATRIX</span>
-
 <span class="c1"># construct confusion matrx</span>
 <span class="n">oof_preds_round</span> <span class="o">=</span> <span class="n">oof_preds</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="s1">'diagnosis'</span><span class="p">],</span> <span class="n">oof_preds_round</span><span class="p">)</span>
@@ -2183,8 +2175,6 @@ Finished in 181.29 minutes
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1">########## INFERENCE LOOP</span>
 
 <span class="c1"># validation settings</span>
 <span class="n">num_folds</span> <span class="o">=</span> <span class="mi">4</span>
@@ -2456,7 +2446,7 @@ Name: 3, dtype: float64
 <p>This blogpost provides a complete walkthrough on the project on detecting blindness in the retina images using CNNs. We use image preprocessing to reduce discrepancies across images taken in different clinics, apply transfer learning to leverage knowledge learned on larger data sets and implement different techniques to improve performance.</p>
 <p>If you are still reading this post, you might be wondering about potential ways to further improve the solution. There are multiple ways to do that. First, employing a larger network architecture and extending the number of training epochs on the pre-training stage has a high potential for achieving a better performance. At the same time, this direction would require more computing power, which might not be optimal when considering the possible use of the automated retina image classification in practice.</p>
 <p>Second, image preprocessing can be further improved. During the refinement process, the largest performance gains were attributed to including certain preprocessing steps when working with image data. This is a more efficient way to further improve the performance.</p>
-<p>Finally, the best solutions of other teams in the Kaggle competition rely on model ensembles trained on different image sizes and/or model architectures. Incorporating multiple heterogeneous models and blending their predictions could also improve the predictive performance of the proposed solution. Ensembling predictions of models similar to the one discussed in this blogpost is what helped me to place in the top 9% of the competition.</p>
+<p>Finally, the best solutions of other teams in the Kaggle competition rely on model ensembles trained on different image sizes and/or model architectures. Incorporating multiple heterogeneous models and blending their predictions could also improve the predictive performance of the proposed solution. Ensembling predictions of models similar to the one discussed in this blogpost is what helped me to place in the top 9% of the leaderboard.</p>
 
 </div>
 </div>
