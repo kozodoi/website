@@ -1,7 +1,7 @@
 FROM hamelsmu/fastpages-nbdev
 
 RUN pip install --upgrade pip
-RUN pip install nbdev==0.2.10
+RUN pip install nbdev==0.2.14
 
 WORKDIR /fastpages
 COPY . .
