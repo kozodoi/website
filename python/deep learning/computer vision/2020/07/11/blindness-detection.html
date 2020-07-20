@@ -211,7 +211,7 @@ window.onload = wrap_img;
 <li>using transfer learning to pre-train CNN on a larger data set</li>
 <li>employing techniques such as learning rate scheduler, test-time augmentation and others</li>
 </ul>
-<p>The modeling is performed in <code>PyTorch</code>. All Jupyter notebooks and a PDF report are <a href="https://github.com/kozodoi/Udacity_Blindness_Detection">available on Github</a>.</p>
+<p>The modeling is performed in <code>PyTorch</code>. All notebooks and a PDF report are available <a href="https://github.com/kozodoi/Udacity_Blindness_Detection">on Github</a>.</p>
 
 </div>
 </div>
@@ -228,8 +228,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. The World Health Organization reports that more than 300 million people worldwide have diabetes (Wong et al 2016). The global prevalence of DR among the individuals with diabetes for the period from 2015 to 2019 was at more than 25% (Thomas et al 2019). The disease prevalence has also been rising rapidly in developing countries.</p>
-<p>Early detection and treatment are crucial steps towards preventing DR. The screening procedure requires a trained clinical expert to examine the fundus photographs of the patient's retina. This creates delays in diagnosis and treatment. This is especially relevant for developing countries, which often lack qualified medical stuff to perform the diagnosis. Automated detection of DR can speed up the efficiency and coverage of the screening programs.</p>
+<p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. The World Health Organization reports that more than 300 million people worldwide have diabetes (Wong et al. 2016). The global prevalence of DR among individuals with diabetes for the period from 2015 to 2019 was at more than 25% (Thomas et al. 2019). The disease prevalence has also been rising rapidly in developing countries.</p>
+<p>Early detection and treatment are crucial steps towards preventing DR. The screening procedure requires a trained clinical expert to examine the fundus photographs of the patient's retina. This creates delays in diagnosis and treatment. This is especially relevant for developing countries, which often lack qualified medical staff to perform the diagnosis. Automated detection of DR can speed up the efficiency and coverage of the screening programs.</p>
 
 </div>
 </div>
@@ -281,7 +281,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The data set is available for the download at the <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/data">competition's website</a>. The data includes 3,662 labeled retina images of clinical patients and a test set with 1,928 images with unknown labels.</p>
 <p>The images are labeled by a clinical expert. The integer labels indicate the severity of DR on a scale from 0 to 4, where 0 indicates no disease and 5 is the proliferative stage of DR.</p>
-<p>Let's start by importing the data and looking at the class ditribution.</p>
+<p>Let's start by importing the data and looking at the class distribution.</p>
 
 </div>
 </div>
@@ -298,7 +298,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
-<span class="c1">############ LIBRARIES</span>
+<span class="c1">############ PACKAGES</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -593,7 +593,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The illustration further emphasizes the difference between the photos in terms of aspect ratio and lighting conditions.</p>
-<p>The severity of DR is diagnosed by the presence of different visual cues on the retina photos, such as abnormal blood vessels, hard exudates and so-called cotton wool spots. You can reed more about the diagnosing process <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">here</a>. Comparing the sample images, we can see the presence of exudates and cotton wool spots on some of the retina images of sick patients.</p>
+<p>The severity of DR is diagnosed by the presence of different visual cues on the retina photos, such as abnormal blood vessels, hard exudates and so-called cotton wool spots. You can read more about the diagnosing process <a href="https://www.eyeops.com/contents/our-services/eye-diseases/diabetic-retinopathy">here</a>. Comparing the sample images, we can see the presence of exudates and cotton wool spots on some of the retina images of sick patients.</p>
 
 </div>
 </div>
@@ -828,7 +828,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This looks much better! Comparing the retina images to the ones before the preprocessing, we can see that the apparent discrepancies between the photos are now fixed. The eyes now have a similar circular shape and the color scheme is more consistent. This should help the model to detect the signs of the DR on the images.</p>
+<p>This looks much better! Comparing the retina images to the ones before the preprocessing, we can see that the apparent discrepancies between the photos are now fixed. The eyes now have a similar circular shape, and the color scheme is more consistent. This should help the model to detect the signs of the DR on the images.</p>
 <p>Check out <a href="https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy">this notebook</a> by Nakhon Ratchasima for more ideas on the image preprocessing for retina photos. The functions in this project are largely inspired by his work during the competition.</p>
 
 </div>
@@ -846,8 +846,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>CNNs achieve state-of-the-art performance in computer vision tasks such as image classification. Recent medical research also shows a high potential of CNNs in the DR classification task (Gulshan et al 2016).</p>
-<p>In this project, we employ the CNN model with the EfficientNet architecture. <a href="https://arxiv.org/abs/1905.11946">EfficientNet</a> is one of the recent state-of-the-art image classification models (Tan et al 2019). It encompasses 8 architecture variants (B0 to B7) which differ in the model complexity and default image size.</p>
+<p>CNNs achieve state-of-the-art performance in computer vision tasks such as image classification. Recent medical research also shows a high potential of CNNs in the DR classification task (Gulshan et al. 2016).</p>
+<p>In this project, we employ the CNN model with the EfficientNet architecture. <a href="https://arxiv.org/abs/1905.11946">EfficientNet</a> is one of the recent state-of-the-art image classification models (Tan et al. 2019). It encompasses 8 architecture variants (B0 to B7) that differ in the model complexity and default image size.</p>
 <p>The architecture of EfficientNet B0 is visualized below. We test multiple EfficientNet neural network architectures and use the one that demonstrates the best performance.</p>
 
 </div>
@@ -889,9 +889,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Due to a small sample size, we can not train a complex neural architecture from scratch. This is where transfer learning comes in handy. The idea of transfer learning is to pre-train a model on a different data (source domain) and then fine-tune on the relevant data set (target domain).</p>
-<p>A good candidate for the source domain is the <a href="http://www.image-net.org">ImageNet database</a>. Most published CNN models are trained on that data. However, ImageNet images are substantially different from the retina images we want to classify. Although intializing the CNN with ImageNet weights might help the network to transfer the knowledge of basic image patterns such as shapes and edges, we still need to learn a lot from the target domain.</p>
-<p>It turns out that APTOS has also hosted another Kaggle competition on the DR classification in 2015. The data set of the 2015 competition features 35,126 retina images labeled by a clinician using the same scale as the target data set. The data is available for the download <a href="https://www.kaggle.com/c/diabetic-retinopathy-detection/data">here</a>.</p>
+<p>Due to small sample size, we can not train a complex neural architecture from scratch. This is where transfer learning comes in handy. The idea of transfer learning is to pre-train a model on a different data (source domain) and then fine-tune on the relevant data set (target domain).</p>
+<p>A good candidate for the source domain is the <a href="http://www.image-net.org">ImageNet database</a>. Most published CNN models are trained on that data. However, ImageNet images are substantially different from the retina images we want to classify. Although initializing CNN with ImageNet weights might help the network to transfer the knowledge of basic image patterns such as shapes and edges, we still need to learn a lot from the target domain.</p>
+<p>It turns out that APTOS had hosted another Kaggle competition on the DR classification in 2015. The data set of the 2015 competition features 35,126 retina images labeled by a clinician using the same scale as the target data set. The data is available for the download <a href="https://www.kaggle.com/c/diabetic-retinopathy-detection/data">here</a>.</p>
 <p>We use the following pipeline:</p>
 <ul>
 <li>Initialize weights from a CNN trained on the ImageNet database.</li>
@@ -905,7 +905,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's move on to the modeling! First, we enable GPU support and fix the random seeds. The function <code>seed_everything()</code> sets seed for multiple libraries including <code>numpy</code> and <code>pytorch</code> to ensure reproducibility.</p>
+<p>Let's move on to the modeling! First, we enable GPU support and fix the random seeds. The function <code>seed_everything()</code> sets seed for multiple packages, including <code>numpy</code> and <code>pytorch</code> to ensure reproducibility.</p>
 
 </div>
 </div>
@@ -1581,8 +1581,8 @@ Finished in 429.16 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The cross-entropy loss on validation set reaches minimum already after 3 epochs. At the same time, kappa continues to increase up to the 15th epoch. Since we use kappa to evaluate the quality of our solution, we save weights after 15 epochs.</p>
-<p>We also construct a confusion matrix of the trained model on validation set. The numbers in the cells are percentages. According to the results, the model does a poor job in distinguishing the mild and moderate stages of DR: 86% of images with mild DR are classified as moderate DR by the model. The best performance is observed for the healthy patients. Overall, we see that the model tends to confuse nearby severity stages but rarely missclassifies the proliferate and mild stages.</p>
+<p>The cross-entropy loss on validation folds reaches minimum already after 3 epochs. At the same time, kappa continues to increase up to the 15th epoch. Since we use kappa to evaluate the quality of our solution, we save weights after 15 epochs.</p>
+<p>We also construct a confusion matrix of the trained model. The numbers in the cells are percentages. According to the results, the model does a poor job in distinguishing the mild and moderate stages of DR: 86% of images with mild DR are classified as moderate DR by the model. The best performance is observed for healthy patients. Overall, we see that the model tends to confuse nearby severity stages but rarely misclassifies the proliferate and mild stages.</p>
 
 </div>
 </div>
@@ -2159,7 +2159,7 @@ Finished in 181.29 minutes
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We also use test-time augmentations by creating 4 versions of the test images with random augmentations (horizontal and vertical flips) and average predictions over the image variants. The final prediction is therefore the average of 4 models times 4 test image variants.</p>
+<p>We also use test-time augmentations by creating 4 versions of the test images with random augmentations (horizontal and vertical flips) and average predictions over the image variants. The final prediction is an average of 4 models times 4 test image variants.</p>
 
 </div>
 </div>
@@ -2426,7 +2426,7 @@ Name: 3, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We are done! We can now export <code>test_preds</code> as a csv file and submit it to the competition.</p>
+<p>We are done! We can now export <code>test_preds</code> as csv and submit it to the competition.</p>
 
 </div>
 </div>
@@ -2443,10 +2443,10 @@ Name: 3, dtype: float64
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This blogpost provides a complete walkthrough on the project on detecting blindness in the retina images using CNNs. We use image preprocessing to reduce discrepancies across images taken in different clinics, apply transfer learning to leverage knowledge learned on larger data sets and implement different techniques to improve performance.</p>
-<p>If you are still reading this post, you might be wondering about potential ways to further improve the solution. There are multiple ways to do that. First, employing a larger network architecture and extending the number of training epochs on the pre-training stage has a high potential for achieving a better performance. At the same time, this direction would require more computing power, which might not be optimal when considering the possible use of the automated retina image classification in practice.</p>
-<p>Second, image preprocessing can be further improved. During the refinement process, the largest performance gains were attributed to including certain preprocessing steps when working with image data. This is a more efficient way to further improve the performance.</p>
-<p>Finally, the best solutions of other teams in the Kaggle competition rely on model ensembles trained on different image sizes and/or model architectures. Incorporating multiple heterogeneous models and blending their predictions could also improve the predictive performance of the proposed solution. Ensembling predictions of models similar to the one discussed in this blogpost is what helped me to place in the top 9% of the leaderboard.</p>
+<p>This blogpost provides a complete walkthrough on the project on detecting blindness in the retina images using CNNs. We use image preprocessing to reduce discrepancies across images taken in different clinics, apply transfer learning to leverage knowledge from larger data sets and implement different techniques to improve performance.</p>
+<p>If you are still reading this post, you might be wondering about ways to further improve the solution. There are multiple options. First, employing a larger network architecture and increasing the number of training epochs on the pre-training stage has a high potential for a better performance. At the same time, this would require more computing power, which might not be optimal considering the possible use of the automated retina image classification in practice.</p>
+<p>Second, image preprocessing can be further improved. During the refinement process, the largest performance gains were attributed to different preprocessing steps. This is a more efficient way to further improve the performance.</p>
+<p>Finally, the best solutions of other teams in the competition rely on model ensembles trained on different image sizes and/or model architectures. Incorporating multiple heterogeneous models and blending their predictions could also improve the proposed solution. Ensembling predictions of models similar to the one discussed in this blogpost is what helped me to place in the top 9% of the leaderboard.</p>
 
 </div>
 </div>
