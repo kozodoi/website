@@ -1,1 +1,1 @@
-Sitemap: https://kozodoi.github.io/blog/sitemap.xml
+Sitemap: http://www.kozodoi.me/sitemap.xml
