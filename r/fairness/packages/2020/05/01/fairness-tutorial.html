@@ -731,13 +731,19 @@ window.onload = wrap_img;
 <h1 id="5.-Algorithmic-fairness-metrics">
 <a class="anchor" href="#5.-Algorithmic-fairness-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Algorithmic fairness metrics<a class="anchor-link" href="#5.-Algorithmic-fairness-metrics"> </a>
 </h1>
+<p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Depending on the context, it is important to select an appropriate metric to evaluate fairness.</p>
+<p>Below, we intrdocue functions that are used to compute the implemented metrics. For the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, we need to define a base group with respect to which we will compute the fairness metrics.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="An-outlook-on-the-confusion-matrix">
 <a class="anchor" href="#An-outlook-on-the-confusion-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>An outlook on the confusion matrix<a class="anchor-link" href="#An-outlook-on-the-confusion-matrix"> </a>
 </h2>
-<p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Depending on the context, it is important to select an appropriate metric to evaluate fairness.</p>
-<p>Below, we intrdocue functions that are used to compute the implemented metrics. For the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, we need to define a base group with respect to which we will compute the fairness metrics.</p>
-<p>An outlook on the confusion matrix
-Most fairness metrics are calculated based on the confusion matrix produced by a classification model. The confusion matrix is comprised of four distinct classes:</p>
+<p>Most fairness metrics are calculated based on the confusion matrix produced by a classification model. The confusion matrix is comprised of four distinct classes:</p>
 <ul>
 <li>
 <strong>True positives</strong> (TP): the true class is positive and the prediction is positive (correct classification)</li>
