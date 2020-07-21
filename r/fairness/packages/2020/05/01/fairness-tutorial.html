@@ -114,7 +114,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      17 min read
+      16 min read
     
 </span></p>
 
@@ -586,6 +586,14 @@ window.onload = wrap_img;
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's append model predictions to the validation set. Later, we will evaluate fairness of the two models based on these predictions.</p>
+
+</div>
+</div>
+</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -732,7 +740,19 @@ window.onload = wrap_img;
 <a class="anchor" href="#5.-Algorithmic-fairness-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Algorithmic fairness metrics<a class="anchor-link" href="#5.-Algorithmic-fairness-metrics"> </a>
 </h1>
 <p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Depending on the context, it is important to select an appropriate metric to evaluate fairness.</p>
-<p>Below, we intrdocue functions that are used to compute the implemented metrics. For the sake of simplicity, we will use predicted probabilities for all these functions instead of predicted classes. Note that for all functions, in case of defining predicted probabilities, a cutoff needs to be defined in order to generate positive (1) or negative (0) predicted classes. Also, we need to define a base group with respect to which we will compute the fairness metrics.</p>
+<p>Below, we intrdocue functions that are used to compute the implemented metrics. Every function has a similar set of arguments:</p>
+<ul>
+<li>
+<code>data</code>: data.frame with the features and predictions</li>
+<li>
+<code>outcome</code>: name of the outcome variable</li>
+<li>
+<code>group</code>: name of the sensitive group, which needs to be a factor variable included in the data.frame.</li>
+<li>
+<code>base</code>: name of the base group, i.e., the factor level of <code>group</code> that serves as a base for fairness metrics</li>
+</ul>
+<p>We also need to supply model predictions. Depending on a metric, we need to provide either porbabilistic predictions as <code>probs</code> or class predictions as <code>preds</code>. The model predictions can be appended to the original data.frame or provided as separate vectors. In this tutorial, we will use probabilistic predctiions with all functions.</p>
+<p>When working with probabilistic predictions, some metrics also require a cutoff value to convert probabilities into class precictions supplied as <code>cutoff</code>. Finally, we also need to specifiy factor levels to indicate the reference classes using the <code>preds_levels</code> argument. The first level refers to the base class, whereas the second level indicates the predicted class for which probabilities are provided.</p>
 
 </div>
 </div>
@@ -743,7 +763,7 @@ window.onload = wrap_img;
 <h2 id="An-outlook-on-the-confusion-matrix">
 <a class="anchor" href="#An-outlook-on-the-confusion-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>An outlook on the confusion matrix<a class="anchor-link" href="#An-outlook-on-the-confusion-matrix"> </a>
 </h2>
-<p>Most fairness metrics are calculated based on the confusion matrix produced by a classification model. The confusion matrix is comprised of four distinct classes:</p>
+<p>Most fairness metrics are calculated based on a confusion matrix produced by a classification model. The confusion matrix is comprised of four distinct classes:</p>
 <ul>
 <li>
 <strong>True positives</strong> (TP): the true class is positive and the prediction is positive (correct classification)</li>
@@ -755,8 +775,6 @@ window.onload = wrap_img;
 <strong>False negatives</strong> (FN): the true class is positive and the prediction is negative (incorrect classification)</li>
 </ul>
 <p>The fairness metrics are calculated by comparing one or more of these measures computed for different sensitive subgroups (e.g., male and female). For a detailed overview of various measures coming from the confusion matrix and precise definitions, please click <a href="https://en.wikipedia.org/wiki/Confusion_matrix">here</a> or <a href="https://towardsdatascience.com/understanding-confusion-matrix-a9ad42dcfd62">here</a>.</p>
-<p>Every fariness metric function has a similar set of function arguments. First, we need to specify the name of the dataframe and the outcome variable. Next, we need to provide the sensitive group name, which needs to be a factor variable included in the dataframe. We also specify the name of the base group - the factor level that serves as a base for fairness computations. Finally, we need to supply model predictions. Depending on a metric, we need to provide either porbabilistic or class predictions produced by the model of interst. The model predictions can be appended to the original dataframe or provided as separate vectors.</p>
-<p>When working with probabilistic predictions, most fairness metrics also require a cutoff value to convert probabilities into class precictions. In addition, we also need to specifiy factor levels to indicate the classes predicted probabilities refer to. This is done using <code>preds_levels</code> argument. The first level refers to the base class, whereas the second level indicates the predicted class for which the probabilities are provided. Below, you will find command examples to compute different metrics using the implemented functions.</p>
 
 </div>
 </div>
@@ -767,9 +785,9 @@ window.onload = wrap_img;
 <h2 id="Predictive-rate-parity">
 <a class="anchor" href="#Predictive-rate-parity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Predictive rate parity<a class="anchor-link" href="#Predictive-rate-parity"> </a>
 </h2>
-<p>Let's demonstrate the fairness pipeline using predictive rate parity as an example. Predictive rate parity is achieved if the precisions or positive predictive values in the subgroups are close to each other. The precisions stand for the number of the true positives divided by the total number of examples predicted positive within a group.</p>
+<p>Let's demonstrate the fairness pipeline using predictive rate parity as an example. Predictive rate parity is achieved if the precisions (or positive predictive values) in the subgroups are close to each other. The precisions stand for the number of the true positives divided by the total number of examples predicted positive within a group.</p>
 <p>Formula: <strong>TP / (TP + FP)</strong></p>
-<p>Let's compute predictive rate parity for the firs model that uses all features:</p>
+<p>Let's compute predictive rate parity for the first model that uses all features:</p>
 
 </div>
 </div>
@@ -781,13 +799,13 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res1</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>        <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                        <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
-                        <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
-                        <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                        <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
-                        <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
-                        <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res1</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                         <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+                         <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
+                         <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
+                         <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
+                         <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                         <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -866,7 +884,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first row shows the raw precision values for all ethnicities. The second row displays the relative precisions compared to Caucasians. In the perfect world, all predeictive rate parities shuld be equal to one, which means that the precision in every group is the same as in the base group. In practice, values are going to be different. The paritiy above one indicates that precision for this group is relatively higher, whereas a lower parity implies a lower precision. Observing a large variance in parities should hint us that the model is not performing equally well for different groups, which should be addressed.</p>
+<p>The first row shows the raw precision values for all ethnicities. The second row displays the relative precisions compared to Caucasian defendandts. In the perfect world, all predeictive rate parities should be equal to one, which would mean that the precision in every group is the same as in the base group. In practice, values are going to be different. The paritiy above one indicates that precision in this group is relatively higher, whereas a lower parity implies a lower precision. Observing a large variance in parities should hint us that the model is not performing equally well for different sensitive groups.</p>
 <p>If the other ethnic group is set as a base group (e.g. Hispanic), the raw precision values do not change, only the relative metrics:</p>
 
 </div>
@@ -1031,7 +1049,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's now compare the results to the second model that does not use wthnicity as a feature:</p>
+<p>Let's now compare the results to the second model that does not use ethnicity as a feature:</p>
 
 </div>
 </div>
@@ -1043,13 +1061,13 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res2</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>        <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                        <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
-                        <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
-                        <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_2'</span><span class="p">,</span> 
-                        <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
-                        <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
-                        <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res2</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                         <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+                         <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
+                         <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_2'</span><span class="p">,</span> 
+                         <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
+                         <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                         <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1197,8 +1215,8 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see two things.</p>
-<p>First, excluding <code>ethnicity</code> from the features slightly increases precision for african american defendants but results in a lower precision for a number of other groups. This illustrates that improving the model for one group may cost a fall in the predictive performance for the general population. Depending on the context, it is a task of a decision-maker to decide what is best in a specific context.</p>
-<p>Second, excluding <code>ethnicity</code> does not align the predictive rate parities substantially closer to one. This illustrates another important research finding: removing a sensitive variable does not guarantee that the model stops discriminating. Ethnicity correlates with other features and is still implicitly included in the input data. In order to make the classifier more fair, one would neet to consider more sophisticated techniques than simply dropping the sensitive attribute.</p>
+<p>First, excluding <code>ethnicity</code> from the features slightly increases precision for African American defendants but results in a lower precision for a number of other groups. This illustrates that improving a model for one group may cost a fall in the predictive performance for the general population. Depending on the context, it is a task of a decision-maker to decide what is best in a specific setup.</p>
+<p>Second, excluding <code>ethnicity</code> does not align the predictive rate parities substantially closer to one. This illustrates another important research finding: removing a sensitive variable does not guarantee that a model stops discriminating. Ethnicity correlates with other features and is still implicitly included in the input data. In order to make the classifier more fair, one would neet to consider more sophisticated techniques than simply dropping the sensitive attribute.</p>
 
 </div>
 </div>
