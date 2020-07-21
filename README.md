@@ -4,10 +4,8 @@
 
 ---
 
-# Blog
+This repository stores files and scripts for hosting my personal blog.
 
-This repository contains files and scripts necessary for hosting my personal blog.
+The blog is available at https://kozodoi.me
 
-The blog is available at https://kozodoi.github.io/
-
-Check out my blog for machine learning tutorials, competition solutions and findings from different projects. If you are interested, check out other website sections to see my work and connect with me on social media.
+Check out the blog for machine learning tutorials, competition solutions and findings from different projects. If you are interested, check out other website sections to see my work.
