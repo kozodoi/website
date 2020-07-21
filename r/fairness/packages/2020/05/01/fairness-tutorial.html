@@ -321,7 +321,7 @@ window.onload = wrap_img;
 <h2 id="compas">
 <a class="anchor" href="#compas" aria-hidden="true"><span class="octicon octicon-link"></span></a>compas<a class="anchor-link" href="#compas"> </a>
 </h2>
-<p>In this tutorial, you will be able to use a simplified version of the landmark COMPAS data set containing containing criminal history of defendants from Broward County. You can read more about the data <a href="https://github.com/propublica/compas-analysis">here</a>. To load the data set, all you need to do is:</p>
+<p>In this tutorial, you will be able to use a simplified version of the landmark COMPAS data set containing the criminal history of defendants from Broward County. You can read more about the data <a href="https://github.com/propublica/compas-analysis">here</a>. To load the data set, all you need to do is:</p>
 
 </div>
 </div>
@@ -466,7 +466,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The data set contains nine variables. The outcome variable is <code>Two_yr_Recidivism</code>, which is a binary indicator showing whether an individual commited a crime within the two-year period. The data also includes features on prior criminal record (<code>Number_of_Priors</code>, <code>Misdemeanor</code>) and other features describing age (<code>Age_Above_FourtyFive</code>, <code>Age_Below_TwentyFive</code>), sex and ethnicity (<code>Female</code>, <code>ethnicity</code>).</p>
-<p>You don’t really need to delve into the data much. To simplify illustration, we have already trained a classifier that uses all available features to predict <code>Two_yr_Recidivism</code> and concatenated the predicted probabilities (<code>probability</code>) and predicted classes (<code>predicted</code>) to the data frame. You will be able to use these columns with predictions directly in your analysis to test different metrics before using the real model.</p>
+<p>You don’t really need to delve into the data much. To simplify illustration, we have already trained a classifier that uses all available features to predict <code>Two_yr_Recidivism</code> and concatenated the predicted probabilities (<code>probability</code>) and predicted classes (<code>predicted</code>) to the data frame. You will be able to use these columns with predictions directly in your analysis to test different metrics before using a real model.</p>
 
 </div>
 </div>
@@ -477,7 +477,7 @@ window.onload = wrap_img;
 <h2 id="germancredit">
 <a class="anchor" href="#germancredit" aria-hidden="true"><span class="octicon octicon-link"></span></a>germancredit<a class="anchor-link" href="#germancredit"> </a>
 </h2>
-<p>The second data set included in the package is a credit scoring data set labeled as germancredit. The data set includes 20 features describing the loan applicants and an outcome variable named <code>BAD</code>, which is a binary indicator showing whether the applicant defaulted on a loan. Similarly to the compas data set, this data also includes two columns with model predictions named probability and predicted.</p>
+<p>The second data set included in the package is a credit scoring data set labeled as <code>germancredit</code>. The data set includes 20 features describing the loan applicants and an outcome variable named <code>BAD</code>, which is a binary indicator showing whether the applicant defaulted on a loan. Similarly to the compas data set, this data also includes two columns with model predictions named <code>probability</code> and <code>predicted</code>.</p>
 <p>Feel free to play wit this data as well. You can load it with:</p>
 
 </div>
@@ -511,7 +511,7 @@ window.onload = wrap_img;
 <li>model that uses all features as input</li>
 <li>model that uses all features except for ethnicity  </li>
 </ul>
-<p>We partition the data into training and validation subsets and use logistic regression as base classifier.</p>
+<p>We partition the COMPAS data into training and validation subsets and use logistic regression as base classifier.</p>
 
 </div>
 </div>
@@ -739,7 +739,7 @@ window.onload = wrap_img;
 <h1 id="5.-Algorithmic-fairness-metrics">
 <a class="anchor" href="#5.-Algorithmic-fairness-metrics" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Algorithmic fairness metrics<a class="anchor-link" href="#5.-Algorithmic-fairness-metrics"> </a>
 </h1>
-<p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all evaluated group fairness metrics. Depending on the context, it is important to select an appropriate metric to evaluate fairness.</p>
+<p>The package currently includes nine fairness metrics and two other performance comparisons. Many of these metrics are mutually exclusive: results from a given classification problem most often cannot be fair in terms of all group fairness metrics. Depending on a context, it is important to select an appropriate metric to evaluate fairness.</p>
 <p>Below, we intrdocue functions that are used to compute the implemented metrics. Every function has a similar set of arguments:</p>
 <ul>
 <li>
@@ -751,7 +751,7 @@ window.onload = wrap_img;
 <li>
 <code>base</code>: name of the base group, i.e., the factor level of <code>group</code> that serves as a base for fairness metrics</li>
 </ul>
-<p>We also need to supply model predictions. Depending on a metric, we need to provide either porbabilistic predictions as <code>probs</code> or class predictions as <code>preds</code>. The model predictions can be appended to the original data.frame or provided as separate vectors. In this tutorial, we will use probabilistic predctiions with all functions.</p>
+<p>We also need to supply model predictions. Depending on a metric, we need to provide either porbabilistic predictions as <code>probs</code> or class predictions as <code>preds</code>. The model predictions can be appended to the original data.frame or provided as a vector. In this tutorial, we will use probabilistic predctions with all functions.</p>
 <p>When working with probabilistic predictions, some metrics also require a cutoff value to convert probabilities into class precictions supplied as <code>cutoff</code>. Finally, we also need to specifiy factor levels to indicate the reference classes using the <code>preds_levels</code> argument. The first level refers to the base class, whereas the second level indicates the predicted class for which probabilities are provided.</p>
 
 </div>
@@ -785,7 +785,7 @@ window.onload = wrap_img;
 <h2 id="Predictive-rate-parity">
 <a class="anchor" href="#Predictive-rate-parity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Predictive rate parity<a class="anchor-link" href="#Predictive-rate-parity"> </a>
 </h2>
-<p>Let's demonstrate the fairness pipeline using predictive rate parity as an example. Predictive rate parity is achieved if the precisions (or positive predictive values) in the subgroups are close to each other. The precisions stand for the number of the true positives divided by the total number of examples predicted positive within a group.</p>
+<p>Let's demonstrate the fairness pipeline using predictive rate parity as an example. Predictive rate parity is achieved if the precisions (or positive predictive values) in the subgroups are close to each other. The precision stands for the number of the true positives divided by the total number of examples predicted positive within a group.</p>
 <p>Formula: <strong>TP / (TP + FP)</strong></p>
 <p>Let's compute predictive rate parity for the first model that uses all features:</p>
 
@@ -1045,30 +1045,14 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res2</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># model 2</span>
+<span class="n">res2</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
                          <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
                          <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                          <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_2'</span><span class="p">,</span> 
                          <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                          <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                          <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># model 2</span>
 <span class="n">res2</span><span class="err">$</span><span class="n">Metric</span>
 </pre></div>
 
@@ -1530,7 +1514,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The proportional parity still shows that African American defendants are treated unfairly by our model. Still, the disparity is lower compared to the one observed with the demographic parity.</p>
+<p>The proportional parity still shows that African American defendants are treated unfairly by our model. At the same time, the disparity is lower compared to the one observed with the demographic parity.</p>
 
 </div>
 </div>
@@ -2256,7 +2240,7 @@ Setting direction: controls &lt; cases
 <a class="anchor" href="#6.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Closing words<a class="anchor-link" href="#6.-Closing-words"> </a>
 </h1>
 <p>You have read through the fairness R package tutorial! By now, you should have a solid grip on algorithmic group fairness metrics.</p>
-<p>We hope that you will be able to use the R package in your data analysis! Please let us know if you run into any issues while working with the package in the comment window below or on <a href="https://github.com/kozodoi/fairness">GitHub</a>. Please also feel free to contact the authors if you have any feedback.</p>
+<p>We hope that you will be able to use the R package in your data analysis! Please let me know if you run into any issues while working with the package in the comment window below or on <a href="https://github.com/kozodoi/fairness">GitHub</a>. Please also feel free to contact the authors if you have any feedback.</p>
 
 </div>
 </div>

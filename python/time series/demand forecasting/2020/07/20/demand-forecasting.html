@@ -114,7 +114,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      46 min read
+      45 min read
     
 </span></p>
 
@@ -205,8 +205,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="https://www.data-mining-cup.com">Data Mining Cup</a> is an annual international machine learning competition. The 2020 edition was devoted to demand forecasting. Together with <a href="https://www.linkedin.com/in/elizaveta-zinovyeva-4155a184/">Elizaveta Zinovyeva</a>, we represented the team of the Humboldt University of Berlin and finished in the top-15 of the leaderboard.</p>
-<p>Demand forecasting is an important task that helps to optimize inventory planning. The optimized stocks can reduce retailer's costs and increase customer satisfaction due to faster delivery time. The competition task was to predict future demand for different products using past purchase data.</p>
+<p><a href="https://www.data-mining-cup.com">Data Mining Cup</a> is an annual international machine learning competition. The 2020 edition was devoted to demand forecasting. Together with <a href="https://www.linkedin.com/in/elizaveta-zinovyeva-4155a184/">Elizaveta Zinovyeva</a>, we represented the Humboldt University of Berlin and finished in the top-15 of the leaderboard.</p>
+<p>Demand forecasting is an important task that helps to optimize inventory planning. The optimized stocks can reduce retailer's costs and increase customer satisfaction due to faster delivery time. The competition task was to predict demand for different products using past purchase data.</p>
 <p>This blogpost provides a detailed walkthrough covering the crucial steps of our solution:</p>
 <ul>
 <li>data preparation and feature engineering</li>
@@ -216,8 +216,7 @@ window.onload = wrap_img;
 <li>performing hyper-parameter tuning with <code>hyperopt</code>
 </li>
 </ul>
-<p>Feel free to jump directly to the parts that are interesting to you!</p>
-<p>The notebooks reproducing our solution are available <a href="https://github.com/kozodoi/DMC_2020">on Github</a>.</p>
+<p>Feel free to jump directly to the parts that are interesting to you! The notebooks reproducing our solution are available <a href="https://github.com/kozodoi/DMC_2020">on Github</a>.</p>
 
 </div>
 </div>
@@ -237,9 +236,9 @@ window.onload = wrap_img;
 <p>The competition data consists of three data sets:</p>
 <ul>
 <li>
-<code>infos.csv</code>: information on prices and promotion days in the unlabeled test set</li>
+<code>infos.csv</code>: prices and promotions in the unlabeled test set</li>
 <li>
-<code>items.csv</code>: item-specific characteristics such as brand, customer rating, etc</li>
+<code>items.csv</code>: item-specific characteristics such as brand, manufacturer, etc</li>
 <li>
 <code>orders.csv</code>: purchase transactions over the 6-month period</li>
 </ul>
@@ -643,7 +642,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For each of the 10,463 items, we need to predict the total number of orders in the 14-day period following the last day in <code>orders</code>.</p>
-<p>Let's do some preprocessing. First, we merge <code>items</code> and <code>infos</code> since they both contain information on the item level.</p>
+<p>Let's do some preprocessing! First, we merge <code>items</code> and <code>infos</code> since they both contain data on item level.</p>
 
 </div>
 </div>
@@ -945,7 +944,7 @@ dtype: object
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now export the two data frames as csv. I am using the <code>save_csv_version()</code> function that automatically adds a version number to the file name to prevent overwriting the exported data after making changes in the code.</p>
+<p>We can now export the two data frames as csv. I am using <code>save_csv_version()</code> that automatically adds a version number to the file name to prevent overwriting the exported data after making changes in the code.</p>
 
 </div>
 </div>
@@ -1014,8 +1013,8 @@ Saved as ../data/prepared/items_v2.csv
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's work with <code>orders</code>. The data in <code>orders</code> is formatted as a list of transactions with timestamps. We need to aggregate this data in order to use it for the modeling.</p>
-<p>Since the task is a 14-day demand forecasting, a simple way forward would be to aggregate transactions on a two-week basis. However, this could lead to losing some more granular information. Instead, we aggregate transactions by day and construct a target variable based on orders within a two-week period following that day.</p>
+<p>Let's work with <code>orders</code>, which is formatted as a list of transactions with timestamps. We need to aggregate this data in order to use it for the modeling.</p>
+<p>Since the task is a 14-day demand forecasting, a simple way forward would be to aggregate transactions on a two-week basis. However, this could lead to losing some more granular information. Instead, we aggregate transactions by day and construct a target based on orders within a two-week period following each day.</p>
 
 </div>
 </div>
@@ -1131,10 +1130,11 @@ Saved as ../data/prepared/items_v2.csv
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The aggregated data frame only contains entries for day-item pairs when there is at least one transaction. This results in missing information:</p>
 <ul>
-<li>most items are only sold on a few days. The information on days with no orders is valuable but is not observed in the aggregated data.</li>
-<li>there are a few items that are never sold and therefore do not appear in <code>orders</code>.</li>
+<li>most items are only sold on a few days; the information on days with no orders is valuable but is not observed in the aggregated data</li>
+<li>there are a few items that are never sold and therefore do not appear in <code>orders</code>
+</li>
 </ul>
-<p>To account for the missing zeroes, we append the items that were never sold and add entries with <code>order = 0</code> for day-item combinations that are missing. This increases the number of observations from 100,771 to 1,883,340.</p>
+<p>To account for the missing zeroes, we append items that were never sold and add entries with <code>order = 0</code> for missing day-item combinations. This increases the number of observations from 100,771 to 1,883,340.</p>
 
 </div>
 </div>
@@ -1181,78 +1181,6 @@ Saved as ../data/prepared/items_v2.csv
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>(100771, 3)
 (1883340, 3)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We also append mean daily prices for all item-day combinations.</p>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
-
-<span class="c1"># add items that were never sold before</span>
-<span class="n">missing_rows</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'itemID'</span><span class="p">:</span>     <span class="nb">list</span><span class="p">(</span><span class="n">missing_itemIDs</span><span class="p">),</span> 
-                            <span class="s1">'day_of_year'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">missing_itemIDs</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">),</span> 
-                            <span class="s1">'salesPrice'</span><span class="p">:</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">missing_itemIDs</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">)})</span>
-<span class="n">orders_price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">orders_price</span><span class="p">,</span> <span class="n">missing_rows</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">orders_price</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># add zeros for days with no transactions</span>
-<span class="n">agg_orders_price</span> <span class="o">=</span> <span class="n">orders_price</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'day_of_year'</span><span class="p">])</span><span class="o">.</span><span class="n">salesPrice</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">'day_of_year'</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">'day_of_year'</span><span class="p">,</span> <span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-<span class="n">agg_orders_price</span> <span class="o">=</span> <span class="n">agg_orders_price</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">agg_orders_price</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'day_of_year'</span><span class="p">,</span> <span class="s1">'salesPrice'</span><span class="p">]</span>
-<span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span> <span class="o">=</span> <span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">][</span><span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">agg_orders_price</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-
-<span class="c1"># fill missing prices for dates with no orders</span>
-<span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span> <span class="o">=</span> <span class="n">agg_orders_price</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'itemID'</span><span class="p">])</span><span class="o">.</span><span class="n">salesPrice</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s1">'ffill'</span><span class="p">)</span>
-<span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span> <span class="o">=</span> <span class="n">agg_orders_price</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'itemID'</span><span class="p">])</span><span class="o">.</span><span class="n">salesPrice</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s1">'bfill'</span><span class="p">)</span>
-<span class="n">agg_orders_price</span> <span class="o">=</span> <span class="n">agg_orders_price</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">items</span><span class="p">[[</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'simulationPrice'</span><span class="p">]],</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">'itemID'</span><span class="p">)</span>
-<span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">][</span><span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span> <span class="o">=</span> <span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'simulationPrice'</span><span class="p">][</span><span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'salesPrice'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
-<span class="k">del</span> <span class="n">agg_orders_price</span><span class="p">[</span><span class="s1">'simulationPrice'</span><span class="p">]</span>
-
-<span class="c1"># merge prices to orders</span>
-<span class="n">agg_orders</span> <span class="o">=</span> <span class="n">agg_orders</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">agg_orders_price</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'day_of_year'</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">agg_orders</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-    </details>
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>(100771, 3)
-(1883340, 3)
-(1883340, 4)
 </pre>
 </div>
 </div>
@@ -1391,7 +1319,7 @@ Daily p(promotion) per item in test:  0.0141
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The yellow marker indicates days with promotions. Results suggest that our method identifies some outliers as promotions but misses a few points that are less prominent. At the same time, we can not be sure that these cases are necessarily promotions: the large number of orders on these days could be observed due to other reasons. We will stick to this promotion identification method for now but note that this aspect might require further improvement.</p>
+<p>The yellow marker indicates promotions. Our method identifies some outliers as promotions but misses a few points that are less prominent. At the same time, we can not be sure that these cases are necessarily promotions: the large number of orders on these days could be observed due to other reasons. We will stick to this promotion identification method for now but note that this aspect might require further improvement.</p>
 
 </div>
 </div>
@@ -1876,7 +1804,7 @@ Daily p(promotion) per item in test:  0.0141
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now merge <code>orders</code> and <code>items</code>. We then partition the data into the labeled training set and the unlabeled test set, compute some missing features for the test set and export the data as csv.</p>
+<p>We can now merge <code>orders</code> and <code>items</code>. We also partition the data into the labeled training set and the unlabeled test set, compute some missing features for the test set and export the data as csv.</p>
 
 </div>
 </div>
@@ -2007,7 +1935,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Mahcine learning encompasses a wide range of statically-inspired performance metrics such as MSE, MAE and others. In practice, machine learning models are used by a company that has specific goals. Usually, these goals can not be expressed in terms of such simple metrics. Therefore, it is important to come up with an evaluation metric consistent with the company's objectives to ensure that we judge performance on the criterion that actually matters.</p>
 <p>In the DMC 2020 task, we are given a profit function of a retailer who is doing demand forecasting. The function accounts for asymmetric error costs: underpredicting demand results in lost revenue because the retailer can not sell a product that is not ready to ship, whereas overpredicting demand incurs a fee for storing the excessive amount of product.</p>
-<p>Below, we derive the profit function according to the task description:</p>
+<p>Below, we derive profit according to the task description:</p>
 
 </div>
 </div>
@@ -2086,7 +2014,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The function above is great for evaluation. Can we go further and directly optimize it during modeling?</p>
-<p>We will use LightGBM which supports custom loss functions on training and validation stages. In order to use a custom loss on the the training stage, one needs to define a function with its first and second-order derivative matrices. Unfortunately, our profit function is not differentiable. This means that we can not compute derivateves necessary to plug this loss into the model. At the same time, we could come up with a different function that approximates profit and satisfies the loss conditions.</p>
+<p>We will use LightGBM which supports custom loss functions on training and validation stages. In order to use a custom loss on the the training stage, one needs to define a function with its first and second-order derivative matrices. Unfortunately, our profit function is not differentiable. This means that we can not compute derivatives to plug this loss into the model. At the same time, we could come up with a different function that approximates profit and satisfies the loss conditions.</p>
 <p>The profit function has several properties:</p>
 <ul>
 <li>items with higher prices make larger contributions to the profit</li>
@@ -2190,7 +2118,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <li>train a model that optimzes the MSE loss on the transformed target </li>
 <li>apply the inverse transformation to the model predictions</li>
 </ul>
-<p>The target transformation smooths out the square effect in the MSE loss. We still penalize large errors more, but the large errors on a transformed scale are also smaller compared to the original scale. This helps to balance the two effects and approximate a scenario where we want a linear relationship between the error size and the loss penalty.</p>
+<p>The target transformation smooths out the square effect in the MSE loss. We still penalize large errors more, but the large errors on a transformed scale are also smaller compared to the original scale. This helps to balance the two effects and approximate a linear relationship between the error size and the loss penalty.</p>
 
 </div>
 </div>
@@ -2207,7 +2135,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's start building models! First, we extract the target vector <code>y</code> and flag ID features that are not used for prediction.</p>
+<p>Let's start building models! First, we extract the target <code>y</code> and flag ID features that are not used for prediction.</p>
 
 </div>
 </div>
@@ -2269,9 +2197,9 @@ Saved as ../data/prepared/df_test_v14.csv
 <p>The modeling pipeline uses multiple tricks discovered during the model refinement process. We toogle these tricks using logical variables that define the following training options:</p>
 <ul>
 <li>
-<code>target_transform = True</code>: transforms target to reduce penalty for large errors. This helps to slightly imporve the performance. A detailed motivation for target transformation is provided in the previous section.</li>
+<code>target_transform = True</code>: transforms target to reduce penalty for large errors. A detailed motivation for target transformation is provided in the previous section.</li>
 <li>
-<code>train_on_positive = False</code>: trains only on cases with positive sales (i.e., at least one of the order lags is greater than 0) and predicts null demand for items with no sales. This substantially reduces the training time but also leads to a drop in the performance.</li>
+<code>train_on_positive = False</code>: trains only on cases with positive sales (i.e., at least one of the order lags is greater than zero) and predicts null demand for items with no sales. This substantially reduces the training time but also leads to a drop in the performance.</li>
 <li>
 <code>two_stage = True</code>: trains a two-stage model: (i) we fit a binary classifier predicting whether the future sales will be zero; (ii) we train a regression model predicting the volume of sales. Predictions of the regression model are only stored for cases where the classifier predicts positive sales.</li>
 <li>
@@ -2369,7 +2297,6 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We also define the partitioning parameters. We use a sliding window approach with 7 folds, where each subsequent fold is shifted by one day into the past.</p>
 <p>Let's explain the partitioning using one fold as an example. We construct the first fold using days 1 - 173. Within the fold, the first 35 days are cut off: they are only used to compute lag-based features for the days starting from 36. Days 36 - 145 are used for training. For each of these days, we have features based on the previous 35 days and targets based on the next 14 days. On validation stage, we use days 159 - 173. Days 146 - 158 between training and validation periods are skipped to avoid data leakage since the target for these dates would use information from the validation period.</p>
-<p>The partitioning is illustrated below:</p>
 
 </div>
 </div>
@@ -2428,7 +2355,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now implement the modeling pipeline! We set up a modeling loop with the following steps for each of the folds:</p>
+<p>We can now implement the pipeline! We set up a modeling loop with the following steps for each of the folds:</p>
 <ul>
 <li>extract data from the fold and partition it into training and validation sets</li>
 <li>train LightGBM on the training set and perform early stopping on the validation set</li>
@@ -2915,16 +2842,19 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>One way to improve our solution is to optimize the hyper-parameters LightGBM.</p>
-<p>We tune hyper-parameters using the <code>hyperopt</code> package, which performs optimization using Tree of Parzen Estimators (TPE) as a search algorithm. You don't really need to know how TPE works. As a user, you are only required to supply the hyper-parameter grid indicating the range of possible values. Compared to standard tuning methods like grid search or random search, TPE explores the search space more efficiently, allowing you to find a suitable solution faster. If you want to read more, please see the package documentation <a href="http://hyperopt.github.io/hyperopt/">here</a>.</p>
+<p>One way to improve our solution is to optimize the LightGBM hyper-parameters.</p>
+<p>We tune hyper-parameters using the <code>hyperopt</code> package, which performs optimization using Tree of Parzen Estimators (TPE) as a search algorithm. You don't really need to know how TPE works. As a user, you are only required to supply a parameter grid indicating the range of possible values. Compared to standard tuning methods like grid search or random search, TPE explores the search space more efficiently, allowing you to find a suitable solution faster. If you want to read more, see the package documentation <a href="http://hyperopt.github.io/hyperopt/">here</a>.</p>
 <p>So, let's specify hyper-parameter ranges! We create a dictionary of hyper-parameters using three options:</p>
 <ul>
 <li>
-<code>hp.choice('name', list_of_values)</code>: sets a hyper-parameter to one of the list values. This is suitable for hyper-parameters that can have multiple distinct values like <code>boosting_type</code>.</li>
+<code>hp.choice('name', list_of_values)</code>: sets a hyper-parameter to one of the values from a list. This is suitable for hyper-parameters that can have multiple distinct values like <code>boosting_type</code>
+</li>
 <li>
-<code>hp.uniform('name', min, max)</code>: sets a hyper-parameter to a float between <code>min</code> and <code>max</code>. This works well with hyper-parameters such as <code>learning_rate</code>.</li>
+<code>hp.uniform('name', min, max)</code>: sets a hyper-parameter to a float between <code>min</code> and <code>max</code>. This works well with hyper-parameters such as <code>learning_rate</code>
+</li>
 <li>
-<code>hp.quniform('name', min, max, step)</code>: sets a hyper-parameter to a value between <code>min</code> and <code>max</code> with a step size of <code>step</code>. This is useful for integer parameters like <code>max_depth</code>.</li>
+<code>hp.quniform('name', min, max, step)</code>: sets a hyper-parameter to a value between <code>min</code> and <code>max</code> with a step size of <code>step</code>. This is useful for integer parameters like <code>max_depth</code>
+</li>
 </ul>
 
 </div>
@@ -2988,14 +2918,14 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we create <code>HPOpt</code> object that performs tuning. We can avoid this in a simple task, but defining an object gives us more control of the optimization process, which is useful with custom loss functions. We define three object methods:</p>
+<p>Next, we create <code>HPOpt</code> object that performs tuning. We can avoid this in a simple task, but defining an object gives us more control of the optimization process, which is useful with a custom loss. We define three object methods:</p>
 <ul>
 <li>
-<code>process</code>: runs optimization. By default, <code>HPO</code> uses <code>fmin()</code> to minimize the specified objective.</li>
+<code>process</code>: runs optimization. By default, <code>HPO</code> uses <code>fmin()</code> to minimize the specified loss</li>
 <li>
-<code>lgb_reg</code>: initializes LightGBM with the specified hyper-parameters.</li>
+<code>lgb_reg</code>: initializes LightGBM model</li>
 <li>
-<code>train_reg</code>: trains LightGBM and computes the loss. Since we aim to maximize profit, we simply define loss as negative profit.</li>
+<code>train_reg</code>: trains LightGBM and computes the loss. Since we aim to maximize profit, we simply define loss as negative profit</li>
 </ul>
 
 </div>
@@ -3083,7 +3013,7 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We would need to perform tuning on a differet subset of data to prevent overfitting when using these parameters for our models. To that end, we simply go one day in the past compared to the training folds used in the previous section.</p>
+<p>To prevent overfitting, we perform tuning on a differet subset of data compared to the models trained in the previous section by going one day further in the past.</p>
 
 </div>
 </div>
@@ -3161,7 +3091,7 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, we just need to instantiate the <code>HPOpt</code> object and launch the tuning trials! The optimization will run automatically, and we would only need to extract optimized values:</p>
+<p>Now, we just need to instantiate the <code>HPOpt</code> object and launch the tuning trials! The optimization will run automatically, and we would only need to extract the optimized values:</p>
 
 </div>
 </div>
@@ -3253,7 +3183,7 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Done! Now we can save the hyper-parameter values as <code>pickle</code> and load them in the modeling script when setting up the model.</p>
+<p>Done! Now we can save the optimized values and import them when setting up the model.</p>
 
 </div>
 </div>
@@ -3261,14 +3191,14 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
+<details class="description">
       <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
         <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-hide</span>
 
 <span class="n">par_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'../lgb_meta_params.pkl'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span>
 <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">lgb_reg_params</span><span class="p">,</span> <span class="n">par_file</span><span class="p">)</span>
@@ -3295,9 +3225,10 @@ FOLD 7/7: RMSE = 74.69, PROFIT = 3951805
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This blogpost has finally come to an end. Thank you for reading! We looked at important stages of our solution and covered steps such as data aggregation, feature engineering, custom loss functions, target transformation and hyper-parameter tuning.</p>
-<p>Our final solution is an ensemble of multiple LightGBM models with different features and training options that we have developed during the competition. I am not covering the ensembling part in the blogpost, but you can find the blending and stacking codes in my <a href="https://github.com/kozodoi/DMC_2020">Github</a>.</p>
-<p>If you like the task, stay tuned for the next editions of the <a href="https://www.data-mining-cup.com">Data Mining Cup</a>! Please also feel free to use the comment widnow below to ask questions.</p>
+<p>This blogpost has finally come to an end. Thank you for reading!</p>
+<p>We looked at important stages of our solution and covered steps such as data aggregation, feature engineering, custom loss functions, target transformation and hyper-parameter tuning.</p>
+<p>Our final solution is an ensemble of multiple LightGBM models with different features and training options developed during the competition. I am not covering the ensembling part in the blogpost, but you can find the blending and stacking codes in my <a href="https://github.com/kozodoi/DMC_2020">Github</a>.</p>
+<p>Please feel free to use the comment widnow below to ask questions and stay tuned for the next editions of <a href="https://www.data-mining-cup.com">Data Mining Cup</a>!</p>
 
 </div>
 </div>
