@@ -12,4 +12,4 @@ I enjoy taking part at machine learning competitions on Kaggle. My highest Kaggl
 - **IEEE-CIS Fraud Detection**: top-3% (team of 2, 6381 teams)
 - **Home Credit Default Risk**: top-4% (solo, 7190 teams)
 - **PLAsTiCC Astronomical Classification**: top-5% (team of 3, 1094 teams)
-- **APTOS 2019 Blindness Detection**: top-9% (team of 2, 2931 teams)
+- **APTOS 2019 Blindness Detection**: top-9% (solo, 2931 teams)
