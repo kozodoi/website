@@ -4,12 +4,18 @@ title: Packages
 permalink: /packages/
 ---
 
-This page provides a list of the Python and R packages I have developed. Follow me on [GitHub](https://github.com/kozodoi) to see my latest projects.
+This page provides software packages developed by me. Follow me on [GitHub](https://github.com/kozodoi) to see more.
 
 ---
 
-- `dptools`: Python package with helper functions for data processing and feature engineering.
-See on [GitHub](https://github.com/kozodoi/dptools) or [PyPi](https://pypi.org/project/dptools/).
+### `dptools`
 
-- `fairness`: R package for computing different measures of algorithmic fairness.
-See on [GitHub](https://github.com/kozodoi/fairness) or [CRAN](https://cran.r-project.org/package=fairness). The tutorial is available in [this blogpost](https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html).
+- Python package with helper functions for data processing and feature engineering
+- the source code and README are available on [GitHub](https://github.com/kozodoi/dptools) and [PyPi](https://pypi.org/project/dptools/)
+
+
+### `fairness`
+
+- R package for computing and visualizing algorithmic fairness metrics
+- the source code and README are available on [GitHub](https://github.com/kozodoi/fairness) and [CRAN](https://cran.r-project.org/package=fairness)
+- comprehensive tutorial is provided in [this blogpost](https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html)
