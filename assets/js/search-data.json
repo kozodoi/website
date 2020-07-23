@@ -40,7 +40,7 @@
   
       ,"page1": {
           "title": "About",
-          "content": "I am a PhD student at Humboldt University of Berlin and research associate at the Monedo data science team. Please click here to view my CV. . . . I am passionate about machine learning and data science. My latest work focuses on machine learning applications in the field of credit risk analytics. I also enjoy participating at machine learning competitions and hackathons. . This website hosts my blog with machine learning tutorials, competition solutions and findings from different projects. It also provides links to my academic publications and developed software packages. . . If you want to chat or see more of my work, please feel free to connect with me on different platforms: . LinkedIn | GitHub | Google Scholar | ResearchGate | Kaggle | . . I am also happy to chat on other social media: . Twitter | Instagram | .",
+          "content": "I am a PhD student at Humboldt University of Berlin and research associate at the Monedo data science team. Please click here to view my CV. . . . I am passionate about machine learning and data science. My latest work focuses on machine learning applications in the field of credit risk analytics. I also enjoy participating at machine learning competitions and hackathons. . This website hosts my blog with machine learning tutorials, competition solutions and findings from different projects. It also provides links to my publications and software packages. . . If you want to chat or see more of my work, feel free to connect with me on different platforms: . LinkedIn | GitHub | Google Scholar | ResearchGate | Kaggle | . . I am also happy to chat on other social media: . Twitter | Instagram | .",
           "url": "https://kozodoi.me/about/",
           "relUrl": "/about/",
           "date": ""
@@ -53,7 +53,7 @@
   
       ,"page3": {
           "title": "Kaggle",
-          "content": "I enjoy taking part at machine learning competitions on Kaggle. My highest Kaggle competitions rank has been 981. This page summarizes my achievements. Check out my profile to see all of my experience. . . Google Analytics Customer Revenue Prediction: top-2% (team of 2, 3611 teams) | IEEE-CIS Fraud Detection: top-3% (team of 2, 6381 teams) | Home Credit Default Risk: top-4% (solo, 7190 teams) | PLAsTiCC Astronomical Classification: top-5% (team of 3, 1094 teams) | APTOS 2019 Blindness Detection: top-9% (solo, 2931 teams) | .",
+          "content": "I enjoy taking part at machine learning competitions on Kaggle. My highest Kaggle competitions rank has been 981. This page summarizes my achievements. Check out my profile to see more. . . Structured data . Google Analytics Customer Revenue Prediction: top-2% (team of 2, 3611 teams) | IEEE-CIS Fraud Detection: top-3% (team of 2, 6381 teams) | Home Credit Default Risk: top-4% (solo, 7190 teams) | PLAsTiCC Astronomical Classification: top-5% (team of 3, 1094 teams) | . Computer vision . APTOS 2019 Blindness Detection: top-9% (solo, 2931 teams) | .",
           "url": "https://kozodoi.me/kaggle/",
           "relUrl": "/kaggle/",
           "date": ""
@@ -64,7 +64,7 @@
   
       ,"page4": {
           "title": "Packages",
-          "content": "This page provides a list of the Python and R packages I have developed. Follow me on GitHub to see my latest projects. . . dptools: Python package with helper functions for data processing and feature engineering. See on GitHub or PyPi. . | fairness: R package for computing different measures of algorithmic fairness. See on GitHub or CRAN. The tutorial is available in this blogpost. . | .",
+          "content": "This page provides software packages developed by me. Follow me on GitHub to see more. . . dptools . Python package with helper functions for data processing and feature engineering | the source code and README are available on GitHub and PyPi | . fairness . R package for computing and visualizing algorithmic fairness metrics | the source code and README are available on GitHub and CRAN | comprehensive tutorial is provided in this blogpost | .",
           "url": "https://kozodoi.me/packages/",
           "relUrl": "/packages/",
           "date": ""
@@ -75,7 +75,7 @@
   
       ,"page5": {
           "title": "Publications",
-          "content": "This page provides a selected list of my publications in academic journals and conference proceedings. Please follow me on Google Scholar or ResearchGate to see all of my latest work. . . 2020 . Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., &amp; Papakonstantinou, K. (2020). Shallow Self-Learning for Reject Inference in Credit Scoring. In ECML PKDD 2019 Proceedings (pp. 516-532). Springer, Cham. Read on ResearchGate or on publisher’s website. | . 2019 . Kozodoi, N., Lessmann, S., Papakonstantinou, K., Gatsoulis, Y., &amp; Baesens, B. (2019). A multi-objective approach for profit-driven feature selection in credit scoring. Decision Support Systems, 120, 106-117. Read on ResearchGate or on publisher’s website. . | Kozodoi, N., Lessmann, S., Baesens, B., &amp; Papakonstantinou, K. (2019). Profit-Oriented Feature Selection in Credit Scoring Applications. In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham. Read on ResearchGate or on publisher’s website. . | .",
+          "content": "This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on Google Scholar or ResearchGate to see all of my latest work. . . 2020 . Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., &amp; Papakonstantinou, K. (2020). Shallow Self-Learning for Reject Inference in Credit Scoring. In ECML PKDD 2019 Proceedings (pp. 516-532). Springer, Cham. [PDF on ResearchGate] [published version] | . 2019 . Kozodoi, N., Lessmann, S., Papakonstantinou, K., Gatsoulis, Y., &amp; Baesens, B. (2019). A multi-objective approach for profit-driven feature selection in credit scoring. Decision Support Systems, 120, 106-117. [PDF on ResearchGate] [published version] . | Kozodoi, N., Lessmann, S., Baesens, B., &amp; Papakonstantinou, K. (2019). Profit-Oriented Feature Selection in Credit Scoring Applications. In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham. [PDF on ResearchGate] [published version] . | .",
           "url": "https://kozodoi.me/publications/",
           "relUrl": "/publications/",
           "date": ""
