@@ -10,12 +10,14 @@ I enjoy taking part at machine learning competitions on Kaggle. My highest Kaggl
 
 ### Structured data
 
-- **Google Analytics Customer Revenue Prediction**: top-2% (team of 2, 3611 teams)
-- **IEEE-CIS Fraud Detection**: top-3% (team of 2, 6381 teams)
+- **Google Analytics Customer Revenue Prediction**: top-2% (2-people team, 3611 teams)
+- **IEEE-CIS Fraud Detection**: top-3% (2-people team, 6381 teams)
 - **Home Credit Default Risk**: top-4% (solo, 7190 teams)
-- **PLAsTiCC Astronomical Classification**: top-5% (team of 3, 1094 teams)
+- **PLAsTiCC Astronomical Classification**: top-5% (3-people team, 1094 teams)
+- **Instant Gratification**: top-6% (solo, 1832 teams)
 
 
 ### Computer vision
 
+- **Prostate Cancer Grade Assessment Challenge**: top-7% (solo, 1028 teams)
 - **APTOS 2019 Blindness Detection**: top-9% (solo, 2931 teams)
