@@ -4,15 +4,20 @@ title: About
 permalink: /about/
 ---
 
-I am a PhD student at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/professuren/quantitativ/wi/standardseite-en?set_language=en) and research associate at the [Monedo](https://www.monedo.com) data science team. Please click [here](https://kozodoi.me/cv.pdf) to view my CV. 
+Hi, I am Nikita!
 
-![photo](../images/photo.jpg)
+- 📚 PhD candidate at [Humbold University of Berlin](https://www.wiwi.hu-berlin.de/en)
+- 💻 Reasearch associate at the data science team at [Monedo](https://www.monedo.com) 
+- ⌨️ Passionate about machine learning & data science
+- 📊 Working on machine learning applications in credit risk analytics
+- 🏅 Enjoy participating at data science competitions and hackathons
+- 🧩 Love football, scooters and piano
+
+Please click [here](https://kozodoi.me/cv.pdf) to view my full CV.
 
 ---
 
-I am passionate about machine learning and data science. My latest work focuses on machine learning applications in the field of credit risk analytics. I also enjoy participating at machine learning competitions and hackathons.
-
-This website hosts my blog with machine learning tutorials, competition solutions and findings from different projects. It also provides links to my publications and software packages.
+![photo](../images/photo.jpg)
 
 ---
 
