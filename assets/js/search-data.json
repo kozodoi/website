@@ -40,7 +40,7 @@
   
       ,"page1": {
           "title": "About",
-          "content": "Hi, I am Nikita! . 📚 PhD candidate at Humbold University of Berlin | 💻 Reasearch associate at the data science team at Monedo | ⌨️ Passionate about machine learning &amp; data science | 📊 Working on machine learning applications in credit risk analytics | 🏅 Enjoy participating at data science competitions and hackathons | 🧩 Love football, scooters and piano | . Please click here to view my full CV. . . . . If you want to chat or see more of my work, feel free to connect with me on different platforms: . LinkedIn | GitHub | Google Scholar | ResearchGate | Kaggle | . . I am also happy to chat on other social media: . Twitter | Instagram | .",
+          "content": "Hi, I am Nikita! . 📚 PhD candidate at Humbold University of Berlin | 💻 Data science research associate at Monedo | ⌨️ Passionate about machine learning &amp; data science | 📊 Working on machine learning applications in credit risk analytics | 🏅 Enjoy participating at data science competitions and hackathons | 🧩 Love football, scooters and piano | . Click here to view my full CV. . . . . If you want to chat or see more of my work, please connect with me on different platforms: . LinkedIn | GitHub | Google Scholar | ResearchGate | Kaggle | . . I am also happy to chat on other social media: . Twitter | Instagram | Facebook | .",
           "url": "https://kozodoi.me/about/",
           "relUrl": "/about/",
           "date": ""
@@ -53,7 +53,7 @@
   
       ,"page3": {
           "title": "Kaggle",
-          "content": "I enjoy taking part at machine learning competitions on Kaggle. My highest Kaggle competitions rank has been 981. This page summarizes my achievements. Check out my profile to see more. . . Structured data . Google Analytics Customer Revenue Prediction: top-2% (2-people team, 3611 teams) | IEEE-CIS Fraud Detection: top-3% (2-people team, 6381 teams) | Home Credit Default Risk: top-4% (solo, 7190 teams) | PLAsTiCC Astronomical Classification: top-5% (3-people team, 1094 teams) | Instant Gratification: top-6% (solo, 1832 teams) | . Computer vision . Prostate Cancer Grade Assessment Challenge: top-7% (solo, 1028 teams) | APTOS 2019 Blindness Detection: top-9% (solo, 2931 teams) | .",
+          "content": "I enjoy taking part at machine learning competitions on Kaggle. This page summarizes my achievements. Check out my Kaggle profile to see more. . . Structured data . Google Analytics Customer Revenue Prediction: top-2% (2-people team, 3611 teams) | IEEE-CIS Fraud Detection: top-3% (2-people team, 6381 teams) | Home Credit Default Risk: top-4% (solo, 7190 teams) | PLAsTiCC Astronomical Classification: top-5% (3-people team, 1094 teams) | Instant Gratification: top-6% (solo, 1832 teams) | . Computer vision . Prostate Cancer Grade Assessment Challenge: top-7% (solo, 1028 teams) | APTOS 2019 Blindness Detection: top-9% (solo, 2931 teams) | . . Highest Kaggle competitions rank: 981 .",
           "url": "https://kozodoi.me/kaggle/",
           "relUrl": "/kaggle/",
           "date": ""
@@ -64,7 +64,7 @@
   
       ,"page4": {
           "title": "Packages",
-          "content": "This page provides software packages developed by me. Follow me on GitHub to see more. . . dptools . Python package with helper functions for data processing and feature engineering | the source code and README are available on GitHub and PyPi | . fairness . R package for computing and visualizing algorithmic fairness metrics | the source code and README are available on GitHub and CRAN | comprehensive tutorial is provided in this blogpost | .",
+          "content": "This page provides software packages developed by me. Follow me on GitHub to see more. . . dptools . Python package with helper functions for data processing and feature engineering | the source code and documentation are available on GitHub and PyPi | . . fairness . R package for computing and visualizing algorithmic fairness metrics | the source code and documentation are available on GitHub and CRAN | comprehensive tutorial is provided in this blogpost | .",
           "url": "https://kozodoi.me/packages/",
           "relUrl": "/packages/",
           "date": ""
