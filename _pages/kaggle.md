@@ -19,7 +19,7 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 
 ### Computer vision
 
-- **Prostate Cancer Grade Assessment Challenge**: top-7% *(solo, 1028 teams)*
+- **Prostate Cancer Grade Assessment Challenge**: top-6% *(solo, 1010 teams)*
 - **APTOS 2019 Blindness Detection**: top-9% *(solo, 2931 teams)*
 
 <br>
