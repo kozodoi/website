@@ -204,7 +204,7 @@ window.onload = wrap_img;
 </h1>
 <p>How to measure fairness of a machine learning model?</p>
 <p>To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between sensitive groups in binary classification problems. Multiple other metrics have been proposed that use various performance measures extracted from the confusion matrix (e.g., false positive rate parity, false negative rate parity).</p>
-<p>Together with <a href="https://www.linkedin.com/in/tiborvvarga/">Tibor V. Varga</a>, we developed the <code>fairness</code> R package. The package provides tools to easily calculate algorithmic fairness metrics for predictions of a classification model across different sensitive groups. It also provides opportunities to visualize and compare other prediction metrics between the subgroups.</p>
+<p>Together with <a href="https://www.linkedin.com/in/tiborvvarga/">Tibor V. Varga</a>, we developed the <code>fairness</code> R package. The package provides tools to calculate algorithmic fairness metrics for predictions of a classification model across different sensitive groups. It also provides opportunities to visualize and compare other prediction metrics between the subgroups.</p>
 <p>The package contains functions to compute the commonly used group fairness metrics such as:</p>
 <ul>
 <li>Demographic parity</li>
@@ -222,7 +222,7 @@ window.onload = wrap_img;
 <li>ROC AUC comparison</li>
 <li>MCC comparison</li>
 </ul>
-<p>This blogpost provides a tutorial on computing and visualizing different fariness metrics using the <code>fairness</code> package. The package is available on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
+<p>This blogpost provides a tutorial on computing and visualizing different fariness metrics using the <code>fairness</code> package. The package is published on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
 <p>Disclaimer! None of the implemented metrics are supposed to replace critical thinking about the problem in question.</p>
 
 </div>
@@ -488,7 +488,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#germancredit" aria-hidden="true"><span class="octicon octicon-link"></span></a>germancredit<a class="anchor-link" href="#germancredit"> </a>
 </h2>
 <p>The second data set included in the package is a credit scoring data set labeled as <code>germancredit</code>. The data set includes 20 features describing the loan applicants and an outcome variable named <code>BAD</code>, which is a binary indicator showing whether the applicant defaulted on a loan. Similarly to the compas data set, this data also includes two columns with model predictions named <code>probability</code> and <code>predicted</code>.</p>
-<p>Feel free to play wit this data as well. You can load it with:</p>
+<p>Feel free to play with this data as well. You can load it with:</p>
 
 </div>
 </div>
@@ -906,7 +906,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The first row shows the raw precision values for all ethnicities. The second row displays the relative precisions compared to Caucasian defendandts. In the perfect world, all predeictive rate parities should be equal to one, which would mean that the precision in every group is the same as in the base group. In practice, values are going to be different. The paritiy above one indicates that precision in this group is relatively higher, whereas a lower parity implies a lower precision. Observing a large variance in parities should hint us that the model is not performing equally well for different sensitive groups.</p>
+<p>The first row shows the raw precision values for all ethnicities. The second row displays the relative precisions compared to Caucasian defendants.</p>
+<p>In a perfect world, all predictive rate parities should be equal to one, which would mean that the precision in every group is the same as in the base group. In practice, values are going to be different. The paritiy above one indicates that precision in this group is relatively higher, whereas a lower parity implies a lower precision. Observing a large variance in parities should hint us that the model is not performing equally well for different sensitive groups.</p>
 <p>If the other ethnic group is set as a base group (e.g. Hispanic), the raw precision values do not change, only the relative metrics:</p>
 
 </div>
@@ -993,7 +994,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Overall, results suggest that the model precision varies between 0.6489 and 0.7857. Apart from the "other" category, the lowest precision is observed for African American defendants. This implies that there are more cases where the model mistakingly predicts that a person will commit a crime among African Americans than among, e.g., Asian defendants.</p>
+<p>Overall, results suggest that the model precision varies between 0.6489 and 0.7857. Apart from the "other" category, the lowest precision is observed for African-American defendants. This implies that there are more cases where the model mistakingly predicts that a person will commit a crime among African-Americans than among, e.g., Asian defendants.</p>
 <p>A standard output of every fairness metric function includes a barchart that visualizes the relative metrics for all subgroups:</p>
 
 </div>
@@ -1175,7 +1176,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see two things.</p>
-<p>First, excluding <code>ethnicity</code> from the features slightly increases precision for African American defendants but results in a lower precision for a number of other groups. This illustrates that improving a model for one group may cost a fall in the predictive performance for the general population. Depending on the context, it is a task of a decision-maker to decide what is best in a specific setup.</p>
+<p>First, excluding <code>ethnicity</code> from the features slightly increases precision for African-American defendants but results in a lower precision for a number of other groups. This illustrates that improving a model for one group may cost a fall in the predictive performance for the general population. Depending on the context, it is a task of a decision-maker to decide what is best.</p>
 <p>Second, excluding <code>ethnicity</code> does not align the predictive rate parities substantially closer to one. This illustrates another important research finding: removing a sensitive variable does not guarantee that a model stops discriminating. Ethnicity correlates with other features and is still implicitly included in the input data. In order to make the classifier more fair, one would neet to consider more sophisticated techniques than simply dropping the sensitive attribute.</p>
 
 </div>
@@ -1217,7 +1218,7 @@ window.onload = wrap_img;
 <h2 id="Demographic-parity">
 <a class="anchor" href="#Demographic-parity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demographic parity<a class="anchor-link" href="#Demographic-parity"> </a>
 </h2>
-<p>Demographic parity is one of the most popular fairness indicators in the literature. Demographic parity achieved if the absolute number of positive predictions in the subgroups are close to each other. This measure does not take true class into consideration and only depends on the model predictions.</p>
+<p>Demographic parity is one of the most popular fairness indicators in the literature. Demographic parity is achieved if the absolute number of positive predictions in the subgroups are close to each other. This measure does not take true class into consideration and only depends on the model predictions.</p>
 <p>Formula: <strong>(TP + FP)</strong></p>
 
 </div>
@@ -1403,7 +1404,7 @@ window.onload = wrap_img;
 <h2 id="Proportional-parity">
 <a class="anchor" href="#Proportional-parity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proportional parity<a class="anchor-link" href="#Proportional-parity"> </a>
 </h2>
-<p>Proportional parity is very similar to demographic parity but modifies it to addres the issue discussed above. Proportional parity is achieved if the proportion of positive predictions in the subgroups are close to each other. Similar to the demographic parity, this measure also does not depend on the true labels.</p>
+<p>Proportional parity is very similar to demographic parity but modifies it to address the issue discussed above. Proportional parity is achieved if the proportion of positive predictions in the subgroups are close to each other. Similar to the demographic parity, this measure also does not depend on the true labels.</p>
 <p>Formula: <strong>(TP + FP) / (TP + FP + TN + FN)</strong></p>
 
 </div>
@@ -1487,14 +1488,6 @@ window.onload = wrap_img;
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>All the remaining fairness metrics account for both model predictions and the true labels.</p>
-
-</div>
-</div>
-</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -1536,7 +1529,15 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The proportional parity still shows that African American defendants are treated unfairly by our model. At the same time, the disparity is lower compared to the one observed with the demographic parity.</p>
+<p>The proportional parity still shows that African-American defendants are treated unfairly by our model. At the same time, the disparity is lower compared to the one observed with the demographic parity.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All the remaining fairness metrics account for both model predictions and the true labels.</p>
 
 </div>
 </div>
