@@ -1,8 +1,5 @@
 FROM hamelsmu/fastpages-nbdev
 
-RUN pip install --upgrade pip
-RUN pip install nbdev==0.2.14
-
 WORKDIR /fastpages
 COPY . .
 RUN chmod u+x action_entrypoint.sh
