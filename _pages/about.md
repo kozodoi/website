@@ -21,7 +21,11 @@ Click [here](https://kozodoi.me/cv.pdf) to view my full CV.
 
 ---
 
-If you want to chat or see more of my work, please connect with me on different platforms:
+This website contains my blog, where I share machine learning tutorials, competition solutions and interesting findings from different data science projects. Check out [the feed](https://kozodoi.me) for the latest posts!
+
+---
+
+If you want to chat or see more of my work, connect with me on different platforms:
 
 <ul>
   <li><a href="https://www.linkedin.com/in/kozodoi">LinkedIn</a></li>

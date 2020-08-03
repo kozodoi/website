@@ -5,7 +5,7 @@ title: Tags
 search_exclude: true
 ---
 
-Browse blogposts by tags.
+Browse blogposts by tags. Scroll down to see post links for each tag.
 
 {% if site.categories.size > 0 %}
 <h2>Tags</h2>
@@ -21,6 +21,8 @@ Browse blogposts by tags.
     <li><a href="#{{ category }}">{{ category }}</a></li>
   {% endfor %}
   </ul>
+
+  <hr>
 
   {% for category in categories %}
       <h3 id ="{{ category }}"><i class="fas fa-tags category-tags-icon"></i></i> {{ category }}</h3>
