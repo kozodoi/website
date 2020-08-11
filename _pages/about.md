@@ -13,7 +13,7 @@ Hi, I am Nikita!
 - 🏅 Enjoy participating at data science competitions and hackathons
 - 🧩 Love football, scooters and piano
 
-Click [here](https://kozodoi.me/cv.pdf) to view my full CV.
+Click [here](https://kozodoi.me/cv.pdf) to view my full CV and check out [my profile](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the Chair of Information Systems webiste.
 
 ---
 
