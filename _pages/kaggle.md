@@ -19,9 +19,12 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 
 ### Computer vision
 
+- **SIIM-ISIC Melanoma Classification**: top-1% *(5-people team, 3314 teams)*
 - **Prostate Cancer Grade Assessment Challenge**: top-6% *(solo, 1010 teams)*
 - **APTOS 2019 Blindness Detection**: top-9% *(solo, 2931 teams)*
 
 <br>
 
-Highest Kaggle competitions rank: 981 
+Highest Kaggle ranks: 
+- Competitions: 712 out of 146,822
+- Discussion: 394 out of 157,328
