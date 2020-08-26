@@ -26,5 +26,5 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 ---
 
 ### Highest user rank
-- **Competitions**: 686 out of 146,811
-- **Discussion**: 387 out of 157,799
+- **Competitions**: 671 out of 146,805
+- **Discussion**: 383 out of 158,040
