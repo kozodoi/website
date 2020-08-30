@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      16 min read
+      15 min read
     
 </span></p>
 
@@ -828,8 +828,6 @@ REPLICAS: 8
     <span class="c1"># DISPLAY INFO</span>
     <span class="k">if</span> <span class="n">DEVICE</span> <span class="o">==</span> <span class="s1">'TPU'</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">tpu</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">tpu</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">initialize_tpu_system</span><span class="p">(</span><span class="n">tpu</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'#### Image Size </span><span class="si">%i</span><span class="s1"> with EN B</span><span class="si">%i</span><span class="s1"> and batch_size </span><span class="si">%i</span><span class="s1">'</span><span class="o">%</span>
-          <span class="p">(</span><span class="n">IMG_SIZES</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">EFF_NETS</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">BATCH_SIZES</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">REPLICAS</span><span class="p">))</span>
 
     <span class="c1"># CREATE TRAIN AND VALIDATION SUBSETS</span>
     <span class="n">files_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">GCS_PATH</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'/train*.tfrec'</span><span class="p">)</span>
@@ -881,8 +879,7 @@ REPLICAS: 8
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>#### Image Size 128 with EN B0 and batch_size 256
-#### Using 2020 train data
+<pre>#### Using 2020 train data
 #### Using 2020 test data
 Downloading data from https://github.com/Callidior/keras-applications/releases/download/efficientnet/efficientnet-b0_weights_tf_dim_ordering_tf_kernels_autoaugment_notop.h5
 16809984/16804768 [==============================] - 0s 0us/step
@@ -1025,12 +1022,9 @@ _________________________________________________________________
     <span class="k">if</span> <span class="n">DEVICE</span> <span class="o">==</span> <span class="s1">'TPU'</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">tpu</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">tpu</span><span class="o">.</span><span class="n">experimental</span><span class="o">.</span><span class="n">initialize_tpu_system</span><span class="p">(</span><span class="n">tpu</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'#'</span><span class="o">*</span><span class="mi">25</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'#### FOLD'</span><span class="p">,</span><span class="n">fold</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'#### Image Size </span><span class="si">%i</span><span class="s1"> with EfficientNet B</span><span class="si">%i</span><span class="s1"> and batch_size </span><span class="si">%i</span><span class="s1">'</span><span class="o">%</span>
-          <span class="p">(</span><span class="n">IMG_SIZES</span><span class="p">[</span><span class="n">fold</span><span class="p">],</span><span class="n">EFF_NETS</span><span class="p">[</span><span class="n">fold</span><span class="p">],</span><span class="n">BATCH_SIZES</span><span class="p">[</span><span class="n">fold</span><span class="p">]</span><span class="o">*</span><span class="n">REPLICAS</span><span class="p">))</span>
     
     <span class="c1"># CREATE TRAIN AND VALIDATION SUBSETS</span>
     <span class="n">files_train</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">glob</span><span class="p">([</span><span class="n">GCS_PATH</span><span class="p">[</span><span class="n">fold</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'/train</span><span class="si">%.2i</span><span class="s1">*.tfrec'</span><span class="o">%</span><span class="k">x</span> for x in idxT])      
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'#### Using 2020 train data'</span><span class="p">)</span>
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">files_train</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'#'</span><span class="o">*</span><span class="mi">25</span><span class="p">)</span>
     
     <span class="n">files_valid</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">glob</span><span class="p">([</span><span class="n">GCS_PATH</span><span class="p">[</span><span class="n">fold</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'/train</span><span class="si">%.2i</span><span class="s1">*.tfrec'</span><span class="o">%</span><span class="k">x</span> for x in idxV])
@@ -1109,8 +1103,6 @@ _________________________________________________________________
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>#########################
 #### FOLD 1
-#### Image Size 128 with EfficientNet B0 and batch_size 256
-#### Using 2020 train data
 #########################
 Training...
 Loading best model...
@@ -1119,8 +1111,6 @@ Predicting Test...
 #### FOLD 1 OOF AUC = 0.8711
 #########################
 #### FOLD 2
-#### Image Size 128 with EfficientNet B0 and batch_size 256
-#### Using 2020 train data
 #########################
 Training...
 Loading best model...
@@ -1129,8 +1119,6 @@ Predicting Test...
 #### FOLD 2 OOF AUC = 0.8374
 #########################
 #### FOLD 3
-#### Image Size 128 with EfficientNet B0 and batch_size 256
-#### Using 2020 train data
 #########################
 Training...
 Loading best model...
@@ -1139,8 +1127,6 @@ Predicting Test...
 #### FOLD 3 OOF AUC = 0.8925
 #########################
 #### FOLD 4
-#### Image Size 128 with EfficientNet B0 and batch_size 256
-#### Using 2020 train data
 #########################
 Training...
 Loading best model...
@@ -1149,8 +1135,6 @@ Predicting Test...
 #### FOLD 4 OOF AUC = 0.8928
 #########################
 #### FOLD 5
-#### Image Size 128 with EfficientNet B0 and batch_size 256
-#### Using 2020 train data
 #########################
 Training...
 Loading best model...
