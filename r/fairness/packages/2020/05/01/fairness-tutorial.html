@@ -200,9 +200,10 @@ window.onload = wrap_img;
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
 <p>How to measure fairness of a machine learning model?</p>
-<p>To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity, equalized odds and predictive rate parity are the most commonly used metrics to evaluate fairness between sensitive groups in binary classification problems. Multiple other metrics have been proposed that use various performance measures extracted from the confusion matrix (e.g., false positive rate parity, false negative rate parity).</p>
-<p>Together with <a href="https://www.linkedin.com/in/tiborvvarga/">Tibor V. Varga</a>, we developed the <code>fairness</code> R package. The package provides tools to calculate algorithmic fairness metrics for predictions of a classification model across different sensitive groups. It also provides opportunities to visualize and compare other prediction metrics between the subgroups.</p>
-<p>The package contains functions to compute the commonly used group fairness metrics such as:</p>
+<p>To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity and equalized odds are among the most commonly used metrics to evaluate fairness across sensitive groups in binary classification problems. Multiple other metrics have been proposed based on performance measures extracted from the confusion matrix (e.g., false positive rate parity, false negative rate parity).</p>
+<p>Together with <a href="https://www.linkedin.com/in/tiborvvarga/">Tibor V. Varga</a>, we developed <code>fairness</code> package for R. The package provides tools to calculate algorithmic fairness metrics across different sensitive groups. It also provides opportunities to visualize and compare other prediction metrics between the groups.</p>
+<p>This blogpost provides a tutorial on using the <code>fairness</code> package on a <a href="https://github.com/propublica/compas-analysis">COMPAS</a> data set. The blogpost is also available as an interactive <a href="https://www.kaggle.com/kozodoi/algorithmic-fairness-in-r-tutorial">Kaggle notebook</a>. The package is published on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
+<p>The package provides functions to compute the commonly used metrics of algorithmic fairness:</p>
 <ul>
 <li>Demographic parity</li>
 <li>Proportional parity</li>
@@ -219,8 +220,6 @@ window.onload = wrap_img;
 <li>ROC AUC comparison</li>
 <li>MCC comparison</li>
 </ul>
-<p>This blogpost provides a tutorial on computing and visualizing different fariness metrics using the <code>fairness</code> package. The package is published on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
-<p>Disclaimer! None of the implemented metrics are supposed to replace critical thinking about the problem in question.</p>
 
 </div>
 </div>
