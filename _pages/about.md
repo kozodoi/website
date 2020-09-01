@@ -8,8 +8,8 @@ Hi, I am Nikita!
 
 - 📚 PhD candidate at [Humbold University of Berlin](https://www.wiwi.hu-berlin.de/en)
 - 💻 Data science research associate at [Monedo](https://www.monedo.com) 
-- ⌨️ Passionate about machine learning & data science
-- 📊 Working on machine learning applications in credit risk analytics
+- 🤖 Passionate about machine learning & data science
+- 🏦 Working on machine learning applications in credit risk analytics
 - 🏅 Enjoy participating at data science competitions and hackathons
 - 🧩 Love football, scooters and piano
 
@@ -30,9 +30,9 @@ If you want to chat or see more of my work, connect with me on different platfor
 <ul>
   <li><a href="https://www.linkedin.com/in/kozodoi">LinkedIn</a></li>
   <li><a href="https://github.com/kozodoi">GitHub</a></li>
+  <li><a href="https://www.kaggle.com/kozodoi">Kaggle</a></li>
   <li><a href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en">Google Scholar</a></li>
   <li><a href="https://www.researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a></li>
-  <li><a href="https://www.kaggle.com/kozodoi">Kaggle</a></li>
 </ul>
 
 ---
