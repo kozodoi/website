@@ -4,13 +4,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Pre-Training CNNs with Surrogate Labels | Nikita Kozodoi</title>
+<title>Pre-Training with Surrogate Labels | Nikita Kozodoi</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Pre-Training CNNs with Surrogate Labels" />
+<meta property="og:title" content="Pre-Training with Surrogate Labels" />
 <meta name="author" content="Nikita Kozodoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Making use of the test data to improve performance" />
-<meta property="og:description" content="Making use of the test data to improve performance" />
+<meta name="description" content="Using the test sample to improve CNN performance" />
+<meta property="og:description" content="Using the test sample to improve CNN performance" />
 <link rel="canonical" href="https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html" />
 <meta property="og:url" content="https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-08-30T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Making use of the test data to improve performance","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html"},"@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html","headline":"Pre-Training CNNs with Surrogate Labels","dateModified":"2020-08-30T00:00:00-05:00","datePublished":"2020-08-30T00:00:00-05:00","image":"https://kozodoi.me/images/posts/pretrain.png","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Using the test sample to improve CNN performance","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html"},"@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html","headline":"Pre-Training with Surrogate Labels","dateModified":"2020-08-30T00:00:00-05:00","datePublished":"2020-08-30T00:00:00-05:00","image":"https://kozodoi.me/images/posts/pretrain.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -27,13 +27,13 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Pre-Training CNNs with Surrogate Labels | Nikita Kozodoi</title>
+<title>Pre-Training with Surrogate Labels | Nikita Kozodoi</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Pre-Training CNNs with Surrogate Labels" />
+<meta property="og:title" content="Pre-Training with Surrogate Labels" />
 <meta name="author" content="Nikita Kozodoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Making use of the test data to improve performance" />
-<meta property="og:description" content="Making use of the test data to improve performance" />
+<meta name="description" content="Using the test sample to improve CNN performance" />
+<meta property="og:description" content="Using the test sample to improve CNN performance" />
 <link rel="canonical" href="https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html" />
 <meta property="og:url" content="https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
@@ -41,7 +41,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-08-30T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Making use of the test data to improve performance","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html"},"@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html","headline":"Pre-Training CNNs with Surrogate Labels","dateModified":"2020-08-30T00:00:00-05:00","datePublished":"2020-08-30T00:00:00-05:00","image":"https://kozodoi.me/images/posts/pretrain.png","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Using the test sample to improve CNN performance","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html"},"@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html","headline":"Pre-Training with Surrogate Labels","dateModified":"2020-08-30T00:00:00-05:00","datePublished":"2020-08-30T00:00:00-05:00","image":"https://kozodoi.me/images/posts/pretrain.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -103,7 +103,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Pre-Training CNNs with Surrogate Labels</h1><p class="page-description">Making use of the test data to improve performance</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-08-30T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Pre-Training with Surrogate Labels</h1><p class="page-description">Using the test sample to improve CNN performance</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-08-30T00:00:00-05:00" itemprop="datePublished">
         Aug 30, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -232,7 +232,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
-<span class="c1">############ PACKAGES</span>
+<span class="c1">### PACKAGES</span>
 
 <span class="o">!</span>pip install -q efficientnet &gt;&gt; /dev/null
 
@@ -764,7 +764,7 @@ REPLICAS: 8
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
-<span class="c1">##### LEARNING RATE SCHEDULE</span>
+<span class="c1">### LEARNING RATE SCHEDULE</span>
 
 <span class="k">def</span> <span class="nf">get_lr_callback</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
     
@@ -1084,10 +1084,6 @@ _________________________________________________________________
     <span class="n">ct_test</span>     <span class="o">=</span> <span class="n">count_data_items</span><span class="p">(</span><span class="n">files_test</span><span class="p">);</span> <span class="n">STEPS</span> <span class="o">=</span> <span class="n">ct_test</span><span class="o">/</span><span class="n">BATCH_SIZES</span><span class="p">[</span><span class="n">fold</span><span class="p">]</span><span class="o">/</span><span class="mi">4</span><span class="o">/</span><span class="n">REPLICAS</span>
     <span class="n">pred</span>        <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">ds_test</span><span class="p">,</span><span class="n">steps</span><span class="o">=</span><span class="n">STEPS</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="n">VERBOSE</span><span class="p">)[:</span><span class="n">ct_test</span><span class="p">,]</span>
     <span class="n">preds</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">pred</span> <span class="o">*</span> <span class="n">WGTS</span><span class="p">[</span><span class="n">fold</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-
-    <span class="c1"># REPORT RESULTS</span>
-    <span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">oof_tar</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">oof_pred</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">'#### FOLD </span><span class="si">%i</span><span class="s1"> OOF AUC = </span><span class="si">%.4f</span><span class="s1">'</span><span class="o">%</span><span class="p">(</span><span class="n">fold</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">auc</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1108,7 +1104,6 @@ Training...
 Loading best model...
 Predicting OOF...
 Predicting Test...
-#### FOLD 1 OOF AUC = 0.8711
 #########################
 #### FOLD 2
 #########################
@@ -1116,7 +1111,6 @@ Training...
 Loading best model...
 Predicting OOF...
 Predicting Test...
-#### FOLD 2 OOF AUC = 0.8374
 #########################
 #### FOLD 3
 #########################
@@ -1124,7 +1118,6 @@ Training...
 Loading best model...
 Predicting OOF...
 Predicting Test...
-#### FOLD 3 OOF AUC = 0.8925
 #########################
 #### FOLD 4
 #########################
@@ -1132,7 +1125,6 @@ Training...
 Loading best model...
 Predicting OOF...
 Predicting Test...
-#### FOLD 4 OOF AUC = 0.8928
 #########################
 #### FOLD 5
 #########################
@@ -1140,7 +1132,6 @@ Training...
 Loading best model...
 Predicting OOF...
 Predicting Test...
-#### FOLD 5 OOF AUC = 0.8420
 </pre>
 </div>
 </div>
