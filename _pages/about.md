@@ -13,7 +13,7 @@ Hi, I am Nikita!
 - 🏅 Enjoy participating at data science competitions and hackathons
 - 🧩 Love football, scooters and piano
 
-Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my profile](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the university's webiste.
+Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my profile page](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the university's webiste.
 
 ---
 
@@ -21,7 +21,7 @@ Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my profile]
 
 ---
 
-This website contains my blog, where I share machine learning tutorials, competition solutions and interesting findings from different data science projects. Check out [the feed](https://kozodoi.me) for the latest posts!
+This website hosts my blog, where I share machine learning tutorials, competition solutions and interesting findings from different data science projects. Check out [the feed](https://kozodoi.me) for the latest posts!
 
 ---
 
