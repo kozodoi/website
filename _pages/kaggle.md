@@ -14,6 +14,7 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 - 🥈 **IEEE-CIS Fraud Detection**: top-3% *(2-people team, 6381 teams)*
 - 🥈 **Home Credit Default Risk**: top-4% *(solo, 7190 teams)*
 - 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(3-people team, 1094 teams)*
+- 🥉 **COVID-19 mRNA Vaccine Degradation Prediction**: top-6% *(solo, 1636 teams)*
 - 🥉 **Instant Gratification**: top-6% *(solo, 1832 teams)*
 
 
@@ -26,5 +27,5 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 ---
 
 ### Highest user rank
-- **Competitions**: 613 out of 147,089
+- **Competitions**: 571 out of 149,181
 - **Discussion**: 383 out of 158,040
