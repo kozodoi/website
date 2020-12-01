@@ -10,24 +10,24 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 
 ### Computer vision
 
-- 🥇 **SIIM-ISIC Melanoma Classification**: top-1% *(5-people team, 3314 teams)*
-- 🥉 **Prostate Cancer Grade Assessment Challenge**: top-6% *(solo, 1010 teams)*
-- 🥉 **APTOS 2019 Blindness Detection**: top-9% *(solo, 2931 teams)*
-- 🥉 **RSNA STR Pulmonary Embolism Detection**: top-13% *(solo, 784 teams)*
+- 🥇 **SIIM-ISIC Melanoma Classification**: top-1% *(3314 teams)* [[Writeup]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624)
+- 🥉 **Prostate Cancer Grade Assessment Challenge**: top-6% *(1010 teams)*
+- 🥉 **APTOS 2019 Blindness Detection**: top-9% *(2931 teams)* [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection)
+- 🥉 **RSNA STR Pulmonary Embolism Detection**: top-13% *(784 teams)*
 
 
 ### Tabular data
 
-- 🥈 **Google Analytics Customer Revenue Prediction**: top-2% *(2-people team, 3611 teams)*
-- 🥈 **IEEE-CIS Fraud Detection**: top-3% *(2-people team, 6381 teams)*
-- 🥈 **Home Credit Default Risk**: top-4% *(solo, 7190 teams)*
-- 🥉 **COVID-19 mRNA Vaccine Degradation Prediction**: top-6% *(solo, 1636 teams)*
-- 🥉 **Instant Gratification**: top-6% *(solo, 1832 teams)*
+- 🥈 **Google Analytics Customer Revenue Prediction**: top-2% *(3611 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Google_Analytics)
+- 🥈 **IEEE-CIS Fraud Detection**: top-3% *(6381 teams)* [[Github]](https://github.com/kozodoi/Kaggle_IEEE_Fraud_Detection)
+- 🥈 **Home Credit Default Risk**: top-4% *(7190 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Home_Credit)
+- 🥉 **COVID-19 mRNA Vaccine Degradation Prediction**: top-6% *(636 teams)*
+- 🥉 **Instant Gratification**: top-6% *(1832 teams)*
 
 
 ### Time series
 
-- 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(3-people team, 1094 teams)*
+- 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(1094 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
 
 
 ---
