@@ -23,6 +23,7 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 - 🥈 **Home Credit Default Risk**: top-4% *(7190 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Home_Credit)
 - 🥉 **COVID-19 mRNA Vaccine Degradation Prediction**: top-6% *(636 teams)*
 - 🥉 **Instant Gratification**: top-6% *(1832 teams)*
+- 🥉 **Mechanisms of Action Prediction**: top-10% *(4373 teams)*
 
 
 ### Time series
