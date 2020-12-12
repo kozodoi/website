@@ -18,9 +18,9 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 
 ### Tabular data
 
-- 🥈 **Google Analytics Customer Revenue Prediction**: top-2% *(3611 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Google_Analytics)
+- 🥈 **Google Analytics Customer Revenue Prediction**: top-2%GitHub3611 teams)* [[GitHub]](https://github.com/kozodoi/Kaggle_Google_Analytics)
 - 🥈 **IEEE-CIS Fraud Detection**: top-3% *(6381 teams)* [[Github]](https://github.com/kozodoi/Kaggle_IEEE_Fraud_Detection)
-- 🥈 **Home Credit Default Risk**: top-4% *(7190 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Home_Credit)
+- 🥈 **Home Credit Default Risk**: top-4% *(7190 teams)* [[GitHub]](https://github.com/kozodoi/Kaggle_Home_Credit)
 - 🥉 **COVID-19 mRNA Vaccine Degradation Prediction**: top-6% *(636 teams)*
 - 🥉 **Instant Gratification**: top-6% *(1832 teams)*
 - 🥉 **Mechanisms of Action Prediction**: top-10% *(4373 teams)*
@@ -28,7 +28,7 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 
 ### Time series
 
-- 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(1094 teams)* [[Github]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
+- 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(1094 teams)* [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
 
 
 ---
