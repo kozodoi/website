@@ -29,11 +29,11 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 ### Time series
 
 - 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(1094 teams)* [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
-- 🥉 **Riiid! Answer Correctness Prediction**: top-7% *(3406 teams)*
+- 🥉 **Riiid! Answer Correctness Prediction**: top-7% *(3395 teams)*
 
 ---
 
 ### Highest user rank
-- **Competitions**: 499 out of 149,584
-- **Notebooks**: 563 out of 150,354
+- **Competitions**: 489 out of 154,224
+- **Notebooks**: 554 out of 150,354
 - **Discussion**: 360 out of 167,254
