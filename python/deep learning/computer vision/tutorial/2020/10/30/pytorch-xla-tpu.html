@@ -9,8 +9,8 @@
 <meta property="og:title" content="Training PyTorch Models on TPU" />
 <meta name="author" content="Nikita Kozodoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Tutorial on using PyTorch/XLA 1.6 with TPUs" />
-<meta property="og:description" content="Tutorial on using PyTorch/XLA 1.6 with TPUs" />
+<meta name="description" content="Tutorial on using PyTorch/XLA 1.7 with TPUs" />
+<meta property="og:description" content="Tutorial on using PyTorch/XLA 1.7 with TPUs" />
 <link rel="canonical" href="https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html" />
 <meta property="og:url" content="https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-10-30T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Tutorial on using PyTorch/XLA 1.6 with TPUs","@type":"BlogPosting","headline":"Training PyTorch Models on TPU","dateModified":"2020-10-30T00:00:00-05:00","datePublished":"2020-10-30T00:00:00-05:00","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html"},"image":"https://kozodoi.me/images/posts/tpu.png","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Tutorial on using PyTorch/XLA 1.7 with TPUs","@type":"BlogPosting","headline":"Training PyTorch Models on TPU","dateModified":"2020-10-30T00:00:00-05:00","datePublished":"2020-10-30T00:00:00-05:00","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html"},"image":"https://kozodoi.me/images/posts/tpu.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -32,8 +32,8 @@
 <meta property="og:title" content="Training PyTorch Models on TPU" />
 <meta name="author" content="Nikita Kozodoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Tutorial on using PyTorch/XLA 1.6 with TPUs" />
-<meta property="og:description" content="Tutorial on using PyTorch/XLA 1.6 with TPUs" />
+<meta name="description" content="Tutorial on using PyTorch/XLA 1.7 with TPUs" />
+<meta property="og:description" content="Tutorial on using PyTorch/XLA 1.7 with TPUs" />
 <link rel="canonical" href="https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html" />
 <meta property="og:url" content="https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
@@ -41,7 +41,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-10-30T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Tutorial on using PyTorch/XLA 1.6 with TPUs","@type":"BlogPosting","headline":"Training PyTorch Models on TPU","dateModified":"2020-10-30T00:00:00-05:00","datePublished":"2020-10-30T00:00:00-05:00","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html"},"image":"https://kozodoi.me/images/posts/tpu.png","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Tutorial on using PyTorch/XLA 1.7 with TPUs","@type":"BlogPosting","headline":"Training PyTorch Models on TPU","dateModified":"2020-10-30T00:00:00-05:00","datePublished":"2020-10-30T00:00:00-05:00","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html"},"image":"https://kozodoi.me/images/posts/tpu.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -103,7 +103,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Training PyTorch Models on TPU</h1><p class="page-description">Tutorial on using PyTorch/XLA 1.6 with TPUs</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-10-30T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Training PyTorch Models on TPU</h1><p class="page-description">Tutorial on using PyTorch/XLA 1.7 with TPUs</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-10-30T00:00:00-05:00" itemprop="datePublished">
         Oct 30, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -179,7 +179,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated: 15.01.2021</em></p>
+<p><em>Last updated: 16.01.2021</em></p>
 
 </div>
 </div>
@@ -268,7 +268,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After specifying the parameters, we need to set up TPU by installing and importing <code>torch_xla</code> using the snippet below. There are two variants here: install the last stable XLA version (1.6 as of 15.01.2021) or install the so-called 'nightly' version that includes the latest updates but can be unstable. I recommend going for a stable version.</p>
+<p>After specifying the parameters, we need to set up TPU by installing and importing <code>torch_xla</code> using the snippet below. There are two variants here: install the last stable XLA version (1.7 as of 15.01.2021) or install the so-called 'nightly' version that includes the latest updates but can be unstable. I recommend going for a stable version.</p>
 <p>We also specify <code>XLA_USE_BF16</code> variable (default tensor precision format) and <code>XLA_TENSOR_ALLOCATOR_MAXSIZE</code> variable (maximum tensor allocator size). When working in Google Colab we can also run <code>assert os.environ['COLAB_TPU_ADDR']</code> to check that Colab is correctly connected to a TPU instance.</p>
 <p>Don't be discouraged if you see error messages during the installation of <code>fastai</code>, <code>kornia</code> and <code>allennlp</code>. The installation would still proceed to the required versions of <code>torch</code> and <code>torchvision</code> that are needed to work with TPUs.</p>
 
@@ -288,7 +288,7 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
 
 <span class="c1"># XLA version</span>
-<span class="n">xla_version</span> <span class="o">=</span> <span class="s1">'nightly'</span> <span class="c1"># 'nightly' or '1.6'</span>
+<span class="n">xla_version</span> <span class="o">=</span> <span class="s1">'nightly'</span> <span class="c1"># 'nightly' or '1.7'</span>
 
 <span class="c1"># installation </span>
 <span class="o">!</span>curl https://raw.githubusercontent.com/pytorch/xla/master/contrib/scripts/env-setup.py -o pytorch-xla-env-setup.py
