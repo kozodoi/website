@@ -29,7 +29,7 @@ layout: default
   {% assign sticky_posts = ''|split:'' %}
   {% assign non_sticky_posts = '' | split:'' %}
 
- 
+
   {% for gp in grouped_posts %}
     {%- if gp.name == "" -%}
       {% assign non_sticky_posts = gp.items | sort: "date" | reverse %}
@@ -78,5 +78,9 @@ layout: default
     {%- endif %}
 
   {%- endif -%}
+
+  <hr>
+
+  {% twitter https://twitter.com/n_kozodoi width=auto chrome=nofooter limit=3 %}
 
 </div>
