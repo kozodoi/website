@@ -10,7 +10,7 @@ This page provides a selected list of my publications in academic journals and c
 
 ### 2020
 
-- Kozodoi, N., Lessman, S. (2020)
+- Kozodoi, N., Lessmann, S. (2020).
 **Multi-objective Particle Swarm Optimization for Feature Selection in Credit Scoring**
 In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham. [[published version]](https://link.springer.com/chapter/10.1007/978-3-030-66981-2_6)
 
