@@ -6,14 +6,14 @@ permalink: /about/
 
 Hi, I am Nikita!
 
-- 📚 PhD candidate at [Humbold University of Berlin](https://www.wiwi.hu-berlin.de/en)
-- 💻 Data science research associate at [Monedo](https://www.monedo.com) 
+- 📚 PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en)
+- 💻 Data science research associate at [Monedo](https://www.monedo.com)
 - 🤖 Passionate about machine learning & data science
 - 🏦 Working on machine learning applications in credit risk analytics
 - 🏅 Enjoy participating at data science competitions and hackathons
 - 🧩 Love football, scooters and piano
 
-Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my profile page](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the university's webiste.
+Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my profile page](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the university's website.
 
 ---
 
