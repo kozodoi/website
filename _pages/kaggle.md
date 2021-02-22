@@ -4,16 +4,23 @@ title: Kaggle
 permalink: /kaggle/
 ---
 
-I enjoy taking part at machine learning competitions on Kaggle. This page summarizes my achievements. Check out my [Kaggle profile](https://www.kaggle.com/kozodoi) to see more.
+I enjoy taking part at machine learning competitions on Kaggle. This page summarizes my achievements and provides links to GitHub repos, blog posts and reports detailing my solutions. Check out my [Kaggle profile](https://www.kaggle.com/kozodoi) to see more.
+
+### Highest user rank
+- **Competitions**: 307 out of 157,015
+- **Notebooks**: 531 out of 158,819
+- **Discussion**: 266 out of 184,308
 
 ---
 
 ### Computer vision
 
-- 🥇 **SIIM-ISIC Melanoma Classification**: top-1% *(3314 teams)* [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blogpost]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
+- 🥇 **Cassava Leaf Disease Classification**: top-1% *(3900 teams)* [[Summary]](https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751) [[GitHub]](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)
+- 🥇 **SIIM-ISIC Melanoma Classification**: top-1% *(3314 teams)* [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
 - 🥉 **Prostate Cancer Grade Assessment Challenge**: top-6% *(1010 teams)*
-- 🥉 **APTOS 2019 Blindness Detection**: top-9% *(2931 teams)* [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blogpost]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
-- 🥉 **RSNA STR Pulmonary Embolism Detection**: top-13% *(784 teams)* [[Blogpost]](https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html)
+- 🥉 **APTOS 2019 Blindness Detection**: top-9% *(2931 teams)* [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
+- 🥉 **RSNA STR Pulmonary Embolism Detection**: top-13% *(784 teams)* [[Blog
+post]](https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html)
 
 
 ### Tabular data
@@ -30,10 +37,3 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 
 - 🥈 **PLAsTiCC Astronomical Classification**: top-5% *(1094 teams)* [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
 - 🥉 **Riiid! Answer Correctness Prediction**: top-7% *(3395 teams)*
-
----
-
-### Highest user rank
-- **Competitions**: 489 out of 154,224
-- **Notebooks**: 554 out of 150,354
-- **Discussion**: 360 out of 167,254
