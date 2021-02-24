@@ -8,8 +8,8 @@ Hi, I am Nikita!
 
 - 📚 PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en)
 - 💻 Data science research associate at [Monedo](https://www.monedo.com)
-- 🤖 Passionate about machine learning & data science
-- 🏦 Working on machine learning applications in credit risk analytics
+- 🤖 Passionate about machine learning, deep learning and data science
+- 🏦 Working on ML applications in credit risk analytics
 - 🏅 Enjoy participating at data science competitions and hackathons
 - 🧩 Love football, scooters and piano
 
