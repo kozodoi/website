@@ -117,9 +117,6 @@
   
 
   
-  
-
-  
 
   
   
@@ -127,7 +124,12 @@
   
 
   
-      ,"page10": {
+  
+
+  
+
+  
+      ,"page11": {
           "title": "Teaching",
           "content": "I am involved in teaching DS/ML and supervising MSc dissertations at the Chair of Information Systems at the Humboldt University of Berlin. This page summarizes my teaching activities. . . Courses . Business Analytics and Data Science (MSc) . preparing Python exercises and solutions | answering students’ questions in Q&amp;A sessions and discussion forum | . . Student theses . Active Learning in Credit Scoring | A Multi-Objective Particle Swarm Optimization Approach for Feature Selection in Credit Scoring | Multi-Objective Feature Selection in Credit Scoring | .",
           "url": "https://kozodoi.me/teaching/",
@@ -147,7 +149,7 @@
   
 
   
-      ,"page14": {
+      ,"page15": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://kozodoi.me/robots.txt",
