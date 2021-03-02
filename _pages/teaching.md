@@ -4,15 +4,15 @@ title: Teaching
 permalink: /teaching/
 ---
 
-I am involved in teaching DS/ML and supervising MSc dissertations at the [Chair of Information Systems](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the Humboldt University of Berlin. This page summarizes my teaching activities.
+I am involved in teaching DS/ML-related courses and supervising M.Sc. dissertations at the [Chair of Information Systems](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the Humboldt University of Berlin. This page summarizes my experience.
 
 ---
 
 # Courses
 
-## Business Analytics and Data Science (MSc)
+## Business Analytics and Data Science (M.Sc.)
 
-- preparing Python exercises and solutions
+- preparing Python notebooks with ML exercises and solutions
 - answering students' questions in Q&A sessions and discussion forum
 
 ---
