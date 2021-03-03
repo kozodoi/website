@@ -39,6 +39,7 @@ Decision Support Systems, 120, 106-117.
 In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.
 [[PDF on ResearchGate]](https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications) [[published version]](https://www.researchgate.net/deref/https%3A%2F%2Fdoi.org%2F10.1007%2F978-3-030-18500-8_9)
 
+---
 
 ### Citations
 
