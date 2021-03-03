@@ -8,10 +8,17 @@ This page provides a selected list of my publications in academic journals and c
 
 ---
 
+### 2021
+
+- Kozodoi, N., Jacob, J., & Lessmann, S. (2021).
+**Fairness in Credit Scoring: Assessment, Implementation and Profit Implications.**
+arXiv preprint arXiv:2103.01907. [[PDF on arXiv]](https://arxiv.org/pdf/2103.01907.pdf)
+
+
 ### 2020
 
 - Kozodoi, N., Lessmann, S. (2020).
-**Multi-objective Particle Swarm Optimization for Feature Selection in Credit Scoring**
+**Multi-objective Particle Swarm Optimization for Feature Selection in Credit Scoring.**
 In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham. [[published version]](https://link.springer.com/chapter/10.1007/978-3-030-66981-2_6)
 
 - Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., & Papakonstantinou, K. (2020).
