@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-19T00:00:00-06:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"datePublished":"2021-02-19T00:00:00-06:00","headline":"Gradient Accumulation in PyTorch","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html"},"image":"https://kozodoi.me/images/posts/accumulation.png","description":"Increasing batch size to overcome memory constraints","@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html","dateModified":"2021-02-19T00:00:00-06:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Increasing batch size to overcome memory constraints","dateModified":"2021-02-19T00:00:00-06:00","datePublished":"2021-02-19T00:00:00-06:00","headline":"Gradient Accumulation in PyTorch","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html"},"image":"https://kozodoi.me/images/posts/accumulation.png","url":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -41,7 +41,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-19T00:00:00-06:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"datePublished":"2021-02-19T00:00:00-06:00","headline":"Gradient Accumulation in PyTorch","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html"},"image":"https://kozodoi.me/images/posts/accumulation.png","description":"Increasing batch size to overcome memory constraints","@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html","dateModified":"2021-02-19T00:00:00-06:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Increasing batch size to overcome memory constraints","dateModified":"2021-02-19T00:00:00-06:00","datePublished":"2021-02-19T00:00:00-06:00","headline":"Gradient Accumulation in PyTorch","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html"},"image":"https://kozodoi.me/images/posts/accumulation.png","url":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/02/19/gradient-accumulation.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      4 min read
     
 </span></p>
 
@@ -177,7 +177,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated: 03.02.2021</em></p>
+<p><em>Last updated: 07.02.2021</em></p>
 
 </div>
 </div>
@@ -202,7 +202,7 @@ window.onload = wrap_img;
 </h1>
 <p>When training a neural network, we usually divide our data in mini-batches and go through them one by one. The network predicts batch labels, which are used to compute the loss with respect to the actual targets. Next, we perform backward pass to compute gradients and update model weights in the direction of those gradients.</p>
 <p>Gradient accumlation modifies the last step of the training process. Instead of updating the network weights on every batch, we can save graident values, proceed to the next batch and add up the new gradients. The weight update is then done only after several batches have been processed by the model.</p>
-<p>Gradient accumulation helps to imitate a larger batch size. Imagine you want to use 32 images in one batch, but your hardware crashes once you go beyond 8. In that case, you can use batches of 8 images and update weights once every 4 batches. If you accumulate graidients from every batch in between, the results will be identical and you will be able to perform training on a less expensive machine.</p>
+<p>Gradient accumulation helps to imitate a larger batch size. Imagine you want to use 32 images in one batch, but your hardware crashes once you go beyond 8. In that case, you can use batches of 8 images and update weights once every 4 batches. If you accumulate graidients from every batch in between, the results will be (almost) the same and you will be able to perform training on a less expensive machine!</p>
 
 </div>
 </div>
@@ -259,9 +259,9 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's implement gradient accumulation! There are three things we need to do:</p>
 <ol>
-<li>Specify the <code>accum_iter</code> parameter. This should be an integer indicating once in how many batches we would like to update the network weights.</li>
-<li>Condition the weight update on the index of the running batch. This requires using <code>enumerate(data_loader)</code> to store the batch index.</li>
-<li>Divide the running loss by <code>acum_iter</code>. This normalizes the loss to reduce the contribution of each mini-batch we are actually processing.</li>
+<li>Specify the <code>accum_iter</code> parameter. This is just an integer value indicating once in how many batches we would like to update the network weights.</li>
+<li>Condition the weight update on the index of the running batch. This requires using <code>enumerate(data_loader)</code> to store the batch index when looping through the data.</li>
+<li>Divide the running loss by <code>acum_iter</code>. This normalizes the loss to reduce the contribution of each mini-batch we are actually processing. Depending on the way you compute the loss, you might not need this step: if you average loss within each batch, the division is already correct and there is no need for extra normalization.</li>
 </ol>
 
 </div>
@@ -313,7 +313,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It is realy that simple! The gradients are computed when we call <code>loss.backward()</code> and are stored by PyTorch until we call <code>optimizer.zero_grad()</code>. Therefore, we need to move the weight update performed in <code>optimizer.step()</code> and the gradient reset under the <code>if</code> condition that check the batch index. It is important to also update weights on the last batch when <code>batch_idx + 1 == len(data_loader)</code> - this makes sure that data from the last batches are not discarded and used for optimizaing the network.</p>
+<p>It is realy that simple! The gradients are computed when we call <code>loss.backward()</code> and are stored by PyTorch until we call <code>optimizer.zero_grad()</code>. Therefore, we just need to move the weight update performed in <code>optimizer.step()</code> and the gradient reset under the <code>if</code> condition that check the batch index. It is important to also update weights on the last batch when <code>batch_idx + 1 == len(data_loader)</code> - this makes sure that data from the last batches are not discarded and used for optimizaing the network.</p>
+<p>Please also note that some network architectures have batch-specific operations. For instance, batch normalization is performed on a batch level and therefore may yield slightly different results when using the same effective batch size with and without graident accumulation. This means that you should not expect to see a 100% match between the results.</p>
+<p>In my experience, the potential performance gains from increasing the number of cases used to update the network weights are largest when one is forced to use very small batches (e.g., 8 or 10). Therefore, I always recommend using gradient accumulation when working with large architectures that consume a lof of GPU memory.</p>
 
 </div>
 </div>
