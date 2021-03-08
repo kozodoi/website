@@ -193,7 +193,7 @@ window.onload = wrap_img;
 <h1 id="2.-Preparations">
 <a class="anchor" href="#2.-Preparations" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Preparations<a class="anchor-link" href="#2.-Preparations"> </a>
 </h1>
-<p>To demonstrate how to compute image statistics, we will use data from <a href="https://www.kaggle.com/c/cassava-leaf-disease-classification">Cassava Leaf Disease Classification</a> Kaggle competition with about 21,000 plant images. First, we will import all the usuall libraries and specify the relevant parameters.</p>
+<p>To demonstrate how to compute image statistics, we will use data from <a href="https://www.kaggle.com/c/cassava-leaf-disease-classification">Cassava Leaf Disease Classification</a> Kaggle competition with about 21,000 plant images. Feel free to scroll to Section 3 if you want to jump directly to the calculations. First, we will import all the usuall libraries and specify the relevant parameters.</p>
 
 </div>
 </div>
@@ -217,8 +217,6 @@ window.onload = wrap_img;
 
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torchvision</span>
-
-<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
 
 <span class="kn">import</span> <span class="nn">albumentations</span> <span class="k">as</span> <span class="nn">A</span>
@@ -232,40 +230,15 @@ window.onload = wrap_img;
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
-</pre></div>
 
-    </div>
-</div>
-</div>
-
-    </details>
-</div>
-    
-
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
 <span class="c1">####### PARAMS</span>
 
-<span class="c1"># general</span>
 <span class="n">device</span>      <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span> 
 <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">4</span>
-
-<span class="c1"># image processing </span>
-<span class="n">image_size</span> <span class="o">=</span> <span class="mi">512</span> 
-<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
-
-<span class="c1"># paths</span>
-<span class="n">data_path</span> <span class="o">=</span> <span class="s1">'/kaggle/input/cassava-leaf-disease-classification/'</span>
+<span class="n">image_size</span>  <span class="o">=</span> <span class="mi">512</span> 
+<span class="n">batch_size</span>  <span class="o">=</span> <span class="mi">8</span>
+<span class="n">data_path</span>   <span class="o">=</span> <span class="s1">'/kaggle/input/cassava-leaf-disease-classification/'</span>
 </pre></div>
 
     </div>
@@ -604,7 +577,7 @@ window.onload = wrap_img;
 </li>
 <li>to get the standard deviation, we use the following equation: <code>total_std = sqrt(psumq / count - total_mean ** 2)</code>. Why is that so? Well, because this is how the variance equation can be simplified to make use of the sum of squares. If you are not sure about this, feel free to check out <a href="https://www.thoughtco.com/sum-of-squares-formula-shortcut-3126266">this link</a> for some details.</li>
 </ul>
-<p><img src="https://www.thoughtco.com/thmb/ItknVpHMOe8H_EI_2Dr16THH9i8=/768x0/filters:no_upscale(" alt="variance equation">:max_bytes(150000):strip_icc()/sumsquares-56e618233df78c5ba0574656.jpg)</p>
+<p><img src="/images/copied_from_nb/images/fig_variance.jpg" alt="variance equation"></p>
 
 </div>
 </div>
