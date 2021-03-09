@@ -20,5 +20,5 @@ I am involved in teaching DS/ML-related courses and supervising M.Sc. dissertati
 # Student theses
 
 - Active Learning in Credit Scoring
-- A Multi-Objective Particle Swarm Optimization Approach for Feature Selection in Credit Scoring
+- A Multi-Objective Particle Swarm Optimization Approach for Feature Selection
 - Multi-Objective Feature Selection in Credit Scoring
