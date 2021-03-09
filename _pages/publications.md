@@ -24,7 +24,7 @@ In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cha
 - Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., & Papakonstantinou, K. (2020).
 **Shallow Self-Learning for Reject Inference in Credit Scoring.**
 In ECML PKDD 2019 Proceedings (pp. 516-532). Springer, Cham.
-[[PDF on ResearchGate]](https://www.researchgate.net/publication/335833057_Shallow_Self-Learning_for_Reject_Inference_in_Credit_Scoring) [[published version]](https://link.springer.com/chapter/10.1007/978-3-030-46133-1_31#citeas)
+[[PDF on arXiv]](https://arxiv.org/pdf/1909.06108.pdf) [[published version]](https://link.springer.com/chapter/10.1007/978-3-030-46133-1_31#citeas)
 
 
 ### 2019
