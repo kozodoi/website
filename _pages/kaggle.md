@@ -9,7 +9,7 @@ I enjoy taking part at machine learning competitions on Kaggle. This page summar
 ### Highest user rank
 - **Competitions**: 307 out of 157,015
 - **Notebooks**: 526 out of 158,941
-- **Discussion**: 256 out of 187,159
+- **Discussion**: 255 out of 187,375
 
 ---
 
