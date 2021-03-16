@@ -1,14 +1,29 @@
 ---
-layout: categories
-permalink: /categories/
-title: Tags
+layout: default
+permalink: /search/
+title: Search
 search_exclude: true
 ---
 
-Browse blogposts by tags. Scroll down to see post links for each tag.
+<h2>Search</h2>
 
+<!-- adapted from https://github.com/pmarsceill/just-the-docs -->
+<script type="text/javascript" src="{{ '/assets/js/search.js' | relative_url }}"></script>
+<script type="text/javascript" src="{{ '/assets/js/vendor/lunr.min.js' | relative_url }}"></script>
+
+<div class="search">
+    <div class="search-input-wrap">
+    <input type="text" class="js-search-input search-input input-block form-control" tabindex="0" placeholder="Type here to search my webiste" aria-label="Type here to search my webiste" autocomplete="off">
+    </div>
+    <br>
+    <div class="js-search-results search-results-wrap"></div>
+</div>
+
+<hr>
 {% if site.categories.size > 0 %}
 <h2>Tags</h2>
+
+  You can also browse blog posts by the tags below:
 
   {% assign categories = "" | split:"" %}
   {% for c in site.categories %}
@@ -23,6 +38,7 @@ Browse blogposts by tags. Scroll down to see post links for each tag.
   </ul>
 
   <hr>
+  <h2>Posts</h2>
 
   {% for category in categories %}
       <h3 id ="{{ category }}"><i class="fas fa-tags category-tags-icon"></i></i> {{ category }}</h3>
