@@ -97,7 +97,7 @@
   
       ,"page3": {
           "title": "Kaggle",
-          "content": "I enjoy taking part at machine learning competitions on Kaggle. This page summarizes my achievements and provides links to GitHub repos, blog posts and reports detailing my solutions. Check out my Kaggle profile to see more. . Highest user rank . Competitions: 307 out of 157,015 | Notebooks: 526 out of 158,941 | Discussion: 255 out of 187,375 | . . Computer vision . 🥇 Cassava Leaf Disease Classification: top-1% (3900 teams) [Summary] [GitHub] | 🥇 SIIM-ISIC Melanoma Classification: top-1% (3314 teams) [Summary] [Blog post] | 🥉 Prostate Cancer Grade Assessment Challenge: top-6% (1010 teams) | 🥉 APTOS 2019 Blindness Detection: top-9% (2931 teams) [GitHub] [Blog post] | 🥉 RSNA STR Pulmonary Embolism Detection: top-13% (784 teams) [Blog post] | . Tabular data . 🥈 Google Analytics Customer Revenue Prediction: top-2% (3611 teams) [GitHub] | 🥈 IEEE-CIS Fraud Detection: top-3% (6381 teams) [GitHub] | 🥈 Home Credit Default Risk: top-4% (7190 teams) [GitHub] | 🥉 COVID-19 mRNA Vaccine Degradation Prediction: top-6% (636 teams) | 🥉 Instant Gratification: top-6% (1832 teams) | 🥉 Mechanisms of Action Prediction: top-10% (4373 teams) | . Time series . 🥈 PLAsTiCC Astronomical Classification: top-5% (1094 teams) [GitHub] | 🥉 Riiid! Answer Correctness Prediction: top-7% (3395 teams) | .",
+          "content": "I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts and writeups of my solutions and GitHub repos with the code. Check out my Kaggle profile to see more. . Highest user rank . Competitions Master: 307 out of 157,015 | Notebooks Expert: 526 out of 158,941 | Discussion Expert: 255 out of 187,375 | . . Computer vision . 🥇 Cassava Leaf Disease Classification: top-1% [Summary] [GitHub] | 🥇 SIIM-ISIC Melanoma Classification: top-1% [Summary] [Blog post] | 🥉 Prostate Cancer Grade Assessment Challenge: top-6% | 🥉 APTOS 2019 Blindness Detection: top-9% [GitHub] [Blog post] | 🥉 RSNA STR Pulmonary Embolism Detection: top-13% [Blog post] | . Tabular data . 🥈 Google Analytics Customer Revenue Prediction: top-2% [GitHub] | 🥈 IEEE-CIS Fraud Detection: top-3% [GitHub] | 🥈 Home Credit Default Risk: top-4% [GitHub] | 🥉 COVID-19 mRNA Vaccine Degradation Prediction: top-6% | 🥉 Instant Gratification: top-6% | 🥉 Mechanisms of Action Prediction: top-10% | . Time series . 🥈 PLAsTiCC Astronomical Classification: top-5% [GitHub] | 🥉 Riiid! Answer Correctness Prediction: top-7% | .",
           "url": "https://kozodoi.me/kaggle/",
           "relUrl": "/kaggle/",
           "date": ""
@@ -131,14 +131,10 @@
   
 
   
-
-  
   
 
   
-
-  
-      ,"page10": {
+      ,"page8": {
           "title": "Teaching",
           "content": "I am involved in teaching DS/ML-related courses and supervising M.Sc. dissertations at the Chair of Information Systems at the Humboldt University of Berlin. This page summarizes my experience. . . Courses . Business Analytics and Data Science (M.Sc.) . preparing Python notebooks with ML exercises and solutions | answering students’ questions in Q&amp;A sessions and discussion forum | . . Student theses . Active Learning in Credit Scoring | A Multi-Objective Particle Swarm Optimization Approach for Feature Selection | Multi-Objective Feature Selection in Credit Scoring | .",
           "url": "https://kozodoi.me/teaching/",
@@ -149,7 +145,6 @@
   
 
   
-  
 
   
   
@@ -158,7 +153,10 @@
   
 
   
-      ,"page14": {
+  
+
+  
+      ,"page13": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://kozodoi.me/robots.txt",
