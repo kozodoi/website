@@ -8,16 +8,16 @@ I am involved in teaching DS/ML-related courses and supervising M.Sc. dissertati
 
 ---
 
-# Courses
+## Courses
 
-## Business Analytics and Data Science (M.Sc.)
+### Business Analytics and Data Science (M.Sc.)
 
 - preparing Python notebooks with ML exercises and solutions
 - answering students' questions in Q&A sessions and discussion forum
 
 ---
 
-# Student theses
+## Student theses
 
 - Active Learning in Credit Scoring
 - A Multi-Objective Particle Swarm Optimization Approach for Feature Selection
