@@ -484,4 +484,46 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 .highlight .gd { color: #ff5555; }
 
+.site-header { border-color: #333333; }
+
+.site-header a:hover { color: rgba(255, 255, 255, 0.69) !important; text-decoration: none !important; }
+
+.site-footer { border-color: #333333; }
+
+html, body, input, textarea, select, button { color: rgba(255, 255, 255, 0.87) !important; background-color: #121212 !important; }
+
+a { color: #4bbaff !important; }
+
+a:hover { color: rgba(255, 255, 255, 0.87) !important; }
+
+.site-title, .site-title:visited, .site-nav, .page-link { color: rgba(255, 255, 255, 0.87) !important; }
+
+.site-nav { background-color: #121212; border-color: #333333; }
+
+* { scrollbar-color: #121212 #333333; }
+
+pre, code { border-color: #333333; background-color: #191919; }
+
+.page-description { color: rgba(255, 255, 255, 0.69); }
+
+.post-meta { color: rgba(255, 255, 255, 0.38); }
+
+.post-content p, .post-content li { color: rgba(255, 255, 255, 0.69); }
+
+.btn { background-color: #191919 !important; color: rgba(255, 255, 255, 0.87) !important; border-color: #333333 !important; }
+
+.btn:hover { background-color: #121212 !important; }
+
+table th { background-color: #191919; border-color: #333333; color: rgba(255, 255, 255, 0.87); }
+
+table td { background-color: #121212; border-color: #333333; color: rgba(255, 255, 255, 0.69); }
+
+.flash { color: #121212 !important; filter: brightness(80%); }
+
+canvas { filter: invert(100%); }
+
+.post-list > li > div { box-shadow: none !important; background-color: #191919; border-color: #333333; }
+
+li .post-meta-description { color: rgba(255, 255, 255, 0.69) !important; }
+
 /*# sourceMappingURL=style.css.map */
