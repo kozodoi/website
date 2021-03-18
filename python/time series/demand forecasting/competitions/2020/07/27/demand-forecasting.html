@@ -199,15 +199,9 @@ window.onload = wrap_img;
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><a href="https://www.data-mining-cup.com">Data Mining Cup</a> is an annual international machine learning competition. The 2020 edition was devoted to demand forecasting. Together with <a href="https://www.linkedin.com/in/elizaveta-zinovyeva-4155a184/">Elizaveta Zinovyeva</a>, we represented the <a href="https://www.hu-berlin.de/en?set_language=en">Humboldt University of Berlin</a> and finished in the top-15 of the leaderboard.</p>
 <p>Demand forecasting is an important task that helps to optimize inventory planning. The optimized stocks can reduce retailer's costs and increase customer satisfaction due to faster delivery time. The competition task was to predict demand for a set of items using past purchase data.</p>
-<p>This blogpost provides a detailed walkthrough covering the crucial steps of our solution:</p>
+<p>This blog post provides a detailed walkthrough covering the crucial steps of our solution:</p>
 <ul>
 <li>data preparation and feature engineering</li>
 <li>aggregation of transactional data into the daily format</li>
@@ -216,7 +210,7 @@ window.onload = wrap_img;
 <li>hyper-parameter tuning with <code>hyperopt</code>
 </li>
 </ul>
-<p>Feel free to jump directly to the parts that are interesting to you! The complete notebooks reproducing our solution are available <a href="https://github.com/kozodoi/DMC_2020">on Github</a>.</p>
+<p>Feel free to jump directly to the parts that are interesting to you! The notebooks reproducing our solution are available <a href="https://github.com/kozodoi/DMC_2020">on Github</a>.</p>
 
 </div>
 </div>
@@ -227,21 +221,9 @@ window.onload = wrap_img;
 <h1 id="2.-Data-preparation">
 <a class="anchor" href="#2.-Data-preparation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Data preparation<a class="anchor-link" href="#2.-Data-preparation"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-overview">
 <a class="anchor" href="#Data-overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data overview<a class="anchor-link" href="#Data-overview"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>The competition data consists of three data sets:</p>
 <ul>
 <li>
@@ -642,12 +624,6 @@ window.onload = wrap_img;
 <h2 id="Preprocessing">
 <a class="anchor" href="#Preprocessing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preprocessing<a class="anchor-link" href="#Preprocessing"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's do some preprocessing! First, we merge <code>items</code> and <code>infos</code> that contain item-level data:</p>
 
 </div>
@@ -1006,21 +982,9 @@ Saved as ../data/prepared/items_v2.csv
 <h1 id="3.-Aggregation-and-feature-engineering">
 <a class="anchor" href="#3.-Aggregation-and-feature-engineering" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Aggregation and feature engineering<a class="anchor-link" href="#3.-Aggregation-and-feature-engineering"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-aggregation">
 <a class="anchor" href="#Data-aggregation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data aggregation<a class="anchor-link" href="#Data-aggregation"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's work with <code>orders</code>, which is formatted as a list of transactions with timestamps. We need to aggregate this data in order to use it for the modeling.</p>
 <p>Since the task is a 14-day demand forecasting, a simple way forward would be to aggregate transactions on a two-week basis. However, this could lead to losing some more granular information. Instead, we aggregate transactions by day:</p>
 
@@ -1129,12 +1093,6 @@ Saved as ../data/prepared/items_v2.csv
 <h2 id="Adding-missing-item-day-combinations">
 <a class="anchor" href="#Adding-missing-item-day-combinations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Adding missing item-day combinations<a class="anchor-link" href="#Adding-missing-item-day-combinations"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>The aggregated data only contains entries for day-item pairs for which there is at least one transaction. This results in missing information:</p>
 <ul>
 <li>most items are only sold on a few days; no data on days with no orders is recorded</li>
@@ -1204,12 +1162,6 @@ Saved as ../data/prepared/items_v2.csv
 <h2 id="Labeling-promotions">
 <a class="anchor" href="#Labeling-promotions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Labeling promotions<a class="anchor-link" href="#Labeling-promotions"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>The documentation says that promotions in the training data are not explicitly marked.</p>
 <p>We need to manually mark promotion days. Ignoring it complicates forecasting because the number of orders in some days explodes without an apparent reason. In such cases, the underlying reason is likely to be a promotion, which should be reflected in a corresponding feature.</p>
 <p>We need to be very careful and conservative about marking promotions. Labeling too many days as promotions based on the number of orders risks introducing data leakage since the number of orders is unknown at the prediction time. Below, I use <code>find_peaks()</code> to isolate peaks in the <code>order</code> time series and encode them as promotions:</p>
@@ -1337,12 +1289,6 @@ Daily p(promotion) per item in test:  0.0141
 <h2 id="Feature-engineering">
 <a class="anchor" href="#Feature-engineering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature engineering<a class="anchor-link" href="#Feature-engineering"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that the data is aggregated, we can construct transaction-based features as well as the targets. For each day, we compute target as the total number of orders in the following 14 days. The days preceeding the considered day are used to extract features. For each day, we extract slices of the past [1, 7, ..., 35] days and compute features based on data from that slice.</p>
 <p>For each item, we construct the following features:</p>
 <ul>
@@ -1761,21 +1707,9 @@ Saved as ../data/prepared/df_test_v14.csv
 <h1 id="4.-Modeling">
 <a class="anchor" href="#4.-Modeling" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Modeling<a class="anchor-link" href="#4.-Modeling"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Custom-loss-functions">
 <a class="anchor" href="#Custom-loss-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom loss functions<a class="anchor-link" href="#Custom-loss-functions"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Mahcine learning encompasses a wide range of statically-inspired performance metrics such as MSE, MAE and others. In practice, machine learning models are used by a company that has specific goals. Usually, these goals can not be expressed in terms of such simple metrics. Therefore, it is important to come up with an evaluation metric consistent with the company's objectives to ensure that we judge performance on a criterion that actually matters.</p>
 <p>In the DMC 2020 task, we are given a profit function of a retailer who is doing demand forecasting. The function accounts for asymmetric error costs: underpredicting demand results in lost revenue because the retailer can not sell a product that is not ready to ship, whereas overpredicting demand incurs a fee for storing the excessive amount of product.</p>
 <p>Below, we derive profit according to the task description:</p>
@@ -1908,7 +1842,6 @@ Saved as ../data/prepared/df_test_v14.csv
     <span class="k">return</span> <span class="n">grad</span><span class="p">,</span> <span class="n">hess</span>
 
 
-
 <span class="c1">##### VALIDATION LOSS</span>
 <span class="k">def</span> <span class="nf">asymmetric_mse_eval</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
     
@@ -1967,12 +1900,6 @@ Saved as ../data/prepared/df_test_v14.csv
 <h2 id="Modeling-pipeline">
 <a class="anchor" href="#Modeling-pipeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modeling pipeline<a class="anchor-link" href="#Modeling-pipeline"> </a>
 </h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's start building models! First, we extract the target and flag ID features not used for prediction.</p>
 
 </div>
@@ -2545,12 +2472,6 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
 <h1 id="5.-Hyper-parameter-tuning">
 <a class="anchor" href="#5.-Hyper-parameter-tuning" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Hyper-parameter tuning<a class="anchor-link" href="#5.-Hyper-parameter-tuning"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>One way to improve our solution is to optimize the LightGBM hyper-parameters.</p>
 <p>We tune hyper-parameters using the <code>hyperopt</code> package, which performs optimization using Tree of Parzen Estimators (TPE) as a search algorithm. You don't really need to know how TPE works. As a user, you are only required to supply a parameter grid indicating the range of possible values. Compared to standard tuning methods like grid search or random search, TPE explores the search space more efficiently, allowing you to find a suitable solution faster. If you want to read more, see the package documentation <a href="http://hyperopt.github.io/hyperopt/">here</a>.</p>
 <p>So, let's specify hyper-parameter ranges! We create a dictionary using the following options:</p>
@@ -2914,12 +2835,6 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
 <h1 id="6.-Closing-words">
 <a class="anchor" href="#6.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Closing words<a class="anchor-link" href="#6.-Closing-words"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>This blogpost has finally come to an end. Thank you for reading!</p>
 <p>We looked at important stages of our solution and covered steps such as data aggregation, feature engineering, custom loss functions, target transformation and hyper-parameter tuning.</p>
 <p>Our final solution was a simple ensemble of multiple LightGBM models with different features and training options discussed in this post. If you are interested in the ensembling part, you can find the codes in my <a href="https://github.com/kozodoi/DMC_2020">Github</a>.</p>
