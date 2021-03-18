@@ -17,6 +17,7 @@ I enjoy taking part at ML competitions on Kaggle. This page summarizes my achiev
 
 - 🥇 **Cassava Leaf Disease Classification**: top-1% [[Summary]](https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751) [[GitHub]](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)
 - 🥇 **SIIM-ISIC Melanoma Classification**: top-1% [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
+- 🥈 **RANZCR Catheter and Line Position Challenge**: top-5% [[Summary]](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664) [[GitHub]](https://github.com/kozodoi/Kaggle_RANZCR_Challenge)
 - 🥉 **Prostate Cancer Grade Assessment Challenge**: top-6%
 - 🥉 **APTOS 2019 Blindness Detection**: top-9% [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
 - 🥉 **RSNA STR Pulmonary Embolism Detection**: top-13% [[Blog
