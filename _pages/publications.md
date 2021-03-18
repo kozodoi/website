@@ -6,7 +6,7 @@ permalink: /publications/
 
 This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on [Google Scholar](https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ) or [ResearchGate](http://researchgate.net/profile/Nikita_Kozodoi) to see all of my latest work.
 
----
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ### 2021
 
@@ -39,7 +39,7 @@ Decision Support Systems, 120, 106-117.
 In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.
 [[PDF on ResearchGate]](https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications) [[published version]](https://www.researchgate.net/deref/https%3A%2F%2Fdoi.org%2F10.1007%2F978-3-030-18500-8_9)
 
----
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ### Citations
 

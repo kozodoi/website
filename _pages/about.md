@@ -15,15 +15,9 @@ Hi, I am Nikita!
 
 Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my profile page](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc) at the university's website.
 
----
-
 ![photo](../images/photo.jpg)
 
----
-
 This website hosts my blog, where I share machine learning tutorials, competition solutions and interesting findings from different data science projects. Check out [the feed](https://kozodoi.me) for the latest posts!
-
----
 
 If you want to chat or see more of my work, connect with me on different platforms:
 
@@ -34,8 +28,6 @@ If you want to chat or see more of my work, connect with me on different platfor
   <li><a href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en">Google Scholar</a></li>
   <li><a href="https://www.researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a></li>
 </ul>
-
----
 
 I am also happy to chat on other social media:
 

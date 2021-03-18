@@ -6,14 +6,14 @@ permalink: /packages/
 
 This page provides software packages developed by me. Follow me on [GitHub](https://github.com/kozodoi) to see more.
 
----
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ### `dptools`
 
 - Python package with helper functions for data processing and feature engineering
 - the source code and documentation are available on [GitHub](https://github.com/kozodoi/dptools) and [PyPi](https://pypi.org/project/dptools/)
 
-<br>
+<hr style="height:5pt; visibility:hidden;" />
 
 ### `fairness`
 
