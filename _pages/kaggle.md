@@ -7,9 +7,9 @@ permalink: /kaggle/
 I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts and writeups of my solutions and GitHub repos with the code. Check out my [Kaggle profile](https://www.kaggle.com/kozodoi) to see more.
 
 ### Highest user rank
-- **Competitions**: 307 out of 157,015 (Master)
+- **Competitions**: 293 out of 158,467 (Master)
 - **Notebooks**: 526 out of 158,941 (Expert)
-- **Discussion**: 255 out of 187,375 (Expert)
+- **Discussion**: 225 out of 188,427 (Expert)
 
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
