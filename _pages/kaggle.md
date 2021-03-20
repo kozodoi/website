@@ -9,7 +9,7 @@ I enjoy taking part at ML competitions on Kaggle. This page summarizes my achiev
 ### Highest user rank
 - **Competitions**: 293 out of 158,467 (Master)
 - **Notebooks**: 526 out of 158,941 (Expert)
-- **Discussion**: 225 out of 188,427 (Expert)
+- **Discussion**: 224 out of 188,543 (Expert)
 
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
