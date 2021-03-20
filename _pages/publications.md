@@ -19,7 +19,7 @@ arXiv preprint arXiv:2103.01907. [[PDF on arXiv]](https://arxiv.org/pdf/2103.019
 
 - Kozodoi, N., Lessmann, S. (2020).
 **Multi-objective Particle Swarm Optimization for Feature Selection in Credit Scoring.**
-In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham. [[published version]](https://link.springer.com/chapter/10.1007/978-3-030-66981-2_6)
+In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham.  [[PDF on ResearchGate]](https://www.researchgate.net/publication/348483079_Multi-objective_Particle_Swarm_Optimization_for_Feature_Selection_in_Credit_Scoring) [[published version]](https://link.springer.com/chapter/10.1007/978-3-030-66981-2_6)
 
 - Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., & Papakonstantinou, K. (2020).
 **Shallow Self-Learning for Reject Inference in Credit Scoring.**
