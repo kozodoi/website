@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      17 min read
+      15 min read
     
 </span></p>
 
@@ -179,7 +179,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated: 16.01.2021</em></p>
+<p><em>Last updated: 21.03.2021</em></p>
+<p><img src="/images/copied_from_nb/images/tpu_cover.png" alt="cover"></p>
 
 </div>
 </div>
@@ -190,8 +191,8 @@ window.onload = wrap_img;
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
-<p>Deep learning heavily relies on Graphical Processing Units (GPUs) to enable fast model training. Recently, Google introduced Tensor Processing Units (TPUs) to further advance the speed of computations used in neural networks. Using cloud TPUs is possible on Kaggle and Google Colab. While TPU chips have been optimized for usage with <code>TensorFlow</code> pipelines, <code>PyTorch</code> users can also take advantage of the better compute. This requires using <code>PyTorch/XLA</code> and implementing certain changes into the modeling pipeline.</p>
-<p>Moving a <code>PyTorch</code> pipeline to TPUs includes the following steps:</p>
+<p>Deep learning heavily relies on Graphical Processing Units (GPUs) to enable fast training. Recently, Google introduced Tensor Processing Units (TPUs) to further advance the speed of computations used in neural networks. Using cloud TPUs is possible on Kaggle and Google Colab. While TPU chips have been optimized for <code>TensorFlow</code>, <code>PyTorch</code> users can also take advantage of the better compute. This requires using <code>PyTorch/XLA</code> and implementing certain changes in the modeling pipeline.</p>
+<p>Moving a <code>PyTorch</code> pipeline to TPU includes the following steps:</p>
 <ul>
 <li>installing relevant packages ans setting up TPU</li>
 <li>adjusting syntax of some modeling steps such as initialization, optimizer and verbosity</li>
@@ -209,14 +210,8 @@ window.onload = wrap_img;
 <h1 id="2.-Preparations-and-packages">
 <a class="anchor" href="#2.-Preparations-and-packages" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Preparations and packages<a class="anchor-link" href="#2.-Preparations-and-packages"> </a>
 </h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>When setting up a script, it is important to introduce two TPU-related parameters: batch size and number of workers.</p>
-<p>Google recommends using 128 images per batch for the best performance on the current TPU v3 chips. The v3 chips have 8 cores. This implies that each of the 8 cores can recieve a batch of 128 images at each training step, and the modeling can be performed simultaneously on the separate cores. Next, the model weights would be updated based on the outcomes observed on each core. Therfore, the batch size of 128 actually implies 128 * 8 images in each iteration.</p>
+<p>Google recommends using 128 images per batch for the best performance on the current TPU v3 chips. The v3 chips have 8 cores. This implies that each of the 8 cores can recieve a batch of 128 images at each training step, and the modeling can be performed simultaneously on the separate cores. The model weights are then updated based on the outcomes observed on each core. Therfore, the batch size of 128 actually implies 128 * 8 images in each iteration.</p>
 
 </div>
 </div>
@@ -268,9 +263,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After specifying the parameters, we need to set up TPU by installing and importing <code>torch_xla</code> using the snippet below. There are two variants here: install the last stable XLA version (1.7 as of 15.01.2021) or install the so-called 'nightly' version that includes the latest updates but can be unstable. I recommend going for a stable version.</p>
+<p>After specifying the parameters, we need to set up TPU by installing and importing <code>torch_xla</code> using the snippet below. There are two options: install the last stable XLA version (1.7 as of 30.03.2021) or the so-called 'nightly' version that includes the latest updates but may be unstable. I recommend going for the stable version.</p>
 <p>We also specify <code>XLA_USE_BF16</code> variable (default tensor precision format) and <code>XLA_TENSOR_ALLOCATOR_MAXSIZE</code> variable (maximum tensor allocator size). When working in Google Colab we can also run <code>assert os.environ['COLAB_TPU_ADDR']</code> to check that Colab is correctly connected to a TPU instance.</p>
-<p>Don't be discouraged if you see error messages during the installation of <code>fastai</code>, <code>kornia</code> and <code>allennlp</code>. The installation would still proceed to the required versions of <code>torch</code> and <code>torchvision</code> that are needed to work with TPUs.</p>
+<p>Don't be discouraged if you see error messages during the installation of <code>fastai</code>, <code>kornia</code> and <code>allennlp</code>. The installation would still proceed to the required versions of <code>torch</code> and <code>torchvision</code> needed to work with TPUs. This may take a few minutes.</p>
 
 </div>
 </div>
@@ -278,17 +273,12 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1"># XLA version</span>
-<span class="n">xla_version</span> <span class="o">=</span> <span class="s1">'nightly'</span> <span class="c1"># 'nightly' or '1.7'</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># XLA version</span>
+<span class="n">xla_version</span> <span class="o">=</span> <span class="s1">'1.7'</span> <span class="c1"># 'nightly' or '1.7'</span>
 
 <span class="c1"># installation </span>
 <span class="o">!</span>curl https://raw.githubusercontent.com/pytorch/xla/master/contrib/scripts/env-setup.py -o pytorch-xla-env-setup.py
@@ -314,7 +304,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -327,79 +316,8 @@ window.onload = wrap_img;
 100  5115  100  5115    0     0   9199      0 --:--:-- --:--:-- --:--:--  9183
 Updating... This may take around 2 minutes.
 Updating TPU runtime to pytorch-dev20200515 ...
-Found existing installation: torch 1.5.0
-Uninstalling torch-1.5.0:
-  Successfully uninstalled torch-1.5.0
-Found existing installation: torchvision 0.6.0a0+35d732a
-Uninstalling torchvision-0.6.0a0+35d732a:
-Done updating TPU runtime
-  Successfully uninstalled torchvision-0.6.0a0+35d732a
-Copying gs://tpu-pytorch/wheels/torch-nightly+20200515-cp37-cp37m-linux_x86_64.whl...
 
-Operation completed over 1 objects/91.0 MiB.                                     
-Copying gs://tpu-pytorch/wheels/torch_xla-nightly+20200515-cp37-cp37m-linux_x86_64.whl...
-
-Operation completed over 1 objects/119.5 MiB.                                    
-Copying gs://tpu-pytorch/wheels/torchvision-nightly+20200515-cp37-cp37m-linux_x86_64.whl...
-
-Operation completed over 1 objects/2.3 MiB.                                      
-Processing ./torch-nightly+20200515-cp37-cp37m-linux_x86_64.whl
-Requirement already satisfied: numpy in /opt/conda/lib/python3.7/site-packages (from torch==nightly+20200515) (1.18.5)
-Requirement already satisfied: future in /opt/conda/lib/python3.7/site-packages (from torch==nightly+20200515) (0.18.2)
-<span class="ansi-red-fg">ERROR: fastai 1.0.61 requires torchvision, which is not installed.</span>
-<span class="ansi-red-fg">ERROR: kornia 0.3.1 has requirement torch==1.5.0, but you'll have torch 1.6.0a0+bf2bbd9 which is incompatible.</span>
-<span class="ansi-red-fg">ERROR: allennlp 1.0.0 has requirement torch&lt;1.6.0,&gt;=1.5.0, but you'll have torch 1.6.0a0+bf2bbd9 which is incompatible.</span>
-Installing collected packages: torch
-Successfully installed torch-1.6.0a0+bf2bbd9
-<span class="ansi-yellow-fg">WARNING: You are using pip version 20.1.1; however, version 20.2.3 is available.
-You should consider upgrading via the '/opt/conda/bin/python -m pip install --upgrade pip' command.</span>
-Processing ./torch_xla-nightly+20200515-cp37-cp37m-linux_x86_64.whl
-Installing collected packages: torch-xla
-Successfully installed torch-xla-1.6+2b2085a
-<span class="ansi-yellow-fg">WARNING: You are using pip version 20.1.1; however, version 20.2.3 is available.
-You should consider upgrading via the '/opt/conda/bin/python -m pip install --upgrade pip' command.</span>
-Processing ./torchvision-nightly+20200515-cp37-cp37m-linux_x86_64.whl
-Requirement already satisfied: numpy in /opt/conda/lib/python3.7/site-packages (from torchvision==nightly+20200515) (1.18.5)
-Requirement already satisfied: torch in /opt/conda/lib/python3.7/site-packages (from torchvision==nightly+20200515) (1.6.0a0+bf2bbd9)
-Requirement already satisfied: pillow&gt;=4.1.1 in /opt/conda/lib/python3.7/site-packages (from torchvision==nightly+20200515) (7.2.0)
-Requirement already satisfied: future in /opt/conda/lib/python3.7/site-packages (from torch-&gt;torchvision==nightly+20200515) (0.18.2)
-Installing collected packages: torchvision
-Successfully installed torchvision-0.7.0a0+a6073f0
-<span class="ansi-yellow-fg">WARNING: You are using pip version 20.1.1; however, version 20.2.3 is available.
-You should consider upgrading via the '/opt/conda/bin/python -m pip install --upgrade pip' command.</span>
-
-
-The following additional packages will be installed:
-  libgfortran4 libopenblas-base
-The following NEW packages will be installed:
-  libgfortran4 libomp5 libopenblas-base libopenblas-dev
-0 upgraded, 4 newly installed, 0 to remove and 59 not upgraded.
-Need to get 8550 kB of archives.
-After this operation, 97.6 MB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgfortran4 amd64 7.5.0-3ubuntu1~18.04 [492 kB]
-Get:2 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libopenblas-base amd64 0.2.20+ds-4 [3964 kB]
-Get:3 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libopenblas-dev amd64 0.2.20+ds-4 [3860 kB]
-Get:4 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libomp5 amd64 5.0.1-1 [234 kB]
-Fetched 8550 kB in 0s (19.8 MB/s)
-debconf: delaying package configuration, since apt-utils is not installed
-Selecting previously unselected package libgfortran4:amd64.
-(Reading database ... 107745 files and directories currently installed.)
-Preparing to unpack .../libgfortran4_7.5.0-3ubuntu1~18.04_amd64.deb ...
-Unpacking libgfortran4:amd64 (7.5.0-3ubuntu1~18.04) ...
-Selecting previously unselected package libopenblas-base:amd64.
-Preparing to unpack .../libopenblas-base_0.2.20+ds-4_amd64.deb ...
-Unpacking libopenblas-base:amd64 (0.2.20+ds-4) ...
-Selecting previously unselected package libopenblas-dev:amd64.
-Preparing to unpack .../libopenblas-dev_0.2.20+ds-4_amd64.deb ...
-Unpacking libopenblas-dev:amd64 (0.2.20+ds-4) ...
-Selecting previously unselected package libomp5:amd64.
-Preparing to unpack .../libomp5_5.0.1-1_amd64.deb ...
-Unpacking libomp5:amd64 (5.0.1-1) ...
-Setting up libomp5:amd64 (5.0.1-1) ...
-Setting up libgfortran4:amd64 (7.5.0-3ubuntu1~18.04) ...
-Setting up libopenblas-base:amd64 (0.2.20+ds-4) ...
-update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas/libblas.so.3 to provide /usr/lib/x86_64-linux-gnu/libblas.so.3 (libblas.so.3-x86_64-linux-gnu) in auto mode
-update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas/liblapack.so.3 to provide /usr/lib/x86_64-linux-gnu/liblapack.so.3 (liblapack.so.3-x86_64-linux-gnu) in auto mode
+...
 Setting up libopenblas-dev:amd64 (0.2.20+ds-4) ...
 update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas/libblas.so to provide /usr/lib/x86_64-linux-gnu/libblas.so (libblas.so-x86_64-linux-gnu) in auto mode
 update-alternatives: using /usr/lib/x86_64-linux-gnu/openblas/liblapack.so to provide /usr/lib/x86_64-linux-gnu/liblapack.so (liblapack.so-x86_64-linux-gnu) in auto mode
@@ -417,7 +335,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Next, we can import all other relevant libraries.</p>
+<p>Next, we import all other relevant libraries.</p>
 
 </div>
 </div>
@@ -482,9 +400,9 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <h1 id="3.-Data-preparation">
 <a class="anchor" href="#3.-Data-preparation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Data preparation<a class="anchor-link" href="#3.-Data-preparation"> </a>
 </h1>
-<p>Most of the data processing pipeline does not need to be adjusted when training on TPU instead of GPU. In contrast to GPU-based code, it is only necessary to change the data loaders such that they can distribute image batches over the TPU cores. This is covered in the next section that overviews the modeling stage, since the distributed data samplers need to be wrapped into the modeling function.</p>
-<p>It is also important to note that given a more efficient training, data import usually becomes a computational bottleneck. Hence, it is crucial to optimize data processing as much as possible. For the best performance, I recommnd transforming the data to <code>.tfrec</code> format to imporve the speed of data reading. You can read more about using <code>.tfrec</code> with <code>PyTorch</code> <a href="https://medium.com/analytics-vidhya/how-to-read-tfrecords-files-in-pytorch-72763786743f">here</a>.</p>
-<p>Below, we construct a <code>Dataset</code> class to read JPG images of the corresponding CT scans. Each image has ten binary labels representing the presence of pulmonary embolism and its characteristics.</p>
+<p>Mostly, the data processing pipeline does not need adjustments when training on TPU instead of GPU. It is only necessary to change the data loaders such that they distribute image batches over the TPU cores. This is covered in the next section that overviews the modeling stage, since the data samplers need to be wrapped into the modeling function. Feel free to skip this section if you already know how to process the image data.</p>
+<p>It is important to note that given a more efficient training, data import usually becomes a computational bottleneck. Hence, it is crucial to optimize data reading/processing as much as possible. For the best read performance, I recommnd transforming the data to <code>.tfrec</code> format. You can read more about using <code>.tfrec</code> with <code>PyTorch</code> <a href="https://medium.com/analytics-vidhya/how-to-read-tfrecords-files-in-pytorch-72763786743f">here</a>.</p>
+<p>Below, we construct a standard <code>Dataset</code> class to read JPG images of the CT scans. Each image has ten binary labels indicating the presence of pulmonary embolism and its characteristics.</p>
 
 </div>
 </div>
@@ -500,8 +418,6 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
-
-<span class="c1"># label names</span>
 <span class="n">label_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'pe_present_on_image'</span><span class="p">,</span>
                <span class="s1">'negative_exam_for_pe'</span><span class="p">,</span>
                <span class="s1">'rv_lv_ratio_gte_1'</span><span class="p">,</span>
@@ -512,18 +428,6 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
                <span class="s1">'acute_and_chronic_pe'</span><span class="p">,</span>
                <span class="s1">'central_pe'</span><span class="p">,</span>
                <span class="s1">'indeterminate'</span><span class="p">]</span>
-
-<span class="c1"># label weights</span>
-<span class="n">label_weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.07361963</span><span class="p">,</span>
-                              <span class="mf">0.0736196319</span><span class="p">,</span>
-                              <span class="mf">0.2346625767</span><span class="p">,</span>
-                              <span class="mf">0.0782208589</span><span class="p">,</span>
-                              <span class="mf">0.06257668712</span><span class="p">,</span>
-                              <span class="mf">0.1042944785</span><span class="p">,</span>
-                              <span class="mf">0.06257668712</span><span class="p">,</span>
-                              <span class="mf">0.1042944785</span><span class="p">,</span>
-                              <span class="mf">0.1877300613</span><span class="p">,</span>
-                              <span class="mf">0.09202453988</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -556,11 +460,9 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">load_jpg</span>  <span class="o">=</span> <span class="n">load_jpg</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">labeled</span>   <span class="o">=</span> <span class="n">labeled</span>
-        
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    
 
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         
@@ -587,7 +489,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
             <span class="k">return</span> <span class="n">image</span>
 
 
-<span class="c1">### TRANSFORMATIONS</span>
+<span class="c1">### AUGMENTATIONS</span>
 
 <span class="n">train_trans</span> <span class="o">=</span> <span class="n">test_trans</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">transforms</span><span class="o">.</span><span class="n">ToPILImage</span><span class="p">(),</span>
                                                <span class="n">transforms</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">image_size</span><span class="p">),</span>
@@ -605,7 +507,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We split data into training and validation folds such that images from the same patient - <code>StudyInstanceUID</code> - do not appear in both folds. We will only use a single fold for demonstration purposes.</p>
+<p>We split data into training and validation folds such that images from the same patient - <code>StudyInstanceUID</code> - do not appear in both. We will only use a single fold for demonstration purposes.</p>
 
 </div>
 </div>
@@ -613,14 +515,14 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
+<details class="description">
       <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
         <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
 <span class="c1"># partitioning</span>
 <span class="n">train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span> <span class="o">+</span> <span class="s1">'train.csv'</span><span class="p">)</span>
@@ -657,7 +559,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Before proceeding to modeling, let's take a look at a sample bacth of training images using our processing pipeline.</p>
+<p>Before proceeding to modeling, let's take a look at a sample batch of training images using our processing pipeline.</p>
 
 </div>
 </div>
@@ -721,7 +623,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <a class="anchor" href="#4.-Model-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Model setup<a class="anchor-link" href="#4.-Model-setup"> </a>
 </h1>
 <p>The modeling stage needs to be modified because the modeling is performed simultaneously on multiple TPU cores. This requires changes to model initialization, optimzer and building a master function to distribute data loaders, training and inference over multi-core TPU chips. Let's dive in!</p>
-<p>We start with the model. We are using ResNet-34 with ten output nodes corresponding to each of the ten binary labels. After initializing the model, it is important to wrap it into the MX object that can be sent to TPU. This is done by a simple command <code>mx = xmp.MpModelWrapper(model)</code>.</p>
+<p>We start with the model. We use ResNet-34 with ten output nodes corresponding to each of the binary labels. After initializing the model, we need to wrap it into the MX object that can be sent to TPU. This is done by a simple command <code>mx = xmp.MpModelWrapper(model)</code>.</p>
 
 </div>
 </div>
@@ -729,16 +631,11 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1"># initialization </span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># initialization</span>
 <span class="k">def</span> <span class="nf">init_model</span><span class="p">():</span>
     <span class="n">model</span>    <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet34</span><span class="p">(</span><span class="n">pretrained</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">model</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span> <span class="n">out_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">label_names</span><span class="p">),</span> <span class="n">bias</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -753,7 +650,6 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 </div>
 </div>
 
-    </details>
 </div>
     
 
@@ -768,17 +664,14 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">AverageMeter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-<span class="k">class</span> <span class="nc">AverageMeter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">"""Computes and stores the average and current value"""</span>
+    <span class="sd">'''Computes and stores the average and current value'''</span>
+    
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
@@ -799,7 +692,6 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 </div>
 </div>
 
-    </details>
 </div>
     
 
@@ -812,7 +704,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <li>the optimizer step is done with <code>xm.optimizer_step(optimizer)</code>
 </li>
 <li>the printing statements need to be defined as <code>xm.master_print()</code> instead of <code>print()</code> in order to only print a statement once (otherwise, each TPU core will print it)</li>
-<li>data loader should be defined outside of the function and read as an argument to distribute it over the cores</li>
+<li>dataloader should be defined outside of the function and read as an argument to distribute it over the cores</li>
 <li>running loss can be computed using the defined <code>AverageMeter()</code> object</li>
 </ul>
 <p>In addition, it is important to clear the TPU memory as often as possible to ensure that the modeling does not crash:</p>
@@ -897,7 +789,7 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Similar to the training pass, inference function uses data loader as an argument, updates loss using the <code>AverageMeter()</code> object and clears memory after each batch.</p>
+<p>Similar to the training pass, inference function uses dataloader as an argument, updates loss using the <code>AverageMeter()</code> object and clears memory after each batch.</p>
 
 </div>
 </div>
@@ -1027,7 +919,7 @@ model  = mx.to(device)</code></pre>
     <span class="n">scaled_eta</span> <span class="o">=</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">xm</span><span class="o">.</span><span class="n">xrt_world_size</span><span class="p">()</span>
     
     <span class="c1"># optimizer and loss</span>
-    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">(</span><span class="n">pos_weight</span> <span class="o">=</span> <span class="n">label_weights</span><span class="p">)</span>
+    <span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCEWithLogitsLoss</span><span class="p">()</span>
     <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="n">scaled_eta</span><span class="p">)</span>
     <span class="n">scheduler</span> <span class="o">=</span> <span class="n">lr_scheduler</span><span class="o">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">step_size</span> <span class="o">=</span> <span class="n">step</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span><span class="p">)</span>
     
@@ -1097,7 +989,6 @@ model  = mx.to(device)</code></pre>
         <span class="n">val_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>
         <span class="k">del</span> <span class="n">trn_loss</span><span class="p">,</span> <span class="n">val_loss</span>
         <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
-
         
     <span class="c1"># print results</span>
     <span class="n">xm</span><span class="o">.</span><span class="n">master_print</span><span class="p">(</span><span class="s1">'Best results: loss = </span><span class="si">{:.6f}</span><span class="s1"> (epoch </span><span class="si">{}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">val_losses</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">val_losses</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
@@ -1128,16 +1019,11 @@ model  = mx.to(device)</code></pre>
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1"># wrapper function</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># wrapper function</span>
 <span class="k">def</span> <span class="nf">_mp_fn</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">flags</span><span class="p">):</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">set_default_tensor_type</span><span class="p">(</span><span class="s1">'torch.FloatTensor'</span><span class="p">)</span>
     <span class="n">trn_losses</span><span class="p">,</span> <span class="n">val_losses</span> <span class="o">=</span> <span class="n">_run</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
@@ -1154,7 +1040,6 @@ model  = mx.to(device)</code></pre>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1207,7 +1092,7 @@ Best results: loss = 0.366887 (epoch 1)
 <h1 id="6.-Closing-words">
 <a class="anchor" href="#6.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Closing words<a class="anchor-link" href="#6.-Closing-words"> </a>
 </h1>
-<p>This is the end of this blogpost. Using a computer vision application, we demonstrated how to use <code>PyTorch/XLA</code> to take advantage of TPU when training deep learning models. We covered important cnahges that need to be implemented into the modeling pipeline to enable TPU-based training, including data processing, modeling and displaying results. I hope this post will help you to get started with TPUs!</p>
+<p>This is the end of this blog post. Using a computer vision application, we demonstrated how to use <code>PyTorch/XLA</code> to take advantage of TPU when training deep learning models. We covered important cnahges that need to be implemented into the modeling pipeline to enable TPU-based training, including data processing, modeling and displaying results. I hope this post will help you to get started with TPUs!</p>
 <p>If you are interetef in further reading, make sure to check tutorial notebooks developed by <code>PyTorch/XLA</code> team available <a href="https://github.com/pytorch/xla">at their GitHub repo</a>.</p>
 
 </div>

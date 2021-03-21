@@ -111,7 +111,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      34 min read
+      31 min read
     
 </span></p>
 
@@ -196,21 +196,30 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated: 21.03.2021</em></p>
+<p><img src="/images/copied_from_nb/images/fig_custom_loss.png" alt=""></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
-<p><a href="https://www.data-mining-cup.com">Data Mining Cup</a> is an annual international machine learning competition. The 2020 edition was devoted to demand forecasting. Together with <a href="https://www.linkedin.com/in/elizaveta-zinovyeva-4155a184/">Elizaveta Zinovyeva</a>, we represented the <a href="https://www.hu-berlin.de/en?set_language=en">Humboldt University of Berlin</a> and finished in the top-15 of the leaderboard.</p>
-<p>Demand forecasting is an important task that helps to optimize inventory planning. The optimized stocks can reduce retailer's costs and increase customer satisfaction due to faster delivery time. The competition task was to predict demand for a set of items using past purchase data.</p>
+<p>Demand forecasting is an important task that helps to optimize inventory planning. Optimized stocks reduce retailer's costs and increase customer satisfaction due to faster delivery time.</p>
+<p>The 2020 edition of the <a href="https://www.data-mining-cup.com">Data Mining Cup</a> was devoted to profit-driven demand prediction for a set of items using past purchase data. Together with <a href="https://www.linkedin.com/in/elizaveta-zinovyeva-4155a184/">Elizaveta Zinovyeva</a>, we represented the <a href="https://www.hu-berlin.de/en?set_language=en">Humboldt University of Berlin</a> and finished in the top-15 of the leaderboard.</p>
 <p>This blog post provides a detailed walkthrough covering the crucial steps of our solution:</p>
 <ul>
 <li>data preparation and feature engineering</li>
 <li>aggregation of transactional data into the daily format</li>
-<li>implementation of custom profit-driven loss functions</li>
+<li>implementation of custom profit loss functions</li>
 <li>two-stage demand forecasting with LightGBM</li>
 <li>hyper-parameter tuning with <code>hyperopt</code>
 </li>
 </ul>
-<p>Feel free to jump directly to the parts that are interesting to you! The notebooks reproducing our solution are available <a href="https://github.com/kozodoi/DMC_2020">on Github</a>.</p>
+<p>Feel free to jump directly to the sections interesting to you! The code with our solution is available <a href="https://github.com/kozodoi/DMC_2020">on Github</a>.</p>
 
 </div>
 </div>
@@ -224,14 +233,14 @@ window.onload = wrap_img;
 <h2 id="Data-overview">
 <a class="anchor" href="#Data-overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data overview<a class="anchor-link" href="#Data-overview"> </a>
 </h2>
-<p>The competition data consists of three data sets:</p>
+<p>The competition data includes three files:</p>
 <ul>
-<li>
-<code>infos.csv</code>: prices and promotions in the unlabeled test set</li>
 <li>
 <code>items.csv</code>: item-specific characteristics such as brand, manufacturer, etc</li>
 <li>
 <code>orders.csv</code>: purchase transactions over the 6-month period</li>
+<li>
+<code>infos.csv</code>: prices and promotions in the unlabeled test set</li>
 </ul>
 <p>Let's have a look at the data:</p>
 
@@ -241,16 +250,11 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1"># packages</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -269,7 +273,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -292,22 +295,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">infos</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">infos</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -357,18 +355,6 @@ window.onload = wrap_img;
       <td>14.04</td>
       <td>NaN</td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>4</td>
-      <td>14.10</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>7.48</td>
-      <td>NaN</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -385,22 +371,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">items</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">items</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -470,28 +451,6 @@ window.onload = wrap_img;
       <td>1</td>
       <td>15.89</td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>4</td>
-      <td>0</td>
-      <td>2</td>
-      <td>4.44</td>
-      <td>1</td>
-      <td>2</td>
-      <td>1</td>
-      <td>40.17</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>0</td>
-      <td>2</td>
-      <td>2.33</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>17.04</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -508,22 +467,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">orders</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">orders</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -581,22 +535,6 @@ window.onload = wrap_img;
       <td>2</td>
       <td>20.47</td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>2018-01-01 00:09:24</td>
-      <td>2278968</td>
-      <td>450</td>
-      <td>1</td>
-      <td>17.42</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>2018-01-01 00:09:24</td>
-      <td>2278968</td>
-      <td>83</td>
-      <td>1</td>
-      <td>5.19</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -614,17 +552,10 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For each of the 10,463 items, we need to predict the total number of orders in the 14-day period following the last day in <code>orders</code>.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Preprocessing">
 <a class="anchor" href="#Preprocessing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preprocessing<a class="anchor-link" href="#Preprocessing"> </a>
 </h2>
-<p>Let's do some preprocessing! First, we merge <code>items</code> and <code>infos</code> that contain item-level data:</p>
+<p>Let's prepare the data! First, we merge item-level data in <code>items</code> and <code>infos</code>:</p>
 
 </div>
 </div>
@@ -632,15 +563,11 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">infos</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">infos</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">items</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">infos</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">'itemID'</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -651,7 +578,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -753,8 +679,8 @@ dtype: object
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, we unfold the <code>promotion</code> feature containing a sequence of coma-separated promotion dates. We use <code>split_nested_features()</code> from <code>dptools</code> to split a string column into separate features.</p>
-<p><code>dptools</code> is a package developed by me to simplify some of the common data preprocessing and feature engineering tasks. Below, you will see more examples on using <code>dptools</code> for other applications. You can read more about the package <a href="https://github.com/kozodoi/dptools">here</a>.</p>
+<p>Finally, we unfold the <code>promotion</code> feature containing a sequence of coma-separated dates. We use <code>split_nested_features()</code> from <code>dptools</code> to split a string column into separate features.</p>
+<p><code>dptools</code> is a package developed by me to simplify common data preprocessing and feature engineering tasks. Below, you will see more examples on using <code>dptools</code> for other applications. You can read more about the package <a href="https://github.com/kozodoi/dptools">here</a>.</p>
 
 </div>
 </div>
@@ -777,7 +703,7 @@ dtype: object
 
 <span class="c1"># split promotion feature</span>
 <span class="n">items</span> <span class="o">=</span> <span class="n">split_nested_features</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">split_vars</span> <span class="o">=</span> <span class="s1">'promotion'</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">','</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 
 <span class="c1"># convert dates</span>
 <span class="n">promotion_vars</span> <span class="o">=</span> <span class="n">items</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span> <span class="o">=</span> <span class="s1">'promotion_'</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
@@ -883,36 +809,6 @@ dtype: object
       <td>NaN</td>
       <td>NaN</td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>4</td>
-      <td>14.10</td>
-      <td>NaN</td>
-      <td>2</td>
-      <td>4.44</td>
-      <td>1</td>
-      <td>2</td>
-      <td>1</td>
-      <td>40.17</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>5</td>
-      <td>7.48</td>
-      <td>NaN</td>
-      <td>2</td>
-      <td>2.33</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>17.04</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -929,7 +825,7 @@ dtype: object
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now export the data as csv. I use <code>save_csv_version()</code> that automatically adds a version number to the file name to prevent overwriting the data after making changes in the code.</p>
+<p>We now export the data as csv. I use <code>save_csv_version()</code> to automatically add a version number to the file name to prevent overwriting the data after making changes.</p>
 
 </div>
 </div>
@@ -937,25 +833,18 @@ dtype: object
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">save_csv_version</span><span class="p">(</span><span class="s1">'../data/prepared/orders.csv'</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">compression</span> <span class="o">=</span> <span class="s1">'gzip'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">save_csv_version</span><span class="p">(</span><span class="s1">'../data/prepared/orders.csv'</span><span class="p">,</span> <span class="n">orders</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">compression</span> <span class="o">=</span> <span class="s1">'gzip'</span><span class="p">)</span>
 <span class="n">save_csv_version</span><span class="p">(</span><span class="s1">'../data/prepared/items.csv'</span><span class="p">,</span>  <span class="n">items</span><span class="p">,</span>  <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">compression</span> <span class="o">=</span> <span class="s1">'gzip'</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">orders</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -964,8 +853,6 @@ dtype: object
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Saved as ../data/prepared/orders_v2.csv
 Saved as ../data/prepared/items_v2.csv
-(2181955, 5)
-(10463, 12)
 </pre>
 </div>
 </div>
@@ -985,8 +872,8 @@ Saved as ../data/prepared/items_v2.csv
 <h2 id="Data-aggregation">
 <a class="anchor" href="#Data-aggregation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data aggregation<a class="anchor-link" href="#Data-aggregation"> </a>
 </h2>
-<p>Let's work with <code>orders</code>, which is formatted as a list of transactions with timestamps. We need to aggregate this data in order to use it for the modeling.</p>
-<p>Since the task is a 14-day demand forecasting, a simple way forward would be to aggregate transactions on a two-week basis. However, this could lead to losing some more granular information. Instead, we aggregate transactions by day:</p>
+<p>Let's work with <code>orders</code>, which provides a list of transactions with timestamps.</p>
+<p>We need to aggregate this data for future modeling. Since the task is a 14-day demand forecasting, a simple way would be to aggregate transactions on a two-week basis. However, this could lead to losing some more granular information. We aggregate transactions by day:</p>
 
 </div>
 </div>
@@ -1005,7 +892,7 @@ Saved as ../data/prepared/items_v2.csv
 <span class="n">orders</span><span class="p">[</span><span class="s1">'day_of_year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="s1">'time'</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">dayofyear</span>
 <span class="n">orders_price</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'day_of_year'</span><span class="p">])[</span><span class="s1">'salesPrice'</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">'mean'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">orders</span> <span class="o">=</span> <span class="n">orders</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'day_of_year'</span><span class="p">])[</span><span class="s1">'order'</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s1">'sum'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">orders</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">orders</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1062,18 +949,6 @@ Saved as ../data/prepared/items_v2.csv
       <td>29</td>
       <td>307</td>
     </tr>
-    <tr>
-      <td>3</td>
-      <td>1</td>
-      <td>30</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1</td>
-      <td>31</td>
-      <td>1</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -1099,7 +974,7 @@ Saved as ../data/prepared/items_v2.csv
 <li>there are a few items that are never sold and therefore do not appear in <code>orders</code>
 </li>
 </ul>
-<p>To account for the missing data, we add entries with <code>order = 0</code> for missing day-item combinations including the items that were never sold. This increases the number of observations from 100,771 to 1,883,340 and provides useful information about zero sales.</p>
+<p>To account for the missing data, we add entries with <code>order = 0</code> for missing day-item combinations. This increases the number of observations from 100,771 to 1,883,340 and provides useful information about zero sales.</p>
 
 </div>
 </div>
@@ -1162,9 +1037,9 @@ Saved as ../data/prepared/items_v2.csv
 <h2 id="Labeling-promotions">
 <a class="anchor" href="#Labeling-promotions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Labeling promotions<a class="anchor-link" href="#Labeling-promotions"> </a>
 </h2>
-<p>The documentation says that promotions in the training data are not explicitly marked.</p>
-<p>We need to manually mark promotion days. Ignoring it complicates forecasting because the number of orders in some days explodes without an apparent reason. In such cases, the underlying reason is likely to be a promotion, which should be reflected in a corresponding feature.</p>
-<p>We need to be very careful and conservative about marking promotions. Labeling too many days as promotions based on the number of orders risks introducing data leakage since the number of orders is unknown at the prediction time. Below, I use <code>find_peaks()</code> to isolate peaks in the <code>order</code> time series and encode them as promotions:</p>
+<p>The data documentation says that promotions in the training data are not explicitly marked.</p>
+<p>We need to manually mark promotion days. Ignoring it complicates forecasting because the number of orders in some days explodes without an apparent reason. In such cases, the underlying reason is likely a promotion, which should be reflected in a corresponding feature.</p>
+<p>We need to be very careful about marking promotions. Labeling too many days as promotions based on the number of orders risks introducing data leakage since the number of orders is unknown at the prediction time. Below, I use <code>find_peaks()</code> to isolate peaks in the <code>order</code> time series and encode them as promotions:</p>
 
 </div>
 </div>
@@ -1226,8 +1101,8 @@ Daily p(promotion) per item in test:  0.0141
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Our method identifies 14,911 promotions. Compared to the unlabeled test set where promotions are explicitly reported, this amounts to about twice as few promotions per item and day.</p>
-<p>Let's look at some items to check which observations are marked as promotions:</p>
+<p>Our method identifies 14,911 promotions. Compared to the test set where promotions are explicitly reported, this amounts to about half as many promos per item and day.</p>
+<p>Let's look visualize promotions for some items:</p>
 
 </div>
 </div>
@@ -1278,28 +1153,20 @@ Daily p(promotion) per item in test:  0.0141
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The yellow marker indicates promotions. Our method identifies some outliers as promotions but misses a few points that are less prominent. At the same time, we can not be sure that these cases are necessarily promotions: the large number of orders on these days could be observed due to other reasons. We will stick to this identification method but note that this aspect might require further improvement.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<p>The yellow marker indicates promotions. Our method identifies some outliers as promos but misses a few points that are less prominent. At the same time, we can not be sure that these cases are necessarily promotions: the large number of orders on these days could be observed due to other reasons. We will stick to this solution but note that it might require further improvement.</p>
 <h2 id="Feature-engineering">
 <a class="anchor" href="#Feature-engineering" aria-hidden="true"><span class="octicon octicon-link"></span></a>Feature engineering<a class="anchor-link" href="#Feature-engineering"> </a>
 </h2>
-<p>Now that the data is aggregated, we can construct transaction-based features as well as the targets. For each day, we compute target as the total number of orders in the following 14 days. The days preceeding the considered day are used to extract features. For each day, we extract slices of the past [1, 7, ..., 35] days and compute features based on data from that slice.</p>
-<p>For each item, we construct the following features:</p>
+<p>Now that the data is aggregated, we construct transaction-based features and the targets. For each day, we compute target as the total number of orders in the following 14 days. The days preceeding the considered day are used to extract features. We extract slices of the past [1, 7, ..., 35] days and compute features based on data from that slice.</p>
+<p>For each item, we compute the following features:</p>
 <ul>
-<li>the total count of orders and ordered items</li>
-<li>the total count of promotions</li>
+<li>total count of orders and ordered items</li>
+<li>total count of promotions</li>
 <li>mean item price</li>
 <li>recency of the last order</li>
 </ul>
 <p>The number of orders and promotions is also aggregated on a manufacturer and category level.</p>
-<p>In addition, we use <code>tsfresh</code> package to automatically extract features based on the order dynamics in the last 35 days. <code>tsfresh</code> computes hundreds of features describing the time series. We only keep features with no missing values for all day-item combinations.</p>
-<p>Finally, we compute features based on the two-week period for which we predict demand: the number of promotions and mean prices per item, manufacturer and category.</p>
+<p>In addition, we use <code>tsfresh</code> package to automatically extract features based on the order dynamics in the last 35 days. <code>tsfresh</code> computes hundreds of features describing the time series. We only keep features with no missing values.</p>
 
 </div>
 </div>
@@ -1332,12 +1199,10 @@ Daily p(promotion) per item in test:  0.0141
 <span class="n">agg_orders</span> <span class="o">=</span> <span class="n">agg_orders</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">items</span><span class="p">[[</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'manufacturer'</span><span class="p">]],</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">)</span>
 <span class="n">agg_orders</span> <span class="o">=</span> <span class="n">agg_orders</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">items</span><span class="p">[[</span><span class="s1">'itemID'</span><span class="p">,</span> <span class="s1">'category'</span><span class="p">]],</span>     <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">)</span>
 
-
 <span class="c1"># computations</span>
-<span class="k">for</span> <span class="n">day_of_year</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">149</span><span class="p">,</span> <span class="n">day_last</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="n">agg_orders</span><span class="p">[</span><span class="s1">'day_of_year'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]):</span>
-                
+<span class="k">for</span> <span class="n">day_of_year</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">149</span><span class="p">,</span> <span class="n">day_last</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="n">agg_orders</span><span class="p">[</span><span class="s1">'day_of_year'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]):</span>    
 
-    <span class="c1">###### VALIDAION: TARGET, PROMOTIONS, PRICES</span>
+    <span class="c1">### VALIDAION: TARGET, PROMOTIONS, PRICES</span>
         
     <span class="c1"># day intervals</span>
     <span class="n">target_day_min</span> <span class="o">=</span> <span class="n">day_of_year</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1403,7 +1268,7 @@ Daily p(promotion) per item in test:  0.0141
                                <span class="s1">'promo_in_test_category'</span><span class="p">:</span>     <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">})</span>
 
         
-    <span class="c1">###### TRAINING: LAG-BASED FEATURES</span>
+    <span class="c1">### TRAINING: LAG-BASED FEATURES</span>
             
     <span class="c1"># compute features</span>
     <span class="k">for</span> <span class="n">day_input</span> <span class="ow">in</span> <span class="n">days_input</span><span class="p">:</span>
@@ -1468,9 +1333,9 @@ Daily p(promotion) per item in test:  0.0141
             <span class="n">tmp_df</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">extracted_features</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">'itemID'</span><span class="p">)</span>
             
             
-    <span class="c1">###### FINAL PREPARATIONS</span>
+    <span class="c1">### FINAL PREPARATIONS</span>
             
-    <span class="c1"># add day of year</span>
+    <span class="c1"># day of year</span>
     <span class="n">tmp_df</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="s1">'day_of_year'</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">day_of_year</span><span class="p">)</span>
         
     <span class="c1"># merge data</span>
@@ -1530,19 +1395,11 @@ Daily p(promotion) per item in test:  0.0141
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The feature extraction takes about ten hours and outputs a data set with 470 features. Great job!</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's create features in the <code>items</code> data frame:</p>
+<p>Now, let's create features in the <code>items</code> data set:</p>
 <ul>
 <li>ratio of the actual and recommended price</li>
 <li>item category index constructed of three subcategories</li>
-<li>customer rating realtive to the average rating of the items of the same manufacturer</li>
-<li>customer rating realtive to the average rating of the items of the same category</li>
+<li>customer rating realtive to the average rating of the items of the same manufacturer or category</li>
 </ul>
 
 </div>
@@ -1610,7 +1467,7 @@ Daily p(promotion) per item in test:  0.0141
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
 
-<span class="c1">########## DATA PARTITIONING</span>
+<span class="c1">##### DATA PARTITIONING</span>
 
 <span class="c1"># merge data</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">orders</span><span class="p">,</span> <span class="n">items</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">'itemID'</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">'left'</span><span class="p">)</span>
@@ -1620,7 +1477,7 @@ Daily p(promotion) per item in test:  0.0141
 <span class="n">df_test</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'day_of_year'</span><span class="p">]</span> <span class="o">==</span> <span class="n">df</span><span class="p">[</span><span class="s1">'day_of_year'</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
 
 
-<span class="c1">########## COMPUTE FEATURES FOR TEST DATA</span>
+<span class="c1">##### COMPUTE FEATURES FOR TEST DATA</span>
 
 <span class="c1"># add promotion info to test</span>
 <span class="n">promo_vars</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span> <span class="o">=</span> <span class="s1">'promotion_'</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
@@ -1658,7 +1515,7 @@ Daily p(promotion) per item in test:  0.0141
     <span class="n">df_test</span><span class="p">[</span><span class="s1">'ratio_category_'</span>     <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">var</span><span class="p">)]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">'mean_price_test_category'</span><span class="p">]</span>     <span class="o">/</span> <span class="n">df_test</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
 
 
-<span class="c1">########## DROP FEATURES</span>
+<span class="c1">##### DROP FEATURES</span>
 
 <span class="c1"># drop promotion dates</span>
 <span class="n">df_test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">promo_vars</span><span class="p">,</span>  <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -1711,23 +1568,9 @@ Saved as ../data/prepared/df_test_v14.csv
 <a class="anchor" href="#Custom-loss-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom loss functions<a class="anchor-link" href="#Custom-loss-functions"> </a>
 </h2>
 <p>Mahcine learning encompasses a wide range of statically-inspired performance metrics such as MSE, MAE and others. In practice, machine learning models are used by a company that has specific goals. Usually, these goals can not be expressed in terms of such simple metrics. Therefore, it is important to come up with an evaluation metric consistent with the company's objectives to ensure that we judge performance on a criterion that actually matters.</p>
-<p>In the DMC 2020 task, we are given a profit function of a retailer who is doing demand forecasting. The function accounts for asymmetric error costs: underpredicting demand results in lost revenue because the retailer can not sell a product that is not ready to ship, whereas overpredicting demand incurs a fee for storing the excessive amount of product.</p>
+<p>In the DMC 2020 task, we are given a profit function of the retailer. The function accounts for asymmetric error costs: underpredicting demand results in lost revenue because the retailer can not sell a product that is not ready to ship, whereas overpredicting demand incurs a fee for storing the excessive amount of product.</p>
 <p>Below, we derive profit according to the task description:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/images/copied_from_nb/images/fig_profit.png" alt=""></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's implement the profit function in Python:</p>
 
 </div>
@@ -1736,22 +1579,18 @@ Saved as ../data/prepared/df_test_v14.csv
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">profit</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
     <span class="sd">'''</span>
-<span class="sd">    Computes profit according to DMC 2020 task.</span>
+<span class="sd">    Computes retailer's profit.</span>
 <span class="sd">    </span>
 <span class="sd">    Arguments:</span>
-<span class="sd">    - y_true (numpy array or list): ground truth (correct) target values.</span>
-<span class="sd">    - y_pred (numpy array or list): estimated target values.</span>
-<span class="sd">    - price (numpy array or list): item prices.</span>
+<span class="sd">    - y_true (numpy array): ground truth demand values</span>
+<span class="sd">    - y_pred (numpy array): predicted demand values</span>
+<span class="sd">    - price (numpy array): item prices</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">    - profit value</span>
@@ -1781,24 +1620,16 @@ Saved as ../data/prepared/df_test_v14.csv
 </div>
 </div>
 
-    </details>
 </div>
     
 
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The function above is great for evaluation. Can we go further and optimize it during modeling?</p>
-<p>We will use LightGBM which supports custom loss functions on training and validation stages. In order to use a custom loss on the the training stage, one needs to define a function with its first and second-order derivatives.</p>
-<p>A straightfoward approach would be to define the loss as a difference between the profit conditional on our demand prediction and oracle profit (when demand prediction is correct). However, such a loss would not be differentiable. This means that we could not compute derivatives to plug it as a training loss. Instead, we could come up with a slightly different function that approximates profit and satisfies the loss conditions.</p>
+<p>The function above is great for evaluating quality of our predictions. But can we directly optimize it during modeling?</p>
+<p>LightGBM supports custom loss functions on both training and validation stages. To use a custom loss during training, one needs to supply a function with its first and second-order derivatives.</p>
+<p>Ideally, we would like to define the loss as a difference between the potential profit (given our demand prediction) and the oracle profit (when demand prediction is correct). However, such a loss is not differentiable. We can not compute derivatives to plug it as a training loss. Instead, we need to come up with a slightly different function that approximates profit and satisfies the loss conditions.</p>
 <p>We define the loss as a squared difference between the oracle profit and profit based on predicted demand. In this setting, we can compute loss derivatives with respect to the prediction (Gradient and Hessian):</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/images/copied_from_nb/images/fig_loss.png" alt=""></p>
 
 </div>
@@ -1807,7 +1638,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The snippet below implements the training and validation losses for LightGBM. You can notice that we do not include the squared prices in the loss functions. The reason is that with <code>sklearn</code> API, it is difficult to include external variables like prices in the loss.</p>
+<p>The snippet below implements the training and validation losses for LightGBM. You can notice that we do not include the squared prices in the loss functions. The reason is that with <code>sklearn</code> API, it is difficult to include external variables like prices in the loss, so we will include the price later.</p>
 
 </div>
 </div>
@@ -1827,8 +1658,8 @@ Saved as ../data/prepared/df_test_v14.csv
 <span class="sd">    Asymmetric MSE objective for training LightGBM regressor.</span>
 <span class="sd">     </span>
 <span class="sd">    Arguments:</span>
-<span class="sd">    - y_true (numpy array or list): ground truth (correct) target values.</span>
-<span class="sd">    - y_pred (numpy array or list): estimated target values.</span>
+<span class="sd">    - y_true (numpy array): ground truth target values</span>
+<span class="sd">    - y_pred (numpy array): estimated target values</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
 <span class="sd">    - gradient</span>
@@ -1838,7 +1669,6 @@ Saved as ../data/prepared/df_test_v14.csv
     <span class="n">residual</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float'</span><span class="p">)</span>    
     <span class="n">grad</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">residual</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">residual</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.72</span><span class="o">*</span><span class="n">residual</span><span class="p">)</span>
     <span class="n">hess</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">residual</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>  <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.72</span><span class="p">)</span>
-    
     <span class="k">return</span> <span class="n">grad</span><span class="p">,</span> <span class="n">hess</span>
 
 
@@ -1846,11 +1676,11 @@ Saved as ../data/prepared/df_test_v14.csv
 <span class="k">def</span> <span class="nf">asymmetric_mse_eval</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
     
     <span class="sd">'''</span>
-<span class="sd">    Asymmetric MSE evaluation metric for LightGBM regressor.</span>
+<span class="sd">    Asymmetric MSE evaluation metric for evaluating LightGBM regressor.</span>
 <span class="sd">     </span>
 <span class="sd">    Arguments:</span>
-<span class="sd">    - y_true (numpy array or list): ground truth (correct) target values.</span>
-<span class="sd">    - y_pred (numpy array or list): estimated target values.</span>
+<span class="sd">    - y_true (numpy array): ground truth target values</span>
+<span class="sd">    - y_pred (numpy array): estimated target values</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
 <span class="sd">    - metric name</span>
@@ -1860,7 +1690,6 @@ Saved as ../data/prepared/df_test_v14.csv
     
     <span class="n">residual</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_true</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float'</span><span class="p">)</span>      
     <span class="n">loss</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">residual</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">residual</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.72</span><span class="o">*</span><span class="n">residual</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-    
     <span class="k">return</span> <span class="s1">'asymmetric_mse_eval'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loss</span><span class="p">),</span> <span class="kc">False</span>
 </pre></div>
 
@@ -1874,15 +1703,8 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So how to deal with item prices?</p>
-<p>One option would be to account for prices within the <code>fit()</code> method. LightGBM supports weighting observations on both training and validation stages using the arguments <code>sample_weight</code> and <code>eval_sample_weight</code>. You will see how we supply price vectors in the modeling code in the next section. Note that including prices as weights instead of plugging them into the loss leads to losing some information, since Gradients and Hessians are computed without the price multiplication. Still, this approach provides a pretty close approximation of the original profit-driven loss. If you are interested in including prices in the loss, you can check <code>lightGBM</code> API that allows more flexibility.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+<p>How to deal with the prices?</p>
+<p>One option is to account for them within the <code>fit()</code> method. LightGBM supports weighing observations using the arguments <code>sample_weight</code> and <code>eval_sample_weight</code>. You will see how we supply price vectors in the modeling code in the next section. Note that including prices as weights instead of plugging them into the loss leads to losing some information, since Gradients and Hessians are computed without the price multiplication. Still, this approach provides a pretty close approximation of the original profit function. If you are interested in including prices in the loss, you can check <code>lightGBM</code> API that allows more flexibility.</p>
 <p>The only missing piece is the relationship between the penalty size and the prediction error. By taking a square root of the profit differences instead of the absolute value, we penalize larger errors more than the smaller ones. However, our profit changes linearly with the error size. This is how we can can address it:</p>
 <ul>
 <li>transform target using a non-linear transofmration (e.g. square root)</li>
@@ -1900,7 +1722,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <h2 id="Modeling-pipeline">
 <a class="anchor" href="#Modeling-pipeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modeling pipeline<a class="anchor-link" href="#Modeling-pipeline"> </a>
 </h2>
-<p>Let's start building models! First, we extract the target and flag ID features not used for prediction.</p>
+<p>Good, let's start building models! First, we extract the target and flag ID features not used for prediction.</p>
 
 </div>
 </div>
@@ -2083,21 +1905,7 @@ Saved as ../data/prepared/df_test_v14.csv
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's explain the partitioning using the first fold as an example. Each fold is divided into training and validation subsets. The first 35 days are cut off and only used to compute lag-based features for the days starting from 36. Days 36 - 145 are used for training. For each of these days, we have features based on the previous 35 days and targets based on the next 14 days. Days 159 - 173 are used for validation. Days 146 - 158 between training and validation subsets are skipped to avoid data leakage: the target for these days would use information from the validation period.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p><img src="/images/copied_from_nb/images/fig_partitioning.png" alt=""></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>We can now set up a modeling loop with the following steps for each of the folds:</p>
 <ul>
 <li>extract data from the fold and partition it into training and validation sets</li>
@@ -2297,75 +2105,7 @@ Early stopping, best iteration is:
 FOLD 1/7: RMSE = 74.46, PROFIT = 4146664
 -----------------------------------------------------------------
 
------------------------------------------------------------------
-- train period days: 40 -- 150 (n = 1161393)
-- valid period days: 165 -- 165 (n = 10463)
------------------------------------------------------------------
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[1022]	training's binary_logloss: 0.216471	valid_1's binary_logloss: 0.345619
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[901]	training's rmse: 0.599668	training's asymmetric_mse_eval: 2.75637	valid_1's rmse: 0.94857	valid_1's asymmetric_mse_eval: 5.49861
------------------------------------------------------------------
-FOLD 2/7: RMSE = 71.49, PROFIT = 4085941
------------------------------------------------------------------
-
------------------------------------------------------------------
-- train period days: 39 -- 149 (n = 1161393)
-- valid period days: 164 -- 164 (n = 10463)
------------------------------------------------------------------
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[643]	training's binary_logloss: 0.230494	valid_1's binary_logloss: 0.347911
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[699]	training's rmse: 0.620079	training's asymmetric_mse_eval: 2.87369	valid_1's rmse: 0.954063	valid_1's asymmetric_mse_eval: 5.44372
------------------------------------------------------------------
-FOLD 3/7: RMSE = 69.23, PROFIT = 4100618
------------------------------------------------------------------
-
------------------------------------------------------------------
-- train period days: 38 -- 148 (n = 1161393)
-- valid period days: 163 -- 163 (n = 10463)
------------------------------------------------------------------
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[676]	training's binary_logloss: 0.227568	valid_1's binary_logloss: 0.351372
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[547]	training's rmse: 0.645373	training's asymmetric_mse_eval: 3.09249	valid_1's rmse: 0.958953	valid_1's asymmetric_mse_eval: 5.33328
------------------------------------------------------------------
-FOLD 4/7: RMSE = 68.55, PROFIT = 4009929
------------------------------------------------------------------
-
------------------------------------------------------------------
-- train period days: 37 -- 147 (n = 1161393)
-- valid period days: 162 -- 162 (n = 10463)
------------------------------------------------------------------
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[552]	training's binary_logloss: 0.231805	valid_1's binary_logloss: 0.354317
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[788]	training's rmse: 0.603891	training's asymmetric_mse_eval: 2.76021	valid_1's rmse: 0.943618	valid_1's asymmetric_mse_eval: 5.01711
------------------------------------------------------------------
-FOLD 5/7: RMSE = 62.10, PROFIT = 3946376
------------------------------------------------------------------
-
------------------------------------------------------------------
-- train period days: 36 -- 146 (n = 1161393)
-- valid period days: 161 -- 161 (n = 10463)
------------------------------------------------------------------
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[711]	training's binary_logloss: 0.223124	valid_1's binary_logloss: 0.349099
-Training until validation scores don't improve for 100 rounds
-Early stopping, best iteration is:
-[593]	training's rmse: 0.631258	training's asymmetric_mse_eval: 2.96402	valid_1's rmse: 0.957476	valid_1's asymmetric_mse_eval: 5.36804
------------------------------------------------------------------
-FOLD 6/7: RMSE = 67.31, PROFIT = 3735558
------------------------------------------------------------------
+...
 
 -----------------------------------------------------------------
 - train period days: 35 -- 145 (n = 1161393)
@@ -2776,13 +2516,13 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
  'objective': 'rmse',
  'metrics': 'rmse',
  'n_estimators': 10000,
- 'learning_rate': 0.004012417857266637,
+ 'learning_rate': 0.004012,
  'max_depth': 10,
  'num_leaves': 64,
- 'bagging_fraction': 0.9346881591116736,
- 'feature_fraction': 0.6680768850934483,
- 'lambda_l1': 0.28013320828944976,
- 'lambda_l2': 0.5896826524767101,
+ 'bagging_fraction': 0.934688,
+ 'feature_fraction': 0.668076,
+ 'lambda_l1': 0.280133,
+ 'lambda_l2': 0.589682,
  'silent': True,
  'verbosity': -1,
  'nthread': 4,
@@ -2835,7 +2575,7 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
 <h1 id="6.-Closing-words">
 <a class="anchor" href="#6.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>6. Closing words<a class="anchor-link" href="#6.-Closing-words"> </a>
 </h1>
-<p>This blogpost has finally come to an end. Thank you for reading!</p>
+<p>This blog post has finally come to an end. Thank you for reading!</p>
 <p>We looked at important stages of our solution and covered steps such as data aggregation, feature engineering, custom loss functions, target transformation and hyper-parameter tuning.</p>
 <p>Our final solution was a simple ensemble of multiple LightGBM models with different features and training options discussed in this post. If you are interested in the ensembling part, you can find the codes in my <a href="https://github.com/kozodoi/DMC_2020">Github</a>.</p>
 <p>Please feel free to use the comment widnow below to ask questions and stay tuned for the next editions of <a href="https://www.data-mining-cup.com">Data Mining Cup</a>!</p>
