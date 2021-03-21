@@ -4,7 +4,7 @@ title: Portfolio
 permalink: /portfolio/
 ---
 
-My portfolio includes three data science projects on different topics focusing on structured data, computer vision and package development. To see more of my work, check out other website sections with my recent [blog posts](https://kozodoi.me), [Kaggle competition solutions](https://kozodoi.me/kaggle/), [software packages](https://kozodoi.me/packages/) and [academic publications](https://kozodoi.me/publications/) or visit my [GitHub page](https://github.com/kozodoi).
+My portfolio includes three data science projects on different topics focusing on structured data, computer vision and package development. To see more of my work, check out other website sections with recent [blog posts](https://kozodoi.me), [ML competition solutions](https://kozodoi.me/kaggle/), [software packages](https://kozodoi.me/packages/) and [academic publications](https://kozodoi.me/publications/) or visit my [GitHub page](https://github.com/kozodoi) and view my [CV](https://kozodoi.me/cv.pdf).
 
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
@@ -14,7 +14,7 @@ My portfolio includes three data science projects on different topics focusing o
 
 ### Links
 - [GitHub repo](https://github.com/kozodoi/DMC_2020) with the source code and documentation
-- [blog post](https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html) with the detailed project overview
+- [blog post](https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html) with the detailed project description and solution overview
 
 ### Background
 Forecasting demand is an important managerial task that helps to optimize inventory planning. The optimized stocks reduce retailer's costs and increase customer satisfaction due to faster delivery time. This project uses historical purchase data to predict demand for different products.
@@ -52,7 +52,7 @@ Hospital patients can have catheters and tubes inserted during their admission. 
 
 ### Links
 - [GitHub repo](https://github.com/kozodoi/fairness) with the source code and documentation
-- [blog post](https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html) with the overview and comprehensive tutorial
+- [blog post](https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html) with the package overview and comprehensive tutorial
 
 ### Background
 How to measure fairness of a machine learning model? To date, a number of algorithmic fairness metrics have been proposed, including demographic parity, equalized odds and others. To simplify calculation, visualization and comparison of different fairness metrics, we developed and published `fairness` R package.
