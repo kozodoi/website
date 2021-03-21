@@ -4,13 +4,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Profit-driven demand forecasting with gradient boosting | Nikita Kozodoi</title>
+<title>Profit-Driven Demand Forecasting | Nikita Kozodoi</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Profit-driven demand forecasting with gradient boosting" />
+<meta property="og:title" content="Profit-Driven Demand Forecasting" />
 <meta name="author" content="Nikita Kozodoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Data Mining Cup 2020 solution" />
-<meta property="og:description" content="Data Mining Cup 2020 solution" />
+<meta name="description" content="Data Mining Cup 2020 solution with graident boosted trees" />
+<meta property="og:description" content="Data Mining Cup 2020 solution with graident boosted trees" />
 <link rel="canonical" href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
 <meta property="og:url" content="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-27T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Data Mining Cup 2020 solution","headline":"Profit-driven demand forecasting with gradient boosting","@type":"BlogPosting","dateModified":"2020-07-27T00:00:00-05:00","datePublished":"2020-07-27T00:00:00-05:00","image":"https://kozodoi.me/images/posts/demand.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html"},"url":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Data Mining Cup 2020 solution with graident boosted trees","headline":"Profit-Driven Demand Forecasting","@type":"BlogPosting","dateModified":"2020-07-27T00:00:00-05:00","datePublished":"2020-07-27T00:00:00-05:00","image":"https://kozodoi.me/images/posts/demand.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html"},"url":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -27,13 +27,13 @@
 <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
 
 <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Profit-driven demand forecasting with gradient boosting | Nikita Kozodoi</title>
+<title>Profit-Driven Demand Forecasting | Nikita Kozodoi</title>
 <meta name="generator" content="Jekyll v4.0.0" />
-<meta property="og:title" content="Profit-driven demand forecasting with gradient boosting" />
+<meta property="og:title" content="Profit-Driven Demand Forecasting" />
 <meta name="author" content="Nikita Kozodoi" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Data Mining Cup 2020 solution" />
-<meta property="og:description" content="Data Mining Cup 2020 solution" />
+<meta name="description" content="Data Mining Cup 2020 solution with graident boosted trees" />
+<meta property="og:description" content="Data Mining Cup 2020 solution with graident boosted trees" />
 <link rel="canonical" href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
 <meta property="og:url" content="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
@@ -41,7 +41,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-27T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Data Mining Cup 2020 solution","headline":"Profit-driven demand forecasting with gradient boosting","@type":"BlogPosting","dateModified":"2020-07-27T00:00:00-05:00","datePublished":"2020-07-27T00:00:00-05:00","image":"https://kozodoi.me/images/posts/demand.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html"},"url":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Data Mining Cup 2020 solution with graident boosted trees","headline":"Profit-Driven Demand Forecasting","@type":"BlogPosting","dateModified":"2020-07-27T00:00:00-05:00","datePublished":"2020-07-27T00:00:00-05:00","image":"https://kozodoi.me/images/posts/demand.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html"},"url":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -103,7 +103,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Profit-driven demand forecasting with gradient boosting</h1><p class="page-description">Data Mining Cup 2020 solution</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-27T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Profit-Driven Demand Forecasting</h1><p class="page-description">Data Mining Cup 2020 solution with graident boosted trees</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-27T00:00:00-05:00" itemprop="datePublished">
         Jul 27, 2020
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -116,7 +116,7 @@ window.onload = wrap_img;
 </span></p>
 
     
-      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
       
         <a class="category-tags-link" href="/categories/#python">python</a>
         &nbsp;
@@ -150,7 +150,9 @@ window.onload = wrap_img;
     </a>
 </div>
         </div>
-      </header>
+      
+      <img src="/images/covers/demand.png"/>
+    </header>
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
@@ -197,7 +199,6 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated: 21.03.2021</em></p>
-<p><img src="/images/copied_from_nb/images/fig_custom_loss.png" alt=""></p>
 
 </div>
 </div>
@@ -2597,6 +2598,7 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
         async>
 </script><a class="u-url" href="/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" hidden></a>
 </article>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
