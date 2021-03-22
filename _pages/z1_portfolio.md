@@ -30,6 +30,7 @@ Forecasting demand is an important managerial task that helps to optimize invent
 - developed a pipeline with thorough feature engineering and data aggregation
 - implemented custom profit-driven loss functions for LightGBM models
 
+<hr style="height:3pt; visibility:hidden;" />
 
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
@@ -49,6 +50,7 @@ Hospital patients can have catheters and tubes inserted during their admission. 
 - created a comprehensive PyTorch GPU/TPU computer vision pipeline
 - finished in the top-5% of the Kaggle competition leaderboard with silver medal
 
+<hr style="height:3pt; visibility:hidden;" />
 
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
