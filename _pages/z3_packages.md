@@ -1,12 +1,16 @@
 ---
-layout: page
+layout: menu_page
 title: Packages
 permalink: /packages/
 ---
 
-This page provides software packages developed by me. Follow me on [GitHub](https://github.com/kozodoi) to see more.
-
-<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+<div class="container">
+  <img src="../images/menu/photo_packages.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div class="content">
+    <h1>Packages</h1>
+    <p>This page provides software packages developed by me. Follow me on <a href="https://github.com/kozodoi">GitHub</a> to see more.</p>
+  </div>
+</div>
 
 ### `dptools`
 

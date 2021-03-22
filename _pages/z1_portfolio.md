@@ -1,16 +1,21 @@
 ---
-layout: page
+layout: menu_page
 title: Portfolio
 permalink: /portfolio/
 ---
 
-My portfolio includes three data science projects on different topics focusing on structured data, computer vision and package development. To see more of my work, check out other website sections with recent [blog posts](https://kozodoi.me), [ML competition solutions](https://kozodoi.me/kaggle/), [software packages](https://kozodoi.me/packages/) and [academic publications](https://kozodoi.me/publications/) or visit my [GitHub page](https://github.com/kozodoi) and view my [CV](https://kozodoi.me/cv.pdf).
+<div class="container">
+  <img src="../images/menu/photo_portfolio.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div class="content">
+    <h1>Portfolio</h1>
+    <p>My portfolio includes three data science projects on different topics focusing on structured data, computer vision and package development. To see more of my work, check out other website sections with recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/"></a>ML competition solutions, <a href="https://kozodoi.me/packages/">software packages</a> and <a href="https://kozodoi.me/publications/">academic publications</a> or visit my <a href="https://github.com/kozodoi">GitHub page</a> and view my <a href="https://kozodoi.me/cv.pdf">CV</a>.</p>
+  </div>
+</div>
 
-<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ## Profit-driven demand forecasting with gradient boosting
 
-![](https://kozodoi.me/images/copied_from_nb/images/fig_custom_loss.png)
+<img src="https://kozodoi.me/images/copied_from_nb/images/fig_custom_loss.png" alt="Notebook" style="width:100%">
 
 ### Links
 - [GitHub repo](https://github.com/kozodoi/DMC_2020) with the source code and documentation
@@ -29,7 +34,7 @@ Forecasting demand is an important managerial task that helps to optimize invent
 
 ## Catheter and line position detection with deep learning
 
-![](https://camo.githubusercontent.com/3f09d23c36717d8fd0b82df60cc636cb146f022b2cbf7306db39721e9ed08acf/68747470733a2f2f692e706f7374696d672e63632f74543662334b474e2f787261792d73616d706c652e706e67)
+<img src="https://camo.githubusercontent.com/3f09d23c36717d8fd0b82df60cc636cb146f022b2cbf7306db39721e9ed08acf/68747470733a2f2f692e706f7374696d672e63632f74543662334b474e2f787261792d73616d706c652e706e67" alt="Notebook" style="width:100%">
 
 ### Links
 - [GitHub repo](https://github.com/kozodoi/Kaggle_RANZCR_Challenge) with the source code and documentation
@@ -48,7 +53,7 @@ Hospital patients can have catheters and tubes inserted during their admission. 
 
 ## `fairness`: Package for computing algorithmic fairness metrics
 
-![](https://kozodoi.me/images/copied_from_nb/images/fair_cover.png)
+<img src="https://kozodoi.me/images/copied_from_nb/images/fair_cover.png" alt="Notebook" style="width:100%">
 
 ### Links
 - [GitHub repo](https://github.com/kozodoi/fairness) with the source code and documentation

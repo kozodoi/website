@@ -1,12 +1,20 @@
 ---
-layout: page
+layout: menu_page
 title: About
 permalink: /about/
 ---
 
 <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 
-Hi, I am Nikita!
+<div class="container">
+  <img src="../images/menu/photo_about.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div class="content">
+    <h1>Hi, I am Nikita!</h1>
+    <p>Click <a href="https://kozodoi.me/cv.pdf">here</a> to view my CV and check out <a href="https://kozodoi.me/portfolio/">my portfolio</a> to see my work.</p>
+  </div>
+</div>
+
+<hr style="height:3pt; visibility:hidden;" />
 
 - <i class="em em-books" aria-role="presentation" aria-label="BOOKS"></i> PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc)
 - <i class="em em-computer" aria-role="presentation" aria-label="PERSONAL COMPUTER"></i> Data science research associate at [Monedo](https://www.monedo.com)
@@ -15,13 +23,9 @@ Hi, I am Nikita!
 - <i class="em em-sports_medal" aria-role="presentation" aria-label="SPORTS MEDAL"></i> Enjoy participating at data science competitions and hackathons
 - <i class="em em-jigsaw" aria-role="presentation" aria-label="JIGSAW PUZZLE PIECE"></i> Love football, scooters and piano
 
-Click [here](https://kozodoi.me/cv.pdf) to view my CV and check out [my portfolio](https://kozodoi.me/portfolio/) to see my work.
-
-![photo](../images/photo.jpg)
-
 This website hosts my blog, where I share machine learning tutorials, competition solutions and interesting findings from different data science projects. Check out [the feed](https://kozodoi.me) for the latest posts!
 
-If you want to chat or see more of my work, connect with me on different platforms:
+If you want to chat, connect with me on different platforms:
 
 <ul>
   <li><a href="https://www.linkedin.com/in/kozodoi">LinkedIn</a></li>

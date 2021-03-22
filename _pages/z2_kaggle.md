@@ -1,12 +1,18 @@
 ---
-layout: page
+layout: menu_page
 title: Kaggle
 permalink: /kaggle/
 ---
 
 <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
 
-I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts and writeups of my solutions and GitHub repos with the code. Check out my [Kaggle profile](https://www.kaggle.com/kozodoi) to see more.
+<div class="container">
+  <img src="../images/menu/photo_kaggle.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div class="content">
+    <h1>Kaggle</h1>
+    <p>I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts and writeups of my solutions and GitHub repos with the code. Check out my <a href="https://www.kaggle.com/kozodoi">Kaggle profile</a> to see more.</p>
+  </div>
+</div>
 
 ### Highest user rank
 - **Competitions**: 293 out of 158,467 (Master)

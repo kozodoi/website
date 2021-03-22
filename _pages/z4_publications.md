@@ -1,12 +1,16 @@
 ---
-layout: page
+layout: menu_page
 title: Publications
 permalink: /publications/
 ---
 
-This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on [Google Scholar](https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ) or [ResearchGate](http://researchgate.net/profile/Nikita_Kozodoi) to see all of my latest work.
-
-<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+<div class="container">
+  <img src="../images/menu/photo_publications.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div class="content">
+    <h1>Publications</h1>
+    <p>This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</p>
+  </div>
+</div>
 
 ### 2021
 
