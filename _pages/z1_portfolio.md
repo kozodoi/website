@@ -5,13 +5,14 @@ permalink: /portfolio/
 ---
 
 <div class="container">
-  <img src="../images/menu/photo_portfolio.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <img src="../images/menu/photo_portfolio.jpg" style="width:100%;opacity:0.75">
   <div class="content">
     <h1>Portfolio</h1>
-    <p>My portfolio includes three data science projects on different topics focusing on structured data, computer vision and package development. To see more of my work, check out other website sections with recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/"></a>ML competition solutions, <a href="https://kozodoi.me/packages/">software packages</a> and <a href="https://kozodoi.me/publications/">academic publications</a> or visit my <a href="https://github.com/kozodoi">GitHub page</a> and view my <a href="https://kozodoi.me/cv.pdf">CV</a>.</p>
+    <p><span class="cover-desc">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and package development. To see more of my work, check out my <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/publications/">publications</a> or visit my <a href="https://github.com/kozodoi">GitHub</a> and view my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
   </div>
 </div>
 
+<p><span class="page-desc">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and package development. To see more of my work, check out my <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/publications/">publications</a> or visit my <a href="https://github.com/kozodoi">GitHub</a> and view my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
 
 ## Profit-driven demand forecasting with gradient boosting
 

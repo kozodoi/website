@@ -8,9 +8,11 @@ permalink: /publications/
   <img src="../images/menu/photo_publications.jpg" alt="Notebook" style="width:100%;opacity:0.75">
   <div class="content">
     <h1>Publications</h1>
-    <p>This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</p>
+    <p><span class="cover-desc">This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
   </div>
 </div>
+
+<p><span class="page-desc">This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
 
 ### 2021
 

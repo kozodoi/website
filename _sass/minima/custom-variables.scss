@@ -1,10 +1,9 @@
 // width of the content area
 $content-width:    1200px;
 $on-palm:          800px;
+$on-medium:        800px;
 $on-laptop:        1200px;
-$on-medium:        1200px;
 $on-large:         1400px;
-
 
 // background photos for pages
 .container {
@@ -21,4 +20,12 @@ $on-large:         1400px;
   width: 100%; /* Full width */
   padding: 20px; /* Some padding */
   padding-top: 0px;
+  padding-bottom: 15px;
+}
+
+// page description depending on screen size
+.page-desc { display: none; }
+@media (max-width: 650px) {
+    .page-desc { display: inline-block; }
+    .cover-desc { display: none; }
 }
