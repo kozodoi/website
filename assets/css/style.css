@@ -116,6 +116,10 @@
 
 .highlight .il { color: #099; }
 
+.container { position: relative; margin: 0 auto; /* Center it */ }
+
+.container .content { position: absolute; /* Position the background text */ bottom: 0; /* At the bottom. Use top:0 to append it to the top */ background: black; /* Fallback color */ background: rgba(0, 0, 0, 0.75); /* Black background */ color: #f1f1f1; /* Grey text */ width: 100%; /* Full width */ padding: 20px; /* Some padding */ padding-top: 0px; }
+
 html { font-size: 16px; }
 
 /** Reset some basic elements */
