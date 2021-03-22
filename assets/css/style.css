@@ -118,7 +118,12 @@
 
 .container { position: relative; margin: 0 auto; /* Center it */ }
 
-.container .content { position: absolute; /* Position the background text */ bottom: 0; /* At the bottom. Use top:0 to append it to the top */ background: black; /* Fallback color */ background: rgba(0, 0, 0, 0.75); /* Black background */ color: #f1f1f1; /* Grey text */ width: 100%; /* Full width */ padding: 20px; /* Some padding */ padding-top: 0px; }
+.container .content { position: absolute; /* Position the background text */ bottom: 0; /* At the bottom. Use top:0 to append it to the top */ background: black; /* Fallback color */ background: rgba(0, 0, 0, 0.75); /* Black background */ color: #f1f1f1; /* Grey text */ width: 100%; /* Full width */ padding: 20px; /* Some padding */ padding-top: 0px; padding-bottom: 15px; }
+
+.page-desc { display: none; }
+
+@media (max-width: 650px) { .page-desc { display: inline-block; }
+  .cover-desc { display: none; } }
 
 html { font-size: 16px; }
 
@@ -238,7 +243,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .site-nav .page-link:not(:last-child) { margin-right: 0; }
 
-@media screen and (min-width: 1200px) { .site-nav { position: static; float: right; border: none; background-color: inherit; }
+@media screen and (min-width: 800px) { .site-nav { position: static; float: right; border: none; background-color: inherit; }
   .site-nav label[for="nav-trigger"] { display: none; }
   .site-nav .menu-icon { display: none; }
   .site-nav input ~ .trigger { display: block; }
@@ -266,7 +271,7 @@ table td { border: 1px solid #e8e8e8; }
   .footer-col-2 { width: calc(20% - (30px / 2)); }
   .footer-col-3 { width: calc(45% - (30px / 2)); } }
 
-@media screen and (min-width: 1200px) { .footer-col-wrapper { display: flex; }
+@media screen and (min-width: 800px) { .footer-col-wrapper { display: flex; }
   .footer-col { width: calc(100% - (30px / 2)); padding: 0 15px; }
   .footer-col:first-child { padding-right: 15px; padding-left: 0; }
   .footer-col:last-child { padding-right: 0; padding-left: 15px; } }
@@ -502,7 +507,7 @@ a:hover { color: rgba(255, 255, 255, 0.87) !important; }
 
 .site-title, .site-title:visited, .site-nav, .page-link { color: rgba(255, 255, 255, 0.87) !important; }
 
-.site-nav { background-color: #121212; border-color: #333333; }
+.site-nav { background-color: #121212; border-color: #333333; z-index: 999; }
 
 * { scrollbar-color: #121212 #333333; }
 
