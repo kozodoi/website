@@ -10,7 +10,6 @@ $on-large:         1400px;
   position: relative;
   margin: 0 auto; /* Center it */
 }
-
 .container .content {
   position: absolute; /* Position the background text */
   bottom: 0; /* At the bottom. Use top:0 to append it to the top */
@@ -28,4 +27,17 @@ $on-large:         1400px;
 @media (max-width: 650px) {
     .page-desc { display: inline-block; }
     .cover-desc { display: none; }
+}
+
+// card layout
+.card {
+  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.15);
+  padding: 15px;
+  padding-top: 1px;
+  padding-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.15);
 }
