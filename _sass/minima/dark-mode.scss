@@ -95,7 +95,7 @@ canvas {
 }
 
 .post-list > li > div {
-    box-shadow: none !important;
+    box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.15);
     background-color: $overlay;
     border-color: $overlay-light;
 }
