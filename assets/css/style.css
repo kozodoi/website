@@ -125,6 +125,10 @@
 @media (max-width: 650px) { .page-desc { display: inline-block; }
   .cover-desc { display: none; } }
 
+.card { box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.15); padding: 15px; padding-top: 1px; padding-bottom: 15px; background-color: rgba(255, 255, 255, 0.05); border-radius: 10px; }
+
+.card:hover { box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.15); }
+
 html { font-size: 16px; }
 
 /** Reset some basic elements */
@@ -531,7 +535,7 @@ table td { background-color: #121212; border-color: #333333; color: rgba(255, 25
 
 canvas { filter: invert(100%); }
 
-.post-list > li > div { box-shadow: none !important; background-color: #191919; border-color: #333333; }
+.post-list > li > div { box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.15); background-color: #191919; border-color: #333333; }
 
 li .post-meta-description { color: rgba(255, 255, 255, 0.69) !important; }
 
