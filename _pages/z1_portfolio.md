@@ -16,6 +16,9 @@ permalink: /portfolio/
 
 <p><span class="page-desc">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and package development. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> page or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
 
+<script src="{{ base.url | prepend: site.url }}/assets/js/read_more.js"></script>
+
+
 <div class="card">
 
 <h2><b>Profit-driven demand forecasting with gradient boosting</b></h2>
@@ -28,15 +31,34 @@ permalink: /portfolio/
 <li> <a href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html">blog post</a> with the detailed project description and solution overview </li>
 </ul>
 
-<h3> Background </h3>
-<p> Forecasting demand is an important managerial task that helps to optimize inventory planning. The optimized stocks reduce retailer's costs and increase customer satisfaction due to faster delivery time. This project uses historical purchase data to predict demand for different products. </p>
-
 <h3> Highlights </h3>
 <ul>
 <li> worked on demand forecasting project as a part of Data Mining Cup 2020 competition </li>
 <li> developed a pipeline with thorough feature engineering and data aggregation </li>
 <li> implemented custom profit-driven loss functions for LightGBM models </li>
 </ul>
+
+<span id="dots1"><p></p></span>
+<span id="more1">
+<h3> Summary </h3>
+
+<p> Forecasting demand is an important managerial task that helps to optimize inventory planning. The optimized stocks can reduce retailer's costs and increase customer satisfaction due to faster delivery time. This project uses historical purchase data to predict future demand for different products. </p>
+
+<p> The project pipeline includes several crucial steps:
+<ul>
+<li> thorough data preparation, cleaning and feature engineering </li>
+<li> aggregation of transactional data into the daily format </li>
+<li> implementation of custom profit-driven loss functions </li>
+<li> two-stage demand forecasting with LightGBM models</li>
+<li> hyper-parameter tuning with Bayesian algorithms </li>
+</ul>
+</p>
+
+<p>A detailed walkthrough is provided in this <a href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html">blog post</a>.</p>
+
+</span>
+
+<button onclick="myFunction1()" id="myBtn1">Read more</button>
 
 </div>
 
@@ -56,15 +78,24 @@ permalink: /portfolio/
 <li> <a href="https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664">discussion topic</a> with the short summary </li>
 </ul>
 
-<h3> Background </h3>
-<p> Hospital patients can have catheters and tubes inserted during their admission. If tubes are placed incorrectly, serious complications can occur later. Deep learning helps to automate detection of malpositioned tubes, reducing the workload of clinicians and preventing treatment delays. </p>
-
 <h3> Highlights </h3>
 <ul>
 <li> developed deep learning models to detect catheter and tube position on X-ray images </li>
 <li> created a comprehensive PyTorch GPU/TPU computer vision pipeline </li>
 <li> finished in the top-5% of the Kaggle competition leaderboard with silver medal </li>
 </ul>
+
+<span id="dots2"><p></p></span>
+<span id="more2">
+<h3> Summary </h3>
+<p> Hospital patients can have catheters and tubes inserted during their admission. If tubes are placed incorrectly, serious health complications can occur later. Deep learning helps to automate detection of malpositioned tubes, which allows to reduce the workload of clinicians and prevent treatment delays. </p>
+
+<p> This project works with a dataset of 30,083 high-resolution chest X-ray images. The images have 11 binary labels indicating normal, borderline or abnormal placement of endotracheal tubes, nasogastric tubes, central venous catheters and Swan-Ganz catheters. </p>
+
+<p> Within the project, I develop a comprehensive GPU/TPU image processing and modeling pipeline written in PyTorch. The solution builds an ensemble of seven CNN models that reaches the test mean AUC of 0.971 and places in the top-5% among the 1,549 competing teams. The code is documented and published on <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub</a>. </p>
+</span>
+
+<button onclick="myFunction2()" id="myBtn2">Read more</button>
 
 </div>
 
@@ -84,15 +115,21 @@ permalink: /portfolio/
 <li> <a href="https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html">blog post</a> with the package overview and comprehensive tutorial </li>
 </ul>
 
-<h3> Background </h3>
-<p> How to measure fairness of a machine learning model? To date, a number of algorithmic fairness metrics have been proposed, including demographic parity, equalized odds and others. To simplify calculation, visualization and comparison of different fairness metrics, we developed and published <code>fairness</code> R package. </p>
-
 <h3> Highlights </h3>
 <ul>
 <li> developing and supporting an R package for fair machine learning </li>
 <li> the package offers calculation, visualization and comparison of algorithmic fairness metrics </li>
 <li> the package is published on CRAN repository with more than 10k downloads </li>
 </ul>
+
+<span id="dots3"><p></p></span>
+<span id="more3">
+<h3> Summary </h3>
+<p> How to measure fairness of a machine learning model? To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity and equalized odds are among the most commonly used metrics to evaluate group fairness in binary classification problems. </p>
+<p> Together with Tibor V. Varga, we developed the <code>fairness</code> R package for fair machine learning. The package offers tools to calculate, visualize and compare commonly used metrics of algorithmic fairness across the sensitive groups. After publishing the package on CRAN in 2019, I have been actively working on maintaining the package and extending its functionality. The comprehensive overview of <code>fairness</code> is provided in this <a href="https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html">blog post</a>.</p>
+</span>
+
+<button onclick="myFunction3()" id="myBtn3">Read more</button>
 
 </div>
 
