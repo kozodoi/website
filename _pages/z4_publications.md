@@ -4,8 +4,12 @@ title: Publications
 permalink: /publications/
 ---
 
+
+
 <div class="container">
-  <img src="../images/menu/photo_publications.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div style="width:100%;height:0; padding-top:50%;position:relative;">
+    <img src="../images/menu/photo_publications.jpg" style="width:100%; opacity:0.75; position:absolute; top:0; left:0">
+  </div>  
   <div class="content">
     <h1>Publications</h1>
     <p><span class="cover-desc">This page provides a selected list of my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
@@ -45,8 +49,9 @@ Decision Support Systems, 120, 106-117.
 In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.
 [[PDF on ResearchGate]](https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications) [[published version]](https://www.researchgate.net/deref/https%3A%2F%2Fdoi.org%2F10.1007%2F978-3-030-18500-8_9)
 
+<hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ### Citations
 
-<iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="300" allowtransparency="false"></iframe>
+<iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="400" allowtransparency="false"></iframe>

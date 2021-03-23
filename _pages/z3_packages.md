@@ -5,7 +5,9 @@ permalink: /packages/
 ---
 
 <div class="container">
-  <img src="../images/menu/photo_packages.jpg" alt="Notebook" style="width:100%;opacity:0.75">
+  <div style="width:100%;height:0; padding-top:50%;position:relative;">
+    <img src="../images/menu/photo_packages.jpg" style="width:100%; opacity:0.75; position:absolute; top:0; left:0">
+  </div>  
   <div class="content">
     <h1>Packages</h1>
     <p><span class="cover-desc">This page provides software packages developed by me. Follow me on <a href="https://github.com/kozodoi">GitHub</a> to see more.</span></p>
