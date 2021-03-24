@@ -42,8 +42,25 @@ $on-large:         1400px;
   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.15);
 }
 
+// list without bullets
+ul.no-bullets {
+  list-style-type: none; /* Remove bullets */
+}
+
+// twitter container
+div.tw {
+  max-width: 600px;
+  margin: auto;
+}
 
 // read more / less
 #more1 {display: none;}
 #more2 {display: none;}
 #more3 {display: none;}
+
+// paper abstracts
+#abs1 {display: none}
+#abs2 {display: none}
+#abs3 {display: none}
+#abs4 {display: none}
+#abs5 {display: none}
