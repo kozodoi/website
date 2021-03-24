@@ -129,11 +129,25 @@
 
 .card:hover { box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.15); }
 
+ul.no-bullets { list-style-type: none; /* Remove bullets */ }
+
+div.tw { max-width: 600px; margin: auto; }
+
 #more1 { display: none; }
 
 #more2 { display: none; }
 
 #more3 { display: none; }
+
+#abs1 { display: none; }
+
+#abs2 { display: none; }
+
+#abs3 { display: none; }
+
+#abs4 { display: none; }
+
+#abs5 { display: none; }
 
 html { font-size: 16px; }
 
