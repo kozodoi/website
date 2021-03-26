@@ -46,8 +46,9 @@ layout: default
     {% if page.layout == 'notebook' %}
       {% if page.badges or page.badges == nil %}
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <script src="/assets/js/mode_switcher.js"></script>
+          {% include dark_mode_switch.html %}
           {% unless page.hide_github_badge or site.default_badges.github != true %}{% include notebook_github_link.html %}{% endunless %}
-          {% unless page.hide_binder_badge or site.default_badges.binder != true  %}{% include notebook_binder_link.html %}{% endunless %}
           {% unless page.hide_colab_badge or site.default_badges.colab != true %}{% include notebook_colab_link.html %}{% endunless %}
         </div>
       {% endif -%}
@@ -61,10 +62,8 @@ layout: default
     {{ content | toc  }}
   </div>
   {%- if page.comments -%}
-    {%- include utterances.html -%}
-  {%- endif -%}
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
+    {%- include disqus-comments.html -%}
   {%- endif -%}
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+
 </article>
