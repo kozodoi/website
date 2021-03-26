@@ -136,6 +136,14 @@ window.onload = wrap_img;
     
       
         <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <script src="/assets/js/mode_switcher.js"></script>
+          <div class="px-2">
+  <label class="switch">
+    <input type="checkbox" checked onclick="modeSwitcher();">
+      <span class="slider round"></span>
+    </label>
+</div>
+
           <div class="px-2">
 
     <a href="https://github.com/kozodoi/blog/tree/master/_notebooks/2020-07-27-demand-forecasting.ipynb" role="button" target="_blank">
@@ -143,7 +151,6 @@ window.onload = wrap_img;
     </a>
 </div>
 
-          
           <div class="px-2">
     <a href="https://colab.research.google.com/github/kozodoi/blog/blob/master/_notebooks/2020-07-27-demand-forecasting.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open in Colab"/>
@@ -2588,15 +2595,22 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
 
 
 
-  </div><!-- from https://github.com/utterance/utterances -->
-<script src="https://utteranc.es/client.js"
-        repo="kozodoi/blog"
-        issue-term="title"
-        label="blogpost-comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script><a class="u-url" href="/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" hidden></a>
+  </div><div id="disqus_thread"></div>
+ <script>
+   var disqus_config = function () {
+     this.page.url = 'https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html';
+     this.page.identifier = 'https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html';
+   };
+   (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://kozodoi.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+   })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<a class="u-url" href="/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" hidden></a>
+
 </article>
 
       </div>
