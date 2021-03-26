@@ -1,0 +1,146 @@
+html, html[data-theme = "dark"] {
+  --high-emph:       rgba(255, 255, 255, 0.87);
+  --med-emph:        rgba(255, 255, 255, 0.69);
+  --low-emph:        rgba(255, 255, 255, 0.38);
+  --back-color:      rgb(18, 18, 18);
+  --link-color:      rgb(75, 186, 255);
+  --page-desc-color: rgb(241, 241, 241);
+  --card-back-color: rgba(255, 255, 255, 0.05);
+  --overlay:         rgb(30, 30, 30);
+  --overlay-light:   rgb(50, 50, 50);
+}
+
+html[data-theme = "light"] {
+  --high-emph:       rgba(0, 0, 0, 0.87);
+  --med-emph:        rgba(0, 0, 0, 0.69);
+  --low-emph:        rgba(0, 0, 0, 0.38);
+  --back-color:      white;
+  --link-color:      rgb(0, 102, 204);
+  --page-desc-color: rgb(241, 241, 241);
+  --card-back-color: rgba(0, 0, 0, 0.05);
+  --overlay:         white;
+  --overlay-light:   rgb(200, 200, 200);
+}
+
+@media (prefers-color-scheme: dark) {
+    html, html[data-theme="dark"] {
+      --high-emph:       rgba(255, 255, 255, 0.87);
+      --med-emph:        rgba(255, 255, 255, 0.69);
+      --low-emph:        rgba(255, 255, 255, 0.38);
+      --back-color:      rgb(18, 18, 18);
+      --link-color:      rgb(75, 186, 255);
+      --page-desc-color: rgb(241, 241, 241);
+      --card-back-color: rgba(255, 255, 255, 0.05);
+      --overlay:         rgb(30, 30, 30);
+      --overlay-light:   rgb(50, 50, 50);
+    }
+    html[data-theme="light"] {
+      --high-emph:       rgba(0, 0, 0, 0.87);
+      --med-emph:        rgba(0, 0, 0, 0.69);
+      --low-emph:        rgba(0, 0, 0, 0.38);
+      --back-color:      white;
+      --link-color:      rgb(0, 102, 204);
+      --page-desc-color: rgb(24, 24, 24);
+      --card-back-color: rgba(0, 0, 0, 0.05);
+      --overlay:         white;
+      --overlay-light:   rgb(200, 200, 200);
+  }
+}
+
+.site-header {
+    border-color: var(--overlay-light)
+}
+
+.site-header a:hover {
+    color: var(--med-emph) !important;
+    text-decoration: none !important;
+}
+
+.site-footer {
+    border-color: var(--overlay-light)
+}
+
+html, body, input, textarea, select, button {
+  color: var(--high-emph) !important;
+  background-color: var(--back-color) !important;
+}
+
+a {
+    color: var(--link-color) !important;
+}
+a:hover {
+    color: var(--high-emph) !important;
+}
+
+.site-title, .site-title:visited, .site-nav, .page-link {
+    color: var(--high-emph)h !important;
+}
+
+.site-nav {
+    background-color: var(--back-color);
+    border-color: var(--overlay-light);
+    z-index: 999;
+}
+
+* {
+    scrollbar-color: var(--back-color) var(--overlay-light);
+}
+
+pre, code {
+    // BVas a lighter colour to better highlight short code words
+    border-color: var(--overlay-light);
+    background-color: var(--overlay);
+}
+
+.page-description {
+    color: var(--med-emph);
+}
+
+.post-meta {
+    color: var(--low-emph);
+}
+
+.post-content p, .post-content li {
+    color: var(--med-emph);
+}
+
+.btn {
+    background-color: var(--overlay) !important;
+    color: var(--high-emph) !important;
+    border-color: var(--overlay-light) !important;
+}
+
+.btn:hover {
+    background-color: var(--back-color) !important;
+}
+
+table th{
+    background-color: var(--overlay);
+    border-color: var(--overlay-light);
+    color: var(--high-emph);
+}
+
+table td{
+    background-color: var(--back-color);
+    border-color: var(--overlay-light);
+    color: var(--med-emph);
+}
+
+.flash {
+    color: var(--back-color) !important;
+    filter: brightness(80%);
+}
+
+canvas {
+    filter: invert(100%);
+}
+
+.post-list > li > div {
+    box-shadow: 0 2px 4px 0 rgba(255, 255, 255, 0.15);
+    background-color: var(--overlay);
+    border-color: var(--overlay-light);
+}
+
+li .post-meta-description {
+    color: var(--med-emph) !important;
+}
