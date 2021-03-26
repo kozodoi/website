@@ -11,6 +11,15 @@
           </a>
         </h3>
         <p class="post-meta-description">{{ post.description }}</p>
-          <p class="post-meta">{{ post.date | date: date_format }}</p>
+        <p class="post-meta">
+          {{ post.date | date: date_format }}
+          &middot;
+          {% assign words = post.content | strip_html | number_of_words %}
+          {% if words < 360 %}
+            1 min read
+          {% else %}
+            {{ words | divided_by:180 }} min read
+          {% endif %}
+        </p>
       </div>
   </div>
