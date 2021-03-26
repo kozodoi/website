@@ -8,11 +8,11 @@ permalink: /kaggle/
 
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
-    <img src="../images/menu/photo_kaggle.jpg" style="width:100%; opacity:0.75; position:absolute; top:0; left:0">
+    <img src="../images/menu/photo_kaggle.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
   </div>  
   <div class="content">
     <h1>Kaggle</h1>
-    <p><span class="cover-desc">I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts, writeups and GitHub repos with my solutions. Check out my <a href="https://www.kaggle.com/kozodoi">Kaggle profile</a> to see more.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts, writeups and GitHub repos with my solutions. Check out my <a href="https://www.kaggle.com/kozodoi">Kaggle profile</a> to see more.</span></p>
   </div>
 </div>
 
@@ -20,9 +20,9 @@ permalink: /kaggle/
 
 
 ### Highest user rank
-- **Competitions**: 293 out of 158,467 (Master)
-- **Notebooks**: 523 out of 162,621 (Expert)
-- **Discussion**: 215 out of 189,341 (Expert)
+- **Competitions**: 293 out of 158,467 (Master, 14 total medals)
+- **Notebooks**: 522 out of 162,621 (Expert)
+- **Discussion**: 212 out of 189,341 (Expert)
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">

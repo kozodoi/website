@@ -6,11 +6,11 @@ permalink: /portfolio/
 
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
-    <img src="../images/menu/photo_portfolio.jpg" style="width:100%; opacity:0.75; position:absolute; top:0; left:0">
+    <img src="../images/menu/photo_portfolio.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
   </div>  
   <div class="content">
     <h1>Portfolio</h1>
-    <p><span class="cover-desc">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and package development. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> page or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and package development. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> page or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
   </div>
 </div>
 
@@ -27,15 +27,15 @@ permalink: /portfolio/
 
 <h3> Highlights </h3>
 <ul>
-<li> worked on demand forecasting project as a part of Data Mining Cup 2020 competition </li>
-<li> developed a pipeline with thorough feature engineering and data aggregation </li>
-<li> implemented custom profit-driven loss functions for LightGBM models </li>
+<li> performed a thorough data aggregation, cleaning and feature engineering </li>
+<li> implemented custom loss functions aimed at maximizing the retailer's profit </li>
+<li> developed a two-stage demand forecasting pipeline with LightGBM models </li>
 </ul>
 
 <h3> Links </h3>
 <ul>
-<li> <a href="https://github.com/kozodoi/DMC_2020">GitHub repo</a> with the source code and documentation </li>
-<li> <a href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html">blog post</a> with the detailed project description and solution overview </li>
+<li> <a href="https://github.com/kozodoi/DMC_2020">GitHub repo</a> with code and documentation </li>
+<li> <a href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html">blog post</a> with the detailed project description </li>
 </ul>
 
 <span id="dots1"><p></p></span>
@@ -51,6 +51,7 @@ permalink: /portfolio/
 <li> implementation of custom profit-driven loss functions </li>
 <li> two-stage demand forecasting with LightGBM models</li>
 <li> hyper-parameter tuning with Bayesian algorithms </li>
+<li> stacking ensemble to further maximize the performance </li>
 </ul>
 </p>
 
@@ -74,14 +75,14 @@ permalink: /portfolio/
 
 <h3> Highlights </h3>
 <ul>
-<li> developed deep learning models to detect catheter and tube position on X-ray images </li>
-<li> created a comprehensive PyTorch GPU/TPU computer vision pipeline </li>
+<li> built deep learning models to detect catheter and tube position on X-ray images </li>
+<li> developed a comprehensive PyTorch GPU/TPU computer vision pipeline </li>
 <li> finished in the top-5% of the Kaggle competition leaderboard with silver medal </li>
 </ul>
 
 <h3> Links </h3>
 <ul>
-<li> <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub repo</a> with the source code and documentation </li>
+<li> <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub repo</a> with code and documentation </li>
 <li> <a href="https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664">discussion topic</a> with the short summary </li>
 </ul>
 
@@ -113,13 +114,13 @@ permalink: /portfolio/
 <ul>
 <li> developing and supporting an R package for fair machine learning </li>
 <li> the package offers calculation, visualization and comparison of algorithmic fairness metrics </li>
-<li> the package is published on CRAN repository with more than 10k downloads </li>
+<li> the package is published on CRAN with more than 10k total downloads </li>
 </ul>
 
 <h3> Links </h3>
 <ul>
-<li> <a href="https://github.com/kozodoi/fairness">GitHub repo</a> with the source code and documentation </li>
-<li> <a href="https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html">blog post</a> with the package overview and comprehensive tutorial </li>
+<li> <a href="https://github.com/kozodoi/fairness">GitHub repo</a> with code and documentation </li>
+<li> <a href="https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html">blog post</a> with the overview and tutorial </li>
 </ul>
 
 <span id="dots3"><p></p></span>
