@@ -169,7 +169,7 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#4.-Train-a-classifier">4. Train a classifier </a></li>
-<li class="toc-entry toc-h1"><a href="#5.-Introduction-to-algorithimc-fairness">5. Introduction to algorithimc fairness </a>
+<li class="toc-entry toc-h1"><a href="#5.-Intro-to-algorithimc-fairness">5. Intro to algorithimc fairness </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#An-outlook-on-the-confusion-matrix">An outlook on the confusion matrix </a></li>
 <li class="toc-entry toc-h2"><a href="#Fairness-metrics-functions">Fairness metrics functions </a></li>
@@ -210,7 +210,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated: 18.03.2021</em></p>
+<p><em>Last updated: 01.04.2021</em></p>
 
 </div>
 </div>
@@ -224,7 +224,7 @@ window.onload = wrap_img;
 <p>How to measure fairness of a machine learning model?</p>
 <p>To date, a number of algorithmic fairness metrics have been proposed. Demographic parity, proportional parity and equalized odds are among the most commonly used metrics to evaluate fairness across sensitive groups in binary classification problems. Multiple other metrics have been proposed based on performance measures extracted from the confusion matrix (e.g., false positive rate parity, false negative rate parity).</p>
 <p>Together with <a href="https://www.linkedin.com/in/tiborvvarga/">Tibor V. Varga</a>, we developed <code>fairness</code> package for R. The package provides tools to calculate fairness metrics across different sensitive groups. It also provides opportunities to visualize and compare other prediction metrics between the groups.</p>
-<p>This blog post provides a tutorial on using the <code>fairness</code> package on a <a href="https://github.com/propublica/compas-analysis">COMPAS</a> data set. The blog post is also available as an interactive <a href="https://www.kaggle.com/kozodoi/algorithmic-fairness-in-r-tutorial">Kaggle notebook</a>. The package is published on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
+<p>This blog post provides a tutorial on using the <code>fairness</code> package on a <a href="https://github.com/propublica/compas-analysis">COMPAS</a> data set. The package is published on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
 <p>The package implements the following fairness metrics:</p>
 <ul>
 <li>Demographic parity</li>
@@ -249,7 +249,7 @@ window.onload = wrap_img;
 <h1 id="2.-Installation">
 <a class="anchor" href="#2.-Installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Installation<a class="anchor-link" href="#2.-Installation"> </a>
 </h1>
-<p>You can install the latest stable version from CRAN by running:</p>
+<p>The latest stable version published on CRAN is <code>fairness 1.2.1</code> (as of 01.04.2021). You can install this from CRAN by running:</p>
 
 </div>
 </div>
@@ -257,15 +257,11 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">'fairness'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s1">'fairness'</span><span class="p">)</span>
 <span class="n">library</span><span class="p">(</span><span class="n">fairness</span><span class="p">)</span>
 </pre></div>
 
@@ -273,7 +269,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -296,7 +291,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>You may also install the development version from Github:</p>
+<p>You may also install the development version from Github to get the latest features:</p>
 
 </div>
 </div>
@@ -304,15 +299,11 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">devtools</span><span class="p">::</span><span class="n">install_github</span><span class="p">(</span><span class="s1">'kozodoi/fairness'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">devtools</span><span class="p">::</span><span class="n">install_github</span><span class="p">(</span><span class="s1">'kozodoi/fairness'</span><span class="p">)</span>
 <span class="n">library</span><span class="p">(</span><span class="n">fairness</span><span class="p">)</span>
 </pre></div>
 
@@ -320,7 +311,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 </div>
     
 
@@ -349,15 +339,11 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">data</span><span class="p">(</span><span class="s1">'compas'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">(</span><span class="s1">'compas'</span><span class="p">)</span>
 <span class="n">head</span><span class="p">(</span><span class="n">compas</span><span class="p">)</span>
 </pre></div>
 
@@ -365,7 +351,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -374,7 +359,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A data.frame: 6 × 9</caption>
 <thead>
 	<tr>
 <th></th>
@@ -388,90 +372,66 @@ window.onload = wrap_img;
 <th scope="col">probability</th>
 <th scope="col">predicted</th>
 </tr>
-	<tr>
-<th></th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;dbl&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;dbl&gt;</th>
-<th scope="col">&lt;dbl&gt;</th>
-</tr>
 </thead>
 <tbody>
 	<tr>
-<th scope="row">4</th>
+<th scope="row">1</th>
 <td>no </td>
-<td>-0.6843578</td>
+<td>-0.68435</td>
 <td>no</td>
 <td>no</td>
 <td>Male  </td>
 <td>yes</td>
 <td>Other           </td>
-<td>0.3151557</td>
+<td>0.31515</td>
 <td>0</td>
 </tr>
 	<tr>
-<th scope="row">5</th>
+<th scope="row">2</th>
 <td>yes</td>
-<td> 2.2668817</td>
+<td> 2.26688</td>
 <td>no</td>
 <td>no</td>
 <td>Male  </td>
 <td>no </td>
 <td>Caucasian       </td>
-<td>0.8854616</td>
+<td>0.88546</td>
 <td>1</td>
 </tr>
 	<tr>
-<th scope="row">7</th>
+<th scope="row">3</th>
 <td>no </td>
-<td>-0.6843578</td>
+<td>-0.68435</td>
 <td>no</td>
 <td>no</td>
 <td>Female</td>
 <td>yes</td>
 <td>Caucasian       </td>
-<td>0.2552680</td>
+<td>0.25526</td>
 <td>0</td>
 </tr>
 	<tr>
-<th scope="row">11</th>
+<th scope="row">4</th>
 <td>no </td>
-<td>-0.6843578</td>
+<td>-0.68435</td>
 <td>no</td>
 <td>no</td>
 <td>Male  </td>
 <td>no </td>
 <td>African_American</td>
-<td>0.4173908</td>
+<td>0.41739</td>
 <td>0</td>
 </tr>
 	<tr>
-<th scope="row">14</th>
+<th scope="row">5</th>
 <td>no </td>
-<td>-0.6843578</td>
+<td>-0.68435</td>
 <td>no</td>
 <td>no</td>
 <td>Male  </td>
 <td>yes</td>
 <td>Hispanic        </td>
-<td>0.3200982</td>
-<td>0</td>
-</tr>
-	<tr>
-<th scope="row">24</th>
-<td>no </td>
-<td>-0.6843578</td>
-<td>no</td>
-<td>no</td>
-<td>Male  </td>
-<td>yes</td>
-<td>Other           </td>
-<td>0.3151557</td>
+<td>0.32009</td>
 <td>0</td>
 </tr>
 </tbody>
@@ -510,22 +470,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">data</span><span class="p">(</span><span class="s1">'germancredit'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="p">(</span><span class="s1">'germancredit'</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 </div>
     
 
@@ -666,7 +621,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A data.frame: 6 × 9</caption>
 <thead>
 	<tr>
 <th></th>
@@ -680,91 +634,67 @@ window.onload = wrap_img;
 <th scope="col">prob_1</th>
 <th scope="col">prob_2</th>
 </tr>
-	<tr>
-<th></th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;dbl&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;fct&gt;</th>
-<th scope="col">&lt;dbl&gt;</th>
-<th scope="col">&lt;dbl&gt;</th>
-</tr>
 </thead>
 <tbody>
 	<tr>
-<th scope="row">1185</th>
+<th scope="row">1</th>
 <td>no </td>
-<td>-0.6843578</td>
+<td>-0.68435</td>
 <td>no </td>
 <td>no </td>
 <td>Male  </td>
 <td>no </td>
 <td>African_American</td>
-<td>0.3678771</td>
-<td>0.3481577</td>
+<td>0.36787</td>
+<td>0.34815</td>
 </tr>
 	<tr>
-<th scope="row">5535</th>
+<th scope="row">2</th>
 <td>no </td>
-<td> 2.0560789</td>
+<td> 2.05607</td>
 <td>no </td>
 <td>no </td>
 <td>Male  </td>
 <td>no </td>
 <td>Hispanic        </td>
-<td>0.8024180</td>
-<td>0.8347748</td>
+<td>0.80241</td>
+<td>0.83477</td>
 </tr>
 	<tr>
-<th scope="row">6054</th>
+<th scope="row">3</th>
 <td>yes</td>
-<td>-0.4735549</td>
+<td>-0.47355</td>
 <td>no </td>
 <td>yes</td>
 <td>Male  </td>
 <td>no </td>
 <td>African_American</td>
-<td>0.5895862</td>
-<td>0.5730560</td>
+<td>0.58958</td>
+<td>0.57305</td>
 </tr>
 	<tr>
-<th scope="row">2320</th>
+<th scope="row">4</th>
 <td>no </td>
-<td>-0.6843578</td>
+<td>-0.68435</td>
 <td>yes</td>
 <td>no </td>
 <td>Male  </td>
 <td>no </td>
 <td>African_American</td>
-<td>0.2395689</td>
-<td>0.2218929</td>
+<td>0.23956</td>
+<td>0.22189</td>
 </tr>
 	<tr>
-<th scope="row">3458</th>
+<th scope="row">5</th>
 <td>yes</td>
-<td> 0.5804592</td>
+<td> 0.58045</td>
 <td>no </td>
 <td>no </td>
 <td>Male  </td>
 <td>no </td>
 <td>Caucasian       </td>
-<td>0.5915503</td>
-<td>0.6010710</td>
-</tr>
-	<tr>
-<th scope="row">2114</th>
-<td>no </td>
-<td>-0.6843578</td>
-<td>no </td>
-<td>no </td>
-<td>Female</td>
-<td>yes</td>
-<td>Caucasian       </td>
-<td>0.2480556</td>
-<td>0.2496530</td>
+<td>0.59155</td>
+<td>0.60107</td>
 </tr>
 </tbody>
 </table>
@@ -782,8 +712,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="5.-Introduction-to-algorithimc-fairness">
-<a class="anchor" href="#5.-Introduction-to-algorithimc-fairness" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Introduction to algorithimc fairness<a class="anchor-link" href="#5.-Introduction-to-algorithimc-fairness"> </a>
+<h1 id="5.-Intro-to-algorithimc-fairness">
+<a class="anchor" href="#5.-Intro-to-algorithimc-fairness" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Intro to algorithimc fairness<a class="anchor-link" href="#5.-Intro-to-algorithimc-fairness"> </a>
 </h1>
 <h2 id="An-outlook-on-the-confusion-matrix">
 <a class="anchor" href="#An-outlook-on-the-confusion-matrix" aria-hidden="true"><span class="octicon octicon-link"></span></a>An outlook on the confusion matrix<a class="anchor-link" href="#An-outlook-on-the-confusion-matrix"> </a>
@@ -810,24 +740,44 @@ window.onload = wrap_img;
 <h2 id="Fairness-metrics-functions">
 <a class="anchor" href="#Fairness-metrics-functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fairness metrics functions<a class="anchor-link" href="#Fairness-metrics-functions"> </a>
 </h2>
-<p>The package implements 11 fairness metrics. Many of these metrics are mutually exclusive: results from a given classification problem often cannot be fair in terms of all metrics. Depending on a context, it is important to select an appropriate metric to evaluate fairness.</p>
+<p>The package implements 11 fairness metrics. Many of these are mutually exclusive: results for a given classification problem often cannot be fair in terms of all metrics. Depending on a context, it is important to select an appropriate metric to evaluate fairness.</p>
 <p>Below, we describe functions used to compute the implemented metrics. Every function has a similar set of arguments:</p>
 <ul>
 <li>
-<code>data</code>: data.frame with the input data and model predictions</li>
+<code>data</code>: data.frame containing the input data and model predictions</li>
 <li>
-<code>outcome</code>: name of the outcome variable (binary variable included in the data)</li>
+<code>group</code>: column name indicating the sensitive group (factor variable)</li>
 <li>
-<code>group</code>: name of the sensitive group (factor variable included in the data)</li>
+<code>base</code>: base level of the sensitive group for fairness metrics calculation</li>
 <li>
-<code>base</code>: name of the base group (factor level of <code>group</code>) that serves as a base for fairness metrics</li>
+<code>outcome</code>: column name indicating the binary outcome variable</li>
+<li>
+<code>outcome_base</code>: base level of the outcome variable (i.e., negative class) for fairness metrics calculation</li>
 </ul>
-<p>We also need to supply model predictions. Depending on the metric, we need to provide either porbabilistic predictions as <code>probs</code> or class predictions as <code>preds</code>. The model predictions can be appended to the original data.frame or provided as a vector. In this tutorial, we will use probabilistic predctions with all functions.</p>
-<p>When working with probabilistic predictions, some metrics also require a cutoff value to convert probabilities into class precictions supplied as <code>cutoff</code>. Finally, we also need to specifiy factor levels to indicate the reference classes using the <code>preds_levels</code> argument. The first level refers to the base class, whereas the second level indicates the predicted class for which probabilities are provided. More details are provided in the functions documentation.</p>
+<p>We also need to supply model predictions. Depending on the metric, we need to provide either probabilistic predictions as <code>probs</code> or class predictions as <code>preds</code>. The model predictions can be appended to the original data.frame or provided as a vector. In this tutorial, we will use probabilistic predictions with all functions. When working with probabilistic predictions, some metrics require a cutoff value to convert probabilities into class predictions supplied as <code>cutoff</code>.</p>
+<p>The package also supports a continuous <code>group</code> variable (e.g., age). If <code>group</code> is continuous, a user need to supply <code>group_breaks</code> argument to specify breaks in the variable values. More details are provided in the functions documentation.</p>
+<p>Before looking at different metrics, we will create a binary numeric version of the outcome variable that we will supply as <code>outcome</code> in fairness metrics functions:</p>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_valid</span><span class="err">$</span><span class="n">Two_yr_Recidivism_01</span> <span class="o">&lt;-</span> <span class="n">ifelse</span><span class="p">(</span><span class="n">df_valid</span><span class="err">$</span><span class="n">Two_yr_Recidivism</span> <span class="o">==</span> <span class="s1">'yes'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -847,19 +797,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res1</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                         <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res1</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                         <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                         <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                          <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                          <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                         <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                          <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                          <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
 <span class="n">res1</span><span class="err">$</span><span class="n">Metric</span>
@@ -869,7 +815,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -878,7 +823,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -893,21 +837,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">Precision</th>
-<td>0.6863158</td>
-<td>0.6681223</td>
-<td>0.7857143</td>
-<td>0.6967213</td>
-<td>0.6666667</td>
-<td>0.6489362</td>
+<td>  0.585034</td>
+<td>  0.702381</td>
+<td> 0.5000000</td>
+<td>  0.5909091</td>
+<td>1.000000</td>
+<td>  0.900000</td>
 </tr>
 	<tr>
 <th scope="row">Predictive Rate Parity</th>
-<td>1.0000000</td>
-<td>0.9734910</td>
-<td>1.1448291</td>
-<td>1.0151614</td>
-<td>0.9713701</td>
-<td>0.9455358</td>
+<td>  1.000000</td>
+<td>  1.200581</td>
+<td> 0.8546512</td>
+<td>  1.0100423</td>
+<td>1.709302</td>
+<td>  1.538372</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>622.000000</td>
+<td>962.000000</td>
+<td>16.0000000</td>
+<td>144.0000000</td>
+<td>4.000000</td>
+<td>104.000000</td>
 </tr>
 </tbody>
 </table>
@@ -935,19 +888,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res1h</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                          <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res1h</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                          <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                          <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                           <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                           <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                          <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                           <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                           <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Hispanic'</span><span class="p">)</span>
 <span class="n">res1h</span><span class="err">$</span><span class="n">Metric</span>
@@ -957,7 +906,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -966,7 +914,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -981,21 +928,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">Precision</th>
-<td>0.6967213</td>
-<td>0.6863158</td>
-<td>0.6681223</td>
-<td>0.7857143</td>
-<td>0.6666667</td>
-<td>0.6489362</td>
+<td>  0.5909091</td>
+<td>  0.5850340</td>
+<td>  0.702381</td>
+<td> 0.5000000</td>
+<td>1.000000</td>
+<td>  0.900000</td>
 </tr>
 	<tr>
 <th scope="row">Predictive Rate Parity</th>
-<td>1.0000000</td>
-<td>0.9850650</td>
-<td>0.9589520</td>
-<td>1.1277311</td>
-<td>0.9568627</td>
-<td>0.9314143</td>
+<td>  1.0000000</td>
+<td>  0.9900576</td>
+<td>  1.188645</td>
+<td> 0.8461538</td>
+<td>1.692308</td>
+<td>  1.523077</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>144.0000000</td>
+<td>622.0000000</td>
+<td>962.000000</td>
+<td>16.0000000</td>
+<td>4.000000</td>
+<td>104.000000</td>
 </tr>
 </tbody>
 </table>
@@ -1013,7 +969,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Overall, results suggest that the model precision varies between 0.6489 and 0.7857. Apart from the "other" category, the lowest precision is observed for African-American defendants. This implies that there are more cases where the model mistakingly predicts that a person will commit a crime among African-Americans than among, e.g., Asian defendants.</p>
+<p>Overall, results suggest that the model precision varies between 0.5 and 1. The lowest precision is observed for Asian defendants. This implies that there are more cases where the model mistakingly predicts that a person will commit a crime among Asians than among, e.g., Native_American defendants.</p>
 <p>A standard output of every fairness metric function includes a barchart that visualizes the relative metrics for all subgroups:</p>
 
 </div>
@@ -1022,22 +978,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res1h</span><span class="err">$</span><span class="n">Metric_plot</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res1h</span><span class="err">$</span><span class="n">Metric_plot</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1068,22 +1019,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res1h</span><span class="err">$</span><span class="n">Probability_plot</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res1h</span><span class="err">$</span><span class="n">Probability_plot</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1114,21 +1060,16 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-
-<span class="c1"># model 2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># model 2</span>
 <span class="n">res2</span> <span class="o">&lt;-</span> <span class="n">pred_rate_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                         <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+                         <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                         <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                          <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                          <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_2'</span><span class="p">,</span> 
-                         <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                          <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                          <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
 <span class="n">res2</span><span class="err">$</span><span class="n">Metric</span>
@@ -1138,7 +1079,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1147,7 +1087,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1162,21 +1101,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">Precision</th>
-<td>0.690678</td>
-<td>0.6609808</td>
-<td>0.8181818</td>
-<td>0.706422</td>
-<td>0.6666667</td>
-<td>0.6625000</td>
+<td>  0.5933333</td>
+<td>  0.703854</td>
+<td> 0.4000000</td>
+<td>  0.5142857</td>
+<td>1.000000</td>
+<td>  0.625000</td>
 </tr>
 	<tr>
 <th scope="row">Predictive Rate Parity</th>
-<td>1.000000</td>
-<td>0.9570029</td>
-<td>1.1846068</td>
-<td>1.022795</td>
-<td>0.9652352</td>
-<td>0.9592025</td>
+<td>  1.0000000</td>
+<td>  1.186271</td>
+<td> 0.6741573</td>
+<td>  0.8667737</td>
+<td>1.685393</td>
+<td>  1.053371</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>622.0000000</td>
+<td>962.000000</td>
+<td>16.0000000</td>
+<td>144.0000000</td>
+<td>4.000000</td>
+<td>104.000000</td>
 </tr>
 </tbody>
 </table>
@@ -1195,7 +1143,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see two things.</p>
-<p>First, excluding <code>ethnicity</code> from the features slightly increases precision for African-American defendants but results in a lower precision for a number of other groups. This illustrates that improving a model for one group may cost a fall in the predictive performance for the general population. Depending on the context, it is a task of a decision-maker to decide what is best.</p>
+<p>First, excluding <code>ethnicity</code> from the features slightly increases precision for some defendants (Caucasian and African_American) but results in a lower precision for some other groups (Asian and Hispanic). This illustrates that improving a model for one group may cost a fall in the predictive performance for the general population. Depending on the context, it is a task of a decision-maker to decide what is best.</p>
 <p>Second, excluding <code>ethnicity</code> does not align the predictive rate parities substantially closer to one. This illustrates another important research finding: removing a sensitive variable does not guarantee that a model stops discriminating. Ethnicity correlates with other features and is still implicitly included in the input data. In order to make the classifier more fair, one would neet to consider more sophisticated techniques than simply dropping the sensitive attribute.</p>
 
 </div>
@@ -1212,22 +1160,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="o">?</span>fairness<span class="p">::</span><span class="n">pred_rate_parity</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">?</span>fairness<span class="p">::</span><span class="n">pred_rate_parity</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 </div>
     
 
@@ -1246,19 +1189,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_dem</span> <span class="o">&lt;-</span> <span class="n">dem_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_dem</span> <span class="o">&lt;-</span> <span class="n">dem_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span>
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
 <span class="n">res_dem</span><span class="err">$</span><span class="n">Metric</span>
@@ -1268,7 +1207,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1277,7 +1215,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1294,19 +1231,28 @@ window.onload = wrap_img;
 <th scope="row">Positively classified</th>
 <td>147</td>
 <td>504.000000</td>
-<td>2.00000000</td>
-<td>22.0000000</td>
+<td> 2.00000000</td>
+<td> 22.0000000</td>
 <td>1.000000000</td>
-<td>10.00000000</td>
+<td> 10.00000000</td>
 </tr>
 	<tr>
 <th scope="row">Demographic Parity</th>
 <td>  1</td>
 <td>  3.428571</td>
-<td>0.01360544</td>
-<td> 0.1496599</td>
+<td> 0.01360544</td>
+<td>  0.1496599</td>
 <td>0.006802721</td>
-<td> 0.06802721</td>
+<td>  0.06802721</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>622</td>
+<td>962.000000</td>
+<td>16.00000000</td>
+<td>144.0000000</td>
+<td>4.000000000</td>
+<td>104.00000000</td>
 </tr>
 </tbody>
 </table>
@@ -1324,22 +1270,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_dem</span><span class="err">$</span><span class="n">Metric_plot</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_dem</span><span class="err">$</span><span class="n">Metric_plot</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1370,22 +1311,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">table</span><span class="p">(</span><span class="n">df_valid</span><span class="err">$</span><span class="n">ethnicity</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">table</span><span class="p">(</span><span class="n">df_valid</span><span class="err">$</span><span class="n">ethnicity</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1432,19 +1368,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_prop</span> <span class="o">&lt;-</span> <span class="n">prop_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                        <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_prop</span> <span class="o">&lt;-</span> <span class="n">prop_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                        <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span>
+                        <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                         <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                         <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                        <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                         <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                         <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Caucasian'</span><span class="p">)</span>
 <span class="n">res_prop</span><span class="err">$</span><span class="n">Metric</span>
@@ -1454,7 +1386,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1463,7 +1394,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1478,21 +1408,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">Proportion</th>
-<td>0.2363344</td>
-<td>0.5239085</td>
-<td>0.1250000</td>
-<td>0.1527778</td>
+<td>  0.2363344</td>
+<td>  0.5239085</td>
+<td> 0.1250000</td>
+<td>  0.1527778</td>
 <td>0.250000</td>
-<td>0.09615385</td>
+<td>  0.09615385</td>
 </tr>
 	<tr>
 <th scope="row">Proportional Parity</th>
-<td>1.0000000</td>
-<td>2.2168102</td>
-<td>0.5289116</td>
-<td>0.6464475</td>
+<td>  1.0000000</td>
+<td>  2.2168102</td>
+<td> 0.5289116</td>
+<td>  0.6464475</td>
 <td>1.057823</td>
-<td>0.40685505</td>
+<td>  0.40685505</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>622.0000000</td>
+<td>962.0000000</td>
+<td>16.0000000</td>
+<td>144.0000000</td>
+<td>4.000000</td>
+<td>104.00000000</td>
 </tr>
 </tbody>
 </table>
@@ -1510,22 +1449,17 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_prop</span><span class="err">$</span><span class="n">Metric_plot</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_prop</span><span class="err">$</span><span class="n">Metric_plot</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1576,19 +1510,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_eq</span> <span class="o">&lt;-</span> <span class="n">equal_odds</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                     <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_eq</span> <span class="o">&lt;-</span> <span class="n">equal_odds</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                     <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                     <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                      <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                      <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                     <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                      <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                      <span class="n">base</span>         <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>  
 <span class="n">res_eq</span><span class="err">$</span><span class="n">Metric</span>
@@ -1598,7 +1528,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1607,7 +1536,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1620,24 +1548,9 @@ window.onload = wrap_img;
 </tr>
 </thead>
 <tbody>
-	<tr>
-<th scope="row">Sensitivity</th>
-<td>0.6710526</td>
-<td>0.8423773</td>
-<td>0.9166667</td>
-<td>0.9042553</td>
-<td>1.000000</td>
-<td>0.983871</td>
-</tr>
-	<tr>
-<th scope="row">Equalized odds</th>
-<td>1.0000000</td>
-<td>1.2553073</td>
-<td>1.3660131</td>
-<td>1.3475177</td>
-<td>1.490196</td>
-<td>1.466161</td>
-</tr>
+	Sensitivity &amp;   0.6996047 &amp;   0.3659574 &amp;  0.2500000 &amp;   0.2600000 &amp; 0.5000000 &amp;   0.2142857\\
+	Equalized odds &amp;   1.0000000 &amp;   0.5230917 &amp;  0.3573446 &amp;   0.3716384 &amp; 0.7146893 &amp;   0.3062954\\
+	Group size &amp; 962.0000000 &amp; 622.0000000 &amp; 16.0000000 &amp; 144.0000000 &amp; 4.0000000 &amp; 104.0000000\\
 </tbody>
 </table>
 
@@ -1666,21 +1579,16 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_acc</span> <span class="o">&lt;-</span> <span class="n">acc_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
-                      <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
-                      <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
-                      <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
-                      <span class="n">base</span>         <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_acc</span> <span class="o">&lt;-</span> <span class="n">acc_parity</span><span class="p">(</span><span class="n">data</span>    <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span> <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">group</span>   <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
+                      <span class="n">probs</span>   <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
+                      <span class="n">cutoff</span>  <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                      <span class="n">base</span>    <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>
 <span class="n">res_acc</span><span class="err">$</span><span class="n">Metric</span>
 </pre></div>
 
@@ -1688,7 +1596,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1697,7 +1604,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1756,19 +1662,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_fnr</span> <span class="o">&lt;-</span> <span class="n">fnr_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_fnr</span> <span class="o">&lt;-</span> <span class="n">fnr_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>
 <span class="n">res_fnr</span><span class="err">$</span><span class="n">Metric</span>
@@ -1778,7 +1680,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1787,7 +1688,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1802,21 +1702,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">FNR</th>
-<td>0.3289474</td>
-<td>0.1576227</td>
-<td>0.08333333</td>
-<td>0.09574468</td>
-<td>0</td>
-<td>0.01612903</td>
+<td>  0.3003953</td>
+<td>  0.6340426</td>
+<td> 0.750000</td>
+<td>  0.740000</td>
+<td>0.500000</td>
+<td>  0.7857143</td>
 </tr>
 	<tr>
 <th scope="row">FNR Parity</th>
-<td>1.0000000</td>
-<td>0.4791731</td>
-<td>0.25333333</td>
-<td>0.29106383</td>
-<td>0</td>
-<td>0.04903226</td>
+<td>  1.0000000</td>
+<td>  2.1106943</td>
+<td> 2.496711</td>
+<td>  2.463421</td>
+<td>1.664474</td>
+<td>  2.6156015</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>962.0000000</td>
+<td>622.0000000</td>
+<td>16.000000</td>
+<td>144.000000</td>
+<td>4.000000</td>
+<td>104.0000000</td>
 </tr>
 </tbody>
 </table>
@@ -1846,19 +1755,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_fpr</span> <span class="o">&lt;-</span> <span class="n">fpr_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_fpr</span> <span class="o">&lt;-</span> <span class="n">fpr_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>
 <span class="n">res_fpr</span><span class="err">$</span><span class="n">Metric</span>
@@ -1868,7 +1773,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1877,7 +1781,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1892,21 +1795,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">FPR</th>
-<td>0.3003953</td>
-<td>0.6340426</td>
-<td>0.750000</td>
-<td>0.740000</td>
-<td>0.500000</td>
-<td>0.7857143</td>
+<td>  0.3289474</td>
+<td>  0.1576227</td>
+<td> 0.08333333</td>
+<td>  0.09574468</td>
+<td>0</td>
+<td>  0.01612903</td>
 </tr>
 	<tr>
 <th scope="row">FPR Parity</th>
-<td>1.0000000</td>
-<td>2.1106943</td>
-<td>2.496711</td>
-<td>2.463421</td>
-<td>1.664474</td>
-<td>2.6156015</td>
+<td>  1.0000000</td>
+<td>  0.4791731</td>
+<td> 0.25333333</td>
+<td>  0.29106383</td>
+<td>0</td>
+<td>  0.04903226</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>962.0000000</td>
+<td>622.0000000</td>
+<td>16.00000000</td>
+<td>144.00000000</td>
+<td>4</td>
+<td>104.00000000</td>
 </tr>
 </tbody>
 </table>
@@ -1936,19 +1848,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_npv</span> <span class="o">&lt;-</span> <span class="n">npv_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_npv</span> <span class="o">&lt;-</span> <span class="n">npv_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>
 <span class="n">res_npv</span><span class="err">$</span><span class="n">Metric</span>
@@ -1958,7 +1866,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1967,7 +1874,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -1982,21 +1888,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">NPV</th>
-<td>0.702381</td>
-<td>0.5850340</td>
-<td>0.5000000</td>
-<td>0.5909091</td>
-<td>1.000000</td>
-<td>0.900000</td>
+<td>  0.6681223</td>
+<td>  0.6863158</td>
+<td> 0.7857143</td>
+<td>  0.6967213</td>
+<td>0.6666667</td>
+<td>  0.6489362</td>
 </tr>
 	<tr>
 <th scope="row">NPV Parity</th>
-<td>1.000000</td>
-<td>0.8329298</td>
-<td>0.7118644</td>
-<td>0.8412943</td>
-<td>1.423729</td>
-<td>1.281356</td>
+<td>  1.0000000</td>
+<td>  1.0272308</td>
+<td> 1.1760037</td>
+<td>  1.0428051</td>
+<td>0.9978214</td>
+<td>  0.9712835</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>962.0000000</td>
+<td>622.0000000</td>
+<td>16.0000000</td>
+<td>144.0000000</td>
+<td>4.0000000</td>
+<td>104.0000000</td>
 </tr>
 </tbody>
 </table>
@@ -2026,19 +1941,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_sp</span> <span class="o">&lt;-</span> <span class="n">spec_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_sp</span> <span class="o">&lt;-</span> <span class="n">spec_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'ethnicity'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'African_American'</span><span class="p">)</span>
 <span class="n">res_sp</span><span class="err">$</span><span class="n">Metric</span>
@@ -2048,7 +1959,6 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -2057,7 +1967,6 @@ window.onload = wrap_img;
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 6 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -2072,21 +1981,30 @@ window.onload = wrap_img;
 <tbody>
 	<tr>
 <th scope="row">Specificity</th>
-<td>0.6996047</td>
-<td>0.3659574</td>
-<td>0.2500000</td>
-<td>0.2600000</td>
-<td>0.5000000</td>
-<td>0.2142857</td>
+<td>  0.6710526</td>
+<td>  0.8423773</td>
+<td> 0.9166667</td>
+<td>  0.9042553</td>
+<td>1.000000</td>
+<td>  0.983871</td>
 </tr>
 	<tr>
 <th scope="row">Specificity Parity</th>
-<td>1.0000000</td>
-<td>0.5230917</td>
-<td>0.3573446</td>
-<td>0.3716384</td>
-<td>0.7146893</td>
-<td>0.3062954</td>
+<td>  1.0000000</td>
+<td>  1.2553073</td>
+<td> 1.3660131</td>
+<td>  1.3475177</td>
+<td>1.490196</td>
+<td>  1.466161</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>962.0000000</td>
+<td>622.0000000</td>
+<td>16.0000000</td>
+<td>144.0000000</td>
+<td>4.000000</td>
+<td>104.000000</td>
 </tr>
 </tbody>
 </table>
@@ -2123,19 +2041,15 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_auc</span> <span class="o">&lt;-</span> <span class="n">roc_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_auc</span> <span class="o">&lt;-</span> <span class="n">roc_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'Female'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Male'</span><span class="p">)</span>
 <span class="n">res_auc</span><span class="err">$</span><span class="n">Metric</span>
 </pre></div>
@@ -2144,18 +2058,13 @@ window.onload = wrap_img;
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>Setting direction: controls &lt; cases
-
-Setting direction: controls &lt; cases
-
-</pre>
+<pre></pre>
 </div>
 </div>
 
@@ -2164,7 +2073,6 @@ Setting direction: controls &lt; cases
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 2 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
@@ -2175,13 +2083,18 @@ Setting direction: controls &lt; cases
 <tbody>
 	<tr>
 <th scope="row">ROC AUC</th>
-<td>0.7221429</td>
-<td>0.7192349</td>
+<td>   0.7221429</td>
+<td>  0.7192349</td>
 </tr>
 	<tr>
 <th scope="row">ROC AUC Parity</th>
-<td>1.0000000</td>
-<td>0.9959731</td>
+<td>   1.0000000</td>
+<td>  0.9959731</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>1515.0000000</td>
+<td>337.0000000</td>
 </tr>
 </tbody>
 </table>
@@ -2207,22 +2120,17 @@ Setting direction: controls &lt; cases
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_auc</span><span class="err">$</span><span class="n">ROCAUC_plot</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_auc</span><span class="err">$</span><span class="n">ROCAUC_plot</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -2257,19 +2165,15 @@ Setting direction: controls &lt; cases
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description" open="">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
-<span class="n">res_mcc</span> <span class="o">&lt;-</span> <span class="n">mcc_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
-                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism'</span><span class="p">,</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_mcc</span> <span class="o">&lt;-</span> <span class="n">mcc_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
+                      <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
+                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'Female'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
-                      <span class="n">preds_levels</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s1">'no'</span><span class="p">,</span><span class="s1">'yes'</span><span class="p">),</span> 
                       <span class="n">cutoff</span>       <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Male'</span><span class="p">)</span>
 <span class="n">res_mcc</span><span class="err">$</span><span class="n">Metric</span>
@@ -2279,7 +2183,6 @@ Setting direction: controls &lt; cases
 </div>
 </div>
 
-    </details>
 <div class="output_wrapper">
 <div class="output">
 
@@ -2288,7 +2191,6 @@ Setting direction: controls &lt; cases
 
 <div class="output_html rendered_html output_subarea ">
 <table class="dataframe">
-<caption>A matrix: 2 × 2 of type dbl</caption>
 <thead>
 	<tr>
 <th></th>
