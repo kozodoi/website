@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-01T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi, Tibor V. Varga"},"description":"Tutorial on using the fairness R package","@type":"BlogPosting","headline":"Algorithmic Fairness in R","dateModified":"2020-05-01T00:00:00-05:00","datePublished":"2020-05-01T00:00:00-05:00","image":"https://kozodoi.me/images/posts/fairness.png","url":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi, Tibor V. Varga"},"description":"Tutorial on using the fairness R package","headline":"Algorithmic Fairness in R","@type":"BlogPosting","dateModified":"2020-05-01T00:00:00-05:00","datePublished":"2020-05-01T00:00:00-05:00","image":"https://kozodoi.me/images/posts/fairness.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html"},"url":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -41,7 +41,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-05-01T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi, Tibor V. Varga"},"description":"Tutorial on using the fairness R package","@type":"BlogPosting","headline":"Algorithmic Fairness in R","dateModified":"2020-05-01T00:00:00-05:00","datePublished":"2020-05-01T00:00:00-05:00","image":"https://kozodoi.me/images/posts/fairness.png","url":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi, Tibor V. Varga"},"description":"Tutorial on using the fairness R package","headline":"Algorithmic Fairness in R","@type":"BlogPosting","dateModified":"2020-05-01T00:00:00-05:00","datePublished":"2020-05-01T00:00:00-05:00","image":"https://kozodoi.me/images/posts/fairness.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html"},"url":"https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -210,7 +210,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated: 01.04.2021</em></p>
+<p><em>Last updated: 14.04.2021</em></p>
 
 </div>
 </div>
@@ -249,7 +249,7 @@ window.onload = wrap_img;
 <h1 id="2.-Installation">
 <a class="anchor" href="#2.-Installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Installation<a class="anchor-link" href="#2.-Installation"> </a>
 </h1>
-<p>The latest stable version published on CRAN is <code>fairness 1.2.1</code> (as of 01.04.2021). You can install this from CRAN by running:</p>
+<p>The latest stable version published on CRAN is <code>fairness 1.2.2</code> (as of 14.04.2021). You can install this from CRAN by running:</p>
 
 </div>
 </div>
@@ -756,7 +756,7 @@ window.onload = wrap_img;
 </ul>
 <p>We also need to supply model predictions. Depending on the metric, we need to provide either probabilistic predictions as <code>probs</code> or class predictions as <code>preds</code>. The model predictions can be appended to the original data.frame or provided as a vector. In this tutorial, we will use probabilistic predictions with all functions. When working with probabilistic predictions, some metrics require a cutoff value to convert probabilities into class predictions supplied as <code>cutoff</code>.</p>
 <p>The package also supports a continuous <code>group</code> variable (e.g., age). If <code>group</code> is continuous, a user need to supply <code>group_breaks</code> argument to specify breaks in the variable values. More details are provided in the functions documentation.</p>
-<p>Before looking at different metrics, we will create a binary numeric version of the outcome variable that we will supply as <code>outcome</code> in fairness metrics functions:</p>
+<p>Before looking at different metrics, we will create a binary numeric version of the outcome variable that we will supply as <code>outcome</code> in fairness metrics functions. We can also work with an original factor outcome <code>Two_yr_Recidivism</code> but in this case we should make sure that predictions and outcome have the same factor levels.</p>
 
 </div>
 </div>
@@ -855,12 +855,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>622.000000</td>
-<td>962.000000</td>
-<td>16.0000000</td>
-<td>144.0000000</td>
-<td>4.000000</td>
-<td>104.000000</td>
+<td>622</td>
+<td>962</td>
+<td>160</td>
+<td>1440</td>
+<td>4</td>
+<td>104</td>
 </tr>
 </tbody>
 </table>
@@ -946,12 +946,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>144.0000000</td>
-<td>622.0000000</td>
-<td>962.000000</td>
-<td>16.0000000</td>
-<td>4.000000</td>
-<td>104.000000</td>
+<td>1440</td>
+<td>6220</td>
+<td>962</td>
+<td>160</td>
+<td>4</td>
+<td>104</td>
 </tr>
 </tbody>
 </table>
@@ -1119,12 +1119,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>622.0000000</td>
-<td>962.000000</td>
-<td>16.0000000</td>
-<td>144.0000000</td>
-<td>4.000000</td>
-<td>104.000000</td>
+<td>6220</td>
+<td>962</td>
+<td>160</td>
+<td>1440</td>
+<td>4</td>
+<td>104</td>
 </tr>
 </tbody>
 </table>
@@ -1230,7 +1230,7 @@ window.onload = wrap_img;
 	<tr>
 <th scope="row">Positively classified</th>
 <td>147</td>
-<td>504.000000</td>
+<td>504</td>
 <td> 2.00000000</td>
 <td> 22.0000000</td>
 <td>1.000000000</td>
@@ -1248,11 +1248,11 @@ window.onload = wrap_img;
 	<tr>
 <th scope="row">Group size</th>
 <td>622</td>
-<td>962.000000</td>
-<td>16.00000000</td>
-<td>144.0000000</td>
-<td>4.000000000</td>
-<td>104.00000000</td>
+<td>962</td>
+<td>1600</td>
+<td>1440</td>
+<td>4000</td>
+<td>10400</td>
 </tr>
 </tbody>
 </table>
@@ -1426,12 +1426,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>622.0000000</td>
-<td>962.0000000</td>
-<td>16.0000000</td>
-<td>144.0000000</td>
-<td>4.000000</td>
-<td>104.00000000</td>
+<td>6220</td>
+<td>962</td>
+<td>160</td>
+<td>1440</td>
+<td>4</td>
+<td>10400</td>
 </tr>
 </tbody>
 </table>
@@ -1548,9 +1548,33 @@ window.onload = wrap_img;
 </tr>
 </thead>
 <tbody>
-	Sensitivity &amp;   0.6996047 &amp;   0.3659574 &amp;  0.2500000 &amp;   0.2600000 &amp; 0.5000000 &amp;   0.2142857\\
-	Equalized odds &amp;   1.0000000 &amp;   0.5230917 &amp;  0.3573446 &amp;   0.3716384 &amp; 0.7146893 &amp;   0.3062954\\
-	Group size &amp; 962.0000000 &amp; 622.0000000 &amp; 16.0000000 &amp; 144.0000000 &amp; 4.0000000 &amp; 104.0000000\\
+	<tr>
+<th scope="row">Sensitivity</th>
+<td>0.6996047</td>
+<td>0.3659574</td>
+<td>0.2500000</td>
+<td>0.2600000</td>
+<td>0.5000000</td>
+<td>0.2142857</td>
+</tr>
+	<tr>
+<th scope="row">Equalized odds</th>
+<td>1.0000000</td>
+<td>0.5230917</td>
+<td>0.3573446</td>
+<td>0.3716384</td>
+<td>0.7146893</td>
+<td>0.3062954</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>962</td>
+<td>6220</td>
+<td>16</td>
+<td>144</td>
+<td>4</td>
+<td>1040</td>
+</tr>
 </tbody>
 </table>
 
@@ -1633,6 +1657,15 @@ window.onload = wrap_img;
 <td>0.9919613</td>
 <td>1.093182</td>
 <td>0.9810606</td>
+</tr>
+	<tr>
+<th scope="row">Group size</th>
+<td>962</td>
+<td>6220</td>
+<td>16</td>
+<td>144</td>
+<td>4</td>
+<td>1040</td>
 </tr>
 </tbody>
 </table>
@@ -1720,12 +1753,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>962.0000000</td>
-<td>622.0000000</td>
-<td>16.000000</td>
-<td>144.000000</td>
-<td>4.000000</td>
-<td>104.0000000</td>
+<td>962</td>
+<td>6220</td>
+<td>16</td>
+<td>144</td>
+<td>4</td>
+<td>1040</td>
 </tr>
 </tbody>
 </table>
@@ -1813,12 +1846,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>962.0000000</td>
-<td>622.0000000</td>
-<td>16.00000000</td>
-<td>144.00000000</td>
+<td>962</td>
+<td>6220</td>
+<td>1600</td>
+<td>14400</td>
 <td>4</td>
-<td>104.00000000</td>
+<td>10400</td>
 </tr>
 </tbody>
 </table>
@@ -1906,12 +1939,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>962.0000000</td>
-<td>622.0000000</td>
-<td>16.0000000</td>
-<td>144.0000000</td>
-<td>4.0000000</td>
-<td>104.0000000</td>
+<td>962</td>
+<td>6220</td>
+<td>160</td>
+<td>1440</td>
+<td>40</td>
+<td>1040</td>
 </tr>
 </tbody>
 </table>
@@ -1999,12 +2032,12 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>962.0000000</td>
-<td>622.0000000</td>
-<td>16.0000000</td>
-<td>144.0000000</td>
-<td>4.000000</td>
-<td>104.000000</td>
+<td>962</td>
+<td>6220</td>
+<td>160</td>
+<td>1440</td>
+<td>4</td>
+<td>104</td>
 </tr>
 </tbody>
 </table>
@@ -2047,7 +2080,6 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">res_auc</span> <span class="o">&lt;-</span> <span class="n">roc_parity</span><span class="p">(</span><span class="n">data</span>         <span class="o">=</span> <span class="n">df_valid</span><span class="p">,</span> 
                       <span class="n">outcome</span>      <span class="o">=</span> <span class="s1">'Two_yr_Recidivism_01'</span><span class="p">,</span> 
-                      <span class="n">outcome_base</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">,</span> 
                       <span class="n">group</span>        <span class="o">=</span> <span class="s1">'Female'</span><span class="p">,</span>
                       <span class="n">probs</span>        <span class="o">=</span> <span class="s1">'prob_1'</span><span class="p">,</span> 
                       <span class="n">base</span>         <span class="o">=</span> <span class="s1">'Male'</span><span class="p">)</span>
@@ -2093,8 +2125,8 @@ window.onload = wrap_img;
 </tr>
 	<tr>
 <th scope="row">Group size</th>
-<td>1515.0000000</td>
-<td>337.0000000</td>
+<td>151</td>
+<td>337</td>
 </tr>
 </tbody>
 </table>
