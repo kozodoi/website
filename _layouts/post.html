@@ -61,9 +61,13 @@ layout: default
   <div class="post-content e-content" itemprop="articleBody">
     {{ content | toc  }}
   </div>
+
   {%- if page.comments -%}
-    {%- include disqus-comments.html -%}
+    <!--{%- include disqus-comments.html -%}-->
   {%- endif -%}
+
+  {%- include social-media-sharing.html -%}
+
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 
 </article>
