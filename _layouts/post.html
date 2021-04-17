@@ -56,6 +56,7 @@ layout: default
     {% if page.cover %}
       <img src="{{page.cover | relative_url }}" style="width:100%"/>
     {% endif -%}
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=607a88d1f94d5c00182f2b41&product=inline-share-buttons" async="async"></script>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
@@ -66,7 +67,9 @@ layout: default
     <!--{%- include disqus-comments.html -%}-->
   {%- endif -%}
 
-  {%- include social-media-sharing.html -%}
+
+  Liked the blog post? Share it on social media!
+  <div class="sharethis-inline-share-buttons"></div>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 
