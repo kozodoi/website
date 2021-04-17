@@ -189,8 +189,8 @@ window.onload = wrap_img;
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
-<p>In computer vision competitions, it is recommended to normalize the pixel values of images relative to the dataset mean and standard deviation. This helps to get consistent results when applying the model to new images and can also be useful for transfer learning. In practice, computing these statistics can be a little non-trivial since we usually can't load the whole dataset in memory and loop through it using batches of images.</p>
-<p>This blog post provides a quick tutorial on computing dataset mean and std within RGB channels using a regular <code>PyTorch</code> dataloader. While computing mean is easy since we can simply average means over the batches, standard deviation is a bit more tricky: averaging stds from different batches is not the same as the overall std. Let's see how to do it correctly!</p>
+<p>In computer vision, it is recommended to normalize pixel values of the images relative to the dataset mean and standard deviation. This helps to get consistent results when applying the model to new images and can also be useful for transfer learning. In practice, computing these statistics can be a little non-trivial since we usually can't load the whole dataset in memory and have to loop through it in batches.</p>
+<p>This blog post provides a quick tutorial on computing dataset mean and std within RGB channels using a regular <code>PyTorch</code> dataloader. While computing mean is easy (we can simply average means over batches), standard deviation is a bit more tricky: averaging stds from different batches is not the same as the overall std. Let's see how to do it correctly!</p>
 
 </div>
 </div>
@@ -201,7 +201,7 @@ window.onload = wrap_img;
 <h1 id="2.-Preparations">
 <a class="anchor" href="#2.-Preparations" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Preparations<a class="anchor-link" href="#2.-Preparations"> </a>
 </h1>
-<p>To demonstrate how to compute image statistics, we will use data from <a href="https://www.kaggle.com/c/cassava-leaf-disease-classification">Cassava Leaf Disease Classification</a> Kaggle competition with about 21,000 plant images. Feel free to scroll to Section 3 if you want to jump directly to the calculations. First, we will import all the usuall libraries and specify the relevant parameters.</p>
+<p>To demonstrate how to compute image statistics, we will use data from <a href="https://www.kaggle.com/c/cassava-leaf-disease-classification">Cassava Leaf Disease Classification</a> Kaggle competition with about 21,000 plant images. Feel free to scroll down to Section 3 if you want to jump directly to calculations. First, we will import all the usuall libraries and specify the relevant parameters. No need to use GPU because there is no modeling involved.</p>
 
 </div>
 </div>
@@ -236,7 +236,6 @@ window.onload = wrap_img;
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 
@@ -260,7 +259,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's import the dataframe that contains image paths and create a <code>Dataset</code> class that will read images and supply it to the dataloader.</p>
+<p>Now, let's import the dataframe with the image paths and create a <code>Dataset</code> class that will read images and supply them to the dataloader.</p>
 
 </div>
 </div>
@@ -366,26 +365,19 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
 
-<span class="c1">####### DATASET</span>
-
 <span class="k">class</span> <span class="nc">LeafData</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
     
-    <span class="c1"># initialization</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
                  <span class="n">data</span><span class="p">,</span> 
                  <span class="n">directory</span><span class="p">,</span> 
-                 <span class="n">transform</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-                 <span class="n">labeled</span>   <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+                 <span class="n">transform</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span>      <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">labeled</span>   <span class="o">=</span> <span class="n">labeled</span>
         
-    <span class="c1"># length</span>
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
     
-    <span class="c1"># get item  </span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
         
         <span class="c1"># import</span>
@@ -398,11 +390,7 @@ window.onload = wrap_img;
             <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">)[</span><span class="s1">'image'</span><span class="p">]</span>
         
         <span class="c1"># output</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">labeled</span><span class="p">:</span>
-            <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s1">'label'</span><span class="p">])</span><span class="o">.</span><span class="n">long</span><span class="p">()</span>
-            <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">labels</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">image</span>
+        <span class="k">return</span> <span class="n">image</span>
 </pre></div>
 
     </div>
@@ -468,8 +456,7 @@ window.onload = wrap_img;
 <span class="c1"># dataset</span>
 <span class="n">sample_dataset</span> <span class="o">=</span> <span class="n">LeafData</span><span class="p">(</span><span class="n">data</span>      <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
                           <span class="n">directory</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="s1">'train_images/'</span><span class="p">,</span>
-                          <span class="n">transform</span> <span class="o">=</span> <span class="n">augs</span><span class="p">,</span>
-                          <span class="n">labeled</span>   <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+                          <span class="n">transform</span> <span class="o">=</span> <span class="n">augs</span><span class="p">)</span>
 
 <span class="c1"># data loader</span>
 <span class="n">sample_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">sample_dataset</span><span class="p">,</span> 
@@ -484,7 +471,6 @@ window.onload = wrap_img;
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">yticks</span> <span class="o">=</span> <span class="p">[])</span>     
         <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
     <span class="k">break</span>
 </pre></div>
 
