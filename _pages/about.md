@@ -26,7 +26,7 @@ permalink: /about/
 - <i class="em em-books" aria-role="presentation" aria-label="BOOKS"></i> PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc)
 - <i class="em em-computer" aria-role="presentation" aria-label="PERSONAL COMPUTER"></i> Data science research associate at [Monedo](https://www.monedo.com)
 - <i class="em em-robot_face" aria-role="presentation" aria-label="ROBOT FACE"></i> Passionate about machine learning, deep learning and data science
-- <i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i> Working on ML applications in credit risk analytics
+- <i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i> Working on ML/DL applications in credit risk analytics
 - <i class="em em-sports_medal" aria-role="presentation" aria-label="SPORTS MEDAL"></i> Enjoy participating at data science competitions and hackathons
 - <i class="em em-jigsaw" aria-role="presentation" aria-label="JIGSAW PUZZLE PIECE"></i> Love football, scooters and piano
 
