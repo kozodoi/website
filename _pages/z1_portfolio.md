@@ -27,9 +27,9 @@ permalink: /portfolio/
 
 <h3> Highlights </h3>
 <ul>
-<li> performed a thorough data aggregation, cleaning and feature engineering </li>
-<li> implemented custom loss functions aimed at maximizing the retailer's profit </li>
 <li> developed a two-stage demand forecasting pipeline with LightGBM models </li>
+<li> performed a thorough cleaning, aggregation and feature engineering on transactional data </li>
+<li> implemented custom loss functions aimed at maximizing the retailer's profit </li>
 </ul>
 
 <h3> Links </h3>
@@ -112,9 +112,9 @@ permalink: /portfolio/
 
 <h3> Highlights </h3>
 <ul>
-<li> developing and supporting an R package for fair machine learning </li>
+<li> developing and actively maintaining an R package for fair machine learning </li>
 <li> the package offers calculation, visualization and comparison of algorithmic fairness metrics </li>
-<li> the package is published on CRAN with more than 10k total downloads </li>
+<li> the package is published on CRAN and has more than 11k total downloads </li>
 </ul>
 
 <h3> Links </h3>
