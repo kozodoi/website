@@ -20,7 +20,7 @@ permalink: /kaggle/
 
 
 ### Highest user rank
-- **Competitions**: 293 out of 159,203 (Master, 14 total medals)
+- **Competitions**: 293 out of 159,203 (Master, 14 medals)
 - **Notebooks**: 515 out of 163,069 (Expert)
 - **Discussion**: 205 out of 190,289 (Expert)
 
