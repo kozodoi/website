@@ -187,10 +187,18 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last update: 21.04.2021</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
-<p>In computer vision, it is recommended to normalize pixel values of the images relative to the dataset mean and standard deviation. This helps to get consistent results when applying the model to new images and can also be useful for transfer learning. In practice, computing these statistics can be a little non-trivial since we usually can't load the whole dataset in memory and have to loop through it in batches.</p>
+<p>In computer vision, it is recommended to normalize image pixel values relative to the dataset mean and standard deviation. This helps to get consistent results when applying a model to new images and can also be useful for transfer learning. In practice, computing these statistics can be a little non-trivial since we usually can't load the whole dataset in memory and have to loop through it in batches.</p>
 <p>This blog post provides a quick tutorial on computing dataset mean and std within RGB channels using a regular <code>PyTorch</code> dataloader. While computing mean is easy (we can simply average means over batches), standard deviation is a bit more tricky: averaging stds from different batches is not the same as the overall std. Let's see how to do it correctly!</p>
 
 </div>
@@ -202,7 +210,8 @@ window.onload = wrap_img;
 <h1 id="2.-Preparations">
 <a class="anchor" href="#2.-Preparations" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Preparations<a class="anchor-link" href="#2.-Preparations"> </a>
 </h1>
-<p>To demonstrate how to compute image statistics, we will use data from <a href="https://www.kaggle.com/c/cassava-leaf-disease-classification">Cassava Leaf Disease Classification</a> Kaggle competition with about 21,000 plant images. Feel free to scroll down to Section 3 if you want to jump directly to calculations. First, we will import all the usuall libraries and specify the relevant parameters. No need to use GPU because there is no modeling involved.</p>
+<p>To demonstrate how to compute image stats, we will use data from <a href="https://www.kaggle.com/c/cassava-leaf-disease-classification">Cassava Leaf Disease Classification</a> Kaggle competition with about 21,000 plant images. Feel free to scroll down to Section 3 to jump directly to calculations.</p>
+<p>First, we will import the usuall libraries and specify relevant parameters. No need to use GPU because there is no modeling involved.</p>
 
 </div>
 </div>
@@ -260,7 +269,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now, let's import the dataframe with the image paths and create a <code>Dataset</code> class that will read images and supply them to the dataloader.</p>
+<p>Now, let's import a dataframe with image paths and create a <code>Dataset</code> class that will read images and supply them to the dataloader.</p>
 
 </div>
 </div>
@@ -383,14 +392,12 @@ window.onload = wrap_img;
         
         <span class="c1"># import</span>
         <span class="n">path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s1">'image_id'</span><span class="p">])</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
             
         <span class="c1"># augmentations</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">)[</span><span class="s1">'image'</span><span class="p">]</span>
         
-        <span class="c1"># output</span>
         <span class="k">return</span> <span class="n">image</span>
 </pre></div>
 
@@ -405,7 +412,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since we want to compute statistcs for original images, our data augmentation pipeline should be minimal and not include any heavy augmentations we might use during training. Below, we use <code>A.Normalize()</code> with mean = 0 and std = 1 to scale pixel values from <code>[0, 255]</code> to <code>[0, 1]</code> and <code>ToTensorV2()</code> to convert numpy arrays into torch tensors.</p>
+<p>We want to compute stats for raw images, so our data augmentation pipeline should be minimal and not include any heavy transformations we might use during training. Below, we use <code>A.Normalize()</code> with mean = 0 and std = 1 to scale pixel values from <code>[0, 255]</code> to <code>[0, 1]</code> and <code>ToTensorV2()</code> to convert numpy arrays into torch tensors.</p>
 
 </div>
 </div>
@@ -440,7 +447,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's check if our code above works correctly. We define a <code>DataLoader</code> that loads images in batches from <code>LeafData</code> and plot images from the first batch.</p>
+<p>Let's check if our code works correctly. We define a <code>DataLoader</code> to load images in batches from <code>LeafData</code> and plot the first batch.</p>
 
 </div>
 </div>
@@ -455,19 +462,19 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">####### EXAMINE SAMPLE BATCH</span>
 
 <span class="c1"># dataset</span>
-<span class="n">sample_dataset</span> <span class="o">=</span> <span class="n">LeafData</span><span class="p">(</span><span class="n">data</span>      <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
+<span class="n">image_dataset</span> <span class="o">=</span> <span class="n">LeafData</span><span class="p">(</span><span class="n">data</span>      <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
                           <span class="n">directory</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="s1">'train_images/'</span><span class="p">,</span>
                           <span class="n">transform</span> <span class="o">=</span> <span class="n">augs</span><span class="p">)</span>
 
 <span class="c1"># data loader</span>
-<span class="n">sample_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">sample_dataset</span><span class="p">,</span> 
-                           <span class="n">batch_size</span>  <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span> 
-                           <span class="n">shuffle</span>     <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
-                           <span class="n">num_workers</span> <span class="o">=</span> <span class="n">num_workers</span><span class="p">,</span>
-                           <span class="n">pin_memory</span>  <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">,</span> 
+                          <span class="n">batch_size</span>  <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span> 
+                          <span class="n">shuffle</span>     <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+                          <span class="n">num_workers</span> <span class="o">=</span> <span class="n">num_workers</span><span class="p">,</span>
+                          <span class="n">pin_memory</span>  <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># display images</span>
-<span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_loader</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_loader</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
         <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">yticks</span> <span class="o">=</span> <span class="p">[])</span>     
@@ -501,7 +508,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Looks like everithing is working correctly! Now we can use our <code>sample_loader</code> to compute image stats.</p>
+<p>Looks like everithing is working correctly! Now we can use our <code>image_loader</code> to compute image stats.</p>
 
 </div>
 </div>
@@ -514,7 +521,7 @@ window.onload = wrap_img;
 </h1>
 <p>The computation is done in three steps:</p>
 <ol>
-<li>Define placeholders to store two batch-level statistics: sum and squared sum of pixel values. The first will be used to compute means, while the latter will be needed for standard deviation calculations.</li>
+<li>Define placeholders to store two batch-level stats: sum and squared sum of pixel values. The first will be used to compute means, and the latter will be needed for standard deviation calculations.</li>
 <li>Loop through the batches and add up channel-specific sum and squared sum values.</li>
 <li>Perform final calculations to obtain data-level mean and standard deviation.</li>
 </ol>
@@ -537,7 +544,7 @@ window.onload = wrap_img;
 <span class="n">psumsq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
 
 <span class="c1"># loop through images</span>
-<span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_loader</span><span class="p">),</span> <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample_loader</span><span class="p">)):</span>
+<span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">image_loader</span><span class="p">),</span> <span class="n">total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_loader</span><span class="p">)):</span>
     <span class="n">psum</span>   <span class="o">+=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span>        <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
     <span class="n">psumsq</span> <span class="o">+=</span> <span class="p">(</span><span class="n">inputs</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
@@ -566,7 +573,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally, we need to make come final calculations:</p>
+<p>Finally, we make some further calculations:</p>
 <ul>
 <li>to get the mean, we simply divide the sum of pixel values by the total <code>count</code> - number of pixels in the dataset computed as <code>len(df) * image_size * image_size</code>
 </li>
@@ -635,7 +642,7 @@ std:  tensor([0.2330, 0.2358, 0.2247])
 <h1 id="4.-Closing-words">
 <a class="anchor" href="#4.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Closing words<a class="anchor-link" href="#4.-Closing-words"> </a>
 </h1>
-<p>I hope this tutorial was helpful for those who were looking for a quick guide on computing the image stats. From my experience, normalizing images with respect to dataset mean and std does not always help to improve the performance, but it is one of the things I always try first. Happy learning and stay tuned for the next posts!</p>
+<p>I hope this tutorial was helpful for those looking for a quick guide on computing the image dataset stats. From my experience, normalizing images with respect to the data-level mean and std does not always help to improve the performance, but it is one of the things I always try first. Happy learning and stay tuned for the next posts!</p>
 
 </div>
 </div>
