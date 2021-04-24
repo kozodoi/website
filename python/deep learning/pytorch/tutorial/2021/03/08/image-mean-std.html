@@ -196,7 +196,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 21.04.2021</em></p>
+<p><em>Last update: 24.04.2021</em></p>
 
 </div>
 </div>
@@ -208,7 +208,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
 <p>In computer vision, it is recommended to normalize image pixel values relative to the dataset mean and standard deviation. This helps to get consistent results when applying a model to new images and can also be useful for transfer learning. In practice, computing these statistics can be a little non-trivial since we usually can't load the whole dataset in memory and have to loop through it in batches.</p>
-<p>This blog post provides a quick tutorial on computing dataset mean and std within RGB channels using a regular <code>PyTorch</code> dataloader. While computing mean is easy (we can simply average means over batches), standard deviation is a bit more tricky: averaging stds from different batches is not the same as the overall std. Let's see how to do it correctly!</p>
+<p>This blog post provides a quick tutorial on computing dataset mean and std within RGB channels using a regular <code>PyTorch</code> dataloader. While computing mean is easy (we can simply average means over batches), standard deviation is a bit more tricky: averaging STDs across batches is not the same as the overall STD. Let's see how to do it properly!</p>
 
 </div>
 </div>
@@ -585,7 +585,7 @@ window.onload = wrap_img;
 <ul>
 <li>to get the mean, we simply divide the sum of pixel values by the total <code>count</code> - number of pixels in the dataset computed as <code>len(df) * image_size * image_size</code>
 </li>
-<li>to get the standard deviation, we use the following equation: <code>total_std = sqrt(psumq / count - total_mean ** 2)</code>. Why is that so? Well, because this is how the variance equation can be simplified to make use of the sum of squares. If you are not sure about this, feel free to check out <a href="https://www.thoughtco.com/sum-of-squares-formula-shortcut-3126266">this link</a> for some details.</li>
+<li>to get the standard deviation, we use the following equation: <code>total_std = sqrt(psum_sq / count - total_mean ** 2)</code>. Why is that so? Well, because this is how the variance equation can be simplified to make use of the sum of squares. If you are not sure about this, feel free to check out <a href="https://www.thoughtco.com/sum-of-squares-formula-shortcut-3126266">this link</a> for some details.</li>
 </ul>
 <p><img src="/images/copied_from_nb/images/fig_variance.jpg" alt="variance equation"></p>
 
