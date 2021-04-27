@@ -118,7 +118,7 @@
 
 .container { position: relative; margin: 0 auto; /* Center it */ color: var(--page-desc-color); /* Grey text */ }
 
-.container .content { position: absolute; /* Position the background text */ bottom: 0; /* At the bottom. Use top:0 to append it to the top */ background: black; /* Fallback color */ background: rgba(0, 0, 0, 0.75); /* Black background */ color: var(--page-desc-color); /* Grey text */ width: 100%; /* Full width */ padding: 20px; /* Some padding */ padding-top: 0px; padding-bottom: 15px; }
+.container .content { position: absolute; /* Position the background text */ bottom: 0; /* At the bottom. Use top:0 to append it to the top */ background: black; /* Fallback color */ background: var(--menu-back-color); /* Black background */ color: var(--page-desc-color); /* Grey text */ width: 100%; /* Full width */ padding: 20px; /* Some padding */ padding-top: 0px; padding-bottom: 15px; }
 
 .page-desc { display: none; }
 
@@ -585,12 +585,12 @@ table td { text-overflow: ellipsis; overflow: hidden; max-width: 15em; }
 
 .highlight .gd { color: #ff5555; }
 
-html, html[data-theme="dark"] { --high-emph:       rgba(255, 255, 255, 0.87); --med-emph:        rgba(255, 255, 255, 0.69); --low-emph:        rgba(255, 255, 255, 0.38); --back-color:      rgb(18, 18, 18); --link-color:      rgb(75, 186, 255); --page-desc-color: rgb(241, 241, 241); --card-back-color: rgba(255, 255, 255, 0.05); --overlay:         rgb(30, 30, 30); --overlay-light:   rgb(50, 50, 50); }
+html, html[data-theme="dark"] { --high-emph:       rgba(255, 255, 255, 0.87); --med-emph:        rgba(255, 255, 255, 0.69); --low-emph:        rgba(255, 255, 255, 0.38); --back-color:      rgb(18, 18, 18); --link-color:      rgb(75, 186, 255); --page-desc-color: rgb(241, 241, 241); --card-back-color: rgba(255, 255, 255, 0.05); --overlay:         rgb(30, 30, 30); --overlay-light:   rgb(50, 50, 50); --menu-back-color: rgba(0, 0, 0, 0.75); }
 
-html[data-theme="light"] { --high-emph:       rgba(0, 0, 0, 0.87); --med-emph:        rgba(0, 0, 0, 0.69); --low-emph:        rgba(0, 0, 0, 0.38); --back-color:      white; --link-color:      rgb(0, 102, 204); --page-desc-color: rgb(241, 241, 241); --card-back-color: rgba(0, 0, 0, 0.05); --overlay:         white; --overlay-light:   rgb(200, 200, 200); }
+html[data-theme="light"] { --high-emph:       rgba(0, 0, 0, 0.87); --med-emph:        rgba(0, 0, 0, 0.69); --low-emph:        rgba(0, 0, 0, 0.38); --back-color:      white; --link-color:      rgb(0, 102, 204); --page-desc-color: rgb(241, 241, 241); --card-back-color: rgba(0, 0, 0, 0.05); --overlay:         white; --overlay-light:   rgb(200, 200, 200); --menu-back-color: rgba(255, 255, 255, 0.75); }
 
-@media (prefers-color-scheme: dark) { html, html[data-theme="dark"] { --high-emph:       rgba(255, 255, 255, 0.87); --med-emph:        rgba(255, 255, 255, 0.69); --low-emph:        rgba(255, 255, 255, 0.38); --back-color:      rgb(18, 18, 18); --link-color:      rgb(75, 186, 255); --page-desc-color: rgb(241, 241, 241); --card-back-color: rgba(255, 255, 255, 0.05); --overlay:         rgb(30, 30, 30); --overlay-light:   rgb(50, 50, 50); }
-  html[data-theme="light"] { --high-emph:       rgba(0, 0, 0, 0.87); --med-emph:        rgba(0, 0, 0, 0.69); --low-emph:        rgba(0, 0, 0, 0.38); --back-color:      white; --link-color:      rgb(0, 102, 204); --page-desc-color: rgb(24, 24, 24); --card-back-color: rgba(0, 0, 0, 0.05); --overlay:         white; --overlay-light:   rgb(200, 200, 200); } }
+@media (prefers-color-scheme: dark) { html, html[data-theme="dark"] { --high-emph:       rgba(255, 255, 255, 0.87); --med-emph:        rgba(255, 255, 255, 0.69); --low-emph:        rgba(255, 255, 255, 0.38); --back-color:      rgb(18, 18, 18); --link-color:      rgb(75, 186, 255); --page-desc-color: rgb(241, 241, 241); --card-back-color: rgba(255, 255, 255, 0.05); --overlay:         rgb(30, 30, 30); --overlay-light:   rgb(50, 50, 50); --menu-back-color: rgba(0, 0, 0, 0.75); }
+  html[data-theme="light"] { --high-emph:       rgba(0, 0, 0, 0.87); --med-emph:        rgba(0, 0, 0, 0.69); --low-emph:        rgba(0, 0, 0, 0.38); --back-color:      white; --link-color:      rgb(0, 102, 204); --page-desc-color: rgb(24, 24, 24); --card-back-color: rgba(0, 0, 0, 0.05); --overlay:         white; --overlay-light:   rgb(200, 200, 200); --menu-back-color: rgba(255, 255, 255, 0.75); } }
 
 .site-header { border-color: var(--overlay-light); }
 
