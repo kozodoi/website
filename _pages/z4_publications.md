@@ -102,4 +102,4 @@ In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.
 
 ## Citations
 
-<iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="400" allowtransparency="false"></iframe>
+<iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="200" allowtransparency="false"></iframe>
