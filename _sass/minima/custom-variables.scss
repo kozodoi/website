@@ -15,7 +15,7 @@ $on-large:         1400px;
   position: absolute; /* Position the background text */
   bottom: 0; /* At the bottom. Use top:0 to append it to the top */
   background: rgb(0, 0, 0); /* Fallback color */
-  background: rgba(0, 0, 0, 0.75); /* Black background */
+  background: var(--menu-back-color); /* Black background */
   color: var(--page-desc-color); /* Grey text */
   width: 100%; /* Full width */
   padding: 20px; /* Some padding */

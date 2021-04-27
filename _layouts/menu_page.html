@@ -1,8 +1,18 @@
 ---
 layout: default
 ---
+
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
   <div class="post-content e-content" itemprop="articleBody">
     {{ content | toc  }}
   </div>
+
+  <label class="switch">
+    <input type="checkbox" href="{{page.url}}" id="theme-toggle" checked onclick="modeSwitcher();">
+      <span class="slider round"></span>
+  </label>
+
+  <script src="/assets/js/mode_switcher.js"></script>
+
 </article>

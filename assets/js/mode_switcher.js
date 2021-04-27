@@ -13,16 +13,15 @@ if (systemInitiatedDark.matches) {
 function prefersColorTest(systemInitiatedDark) {
   if (systemInitiatedDark.matches) {
   	document.documentElement.setAttribute('data-theme', 'dark');
-   	document.getElementById("theme-toggle").innerHTML = light_toggle;
+   	document.getElementById("theme-toggle").innerHTML = "Light Mode";
    	sessionStorage.setItem('theme', '');
   } else {
   	document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById("theme-toggle").innerHTML = dark_toggle;
+    document.getElementById("theme-toggle").innerHTML = "Dark Mode";
     sessionStorage.setItem('theme', '');
   }
 }
 systemInitiatedDark.addListener(prefersColorTest);
-
 
 function modeSwitcher() {
 	let theme = sessionStorage.getItem('theme');

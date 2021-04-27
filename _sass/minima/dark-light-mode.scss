@@ -8,6 +8,7 @@ html, html[data-theme = "dark"] {
   --card-back-color: rgba(255, 255, 255, 0.05);
   --overlay:         rgb(30, 30, 30);
   --overlay-light:   rgb(50, 50, 50);
+  --menu-back-color: rgba(0, 0, 0, 0.75);
 }
 
 html[data-theme = "light"] {
@@ -20,6 +21,7 @@ html[data-theme = "light"] {
   --card-back-color: rgba(0, 0, 0, 0.05);
   --overlay:         white;
   --overlay-light:   rgb(200, 200, 200);
+  --menu-back-color: rgba(255, 255, 255, 0.75);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +35,7 @@ html[data-theme = "light"] {
       --card-back-color: rgba(255, 255, 255, 0.05);
       --overlay:         rgb(30, 30, 30);
       --overlay-light:   rgb(50, 50, 50);
+      --menu-back-color: rgba(0, 0, 0, 0.75);
     }
     html[data-theme="light"] {
       --high-emph:       rgba(0, 0, 0, 0.87);
@@ -44,6 +47,7 @@ html[data-theme = "light"] {
       --card-back-color: rgba(0, 0, 0, 0.05);
       --overlay:         white;
       --overlay-light:   rgb(200, 200, 200);
+      --menu-back-color: rgba(255, 255, 255, 0.75);
   }
 }
 
