@@ -27,7 +27,7 @@ permalink: /about/
 - <i class="em em-computer" aria-role="presentation" aria-label="PERSONAL COMPUTER"></i> Data science research associate at [Monedo](https://www.monedo.com)
 - <i class="em em-robot_face" aria-role="presentation" aria-label="ROBOT FACE"></i> Passionate about machine learning, deep learning and data science
 - <i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i> Working on ML/DL applications in credit risk analytics
-- <i class="em em-sports_medal" aria-role="presentation" aria-label="SPORTS MEDAL"></i> Enjoy participating at data science competitions and hackathons
+- <i class="em em-sports_medal" aria-role="presentation" aria-label="SPORTS MEDAL"></i> Enjoy participating in data science competitions and hackathons
 - <i class="em em-jigsaw" aria-role="presentation" aria-label="JIGSAW PUZZLE PIECE"></i> Love football, scooters and piano
 
 This website hosts [my blog](https://kozodoi.me), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes [my portfolio](https://kozodoi.me/portfolio/), which consists of three data science projects covering different topics. Check out other website sections to see my academic publications, software packages and Kaggle achievements.
