@@ -23,7 +23,7 @@ permalink: /portfolio/
 
 <h2><b>Profit-driven demand forecasting with gradient boosting</b></h2>
 
-<img src="https://kozodoi.me/images/copied_from_nb/images/fig_custom_loss.png" alt="Notebook" style="width:100%">
+<img src="https://kozodoi.me/images/portfolio/fig_custom_loss.png" alt="Notebook" style="width:100%">
 
 <h3> Highlights </h3>
 <ul>
@@ -71,7 +71,7 @@ permalink: /portfolio/
 
 <h2><b> Catheter and line position detection with deep learning </b></h2>
 
-<img src="https://camo.githubusercontent.com/3f09d23c36717d8fd0b82df60cc636cb146f022b2cbf7306db39721e9ed08acf/68747470733a2f2f692e706f7374696d672e63632f74543662334b474e2f787261792d73616d706c652e706e67" alt="Notebook" style="width:100%">
+<img src="https://kozodoi.me/images/portfolio/fig_xrays.png" alt="Notebook" style="width:100%">
 
 <h3> Highlights </h3>
 <ul>
@@ -108,7 +108,7 @@ permalink: /portfolio/
 
 <h2><b> <code>fairness</code>: Package for computing algorithmic fairness metrics </b></h2>
 
-<img src="https://kozodoi.me/images/copied_from_nb/images/fair_cover.png" alt="Notebook" style="width:100%">
+<img src="https://kozodoi.me/images/portfolio/fig_fairness.png" alt="Notebook" style="width:100%">
 
 <h3> Highlights </h3>
 <ul>
