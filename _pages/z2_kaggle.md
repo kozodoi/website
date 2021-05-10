@@ -21,12 +21,13 @@ permalink: /kaggle/
 
 ### Highest user rank
 - **Competitions**: 293 out of 159,203 (Master)
-- **Notebooks**: 401 out of 167,937 (Expert)
-- **Datasets**: 84 out of 37,971 (Expert)
+- **Notebooks**: 398 out of 168,872 (Expert)
+- **Datasets**: 82 out of 38,206 (Expert)
 - **Discussion**: 204 out of 195,610 (Expert)
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+
 
 ### Computer vision
 
