@@ -4,9 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
-<link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+<meta charset="UTF-8">
 
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
@@ -23,16 +21,26 @@ permalink: /about/
 
 ## About me
 
-- <i class="em em-books" aria-role="presentation" aria-label="BOOKS"></i> PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc)
-- <i class="em em-computer" aria-role="presentation" aria-label="PERSONAL COMPUTER"></i> Data science research associate at [Monedo](https://www.monedo.com)
-- <i class="em em-robot_face" aria-role="presentation" aria-label="ROBOT FACE"></i> Passionate about machine learning, deep learning and data science
-- <i class="em em-moneybag" aria-role="presentation" aria-label="MONEY BAG"></i> Working on ML/DL applications in credit risk analytics
-- <i class="em em-sports_medal" aria-role="presentation" aria-label="SPORTS MEDAL"></i> Enjoy participating in data science competitions and hackathons
-- <i class="em em-jigsaw" aria-role="presentation" aria-label="JIGSAW PUZZLE PIECE"></i> Love football, scooters and piano
+I am passionate about machine learning, deep learning and data science. With proficiency in Python, rich experience in ML research and competitions, and strong quantitative and economic background, I am enthusiastic about using AI to extract valuable knowledge from data to improve managerial decision-making.
 
-This website hosts [my blog](https://kozodoi.me), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes [my portfolio](https://kozodoi.me/portfolio/), which consists of three data science projects covering different topics. Check out other website sections to see my academic publications, software packages and Kaggle achievements.
+- &#127891; PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc)
+- &#128421; Data science research associate at [Monedo](https://www.monedo.com)
+- &#127974; Working on ML/DL applications in credit risk analytics
+- &#129351; Enjoy participating in data science competitions and hackathons
+- &#129513; Love beach volleyball, football, scooters and piano
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
+
+
+## Website
+
+This website hosts [my blog](https://kozodoi.me), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
+
+- &#128193; [my portfolio](https://kozodoi.me/portfolio/) with three ML projects on different topics
+- &#128218; [my publications](https://kozodoi.me/publications/) with paper abstracts and full-text PDFs
+- &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
+- &#128295; [my software packages](https://kozodoi.me/packages/) with open-source Python and R packages
+- &#128483; [my teaching activities](https://kozodoi.me/teaching/) with course and theses summaries
 
 
 ## Contact
