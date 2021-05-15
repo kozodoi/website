@@ -4,7 +4,7 @@ title: Kaggle
 permalink: /kaggle/
 ---
 
-<link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+<meta charset="UTF-8">
 
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
@@ -20,10 +20,10 @@ permalink: /kaggle/
 
 
 ### Highest user rank
-- **Competitions**: 293 out of 159,203 (Master)
-- **Notebooks**: 343 out of 169,480 (Expert)
-- **Datasets**: 82 out of 38,376 (Expert)
-- **Discussion**: 199 out of 196,413 (Expert)
+- &#127942; **Competitions**: 293 out of 159,203 (Master)
+- &#128202; **Notebooks**: 343 out of 169,480 (Expert)
+- &#128193; **Datasets**: 82 out of 38,376 (Expert)
+- &#128483; **Discussion**: 199 out of 196,413 (Expert)
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
@@ -31,26 +31,26 @@ permalink: /kaggle/
 
 ### Computer vision
 
-- <i class="em em-first_place_medal" aria-role="presentation" aria-label="FIRST PLACE MEDAL"></i> **Cassava Leaf Disease Classification**: top-1% [[Summary]](https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751) [[GitHub]](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)
-- <i class="em em-first_place_medal" aria-role="presentation" aria-label="FIRST PLACE MEDAL"></i> **SIIM-ISIC Melanoma Classification**: top-1% [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
-- <i class="em em-second_place_medal" aria-role="presentation" aria-label="SECOND PLACE MEDAL"></i> **RANZCR Catheter and Line Position Challenge**: top-5% [[Summary]](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664) [[GitHub]](https://github.com/kozodoi/Kaggle_RANZCR_Challenge)
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **Prostate Cancer Grade Assessment Challenge**: top-6%
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **APTOS 2019 Blindness Detection**: top-9% [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **RSNA STR Pulmonary Embolism Detection**: top-13% [[Blog
+- &#129351; **Cassava Leaf Disease Classification**: top-1% [[Summary]](https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751) [[GitHub]](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)
+- &#129351; **SIIM-ISIC Melanoma Classification**: top-1% [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
+- &#129352; **RANZCR Catheter and Line Position Challenge**: top-5% [[Summary]](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664) [[GitHub]](https://github.com/kozodoi/Kaggle_RANZCR_Challenge)
+- &#129353; **Prostate Cancer Grade Assessment Challenge**: top-6%
+- &#129353; **APTOS 2019 Blindness Detection**: top-9% [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
+- &#129353; **RSNA STR Pulmonary Embolism Detection**: top-13% [[Blog
 post]](https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html)
 
 
 ### Tabular data
 
-- <i class="em em-second_place_medal" aria-role="presentation" aria-label="SECOND PLACE MEDAL"></i> **Google Analytics Customer Revenue Prediction**: top-2% [[GitHub]](https://github.com/kozodoi/Kaggle_Google_Analytics)
-- <i class="em em-second_place_medal" aria-role="presentation" aria-label="SECOND PLACE MEDAL"></i> **IEEE-CIS Fraud Detection**: top-3% [[GitHub]](https://github.com/kozodoi/Kaggle_IEEE_Fraud_Detection)
-- <i class="em em-second_place_medal" aria-role="presentation" aria-label="SECOND PLACE MEDAL"></i> **Home Credit Default Risk**: top-4% [[GitHub]](https://github.com/kozodoi/Kaggle_Home_Credit)
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **COVID-19 mRNA Vaccine Degradation Prediction**: top-6%
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **Instant Gratification**: top-6%
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **Mechanisms of Action Prediction**: top-10%
+- &#129352; **Google Analytics Customer Revenue Prediction**: top-2% [[GitHub]](https://github.com/kozodoi/Kaggle_Google_Analytics)
+- &#129352; **IEEE-CIS Fraud Detection**: top-3% [[GitHub]](https://github.com/kozodoi/Kaggle_IEEE_Fraud_Detection)
+- &#129352; **Home Credit Default Risk**: top-4% [[GitHub]](https://github.com/kozodoi/Kaggle_Home_Credit)
+- &#129353; **COVID-19 mRNA Vaccine Degradation Prediction**: top-6%
+- &#129353; **Instant Gratification**: top-6%
+- &#129353; **Mechanisms of Action Prediction**: top-10%
 
 
 ### Time series
 
-- <i class="em em-second_place_medal" aria-role="presentation" aria-label="SECOND PLACE MEDAL"></i> **PLAsTiCC Astronomical Classification**: top-5% [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
-- <i class="em em-third_place_medal" aria-role="presentation" aria-label="THIRD PLACE MEDAL"></i> **Riiid! Answer Correctness Prediction**: top-7%
+- &#129352; **PLAsTiCC Astronomical Classification**: top-5% [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
+- &#129353; **Riiid! Answer Correctness Prediction**: top-7%
