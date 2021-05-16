@@ -31,10 +31,12 @@ I am passionate about machine learning, deep learning and data science. With pro
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ## Website
 
-This website hosts [my blog](https://kozodoi.me), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
+This website hosts [my blog](https://kozodoi.me/blog/), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with three ML projects on different topics
 - &#128218; [my publications](https://kozodoi.me/publications/) with paper abstracts and full-text PDFs
@@ -42,12 +44,14 @@ This website hosts [my blog](https://kozodoi.me), where I share machine learning
 - &#128295; [my software packages](https://kozodoi.me/packages/) with open-source Python and R packages
 - &#128483; [my teaching activities](https://kozodoi.me/teaching/) with course and theses summaries
 
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 ## Contact
 
 Would like to have a chat? <a href="mailto:n.kozodoi@icloud.com">Click here</a> to send me an e-mail.
 
-I am also happy to connect and chat on different platforms:
+I am also happy to connect on different platforms:
 
 <ul>
   <li><a href="https://www.linkedin.com/in/kozodoi">LinkedIn</a></li>
