@@ -4,6 +4,8 @@ title: Portfolio
 permalink: /portfolio/
 ---
 
+<meta charset="UTF-8">
+
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
     <img src="../images/menu/photo_portfolio.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
@@ -18,6 +20,23 @@ permalink: /portfolio/
 
 <script src="{{ base.url | prepend: site.url }}/assets/js/read_more.js"></script>
 
+<hr style="height:1px; visibility:hidden;" />
+
+<div style="font-size: 100%;">
+
+  <p>My portfolio features the following projects:</p>
+
+  <ul style="margin-top: -10px;">
+  <li> &#128200; <a href="#PROJECT_1">Profit-driven demand forecasting with gradient boosting </a></li>
+  <li> &#127973; <a href="#PROJECT_2">Catheter and line position detection with deep learning </a></li>
+  <li> &#128080; <a href="#PROJECT_3">Fairness: package for computing fair machine learning metrics </a></li>
+  </ul>
+
+</div>
+
+<hr style="height:1px; visibility:hidden;" />
+
+<a id="PROJECT_1"></a>
 
 <div class="card">
 
@@ -64,8 +83,12 @@ permalink: /portfolio/
 </div>
 
 
-<hr style="height:3pt; visibility:hidden;" />
 
+
+
+<br>
+
+<a id="PROJECT_2"></a>
 
 <div class="card">
 
@@ -101,12 +124,17 @@ permalink: /portfolio/
 </div>
 
 
-<hr style="height:3pt; visibility:hidden;" />
 
+
+
+
+<br>
+
+<a id="PROJECT_3"></a>
 
 <div class="card">
 
-<h2><b> <code>fairness</code>: Package for computing algorithmic fairness metrics </b></h2>
+<h2><b> <code>fairness</code>: Package for computing fair ML metrics </b></h2>
 
 <img src="https://kozodoi.me/images/portfolio/fig_fairness.png" alt="Notebook" style="width:100%">
 
