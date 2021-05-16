@@ -1,0 +1,68 @@
+---
+layout: menu_page
+permalink: /blog/
+title: Blog
+search_exclude: true
+---
+
+<meta charset="UTF-8">
+
+<div class="container">
+  <div style="width:100%;height:0; padding-top:50%;position:relative;">
+    <img src="../images/menu/photo_backup.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
+  </div>
+  <div class="content">
+    <h1>Blog</h1>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">In my blog, I write about machine learning and deep learning. My posts include ML tutorials, package overviews, competition solutions and findings from different data science projects.</span></p>
+  </div>
+</div>
+
+<p><span class="page-desc">In my blog, I write about machine learning and deep learning. My posts include ML tutorials, package overviews, competition solutions and findings from different data science projects.</span></p>
+
+
+{% assign rawposts = site.posts %}
+
+<!-- Hide posts if front matter flag hide:true -->
+{% assign posts = ''|split:'' %}
+{% for post in rawposts %}
+  {% if post.hide != true %}
+    {% assign posts = posts|push:post%}
+  {% endif %}
+{% endfor %}
+
+<!-- Sort posts by rank, then date -->
+{% assign grouped_posts = posts | group_by: "sticky_rank" | sort: "name", "last" %}
+{% assign sticky_posts = ''|split:'' %}
+{% assign non_sticky_posts = '' | split:'' %}
+
+
+{% for gp in grouped_posts %}
+  {%- if gp.name == "" -%}
+    {% assign non_sticky_posts = gp.items | sort: "date" | reverse %}
+  {%- else %}
+    {% assign sticky_posts = sticky_posts | concat: gp.items %}
+  {%- endif -%}
+{% endfor %}
+
+ <!-- Assemble final sorted posts array -->
+{% assign sticky_posts = sticky_posts | sort: "sticky_rank", "last" %}
+{% assign posts = sticky_posts | concat: non_sticky_posts %}
+
+{%- if posts.size > 0 -%}
+  {%- if page.list_title -%}
+    <h2 class="post-list-heading">{{ page.list_title }}</h2>
+  {%- endif -%}
+  <ul class="post-list">
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {%- for post in posts -%}
+    <li>
+      {%- if site.show_image -%}
+          {%- include post_list_image_card.html -%}
+      {% else %}
+          {%- include post_list.html -%}
+      {%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+
+{%- endif -%}
