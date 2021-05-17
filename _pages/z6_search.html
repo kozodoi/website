@@ -5,7 +5,7 @@ title: Search
 search_exclude: true
 ---
 
-<h2>Search</h2>
+<h1>Search</h1>
 
 <!-- adapted from https://github.com/pmarsceill/just-the-docs -->
 <script type="text/javascript" src="{{ '/assets/js/search.js' | relative_url }}"></script>
@@ -22,9 +22,9 @@ search_exclude: true
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 {% if site.categories.size > 0 %}
-<h2>Tags</h2>
+<h1>Tags</h1>
 
-  You can also browse blog posts by the tags below:
+  Browse the blog posts by tags:
 
   {% assign categories = "" | split:"" %}
   {% for c in site.categories %}
@@ -40,7 +40,7 @@ search_exclude: true
 
   <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
-  <h2>Posts</h2>
+  <h1>Blog posts</h1>
 
   {% for category in categories %}
       <h3 id ="{{ category }}"><i class="fas fa-tags category-tags-icon"></i></i> {{ category }}</h3>
