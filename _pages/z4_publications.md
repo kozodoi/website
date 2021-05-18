@@ -21,9 +21,13 @@ permalink: /publications/
 
 ## 2021
 
-- Kozodoi, N., Jacob, J., & Lessmann, S. (2021).
-**Fairness in Credit Scoring: Assessment, Implementation and Profit Implications.**
-arXiv preprint arXiv:2103.01907.
+<ul>
+  <li>
+  Kozodoi, N., Jacob, J., & Lessmann, S. (2021).
+  <dd><b>Fairness in Credit Scoring: Assessment, Implementation and Profit Implications.</b></dd>
+  <dd>arXiv preprint arXiv:2103.01907.</dd>
+  </li>
+</ul>
 <ul class="no-bullets">
   <span id="dots1"></span>
   <li><span id="abs1"><p></p><b>Abstract:</b> The rise of algorithmic decision-making has spawned much research on fair machine learning (ML). Financial institutions use ML for building risk scorecards that support a range of credit-related decisions. Yet, the literature on fair ML in credit scoring is scarce. The paper makes two contributions. First, we provide a systematic overview of algorithmic options for incorporating fairness goals in the ML model development pipeline. In this scope, we also consolidate the space of statistical fairness criteria and examine their adequacy for credit scoring. Second, we perform an empirical study of different fairness processors in a profit-oriented credit scoring setup using seven real-world data sets. The empirical results substantiate the evaluation of fairness measures, identify more and less suitable options to implement fair credit scoring, and clarify the profit-fairness trade-off in lending decisions. Specifically, we find that multiple fairness criteria can be approximately satisfied at once and identify separation as a proper criterion for measuring the fairness of a scorecard. We also find fair in-processors to deliver a good balance between profit and fairness. More generally, we show that algorithmic discrimination can be reduced to a reasonable level at a relatively low cost.</span></li>
@@ -37,9 +41,13 @@ arXiv preprint arXiv:2103.01907.
 
 ## 2020
 
-- Kozodoi, N., Lessmann, S. (2020).
-**Multi-objective Particle Swarm Optimization for Feature Selection in Credit Scoring.**
-In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham.
+<ul>
+  <li>
+  Kozodoi, N., Lessmann, S. (2020).
+  <dd><b>Multi-Objective Particle Swarm Optimization for Feature Selection in Credit Scoring.</b></dd>
+  <dd>In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham.</dd>
+  </li>
+</ul>
 <ul class="no-bullets">
   <span id="dots2"></span>
   <li><span id="abs2"><p></p><b>Abstract:</b> Credit scoring refers to the use of statistical models to support loan approval decisions. An ever-increasing availability of data on potential borrowers emphasizes the importance of feature selection for scoring models. Traditionally, feature selection has been viewed as a single-objective task. Recent research demonstrates the effectiveness of multi-objective approaches. We propose a novel multi-objective feature selection framework for credit scoring that extends previous work by taking into account data acquisition costs and employing a state-of-the-art particle swarm optimization algorithm. Our framework optimizes three fitness functions: the number of features, data acquisition costs and the AUC. Experiments on nine credit scoring data sets demonstrate a highly competitive performance of the proposed framework.</span></li>
@@ -51,9 +59,14 @@ In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cha
 </ul>
 <p></p>
 
-- Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., & Papakonstantinou, K. (2020).
-**Shallow Self-Learning for Reject Inference in Credit Scoring.**
-In ECML PKDD 2019 Proceedings (pp. 516-532). Springer, Cham.
+
+<ul>
+  <li>
+  Kozodoi, N., Katsas, P., Lessmann, S., Moreira-Matias, L., & Papakonstantinou, K. (2020).
+  <dd><b>Shallow Self-Learning for Reject Inference in Credit Scoring.</b></dd>
+  <dd>In ECML PKDD 2019 Proceedings (pp. 516-532). Springer, Cham.</dd>
+  </li>
+</ul>
 <ul class="no-bullets">
   <span id="dots3"></span>
   <li><span id="abs3"><p></p><b>Abstract:</b> Credit scoring models support loan approval decisions in the financial services industry. Lenders train these models on data from previously granted credit applications, where the borrowers’ repayment behavior has been observed. This approach creates sample bias. The scoring model is trained on accepted cases only. Applying the model to screen applications from the population of all borrowers degrades its performance. Reject inference comprises techniques to overcome sampling bias through assigning labels to rejected cases. This paper makes two contributions. First, we propose a self-learning framework for reject inference. The framework is geared toward real-world credit scoring requirements through considering distinct training regimes for labeling and model training. Second, we introduce a new measure to assess the effectiveness of reject inference strategies. Our measure leverages domain knowledge to avoid artificial labeling of rejected cases during evaluation. We demonstrate this approach to offer a robust and operational assessment of reject inference. Experiments on a real-world credit scoring data set confirm the superiority of the suggested self-learning framework over previous reject inference strategies. We also find strong evidence in favor of the proposed evaluation measure assessing reject inference strategies more reliably, raising the performance of the eventual scoring model.</span></li>
@@ -68,9 +81,13 @@ In ECML PKDD 2019 Proceedings (pp. 516-532). Springer, Cham.
 
 ## 2019
 
-- Kozodoi, N., Lessmann, S., Papakonstantinou, K., Gatsoulis, Y., & Baesens, B. (2019).
-**A multi-objective approach for profit-driven feature selection in credit scoring.**
-Decision Support Systems, 120, 106-117.
+<ul>
+  <li>
+  Kozodoi, N., Lessmann, S., Papakonstantinou, K., Gatsoulis, Y., & Baesens, B. (2019).
+  <dd><b>A multi-objective approach for profit-driven feature selection in credit scoring.</b></dd>
+  <dd>Decision Support Systems, 120, 106-117.</dd>
+  </li>
+</ul>
 <ul class="no-bullets">
   <span id="dots4"></span>
   <li><span id="abs4"><p></p><b>Abstract:</b> In credit scoring, feature selection aims at removing irrelevant data to improve the performance of the scorecard and its interpretability. Standard techniques treat feature selection as a single-objective task and rely on statistical criteria such as correlation. Recent studies suggest that using profit-based indicators may improve the quality of scoring models for businesses. We extend the use of profit measures to feature selection and develop a multi-objective wrapper framework based on the NSGA-II genetic algorithm with two fitness functions: the Expected Maximum Profit (EMP) and the number of features. Experiments on multiple credit scoring data sets demonstrate that the proposed approach develops scorecards that can yield a higher expected profit using fewer features than conventional feature selection strategies.</span></li>
@@ -82,9 +99,14 @@ Decision Support Systems, 120, 106-117.
 </ul>
 <p></p>
 
-- Kozodoi, N., Lessmann, S., Baesens, B., & Papakonstantinou, K. (2019).
-**Profit-Oriented Feature Selection in Credit Scoring Applications.**
-In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.
+
+<ul>
+  <li>
+  Kozodoi, N., Lessmann, S., Baesens, B., & Papakonstantinou, K. (2019).
+  <dd><b>Profit-Oriented Feature Selection in Credit Scoring Applications.</b></dd>
+  <dd>In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.</dd>
+  </li>
+</ul>
 <ul class="no-bullets">
   <span id="dots5"></span>
   <li><span id="abs5"><p></p><b>Abstract:</b> In credit scoring, feature selection aims at removing irrelevant data to improve the performance of the scorecard and its interpretability. Standard feature selection techniques are based on statistical criteria such as correlation. Recent studies suggest that using profit-based indicators for model evaluation may improve the quality of scoring models for businesses. We extend the use of profit measures to feature selection and develop a wrapper-based framework that uses the Expected Maximum Profit measure (EMP) as a fitness function. Experiments on multiple credit scoring data sets provide evidence that EMP-maximizing feature selection helps to develop scorecards that yield a higher expected profit compared to conventional feature selection strategies.</span></li>
@@ -96,10 +118,27 @@ In Operations Research 2018 Proceedings (pp. 59-65). Springer, Cham.
 </ul>
 <p></p>
 
+
+
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
-
 
 ## Citations
 
 <iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="200" allowtransparency="false"></iframe>
+
+
+
+
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+
+## Reviews
+
+I have been acting as a reviewer at the following outlets:
+
+- European Journal of Operational Research
+- International Journal of Forecasting
+- Decision Support Systems
+- Expert Systems with Applications
+- Journal of the Royal Statistical Society
