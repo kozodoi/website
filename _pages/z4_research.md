@@ -1,7 +1,7 @@
 ---
 layout: menu_page
 title: Research
-permalink: /reserach/
+permalink: /research/
 ---
 
 <script src="{{ base.url | prepend: site.url }}/assets/js/paper_description.js"></script>
