@@ -10,11 +10,11 @@ permalink: /packages/
   </div>  
   <div class="content">
     <h1>Packages</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page provides software packages developed by me. Follow me on <a href="https://github.com/kozodoi">GitHub</a> to see more.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page provides links to software packages developed by me. Follow me on <a href="https://github.com/kozodoi">GitHub</a> to see more.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">This page provides software packages developed by me. Follow me on <a href="https://github.com/kozodoi">GitHub</a> to see more.</span></p>
+<p><span class="page-desc">This page provides links to software packages developed by me. Follow me on <a href="https://github.com/kozodoi">GitHub</a> to see more.</span></p>
 
 ### `dptools`
 
