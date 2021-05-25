@@ -144,12 +144,7 @@ permalink: /research/
 
 
 
-
-
-<hr style="height:1px; visibility:hidden;" />
-<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
-
-# Citations
+## Citations
 
 <iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="200" allowtransparency="false"></iframe>
 
@@ -164,13 +159,13 @@ permalink: /research/
 
 # Reviews
 
-I have been acting as a reviewer at the following outlets:
+I have been acting as an expert reviewer at the following outlets:
 
-- European Journal of Operational Research
-- International Journal of Forecasting
-- Decision Support Systems
-- Expert Systems with Applications
-- Journal of the Royal Statistical Society
+- [European Journal of Operational Research](https://www.journals.elsevier.com/european-journal-of-operational-research)
+- [International Journal of Forecasting](https://www.journals.elsevier.com/international-journal-of-forecasting)
+- [Decision Support Systems](https://www.journals.elsevier.com/decision-support-systems)
+- [Expert Systems with Applications](https://www.journals.elsevier.com/expert-systems-with-applications)
+- [Journal of the Royal Statistical Society](https://en.wikipedia.org/wiki/Journal_of_the_Royal_Statistical_Society)
 
 
 
