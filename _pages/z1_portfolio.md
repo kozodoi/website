@@ -164,4 +164,4 @@ permalink: /portfolio/
 
 <hr style="height:3pt; visibility:hidden;" />
 
-Want to see more? Check out my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/publications/">academic publications</a>.
+Want to see more? Check out my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/research/">academic publications</a>.
