@@ -493,7 +493,7 @@ h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link, h4:hover .a
 
 .category-tags { margin-top: .25rem !important; margin-bottom: .25rem !important; font-size: 105%; }
 
-.post-meta-title, .post-meta { margin-top: .25em !important; margin-bottom: .25em !important; font-size: 105%; }
+.post-meta-title, .post-meta { margin-top: .35em !important; margin-bottom: .35em !important; font-size: 105%; }
 
 .page-description { margin-top: .5rem !important; margin-bottom: .5rem !important; color: #585858; font-size: 115%; }
 
