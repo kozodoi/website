@@ -19,7 +19,7 @@ permalink: /kaggle/
 <p><span class="page-desc">I enjoy taking part at ML competitions on Kaggle. This page summarizes my achievements and provides links to blog posts, writeups and GitHub repos with my solutions. Check out my <a href="https://www.kaggle.com/kozodoi">Kaggle profile</a> to see more.</span></p>
 
 
-### Highest user rank
+## Highest user rank
 - &#127942; **Competitions**: 293 out of 159,203 (Master)
 - &#128202; **Notebooks**: 330 out of 170,796 (Expert)
 - &#128193; **Datasets**: 79 out of 39,326 (Expert)
@@ -28,6 +28,9 @@ permalink: /kaggle/
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
+
+
+## Competitions
 
 ### Computer vision
 
@@ -54,3 +57,14 @@ post]](https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020
 
 - &#129352; **PLAsTiCC Astronomical Classification**: top-5% [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
 - &#129353; **Riiid! Answer Correctness Prediction**: top-7%
+
+
+
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+
+## Top-rated notebooks
+
+- &#128293; **[LightGBM on Meta-Features](https://www.kaggle.com/kozodoi/lightgbm-on-meta-features)**: classifying pulmonary embolism with features extracted from X-rays
+- &#128293; **[EfficientNet + Multi-Layer LSTM](https://www.kaggle.com/kozodoi/efficientnet-multi-layer-lstm-training)**: translating molecule images to chemical formulas with deep learning
+- &#128293; **[Stack Them All!](https://www.kaggle.com/kozodoi/14th-place-solution-stack-them-all)**: stacking ensemble pipeline for leaf disease classifiers
