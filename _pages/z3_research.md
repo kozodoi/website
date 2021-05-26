@@ -205,7 +205,7 @@ I act as a human teacher of machine learning at the <a href="https://www.wiwi.hu
 
 ## Student theses
 
--  A Cost-Benefit Analysis of Active Learning Methods in Credit Scoring
+- A Cost-Benefit Analysis of Active Learning Methods in Credit Scoring
 - Reject Inference using Generative Adversarial Neural Networks
 - A Multi-Objective Particle Swarm Optimization Approach for Feature Selection
 - Multi-Objective Feature Selection in Credit Scoring
