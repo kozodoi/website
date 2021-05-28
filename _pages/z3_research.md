@@ -41,9 +41,9 @@ permalink: /research/
 
 <a id="PART_1"></a>
 
-# Publications
+## Publications
 
-## 2021
+### 2021
 
 <ul>
   <li>
@@ -63,7 +63,7 @@ permalink: /research/
 <p></p>
 
 
-## 2020
+### 2020
 
 <ul>
   <li>
@@ -103,7 +103,7 @@ permalink: /research/
 <p></p>
 
 
-## 2019
+### 2019
 
 <ul>
   <li>
@@ -144,7 +144,7 @@ permalink: /research/
 
 
 
-## Citations
+### Citations
 
 <iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="200" allowtransparency="false"></iframe>
 
@@ -157,7 +157,7 @@ permalink: /research/
 
 <a id="PART_2"></a>
 
-# Reviews
+## Reviews
 
 I have been acting as an expert reviewer at the following outlets:
 
@@ -176,25 +176,25 @@ I have been acting as an expert reviewer at the following outlets:
 
 <a id="PART_3"></a>
 
-# Teaching
+## Teaching
 
 I act as a human teacher of machine learning at the <a href="https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc">Chair of Information Systems</a> at HU Berlin. This includes teaching data science related courses and supervising M.Sc. dissertations on applied ML topics.
 
-## Courses
+### Courses
 
-### Applied Predictive Analytics (M.Sc.)
+#### Applied Predictive Analytics (M.Sc.)
 
 - teaching ML infrastructure (conda, package management, git)
 - supervising student's projects on applied ML topics in credit scoring
 
 
-### Advanced Data Analytics for Management Support (M.Sc.)
+#### Advanced Data Analytics for Management Support (M.Sc.)
 
 - hosting in-class Kaggle competition on NLP with deep learning
 - answering students' questions in Q&A sessions and discussion forum
 
 
-### Business Analytics and Data Science (M.Sc.)
+#### Business Analytics and Data Science (M.Sc.)
 
 - preparing Python notebooks with machine learning exercises
 - answering students' questions in Q&A sessions and discussion forum
@@ -203,7 +203,7 @@ I act as a human teacher of machine learning at the <a href="https://www.wiwi.hu
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 
-## Student theses
+### Student theses
 
 - A Cost-Benefit Analysis of Active Learning Methods in Credit Scoring
 - Reject Inference using Generative Adversarial Neural Networks
