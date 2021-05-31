@@ -120,7 +120,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      8 min read
     
 </span></p>
 
@@ -559,7 +559,8 @@ window.onload = wrap_img;
 <li>Registering a forward hook on a certain layer of the network.</li>
 <li>Performing standard inference to extract features of that layer.</li>
 </ol>
-<p>First, we need to define a helper function that will introduce a so-called hook. A hook is a command that is executed when a forward or backward call to a certain layer is performed. Here, we are interested in a forward hook that simply copies the layer outputs, sends them to CPU and saves them to a dictionary object we call <code>features</code>.</p>
+<p>First, we need to define a helper function that will introduce a so-called hook. A hook is simply a command that is executed when a forward or backward call to a certain layer is performed. If you want to know more about hooks, you can check out <a href="https://blog.paperspace.com/pytorch-hooks-gradient-clipping-debugging/">this link</a>.</p>
+<p>In out setup, we are interested in a forward hook that simply copies the layer outputs, sends them to CPU and saves them to a dictionary object we call <code>features</code>.</p>
 <p>The hook is defined in a cell below. The <code>name</code> argument in <code>get_features()</code> specifies the dictionary key under which we will store our intermediate activations.</p>
 
 </div>
