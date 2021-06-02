@@ -22,7 +22,7 @@ permalink: /kaggle/
 ## Highest user rank
 - &#127942; **Competitions**: 293 out of 159,203 (Master)
 - &#128202; **Notebooks**: 330 out of 170,796 (Expert)
-- &#128193; **Datasets**: 75 out of 39,465 (Expert)
+- &#128193; **Datasets**: 75 out of 39,920 (Expert)
 - &#128483; **Discussion**: 199 out of 196,413 (Expert)
 
 <hr style="height:1px; visibility:hidden;" />
