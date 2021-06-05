@@ -257,9 +257,7 @@ input:checked + .slider:after {
   border-color: #046293;
 }
 
-
-
-/* Create two equal columns that floats next to each other */
+/* Create two equal columns that float next to each other */
 .two_column {
   float: left;
   width: 50%;
@@ -278,4 +276,64 @@ input:checked + .slider:after {
   .two_column {
     width: 100%;
   }
+}
+
+/* Create asymmetric columns that float next to each other */
+.ava_column {
+  float: left;
+  width: 20%;
+  padding: 6px;
+}
+.text_column {
+  float: left;
+  width: 80%;
+  padding: 6px;
+}
+@media screen and (max-width: 1000px) {
+  .ava_column {
+    width: 23%;
+  }
+  .text_column {
+    width: 77%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .ava_column {
+    width: 27%;
+  }
+  .text_column {
+    width: 73%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .ava_column {
+    width: 31%;
+  }
+  .text_column {
+    width: 69%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .ava_column {
+    width: 0%;
+    height: 0%;
+    padding: 0;
+  }
+  .text_column {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+
+
+/* Badge lists */
+ul.badge-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+ul.badge-list li {
+    display: inline-block;
 }
