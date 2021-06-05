@@ -54,9 +54,13 @@ Would like to have a chat? <a href="mailto:n.kozodoi@icloud.com">Click here</a> 
 
 I am also happy to connect on different social and professional platforms. Click the badges below to see my profile.
 
-[![Linkedin](https://img.shields.io/badge/-LinkedIn-306EA8?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/kozodoi/)](https://www.linkedin.com/in/kozodoi/)
-[![Twitter](https://img.shields.io/badge/-Twitter-4B9AE5?style=flat&logo=Twitter&logoColor=white&link=https://www.twitter.com/n_kozodoi)](https://www.twitter.com/n_kozodoi)
-[![Kaggle](https://img.shields.io/badge/-Kaggle-5DB0DB?style=flat&logo=Kaggle&logoColor=white&link=https://www.kaggle.com/kozodoi)](https://www.kaggle.com/kozodoi)
-[![GitHub](https://img.shields.io/badge/-GitHub-2F2F2F?style=flat&logo=github&logoColor=white&link=https://www.github.com/kozodoi)](https://www.github.com/kozodoi)
-[![Google Scholar](https://img.shields.io/badge/-Google_Scholar-676767?style=flat&logo=google-scholar&logoColor=white&link=https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en)](https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en)
-[![ResearchGate](https://img.shields.io/badge/-ResearchGate-59C3B5?style=flat&logo=researchgate&logoColor=white&link=https://www.researchgate.net/profile/Nikita_Kozodoi)](https://www.researchgate.net/profile/Nikita_Kozodoi)
+<div class="social-links" align = "left">
+  <ul class = "badge-list">
+    <li><a href="https://www.linkedin.com/in/kozodoi/"><img src="https://img.shields.io/badge/-LinkedIn-306EA8?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/kozodoi/"/></a></li>
+    <li><a href="https://www.twitter.com/n_kozodoi"><img src="https://img.shields.io/badge/-Twitter-4B9AE5?style=flat&logo=Twitter&logoColor=white&link=https://www.twitter.com/n_kozodoi"/></a></li>
+    <li><a href="https://www.kaggle.com/kozodoi"><img src="https://img.shields.io/badge/-Kaggle-5DB0DB?style=flat&logo=Kaggle&logoColor=white&link=https://www.kaggle.com/kozodoi"/></a></li>
+    <li><a href="https://www.github.com/kozodoi"><img src="https://img.shields.io/badge/-GitHub-2F2F2F?style=flat&logo=github&logoColor=white&link=https://www.github.com/kozodoi"/></a></li>
+    <li><a href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en"><img src="https://img.shields.io/badge/-Google_Scholar-676767?style=flat&logo=google-scholar&logoColor=white&link=https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en"/></a>  </li>
+    <li><a href="https://www.researchgate.net/profile/Nikita_Kozodoi"><img src="https://img.shields.io/badge/-ResearchGate-59C3B5?style=flat&logo=researchgate&logoColor=white&link=https://www.researchgate.net/profile/Nikita_Kozodoi"/></a></li>
+  </ul>
+</div>
