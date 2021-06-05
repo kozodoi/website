@@ -34,6 +34,7 @@ I am passionate about machine learning, deep learning and data science. With pro
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
+
 ## Website
 
 This website hosts [my blog](https://kozodoi.me/blog/), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
@@ -51,13 +52,11 @@ This website hosts [my blog](https://kozodoi.me/blog/), where I share machine le
 
 Would like to have a chat? <a href="mailto:n.kozodoi@icloud.com">Click here</a> to send me an e-mail.
 
-I am also happy to connect on different platforms:
+I am also happy to connect on different social and professional platforms. Click the badges below to see my profile.
 
-<ul>
-  <li><a href="https://www.linkedin.com/in/kozodoi">LinkedIn</a></li>
-  <li><a href="https://github.com/kozodoi">GitHub</a></li>
-  <li><a href="https://www.kaggle.com/kozodoi">Kaggle</a></li>
-  <li><a href="https://twitter.com/n_kozodoi">Twitter</a></li>
-  <li><a href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en">Google Scholar</a></li>
-  <li><a href="https://www.researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a></li>
-</ul>
+[![Linkedin](https://img.shields.io/badge/-LinkedIn-306EA8?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/kozodoi/)](https://www.linkedin.com/in/kozodoi/)
+[![Twitter](https://img.shields.io/badge/-Twitter-4B9AE5?style=flat&logo=Twitter&logoColor=white&link=https://www.twitter.com/n_kozodoi)](https://www.twitter.com/n_kozodoi)
+[![Kaggle](https://img.shields.io/badge/-Kaggle-5DB0DB?style=flat&logo=Kaggle&logoColor=white&link=https://www.kaggle.com/kozodoi)](https://www.kaggle.com/kozodoi)
+[![GitHub](https://img.shields.io/badge/-GitHub-2F2F2F?style=flat&logo=github&logoColor=white&link=https://www.github.com/kozodoi)](https://www.github.com/kozodoi)
+[![Google Scholar](https://img.shields.io/badge/-Google_Scholar-676767?style=flat&logo=google-scholar&logoColor=white&link=https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en)](https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en)
+[![ResearchGate](https://img.shields.io/badge/-ResearchGate-59C3B5?style=flat&logo=researchgate&logoColor=white&link=https://www.researchgate.net/profile/Nikita_Kozodoi)](https://www.researchgate.net/profile/Nikita_Kozodoi)
