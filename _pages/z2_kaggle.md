@@ -36,6 +36,7 @@ permalink: /kaggle/
 
 - &#129351; **Cassava Leaf Disease Classification**: top-1% [[Summary]](https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751) [[GitHub]](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)
 - &#129351; **SIIM-ISIC Melanoma Classification**: top-1% [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
+- &#129352; **BMS Molecular Translation**: top-5% [[Summary]](https://www.kaggle.com/c/bms-molecular-translation/discussion/243845) [[GitHub]](https://github.com/kozodoi/BMS_Molecular_Translation)
 - &#129352; **RANZCR Catheter and Line Position Challenge**: top-5% [[Summary]](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664) [[GitHub]](https://github.com/kozodoi/Kaggle_RANZCR_Challenge)
 - &#129353; **Prostate Cancer Grade Assessment Challenge**: top-6%
 - &#129353; **APTOS 2019 Blindness Detection**: top-9% [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
