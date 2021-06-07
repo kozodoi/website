@@ -12,11 +12,11 @@ permalink: /about/
   </div>  
   <div class="content">
     <h1>Hi, I am Nikita!</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">Click <a href="https://kozodoi.me/cv.pdf">here</a> to download my CV and check out <a href="https://kozodoi.me/portfolio/">my portfolio</a> to see my work.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">Click <a href="https://kozodoi.me/CV.pdf">here</a> to download my CV and check out <a href="https://kozodoi.me/portfolio/">my portfolio</a> to see my work.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">Click <a href="https://kozodoi.me/cv.pdf">here</a> to download my CV and check out <a href="https://kozodoi.me/portfolio/">my portfolio</a> to see my work.</span></p>
+<p><span class="page-desc">Click <a href="https://kozodoi.me/CV.pdf">here</a> to download my CV and check out <a href="https://kozodoi.me/portfolio/">my portfolio</a> to see my work.</span></p>
 
 
 ## About me
@@ -29,7 +29,7 @@ I am passionate about machine learning, deep learning and data science. With pro
 - &#129351; Enjoy participating in data science competitions and hackathons
 - &#129513; Love football, beach volleyball, scooters and piano
 
-<button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
+<button class="btn" onclick="window.open('https://kozodoi.me/CV.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
