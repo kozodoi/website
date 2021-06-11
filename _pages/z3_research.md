@@ -69,7 +69,7 @@ permalink: /research/
   <li>
   Kozodoi, N., Lessmann, S. (2020).
   <dd><b>Multi-Objective Particle Swarm Optimization for Feature Selection in Credit Scoring.</b></dd>
-  <dd>In Workshop on Mining Data for Financial Applications (pp. 68-76). Springer, Cham.</dd>
+  <dd>In Workshop on Mining Data for Financial Applications at ECML PKDD 2020 (pp. 68-76). Springer, Cham.</dd>
   </li>
 </ul>
 <ul class="no-bullets">
@@ -162,9 +162,10 @@ permalink: /research/
 I have been acting as an expert reviewer at the following outlets:
 
 - [European Journal of Operational Research](https://www.journals.elsevier.com/european-journal-of-operational-research)
-- [International Journal of Forecasting](https://www.journals.elsevier.com/international-journal-of-forecasting)
 - [Decision Support Systems](https://www.journals.elsevier.com/decision-support-systems)
+- [International Journal of Forecasting](https://www.journals.elsevier.com/international-journal-of-forecasting)
 - [Expert Systems with Applications](https://www.journals.elsevier.com/expert-systems-with-applications)
+- [Journal of Business Analytics](https://www.tandfonline.com/toc/tjba20/current)
 - [Journal of the Royal Statistical Society](https://en.wikipedia.org/wiki/Journal_of_the_Royal_Statistical_Society)
 
 
@@ -203,7 +204,7 @@ I act as a human teacher of machine learning at the <a href="https://www.wiwi.hu
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 
-### Student theses
+### Student dissertations
 
 - A Cost-Benefit Analysis of Active Learning Methods in Credit Scoring
 - Reject Inference using Generative Adversarial Neural Networks
