@@ -219,7 +219,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 14.04.2021</em></p>
+<p><em>Last update: 11.06.2021</em></p>
 
 </div>
 </div>
@@ -236,9 +236,9 @@ window.onload = wrap_img;
 <p>This blog post provides a tutorial on using the <code>fairness</code> package on a <a href="https://github.com/propublica/compas-analysis">COMPAS</a> data set. The package is published on <a href="https://cran.r-project.org/package=fairness">CRAN</a> and <a href="https://github.com/kozodoi/fairness">GitHub</a>.</p>
 <p>The package implements the following fairness metrics:</p>
 <ul>
-<li>Demographic parity</li>
+<li>Demographic parity (also known as independence)</li>
 <li>Proportional parity</li>
-<li>Equalized odds</li>
+<li>Equalized odds (also known as separation)</li>
 <li>Predictive rate parity</li>
 <li>False positive rate parity</li>
 <li>False negative rate parity</li>
@@ -1189,7 +1189,7 @@ window.onload = wrap_img;
 <h2 id="Demographic-parity">
 <a class="anchor" href="#Demographic-parity" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demographic parity<a class="anchor-link" href="#Demographic-parity"> </a>
 </h2>
-<p>Demographic parity is one of the most popular fairness indicators in the literature. Demographic parity is achieved if the absolute number of positive predictions in the subgroups are close to each other. This measure does not take true class into consideration and only depends on the model predictions.</p>
+<p>Demographic parity is one of the most popular fairness indicators in the literature. Demographic parity is achieved if the absolute number of positive predictions in the subgroups are close to each other. This measure does not take true class into consideration and only depends on the model predictions. In some literature, demographic parity is also referred to as statsictal parity or independence.</p>
 <p>Formula: <strong>(TP + FP)</strong></p>
 
 </div>
@@ -1510,7 +1510,7 @@ window.onload = wrap_img;
 <h2 id="Equalized-odds">
 <a class="anchor" href="#Equalized-odds" aria-hidden="true"><span class="octicon octicon-link"></span></a>Equalized odds<a class="anchor-link" href="#Equalized-odds"> </a>
 </h2>
-<p>Equalized odds are achieved if the sensitivities in the subgroups are close to each other. The group-specific sensitivities indicate the number of the true positives divided by the total number of positives in that group.</p>
+<p>Equalized odds, also known as separation, are achieved if the sensitivities in the subgroups are close to each other. The group-specific sensitivities indicate the number of the true positives divided by the total number of positives in that group.</p>
 <p>Formula: <strong>TP / (TP + FN)</strong></p>
 
 </div>

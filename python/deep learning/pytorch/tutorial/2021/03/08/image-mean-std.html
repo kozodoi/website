@@ -120,7 +120,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      6 min read
     
 </span></p>
 
@@ -195,7 +195,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 24.04.2021</em></p>
+<p><em>Last update: 11.06.2021</em></p>
 
 </div>
 </div>
@@ -582,15 +582,57 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Finally, we make some further calculations:</p>
 <ul>
-<li>to get the mean, we simply divide the sum of pixel values by the total <code>count</code> - number of pixels in the dataset computed as <code>len(df) * image_size * image_size</code>
+<li>mean: simply divide the sum of pixel values by the total <code>count</code> - number of pixels in the dataset computed as <code>len(df) * image_size * image_size</code>
 </li>
-<li>to get the standard deviation, we use the following equation: <code>total_std = sqrt(psum_sq / count - total_mean ** 2)</code>. Why is that so? Well, because this is how the variance equation can be simplified to make use of the sum of squares. If you are not sure about this, feel free to check out <a href="https://www.thoughtco.com/sum-of-squares-formula-shortcut-3126266">this link</a> for some details.</li>
+<li>standard deviation: use the following equation: <code>total_std = sqrt(psum_sq / count - total_mean ** 2)</code>
+</li>
 </ul>
+<p>Why we use such a weird formula for STD? Well, because this is how the variance equation can be simplified to make use of the sum of squares when other data is not available. If you are not sure about this, expand the cell below to see a calculation example or <a href="https://www.thoughtco.com/sum-of-squares-formula-shortcut-3126266">read this</a> for some details.</p>
 <p><img src="/images/copied_from_nb/images/fig_variance.jpg" alt="variance equation"></p>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+
+<span class="c1"># Consider three vectors: </span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">C</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Let's compute SDs in a classical way:</span>
+<span class="mf">1.</span> <span class="n">Mean</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">Mean</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">Mean</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="mf">2.</span> <span class="n">SD</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">=</span> <span class="n">SD</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># because there is no variation around the means</span>
+<span class="mf">3.</span> <span class="n">SD</span><span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">1.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="c1"># Note that SD(C) is clearly not equal to SD(A) + SD(B), which is zero. </span>
+
+<span class="c1"># Instead, we could compute SD(C) in three steps using the equation above:</span>
+<span class="mf">1.</span> <span class="n">psum</span>    <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="mf">2.</span> <span class="n">psum_sq</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="mf">3.</span> <span class="n">SD</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>   <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">psum_sq</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">N</span> <span class="o">*</span> <span class="n">psum</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">36</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="c1"># We get the same result as in the classical way!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
     
     
 <div class="cell border-box-sizing code_cell rendered">

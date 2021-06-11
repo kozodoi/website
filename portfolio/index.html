@@ -128,7 +128,7 @@ window.onload = wrap_img;
 
   <ul style="margin-top: -10px;">
   <li> &#128200; <a href="#PROJECT_1">Profit-driven demand forecasting with gradient boosting </a></li>
-  <li> &#127973; <a href="#PROJECT_2">Catheter and line position detection with deep learning </a></li>
+  <li> &#129516; <a href="#PROJECT_2">Image-to-text translation of chemical structures with deep learning </a></li>
   <li> &#128080; <a href="#PROJECT_3">Fairness: package for computing fair machine learning metrics </a></li>
   </ul>
 
@@ -188,31 +188,32 @@ window.onload = wrap_img;
 
 <div class="card">
 
-<h2><b> Catheter and line position detection with deep learning </b></h2>
+<h2><b> Image-to-text translation of chemical structures with deep learning </b></h2>
 
-<img src="https://kozodoi.me/images/portfolio/fig_xrays.png" alt="Notebook" style="width:100%" />
+<img src="https://kozodoi.me/images/portfolio/fig_inchi.jpg" alt="Notebook" style="width:100%" />
 
 <h3> Highlights </h3>
 <ul>
-<li> built deep learning models to detect catheter and tube position on X-ray images </li>
-<li> developed a comprehensive PyTorch GPU/TPU computer vision pipeline </li>
+<li> built CNN-LSTM encoder-decoder models to translate images into chemical formulas </li>
+<li> developed a comprehensive PyTorch GPU/TPU image captioning pipeline </li>
 <li> finished in the top-5% of the Kaggle competition leaderboard with silver medal </li>
 </ul>
 
 <h3> Links </h3>
 <ul>
-<li> <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub repo</a> with code and documentation </li>
-<li> <a href="https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664">discussion topic</a> with the short summary </li>
+<li> <a href="https://github.com/kozodoi/BMS_Molecular_Translation">GitHub repo</a> with code and documentation </li>
+<li> <a href="https://www.kaggle.com/c/bms-molecular-translation/discussion/243845">discussion topic</a> with the short summary </li>
 </ul>
 
 <span id="dots2"><p></p></span>
 <span id="more2">
 <h3> Summary </h3>
-<p> Hospital patients can have catheters and tubes inserted during their admission. If tubes are placed incorrectly, serious health complications can occur later. Deep learning helps to automate detection of malpositioned tubes, which allows to reduce the workload of clinicians and prevent treatment delays. </p>
 
-<p> This project works with a dataset of 30,083 high-resolution chest X-ray images. The images have 11 binary labels indicating normal, borderline or abnormal placement of endotracheal tubes, nasogastric tubes, central venous catheters and Swan-Ganz catheters. </p>
+<p>Organic chemists frequently draw molecular work using structural graph notations. As a result, decades of scanned publications and medical documents contain drawings not annotated with chemical formulas. Time-consuming manual work of experts is required to reliably convert such images into machine-readable formulas. Automated recognition of optical chemical structures could speed up research and development in the field.</p>
 
-<p> Within the project, I develop a comprehensive GPU/TPU image processing and modeling pipeline written in PyTorch. The solution builds an ensemble of seven CNN models that reaches the test mean AUC of 0.971 and places in the top-5% among the 1,549 competing teams. The code is documented and published on <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub</a>. </p>
+<p>The goal of this project is to develop a deep learning based algorithm for chemical image captioning. In other words, the project aims at translating unlabeled chemical images into the text formula strings. To do that, I work with a large dataset of more than 4 million chemical images provided by Bristol-Myers Squibb.</p>
+
+<p>My solution is an ensemble of CNN-LSTM Encoder-Decoder models implemented in PyTorch.The solution reaches the test score of 1.31 Levenstein Distance and places in the top-5% of the competition leaderboard. The code is documented and published on <a href="https://github.com/kozodoi/BMS_Molecular_Translation">GitHub</a>.</p>
 </span>
 
 <button class="btn" onclick="myFunction2()" id="myBtn2">Read more</button>
