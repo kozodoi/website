@@ -6,6 +6,8 @@ permalink: /portfolio/
 
 <meta charset="UTF-8">
 
+<meta name="image" property="og:image" content="https://kozodoi.me/images/menu/photo_portfolio.jpg" />
+
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
     <img src="../images/menu/photo_portfolio.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
