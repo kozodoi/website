@@ -2,6 +2,7 @@
 layout: menu_page
 title: Portfolio
 permalink: /portfolio/
+image: ../images/menu/photo_portfolio.jpg
 ---
 
 <meta charset="UTF-8">
