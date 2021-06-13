@@ -4,8 +4,6 @@ title: Research
 permalink: /research/
 ---
 
-<meta name="image" property="og:image" content="https://kozodoi.me/images/menu/photo_publications.jpg" />
-
 <script src="{{ base.url | prepend: site.url }}/assets/js/paper_description.js"></script>
 
 <div class="container">
