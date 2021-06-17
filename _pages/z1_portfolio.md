@@ -92,7 +92,7 @@ image: ../images/menu/photo_portfolio.jpg
 
 <div class="card">
 
-<h2><b> Image-to-text translation of chemical structures with deep learning </b></h2>
+<h2><b> Image-to-text translation of chemical structures with DL </b></h2>
 
 <img src="https://kozodoi.me/images/portfolio/fig_inchi.jpg" alt="Notebook" style="width:100%">
 
@@ -160,101 +160,148 @@ image: ../images/menu/photo_portfolio.jpg
 
 
 
+
+<h1> Other projects </h1>
+
 Want to see more? Check out some of my further ML projects below. You can also visit my <a href="https://github.com/kozodoi">GitHub page</a> and see my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/research/">academic publications</a>.
 
+<div>
 <h2> Computer vision </h2>
 
-<div class="card">
+<span id="dots_cv"><p></p></span>
+<span id="more_cv" style="display:none;">
 
-<h3>Catheter and tube position detection with deep learning</h3>
+  <div class="card">
 
-<span id="dots4"><p></p></span>
-<span id="more4" style="display:none;">
+  <h3>Cassava Leaf Disease Classification</h3>
 
-<img src="https://i.postimg.cc/tT6b3KGN/xray-sample.png" alt="Notebook" style="width:100%">
+  <span id="dots7"><p></p></span>
+  <span id="more7" style="display:none;">
 
-<h3> Highlights </h3>
-<ul>
-<li> built deep learning models to detect catheter and tube position on X-ray images </li>
-<li> developed a comprehensive PyTorch GPU/TPU computer vision pipeline </li>
-<li> finished in the top-5% of the Kaggle competition leaderboard with silver medal </li>
-</ul>
+  <img src="https://i.postimg.cc/jdtWjXyF/cassava-sample.png" alt="Notebook" style="width:100%">
 
-<h3> Summary </h3>
-<p> Hospital patients can have catheters and tubes inserted during their admission. If tubes are placed incorrectly, serious health complications can occur later. Deep learning helps to automate detection of malpositioned tubes, which allows to reduce the workload of clinicians and prevent treatment delays. </p>
-<p> This project works with a dataset of 30,083 high-resolution chest X-ray images. The images have 11 binary labels indicating normal, borderline or abnormal placement of endotracheal tubes, nasogastric tubes, central venous catheters and Swan-Ganz catheters. </p>
-<p> Within the project, I develop a comprehensive GPU/TPU image processing and modeling pipeline written in PyTorch. The solution builds an ensemble of seven CNN models that reaches the test mean AUC of 0.971 and places in the top-5% among the 1,549 competing teams. The code is documented and published on <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub</a>. </p>
+  <h3> Highlights </h3>
+  <ul>
+  <li> built CNNs and Vision Transformers in PyTorch to classify plant diseases </li>
+  <li> constructed a stacking ensemble with multiple computer vision models </li>
+  <li> finished in the top-1% of the Kaggle competition with a gold medal </li>
+  </ul>
+
+  <h3> Summary </h3>
+  <p>Cassava is one of the key food crops grown in Africa. Plant diseases are major sources of poor yields. To diagnose diseases, farmers require the help of agricultural experts to visually inspect the plants, which is labor-intensive and costly. Deep learning helps to automate this process.</p>
+  <p>This project works with a dataset of 21,367 cassava images. The pictures are taken by farmers on mobile phones and labeled as healthy or having one of the 4 common disease types. Main data-related challenges are poor image quality, inconsistent background conditions and label noise.</p>
+  <p>We develop a stacking ensemble with CNNs and Vision Transformers implemented in `PyTorch`. Our solution reaches the test accuracy of 91.06% and places 14th out of 3,900 competing teams.</p>
+  </span>
+
+  <button class="btn" onclick="myFunc7()" id="myBtn7">Read more</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification')" type="button">GitHub repo</button>
+  <button class="btn" onclick="window.open('https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751')" type="button">Writeup on Kaggle</button>
+
+  </div>
+
+
+
+  <hr style="height:3pt; visibility:hidden;" />
+
+  <div class="card">
+
+  <h3>Catheter and tube position detection with deep learning</h3>
+
+  <span id="dots4"><p></p></span>
+  <span id="more4" style="display:none;">
+
+  <img src="https://i.postimg.cc/tT6b3KGN/xray-sample.png" alt="Notebook" style="width:100%">
+
+  <h3> Highlights </h3>
+  <ul>
+  <li> built deep learning models to detect catheter and tube position on X-ray images </li>
+  <li> developed a comprehensive PyTorch GPU/TPU computer vision pipeline </li>
+  <li> finished in the top-5% of the Kaggle competition leaderboard with silver medal </li>
+  </ul>
+
+  <h3> Summary </h3>
+  <p> Hospital patients can have catheters and tubes inserted during their admission. If tubes are placed incorrectly, serious health complications can occur later. Deep learning helps to automate detection of malpositioned tubes, which allows to reduce the workload of clinicians and prevent treatment delays. </p>
+  <p> This project works with a dataset of 30,083 high-resolution chest X-ray images. The images have 11 binary labels indicating normal, borderline or abnormal placement of endotracheal tubes, nasogastric tubes, central venous catheters and Swan-Ganz catheters. </p>
+  <p> Within the project, I develop a comprehensive GPU/TPU image processing and modeling pipeline written in PyTorch. The solution builds an ensemble of seven CNN models that reaches the test mean AUC of 0.971 and places in the top-5% among the 1,549 competing teams. The code is documented and published on <a href="https://github.com/kozodoi/Kaggle_RANZCR_Challenge">GitHub</a>. </p>
+  </span>
+
+  <button class="btn" onclick="myFunc4()" id="myBtn4">Read more</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_RANZCR_Challenge')" type="button">GitHub repo</button>
+  <button class="btn" onclick="window.open('https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664')" type="button">Writeup on Kaggle</button>
+
+  </div>
+
+  <hr style="height:3pt; visibility:hidden;" />
+
+  <div class="card">
+
+  <h3>Detecting blindness on retina photos</h3>
+
+  <span id="dots5"><p></p></span>
+  <span id="more5" style="display:none;">
+
+  <img src="https://i.postimg.cc/dVjwCDr2/blindness.png" alt="Notebook" style="width:100%">
+
+  <h3> Highlights </h3>
+  <ul>
+  <li> developed CNN models to identify disease types from retina photos </li>
+  <li> written a detailed report covering problem statement, EDA and modeling </li>
+  <li> submitted as a capstone project within the Udacity ML Engineer program </li>
+  </ul>
+
+  <h3> Summary </h3>
+  <p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. Early detection and treatment are crucial steps towards preventing DR. This project considers DR detection as an ordinal classification task and aims at developing a deep learning model for predicting the severity of DR disease based on the patient's retina photograph.</p>
+  <p>The project has been completed within the scope of <a href="https://confirm.udacity.com/LMMJDA7C">Udacity ML Engineer Nanodegree</a> program. I use data employed in the <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/data">APTOS 2019 Blindness Detection competition</a> on Kaggle.</p>
+  </span>
+
+  <button class="btn" onclick="myFunc5()" id="myBtn5">Read more</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection')" type="button">GitHub repo</button>
+  <button class="btn" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html')" type="button">Blog post</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection/raw/master/report.pdf')" type="button">Detailed report</button>
+
+  </div>
+
 </span>
-
-<button class="btn" onclick="myFunc4()" id="myBtn4">Read more</button>
-<button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_RANZCR_Challenge')" type="button">GitHub repo</button>
-<button class="btn" onclick="window.open('https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664')" type="button">Writeup on Kaggle</button>
-
 </div>
 
-<hr style="height:3pt; visibility:hidden;" />
-
-<div class="card">
-
-<h3>Detecting blindness on retina photos</h3>
-
-<span id="dots5"><p></p></span>
-<span id="more5" style="display:none;">
-
-<img src="https://i.postimg.cc/dVjwCDr2/blindness.png" alt="Notebook" style="width:100%">
-
-<h3> Highlights </h3>
-<ul>
-<li> developed CNN models to identify disease types from retina photos </li>
-<li> written a detailed report covering problem statement, EDA and modeling </li>
-<li> submitted as a capstone project within the Udacity ML Engineer program </li>
-</ul>
-
-<h3> Summary </h3>
-<p>Diabetic retinopathy (DR) is one of the leading causes of vision loss. Early detection and treatment are crucial steps towards preventing DR. This project considers DR detection as an ordinal classification task and aims at developing a deep learning model for predicting the severity of DR disease based on the patient's retina photograph.</p>
-<p>The project has been completed within the scope of <a href="https://confirm.udacity.com/LMMJDA7C">Udacity ML Engineer Nanodegree</a> program. I use data employed in the <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/data">APTOS 2019 Blindness Detection competition</a> on Kaggle.</p>
-</span>
-
-<button class="btn" onclick="myFunc5()" id="myBtn5">Read more</button>
-<button class="btn" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection')" type="button">GitHub repo</button>
-<button class="btn" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html')" type="button">Blog post</button>
-<button class="btn" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection/raw/master/report.pdf')" type="button">Detailed report</button>
-
-</div>
+<button class="btn" onclick="func_cv()" id="myBtn_cv">Show projects</button>
 
 
-
-
-<hr style="height:3pt; visibility:hidden;" />
-
-
-
+<div>
 <h2> Tabular data </h2>
 
-<div class="card">
+<span id="dots_tab"><p></p></span>
+<span id="more_tab" style="display:none;">
 
-<h3>Google analytics customer revenue prediction</h3>
+  <div class="card">
 
-<span id="dots6"><p></p></span>
-<span id="more6" style="display:none;">
+  <h3>Google analytics customer revenue prediction</h3>
 
-<img src="https://i.postimg.cc/6QKFDSwb/var-importance.png" alt="Notebook" style="width:100%">
+  <span id="dots6"><p></p></span>
+  <span id="more6" style="display:none;">
 
-<h3> Highlights </h3>
-<ul>
-<li> worked with two-year transactional data from an e-commerce store </li>
-<li> developed LightGBM models to predict future revenues generated by customers </li>
-<li> finished in the top-2% of the Kaggle competition leaderboard with silver medal </li>
-</ul>
+  <img src="https://i.postimg.cc/6QKFDSwb/var-importance.png" alt="Notebook" style="width:100%">
 
-<h3> Summary </h3>
-<p>Predicting future revenues generated by a certain customer is an important e-commerce task. Revenue forecasts are frequently used by marketing departments to refine the targeting and promotional strategies. Machine learning can help to produce accurate predictions for existing customers.</p>
-<p>This project works with a two-year data set with user transactions in the Google Merchandise Store. We perform a thorough data preprocessing and aggregation, engineering features such as recency, frequency and page visit statistics. We build an ensemble of LightGBM models to predict future revenues generated by the existing Google customers. Our solution reaches 0.886 on the public LB, placing in the top-2% of the corresponding Kaggle competition.</p>
+  <h3> Highlights </h3>
+  <ul>
+  <li> worked with two-year transactional data from an e-commerce store </li>
+  <li> developed LightGBM models to predict future revenues generated by customers </li>
+  <li> finished in the top-2% of the Kaggle competition leaderboard with silver medal </li>
+  </ul>
+
+  <h3> Summary </h3>
+  <p>Predicting future revenues generated by a certain customer is an important e-commerce task. Revenue forecasts are frequently used by marketing departments to refine the targeting and promotional strategies. Machine learning can help to produce accurate predictions for existing customers.</p>
+  <p>This project works with a two-year data set with user transactions in the Google Merchandise Store. We perform a thorough data preprocessing and aggregation, engineering features such as recency, frequency and page visit statistics. We build an ensemble of LightGBM models to predict future revenues generated by the existing Google customers. Our solution reaches 0.886 on the public LB, placing in the top-2% of the corresponding Kaggle competition.</p>
+  </span>
+
+  <button class="btn" onclick="myFunc6()" id="myBtn6">Read more</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Google_Analytics')" type="button">GitHub repo</button>
+
+  </div>
+
 </span>
-
-<button class="btn" onclick="myFunc6()" id="myBtn6">Read more</button>
-<button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Google_Analytics')" type="button">GitHub repo</button>
-
 </div>
+
+<button class="btn" onclick="func_tab()" id="myBtn_tab">Show projects</button>
 
 <hr style="height:3pt; visibility:hidden;" />
