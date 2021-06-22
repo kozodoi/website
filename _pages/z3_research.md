@@ -12,17 +12,17 @@ permalink: /research/
   </div>  
   <div class="content">
     <h1>Research</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page summarizes my reserach activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page summarizes my research activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">This page summarizes my reserach activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
+<p><span class="page-desc">This page summarizes my research activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
 
 <hr style="height:1px; visibility:hidden;" />
 
 <div style="font-size: 100%;">
 
-  <p>This page includes the following reserach-related activities:</p>
+  <p>This page includes the following research-related activities:</p>
 
   <ul style="margin-top: -10px;">
   <li> &#128218; <a href="#PART_1">Selected list of my academic publications </a></li>
@@ -49,15 +49,17 @@ permalink: /research/
   <li>
   Kozodoi, N., Jacob, J., & Lessmann, S. (2021).
   <dd><b>Fairness in Credit Scoring: Assessment, Implementation and Profit Implications.</b></dd>
-  <dd>arXiv preprint arXiv:2103.01907.</dd>
+  <dd>European Journal of Operational Research</dd>
   </li>
 </ul>
 <ul class="no-bullets">
   <span id="dots1"></span>
-  <li><span id="abs1"><p></p><b>Abstract:</b> The rise of algorithmic decision-making has spawned much research on fair machine learning (ML). Financial institutions use ML for building risk scorecards that support a range of credit-related decisions. Yet, the literature on fair ML in credit scoring is scarce. The paper makes two contributions. First, we provide a systematic overview of algorithmic options for incorporating fairness goals in the ML model development pipeline. In this scope, we also consolidate the space of statistical fairness criteria and examine their adequacy for credit scoring. Second, we perform an empirical study of different fairness processors in a profit-oriented credit scoring setup using seven real-world data sets. The empirical results substantiate the evaluation of fairness measures, identify more and less suitable options to implement fair credit scoring, and clarify the profit-fairness trade-off in lending decisions. Specifically, we find that multiple fairness criteria can be approximately satisfied at once and identify separation as a proper criterion for measuring the fairness of a scorecard. We also find fair in-processors to deliver a good balance between profit and fairness. More generally, we show that algorithmic discrimination can be reduced to a reasonable level at a relatively low cost.</span></li>
+  <li><span id="abs1"><p></p><b>Abstract:</b> The rise of algorithmic decision-making has spawned much research on fair machine learning (ML). Financial institutions use ML for building risk scorecards that support a range of credit-related decisions. Yet, the literature on fair ML in credit scoring is scarce. The paper makes three contributions. First, we revisit statistical fairness criteria and examine their adequacy for credit scoring. Second, we catalog algorithmic options for incorporating fairness goals in the ML model development pipeline. Last, we empirically compare different fairness processors in a profit-oriented credit scoring context using real-world data. The empirical results substantiate the evaluation of fairness measures, identify suitable options to implement fair credit scoring, and clarify the profit-fairness trade-off in lending decisions. We find that multiple fairness criteria can be approximately satisfied at once and recommend separation as a proper criterion for measuring the fairness of a scorecard. We also find fair in-processors to deliver a good balance between profit and fairness and show that algorithmic discrimination can be reduced to a reasonable level at a relatively low cost. The codes corresponding to the paper are available on GitHub.</span></li>
   <li>
     <button class="btn" onclick="paper_abstract_1()" id="b1">Abstract</button>
     <button class="btn" onclick="window.open('https://arxiv.org/pdf/2103.01907.pdf')" type="button">PDF on arXiv</button>
+    <button class="btn" onclick="window.open('https://doi.org/10.1016/j.ejor.2021.06.023')" type="button">Published version</button>
+    <button class="btn" onclick="window.open('https://github.com/kozodoi/Fair_Credit_Scoring')" type="button">GitHub repo</button>
   </li>
 </ul>
 <p></p>
