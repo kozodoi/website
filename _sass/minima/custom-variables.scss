@@ -326,7 +326,6 @@ input:checked + .slider:after {
 }
 
 
-
 /* Badge lists */
 ul.badge-list {
     list-style-type: none;
@@ -336,4 +335,43 @@ ul.badge-list {
 
 ul.badge-list li {
     display: inline-block;
+}
+
+
+
+.project_accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  padding-left: 0;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 220%;
+  transition: 0.4s;
+}
+
+.project_active, .project_accordion:hover {
+  background-color: #ccc;
+}
+
+.project_accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.project_active:after {
+  content: "\2212";
+}
+
+.project_panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
