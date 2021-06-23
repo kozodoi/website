@@ -110,34 +110,50 @@ function myFunc7() {
   }
 }
 
-function func_cv() {
-  var dots = document.getElementById("dots_cv");
-  var moreText = document.getElementById("more_cv");
-  var btnText = document.getElementById("myBtn_cv");
+function myFunc8() {
+  var dots = document.getElementById("dots8");
+  var moreText = document.getElementById("more8");
+  var btnText = document.getElementById("myBtn8");
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Show projects";
+    btnText.innerHTML = "Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide projects";
+    btnText.innerHTML = "Read less";
     moreText.style.display = "inline";
   }
 }
 
-function func_tab() {
-  var dots = document.getElementById("dots_tab");
-  var moreText = document.getElementById("more_tab");
-  var btnText = document.getElementById("myBtn_tab");
+function myFunc9() {
+  var dots = document.getElementById("dots9");
+  var moreText = document.getElementById("more9");
+  var btnText = document.getElementById("myBtn9");
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Show projects";
+    btnText.innerHTML = "Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide projects";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+
+function myFunc10() {
+  var dots = document.getElementById("dots10");
+  var moreText = document.getElementById("more10");
+  var btnText = document.getElementById("myBtn10");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
     moreText.style.display = "inline";
   }
 }
