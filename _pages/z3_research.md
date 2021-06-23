@@ -100,6 +100,7 @@ permalink: /research/
     <button class="btn" onclick="paper_abstract_3()" id="b3">Abstract</button>
     <button class="btn" onclick="window.open('https://arxiv.org/pdf/1909.06108.pdf')" type="button">PDF on arXiv</button>
     <button class="btn" onclick="window.open('https://link.springer.com/chapter/10.1007/978-3-030-46133-1_31')" type="button">Published version</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/ECML_2019.pdf')" type="button">Slides</button>
   </li>
 </ul>
 <p></p>
@@ -140,6 +141,7 @@ permalink: /research/
     <button class="btn" onclick="paper_abstract_5()" id="b5">Abstract</button>
     <button class="btn" onclick="window.open('https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications')" type="button">PDF on ResearchGate</button>
     <button class="btn" onclick="window.open('https://link.springer.com/chapter/10.1007%2F978-3-030-18500-8_9')" type="button">Published version</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/OR_2018.pdf')" type="button">Slides</button>
   </li>
 </ul>
 <p></p>
