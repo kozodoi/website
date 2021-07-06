@@ -19,6 +19,25 @@ permalink: /talks/
 <p><span class="page-desc">I regularly give talks on machine learning topics at academic conferences, data science meetups and as part of my teaching activities at HU Berlin. Below you can find links to videos and slides of selected talks.</span></p>
 
 
+## Meetups
+
+<ul>
+    <li>
+    <b>Fighting Sampling Bias in ML Models in Credit Scoring</b>
+    <dd><bb>Solving Real World Problems via ML, 2021 (Berlin)</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots4"></span>
+  <li><span id="abs4"><p></p><b>Abstract:</b> Machine learning is widely used to support decision-making in financial institutions. Credit scorecards are a prominent example. Such models are trained over the labeled data of previously accepted applicants, whose repayment behavior has been observed and ignore the rejected applicants. This creates sampling bias: the training data represent a limited region of the distribution on which the model is deployed for screening new customers. In this talk, I will illustrate the adverse impact of sampling bias on training and evaluation of scoring models. I will also overview possible methods to address this problem.</span></li>
+  <li>
+    <button class="btn" onclick="paper_abstract_4()" id="b4">Abstract</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/ИЬФЬ_2021.pdf')" type="button">Slides</button>
+  </li>
+</ul>
+<p></p>
+
+
 ## Conferences
 
 <ul>
@@ -78,7 +97,3 @@ permalink: /talks/
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
-
-## Meetups
-
-Selected talks will be added soon.
