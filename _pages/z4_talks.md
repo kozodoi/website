@@ -32,7 +32,7 @@ permalink: /talks/
   <li><span id="abs4"><p></p><b>Abstract:</b> Machine learning is widely used to support decision-making in financial institutions. Credit scorecards are a prominent example. Such models are trained over the labeled data of previously accepted applicants, whose repayment behavior has been observed and ignore the rejected applicants. This creates sampling bias: the training data represent a limited region of the distribution on which the model is deployed for screening new customers. In this talk, I will illustrate the adverse impact of sampling bias on training and evaluation of scoring models. I will also overview possible methods to address this problem.</span></li>
   <li>
     <button class="btn" onclick="paper_abstract_4()" id="b4">Abstract</button>
-    <button class="btn" onclick="window.open('https://kozodoi.me/talks/ИЬФЬ_2021.pdf')" type="button">Slides</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/BMAM_2021.pdf')" type="button">Slides</button>
   </li>
 </ul>
 <p></p>
