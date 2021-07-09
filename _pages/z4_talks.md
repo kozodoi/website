@@ -33,6 +33,7 @@ permalink: /talks/
   <li>
     <button class="btn" onclick="paper_abstract_4()" id="b4">Abstract</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/BMAM_2021.pdf')" type="button">Slides</button>
+    <button class="btn" onclick="window.open('https://youtu.be/S174yaYEifo')" type="button">Video</button>
   </li>
 </ul>
 <p></p>
@@ -89,6 +90,25 @@ permalink: /talks/
     <button class="btn" onclick="paper_abstract_3()" id="b3">Abstract</button>
     <button class="btn" onclick="window.open('https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications')" type="button">Paper</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/OR_2018.pdf')" type="button">Slides</button>
+  </li>
+</ul>
+<p></p>
+
+
+## Teaching
+
+<ul>
+    <li>
+    <b>Using Conda for Package and Environment Management</b>
+    <dd><bb>Seminar on Applied Predictive Analytics at HU Berlin, 2021</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots6"></span>
+  <li><span id="abs6"><p></p><b>Abstract:</b> The talk provides a brief practical-driven introduction into using Conda for package and environment management in Python-based data science projects. The talks covers the basics of package and environment management and provides a tutorial on the basic Conda functionality.</span></li>
+  <li>
+    <button class="btn" onclick="paper_abstract_6()" id="b6">Abstract</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/APA_2021.pdf')" type="button">Slides</button>
   </li>
 </ul>
 <p></p>
