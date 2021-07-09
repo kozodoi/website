@@ -77,3 +77,19 @@ function paper_abstract_5() {
     moreText.style.display = "inline";
   }
 }
+
+function paper_abstract_6() {
+  var dots = document.getElementById("dots6");
+  var moreText = document.getElementById("abs6");
+  var btnText = document.getElementById("b6");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Abstract";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Hide abstract";
+    moreText.style.display = "inline";
+  }
+}
