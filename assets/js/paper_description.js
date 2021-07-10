@@ -5,7 +5,7 @@ function paper_abstract_1() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -21,7 +21,7 @@ function paper_abstract_2() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -37,7 +37,7 @@ function paper_abstract_3() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -53,7 +53,7 @@ function paper_abstract_4() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -69,7 +69,7 @@ function paper_abstract_5() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -85,7 +85,7 @@ function paper_abstract_6() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -101,7 +101,7 @@ function paper_abstract_7() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -117,7 +117,7 @@ function paper_abstract_8() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -133,7 +133,7 @@ function paper_abstract_9() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -149,7 +149,7 @@ function paper_abstract_10() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Abstract";
+    btnText.innerHTML = "&#128220; Abstract";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
