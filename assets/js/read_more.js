@@ -5,7 +5,7 @@ function myFunction1() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -21,7 +21,7 @@ function myFunction2() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -37,7 +37,7 @@ function myFunction3() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -53,7 +53,7 @@ function myFunc4() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -69,7 +69,7 @@ function myFunc5() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -85,7 +85,7 @@ function myFunc6() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -101,7 +101,7 @@ function myFunc7() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -117,7 +117,7 @@ function myFunc8() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -133,7 +133,7 @@ function myFunc9() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
@@ -149,7 +149,7 @@ function myFunc10() {
 
   if (dots.style.display === "none") {
     dots.style.display = "inline";
-    btnText.innerHTML = "Read more";
+    btnText.innerHTML = "&#128220; Read more";
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
