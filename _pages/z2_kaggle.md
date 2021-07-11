@@ -32,23 +32,24 @@ permalink: /kaggle/
 
 ## Competitions
 
+My competition medals are grouped by the application areas below. Follow the attached links for solution summaries, code and documentation.
+
 ### Computer vision
 
-- &#129351; **Cassava Leaf Disease Classification**: top-1% [[Summary]](https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751) [[GitHub]](https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification)
-- &#129351; **SIIM-ISIC Melanoma Classification**: top-1% [[Summary]](https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html)
-- &#129352; **BMS Molecular Translation**: top-5% [[Summary]](https://www.kaggle.com/c/bms-molecular-translation/discussion/243845) [[GitHub]](https://github.com/kozodoi/BMS_Molecular_Translation)
-- &#129352; **RANZCR Catheter and Line Position Challenge**: top-5% [[Summary]](https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664) [[GitHub]](https://github.com/kozodoi/Kaggle_RANZCR_Challenge)
+- &#129351; **Cassava Leaf Disease Classification**: top-1% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://www.kaggle.com/c/cassava-leaf-disease-classification/discussion/220751)" type="button">&#128214; Summary</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_Leaf_Disease_Classification')" type="button">&#128187; GitHub</button>
+- &#129351; **SIIM-ISIC Melanoma Classification**: top-1% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624')" type="button">&#128214; Summary</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/08/30/pre-training.html')" type="button">&#128203; Blog post</button>
+- &#129352; **BMS Molecular Translation**: top-5% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://www.kaggle.com/c/bms-molecular-translation/discussion/243845')" type="button">&#128214; Summary</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/BMS_Molecular_Translation')" type="button">&#128187; GitHub</button>
+- &#129352; **RANZCR Catheter and Line Position Challenge**: top-5% &nbsp;<button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://www.kaggle.com/c/ranzcr-clip-catheter-line-classification/discussion/226664')" type="button">&#128214; Summary</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_RANZCR_Challenge')" type="button">&#128187; GitHub</button>
 - &#129353; **Prostate Cancer Grade Assessment Challenge**: top-6%
-- &#129353; **APTOS 2019 Blindness Detection**: top-9% [[GitHub]](https://github.com/kozodoi/Udacity_Blindness_Detection) [[Blog post]](https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html)
-- &#129353; **RSNA STR Pulmonary Embolism Detection**: top-13% [[Blog
-post]](https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html)
+- &#129353; **APTOS 2019 Blindness Detection**: top-9% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection')" type="button">&#128187; GitHub</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html')" type="button">&#128203; Blog post</button>
+- &#129353; **RSNA STR Pulmonary Embolism Detection**: top-13% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html')" type="button">&#128203; Blog post</button>
 
 
 ### Tabular data
 
-- &#129352; **Google Analytics Customer Revenue Prediction**: top-2% [[GitHub]](https://github.com/kozodoi/Kaggle_Google_Analytics)
-- &#129352; **IEEE-CIS Fraud Detection**: top-3% [[GitHub]](https://github.com/kozodoi/Kaggle_IEEE_Fraud_Detection)
-- &#129352; **Home Credit Default Risk**: top-4% [[GitHub]](https://github.com/kozodoi/Kaggle_Home_Credit)
+- &#129352; **Google Analytics Customer Revenue Prediction**: top-2% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_Google_Analytics')" type="button">&#128187; GitHub</button>
+- &#129352; **IEEE-CIS Fraud Detection**: top-3% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_IEEE_Fraud_Detection')" type="button">&#128187; GitHub</button>
+- &#129352; **Home Credit Default Risk**: top-4% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_Home_Credit')" type="button">&#128187; GitHub</button>
 - &#129353; **COVID-19 mRNA Vaccine Degradation Prediction**: top-6%
 - &#129353; **Instant Gratification**: top-6%
 - &#129353; **Mechanisms of Action Prediction**: top-10%
@@ -56,7 +57,7 @@ post]](https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020
 
 ### Time series
 
-- &#129352; **PLAsTiCC Astronomical Classification**: top-5% [[GitHub]](https://github.com/kozodoi/Kaggle_Astronomical_Classification)
+- &#129352; **PLAsTiCC Astronomical Classification**: top-5% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_Astronomical_Classification')" type="button">&#128187; GitHub</button>
 - &#129353; **Riiid! Answer Correctness Prediction**: top-7%
 
 
