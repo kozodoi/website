@@ -23,7 +23,7 @@ permalink: /kaggle/
 - &#127942; **Competitions**: 293 out of 159,203 (Master)
 - &#128202; **Notebooks**: 330 out of 172,882 (Expert)
 - &#128193; **Datasets**: 75 out of 40,289 (Expert)
-- &#128483; **Discussion**: 195 out of 207,142 (Expert)
+- &#128483; **Discussion**: 194 out of 207,694 (Expert)
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
