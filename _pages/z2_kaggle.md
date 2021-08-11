@@ -32,7 +32,7 @@ permalink: /kaggle/
 
 ## Competitions
 
-My competition medals are grouped by the application areas below. Follow the attached links for solution summaries, code and documentation.
+My medals grouped by the application areas. Follow the links for summaries, code and documentation.
 
 ### Computer vision
 
@@ -43,6 +43,12 @@ My competition medals are grouped by the application areas below. Follow the att
 - &#129353; **Prostate Cancer Grade Assessment Challenge**: top-6%
 - &#129353; **APTOS 2019 Blindness Detection**: top-9% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection')" type="button">&#128187; GitHub</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html')" type="button">&#128203; Blog post</button>
 - &#129353; **RSNA STR Pulmonary Embolism Detection**: top-13% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/tutorial/2020/10/30/pytorch-xla-tpu.html')" type="button">&#128203; Blog post</button>
+
+
+### Natural language processing
+
+- &#129352; **BMS Molecular Translation**: top-5% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://www.kaggle.com/c/bms-molecular-translation/discussion/243845')" type="button">&#128214; Summary</button> <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/BMS_Molecular_Translation')" type="button">&#128187; GitHub</button>
+- &#129353; **CommonLit Readability Prize**: top-9% <button class="btn" style="padding-top: 4px; padding-bottom: 4px; padding-left: 10px; padding-right: 10px;" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub</button>
 
 
 ### Tabular data
@@ -67,6 +73,8 @@ My competition medals are grouped by the application areas below. Follow the att
 
 ## Top-rated notebooks
 
+My Kaggle notebooks that received the most upvotes from the community.
+
 - &#128293; **[LightGBM on Meta-Features](https://www.kaggle.com/kozodoi/lightgbm-on-meta-features)**: classifying pulmonary embolism with features extracted from X-rays
 - &#128293; **[EfficientNet + Multi-Layer LSTM](https://www.kaggle.com/kozodoi/efficientnet-multi-layer-lstm-training)**: translating molecule images to chemical formulas with deep learning
-- &#128293; **[Stack Them All!](https://www.kaggle.com/kozodoi/14th-place-solution-stack-them-all)**: stacking ensemble pipeline for leaf disease classifiers
+- &#128293; **[Stack Them All!](https://www.kaggle.com/kozodoi/14th-place-solution-stack-them-all)**: stacking ensemble pipeline for leaf disease classification with CNN models
