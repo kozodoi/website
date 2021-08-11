@@ -36,7 +36,7 @@ image: ../images/menu/photo_portfolio.jpg
   <li> &#128080; <a href="#PROJECT_3">Fairness: package for computing fair machine learning metrics </a></li>
   </ul>
 
-  <p>Click "read more" to see project summaries and follow GitHub links for the code and documentation. Scroll down to see other ML and DL projects.</p>
+  <p>Click "read more" to see the project summaries. Follow the GitHub links for the code and documentation. Scroll down to see more ML and DL projects in different application areas.</p>
 
 </div>
 
@@ -60,6 +60,8 @@ image: ../images/menu/photo_portfolio.jpg
   <li> performed a thorough cleaning, aggregation and feature engineering on transactional data </li>
   <li> implemented custom loss functions aimed at maximizing the retailer's profit </li>
   </ul>
+
+  <p> <b>Tags:</b> tabular data, e-commerce, demand forecasting, profit maximization </p>
 
   <span id="dots1"><p></p></span>
   <span id="more1">
@@ -102,10 +104,12 @@ image: ../images/menu/photo_portfolio.jpg
 
   <h3> Highlights </h3>
   <ul>
-  <li> built CNN-LSTM encoder-decoder models to translate images into chemical formulas </li>
+  <li> built CNN-LSTM encoder-decoder architecture to translate images into chemical formulas </li>
   <li> developed a comprehensive PyTorch GPU/TPU image captioning pipeline </li>
-  <li> finished in the top-5% of the Kaggle competition leaderboard with silver medal </li>
+  <li> finished in the top-5% of the Kaggle competition leaderboard with a silver medal </li>
   </ul>
+
+  <p> <b>Tags:</b> computer vision, natural language processing, deep learning </p>
 
   <span id="dots2"><p></p></span>
   <span id="more2">
@@ -142,6 +146,8 @@ image: ../images/menu/photo_portfolio.jpg
   <li> the package offers calculation, visualization and comparison of algorithmic fairness metrics </li>
   <li> the package is published on CRAN and has more than 11k total downloads </li>
   </ul>
+
+  <p> <b>Tags:</b> software development, fair machine learning, classification </p>
 
   <span id="dots3"><p></p></span>
   <span id="more3">
@@ -224,6 +230,31 @@ Want to see more? Check out some of my further ML projects grouped by the applic
 
 </div>
 
+
+<div>
+  <button class="project_accordion">Natural language processing</button>
+  <div class="project_panel">
+
+  <div class="card">
+    <h3>Text readability prediction with transformers</h3>
+
+    <img src="https://i.postimg.cc/hv6yfMYz/cover-books.jpg" alt="Notebook" style="width:100%">
+
+    <p><ul>
+    <li> developed a comprehensive DL pipeline for text reading complexity estimation </li>
+    <li> implemented eight transformers including BERT, RoBERTa and others in PyTorch </li>
+    <li> experimented with text augmentations such as sentence order shuffle and backtranslation </li>
+    </ul></p>
+
+    <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
+
+
+  </div>
+
+  </div>
+</div>
+
+
 <div>
   <button class="project_accordion">Tabular data</button>
   <div class="project_panel">
@@ -236,11 +267,11 @@ Want to see more? Check out some of my further ML projects grouped by the applic
       <p><ul>
       <li> benchmarked eight fair ML algorithms on seven credit scoring data sets </li>
       <li> investigated profit-fairness trade-off to quantify the cost of fairness </li>
-      <li> written a paper accepted to the European Journal of Operational Research </li>
+      <li> published a paper with the results at the European Journal of Operational Research </li>
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/Fair_Credit_Scoring')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://arxiv.org/abs/2103.01907')" type="button">Paper</button>
+      <button class="btn" onclick="window.open('https://arxiv.org/abs/2103.01907')" type="button">&#128213; Paper</button>
 
 
     </div>
@@ -265,12 +296,6 @@ Want to see more? Check out some of my further ML projects grouped by the applic
   </div>
 </div>
 
-<div>
-  <button class="project_accordion">Natural language processing</button>
-  <div class="project_panel">
-  Projects to be added.
-  </div>
-</div>
 
 <script>
 var acc = document.getElementsByClassName("project_accordion");
