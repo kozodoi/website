@@ -9,7 +9,7 @@ function myFunction1() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Read less";
+    btnText.innerHTML = "&#128220; Read less";
     moreText.style.display = "inline";
   }
 }
@@ -25,7 +25,7 @@ function myFunction2() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Read less";
+    btnText.innerHTML = "&#128220; Read less";
     moreText.style.display = "inline";
   }
 }
@@ -41,7 +41,7 @@ function myFunction3() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Read less";
+    btnText.innerHTML = "&#128220; Read less";
     moreText.style.display = "inline";
   }
 }
@@ -57,7 +57,7 @@ function myFunc4() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Read less";
+    btnText.innerHTML = "&#128220; Read less";
     moreText.style.display = "inline";
   }
 }
@@ -73,7 +73,7 @@ function myFunc5() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Read less";
+    btnText.innerHTML = "&#128220; Read less";
     moreText.style.display = "inline";
   }
 }
