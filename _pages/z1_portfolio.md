@@ -72,7 +72,7 @@ image: ../images/menu/photo_portfolio.jpg
 
   <button class="btn" onclick="myFunction1()" id="myBtn1">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
-  <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">#128202; Web app</button>
+  <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">&#128202; Web app</button>
 </div>
 
 
