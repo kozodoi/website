@@ -39,11 +39,10 @@ I am passionate about machine learning, deep learning and data science. With pro
 
 This website hosts [my blog](https://kozodoi.me/blog/), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
 
-- &#128193; [my portfolio](https://kozodoi.me/portfolio/) with three ML projects on different topics
+- &#128193; [my portfolio](https://kozodoi.me/portfolio/) with data science projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
 - &#128218; [my publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
 - &#128483; [my public talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
-- &#128295; [my software packages](https://kozodoi.me/packages/) with open-source Python and R packages
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
