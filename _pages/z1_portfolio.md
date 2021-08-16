@@ -57,7 +57,7 @@ image: ../images/menu/photo_portfolio.jpg
   <ul>
   <li> developed a comprehensive PyTorch pipeline for text classification </li>
   <li> implemented eight transformers including BERT, RoBERTa and others </li>
-  <li> built an interactice web app for custom text reading complexity estimation </li>
+  <li> built an interactive web app for custom text reading complexity estimation </li>
   </ul>
 
   <p> <b>Tags:</b> natural language processing, deep learning, web app </p>
@@ -67,13 +67,12 @@ image: ../images/menu/photo_portfolio.jpg
   <h3> Summary </h3>
   <p> Estimating text reading complexity is a crucial task for school teachers. Offering students text passages at the right level of challenge is important for facilitating a fast development of reading skills. The existing tools to estimate text complexity rely on weak proxies and heuristics, which results in a suboptimal accuracy. This project uses deep learning to predict the readability scores of text passages. </p>
   <p> My solution implements eight transformer models, including BERT, RoBERTa and others in PyTorch. The models feature a custom regression head that uses a concatenated output of multiple hidden layers. The modeling pipeline implements text augmentations such as sentence order shuffle, backtranslation and injecting target noise. The solution places in the top-9% of the Kaggle competition leaderboard. </p>
-  <p> The project also includes <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transfomer models. The code and documentation are available <a href="https://github.com/kozodoi/DMC_2020">on GitHub</a>. </p>
+  <p> The project also includes <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transformer models. The code and documentation are available <a href="https://github.com/kozodoi/DMC_2020">on GitHub</a>. </p>
   </span>
 
   <button class="btn" onclick="myFunction1()" id="myBtn1">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
-  <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py)" type="button">&#128202; Web app</button>
-
+  <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">#128202; Web app</button>
 </div>
 
 
