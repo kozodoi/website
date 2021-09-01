@@ -70,7 +70,7 @@ image: ../images/menu/photo_portfolio.jpg
   <p> The project also includes <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transformer models. The code and documentation are available <a href="https://github.com/kozodoi/DMC_2020">on GitHub</a>. </p>
   </span>
 
-  <button class="btn" onclick="myFunction1()" id="myBtn1">&#128220; Read more</button>
+  <button class="btn" onclick="read_more_1()" id="myBtn1">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">&#128202; Web app</button>
 </div>
@@ -119,7 +119,7 @@ image: ../images/menu/photo_portfolio.jpg
 
   </span>
 
-  <button class="btn" onclick="myFunction2()" id="myBtn2">&#128220; Read more</button>
+  <button class="btn" onclick="read_more_2()" id="myBtn2">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/DMC_2020')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html')" type="button">&#128203; Blog post</button>
 
@@ -159,7 +159,7 @@ image: ../images/menu/photo_portfolio.jpg
   <p>My solution is an ensemble of CNN-LSTM Encoder-Decoder models implemented in PyTorch.The solution reaches the test score of 1.31 Levenstein Distance and places in the top-5% of the competition leaderboard. The code is documented and published on <a href="https://github.com/kozodoi/BMS_Molecular_Translation">GitHub</a>.</p>
   </span>
 
-  <button class="btn" onclick="myFunction3()" id="myBtn3">&#128220; Read more</button>
+  <button class="btn" onclick="read_more_3()" id="myBtn3">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/BMS_Molecular_Translation')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://www.kaggle.com/c/bms-molecular-translation/discussion/243845')" type="button">&#128214; Writeup on Kaggle</button>
 
