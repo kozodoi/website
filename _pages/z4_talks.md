@@ -51,8 +51,9 @@ permalink: /talks/
   <span id="dots5"></span>
   <li><span id="abs5"><p></p><b>Abstract:</b> Credit scoring models are trained on data of previously accepted credit applications, where the borrowers' repayment behavior has been observed. This creates sampling bias: the training data is not representative of the general population of borrowers. The sampling bias deteriorates the model's performance when the model is used to screen new applications. We use active learning (AL) to develop a dynamic bias correction framework. When screening incoming credit applications, AL algorithm identifies unlabeled cases (i.e., applications rejected by a scorecard) that should be labeled (i.e., granted a loan) based on the expected impact on the scoring model. Issuing a loan to risky customers incurs additional cost for the lender. At the same time, augmenting the training data with applications from the unexplored distribution regions reduces sampling bias and improves the scorecard’s performance on future credit applications. We perform an empirical study on synthetic and real-world credit scoring data to test the suggested AL-driven reject inference framework and investigate the trade-off between the labeling costs and performance gains. Preliminary results indicate that Al can improve scorecard performance and profitability.</span></li>
   <li>
-    <button class="btn" onclick="paper_abstract_5()" id="b1">&#128220; Abstract</button>
+    <button class="btn" onclick="paper_abstract_5()" id="b5">&#128220; Abstract</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/CRC_2021.pdf')" type="button">&#128202; Slides</button>
+    <button class="btn" onclick="window.open('https://youtu.be/sUM4B1YqkNk')" type="button">&#128249; Video</button>
   </li>
 </ul>
 <p></p>
@@ -106,6 +107,27 @@ permalink: /talks/
     <button class="btn" onclick="paper_abstract_3()" id="b3">&#128220; Abstract</button>
     <button class="btn" onclick="window.open('https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications')" type="button">&#128214; Paper</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/OR_2018.pdf')" type="button">&#128202; Slides</button>
+  </li>
+</ul>
+<p></p>
+
+
+
+## Teaching
+
+<ul>
+    <li>
+    <b>Using Conda for Package and Environment Management</b>
+    <dd><bb>Seminar on Applied Predictive Analytics at HU Berlin, 2021</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots6"></span>
+  <li><span id="abs6"><p></p><b>Abstract:</b> The talk provides a brief practical-driven introduction into using Conda for package and environment management in Python-based data science projects. The talks covers the basics of package and environment management and provides a tutorial on the basic Conda functionality.</span></li>
+  <li>
+    <button class="btn" onclick="paper_abstract_6()" id="b6">&#128220; Abstract</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/APA_2021.pdf')" type="button">&#128202; Slides</button>
+    <button class="btn" onclick="window.open('https://youtu.be/jraqbUMc4EU')" type="button">&#128249; Video</button>
   </li>
 </ul>
 <p></p>
