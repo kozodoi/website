@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Test-Time Augmentation for Tabular Data | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Test-Time Augmentation for Tabular Data" />
+<meta name="author" content="Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Improving predictive performance during inference" />
+<meta property="og:description" content="Improving predictive performance during inference" />
+<link rel="canonical" href="https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html" />
+<meta property="og:url" content="https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/tta.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-09-08T00:00:00-05:00","author":{"@type":"Person","name":"Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html"},"image":"https://kozodoi.me/images/posts/tta.png","description":"Improving predictive performance during inference","@type":"BlogPosting","url":"https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html","headline":"Test-Time Augmentation for Tabular Data","dateModified":"2021-09-08T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kozodoi.me/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="https://kozodoi.me/images/favicons/site.webmanifest">
+<link rel="mask-icon" href="https://kozodoi.me/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="https://kozodoi.me/images/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Test-Time Augmentation for Tabular Data | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Test-Time Augmentation for Tabular Data" />
+<meta name="author" content="Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Improving predictive performance during inference" />
+<meta property="og:description" content="Improving predictive performance during inference" />
+<link rel="canonical" href="https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html" />
+<meta property="og:url" content="https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/tta.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-08T00:00:00-05:00" />
+<script type="application/ld+json">
+{"datePublished":"2021-09-08T00:00:00-05:00","author":{"@type":"Person","name":"Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html"},"image":"https://kozodoi.me/images/posts/tta.png","description":"Improving predictive performance during inference","@type":"BlogPosting","url":"https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html","headline":"Test-Time Augmentation for Tabular Data","dateModified":"2021-09-08T00:00:00-05:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Nikita Kozodoi</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/portfolio/">Portfolio</a><a class="page-link" href="/kaggle/">Kaggle</a><a class="page-link" href="/research/">Research</a><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/search/">Search</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Test-Time Augmentation for Tabular Data</h1><p class="page-description">Improving predictive performance during inference</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-09-08T00:00:00-05:00" itemprop="datePublished">
+        Sep 8, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Nikita Kozodoi</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      12 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
+      
+        <a class="category-tags-link" href="/categories/#python">python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#structured data">structured data</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#test-time augmentation">test-time augmentation</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+  <label class="switch">
+    <input type="checkbox" href="/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html" id="theme-toggle" checked onclick="modeSwitcher();">
+      <span class="slider round"></span>
+  </label>
+</div>
+
+          <div class="px-2">
+
+    <a href="https://github.com/kozodoi/website/tree/master/_notebooks/2021-09-08-tta-tabular.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/assets/badges/github.svg" alt="View on GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/kozodoi/website/blob/master/_notebooks/2021-09-08-tta-tabular.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open in Colab"/>
+    </a>
+</div>
+        </div>
+      
+      <img src="/images/covers/tta.png" style="width:100%"/>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=607a88d1f94d5c00182f2b41&product=inline-share-buttons" async="async"></script>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#1.-Overview">1. Overview </a></li>
+<li class="toc-entry toc-h1"><a href="#2.-Adapting-TTA-to-tabular-data">2. Adapting TTA to tabular data </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#2.1.-How-to-define-transformations?">2.1. How to define transformations? </a></li>
+<li class="toc-entry toc-h2"><a href="#2.2.-How-to-treat-categorical-features?">2.2. How to treat categorical features? </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#3.-Implementing-TTA">3. Implementing TTA </a></li>
+<li class="toc-entry toc-h1"><a href="#4.-Empirical-benchmark">4. Empirical benchmark </a></li>
+<li class="toc-entry toc-h1"><a href="#5.-Closing-words">5. Closing words </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-09-08-tta-tabular.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="1.-Overview">
+<a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
+</h1>
+<p>Test time augmentation (TTA) is a <a href="https://towardsdatascience.com/test-time-augmentation-tta-and-how-to-perform-it-with-keras-4ac19b67fb4d">popular technique in computer vision</a>. TTA aims at boosting the model accuracy by using data augmentation on the inference stage. The idea behind TTA is simple: for each test image, we create multiple versions that are a little different from the original (e.g., cropped or flipped). Next, we predict labels for the test images and created copies and average model predictions over multiple versions of each image. This usually helps to improve the accuracy irrespective of the underlying model.</p>
+<p>In many business settings, data comes in a tabular format. Can we use TTA with tabular data to enhance the accuracy of ML models in a way similar to computer vision models? How to define suitable transformations of test cases that do not affect the label? This blog post explores the opportunities for using TTA in tabular data environments. We will implement TTA for <code>scikit-learn</code> classifiers and test its performance on multiple credit scoring data sets. The preliminary results indicate that TTA might be a tiny bit helpful in some settings.</p>
+<p><em>Note:</em> the results presented in this blog post are currently being extended within a scope of a working paper. The post will be updated once the paper is available on ArXiV.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="2.-Adapting-TTA-to-tabular-data">
+<a class="anchor" href="#2.-Adapting-TTA-to-tabular-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Adapting TTA to tabular data<a class="anchor-link" href="#2.-Adapting-TTA-to-tabular-data"> </a>
+</h1>
+<p>TTA has been originally developed for deep learning applications in computer vision. In contrast to image data, tabular data poses a more challenging environment for using TTA. We will discuss two main challenges that we need to solve to apply TTA to structured data:</p>
+<ul>
+<li>how to define transformations?</li>
+<li>how to treat categorical features?</li>
+</ul>
+<h2 id="2.1.-How-to-define-transformations?">
+<a class="anchor" href="#2.1.-How-to-define-transformations?" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1. How to define transformations?<a class="anchor-link" href="#2.1.-How-to-define-transformations?"> </a>
+</h2>
+<p>When working with image data, light transformations such as rotation, brightness adjustment, saturation and many others modify the underlying pixel values but do not affect the ground truth. That is, a rotated cat is still a cat. We can easily verify this by visually checking the transformed images and limiting the magnitude of transformations to make sure the cat is still recognizable.</p>
+<p><img src="/images/copied_from_nb/images/fig_cat.jpg" alt=""></p>
+<p>This is different for tabular data, where the underlying features represent different characteristics of the observed subjects. Let's consider a credit scoring example. In finance, banks use ML models to support loan allocation decisions. Consider a binary classification problem, where we predict whether the applicant will pay back the loan. The underlying features may describe the applicant's attributes (age, gender), loan parameters (amount, duration), macroeconomic indicators (inflation, growth). How to do transformations on these features? While there is no such thing as rotating a loan applicant (at least not within the scope of machine learning), we could do a somewhat similar exercise: create copies of each loan applicant and slightly modify feature values for each copy. A good starting point would be to add some random noise to each of the features.</p>
+<p>This procedure raises a question: how can we be sure that transformations do not alter the label? Would increasing the applicant's age by 10 years affect her repayment ability? Arguably, yes. What about increasing the age by 1 year? Or 1 day? These are challenging questions that we can not answer without more information. This implies that the magnitude of the added noise has to be carefully tuned. We need to take into account the variance of each specific feature as well as the overall data set variability. Adding too little noise will create synthetic cases that are too similar to the original applications, which is not very useful. On the other hand, adding too much noise risks changing the label of the corresponding application, which would harm the model accuracy. The trade-off between these two extremes is what can potentially bring us closer to discovering an accuracy boost.</p>
+<h2 id="2.2.-How-to-treat-categorical-features?">
+<a class="anchor" href="#2.2.-How-to-treat-categorical-features?" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2. How to treat categorical features?<a class="anchor-link" href="#2.2.-How-to-treat-categorical-features?"> </a>
+</h2>
+<p>It is rather straightforward to add noise to continuous features such as age or income. However, tabular data frequently contains special gifts: categorical features. From gender to zip code, these features present another challenge for the application of TTA. Adding noise to the zip code appears non-trivial and requires some further thinking. Ignoring categorical features and only altering the continuous ones sounds like an easy solution, but this might not work well on data sets that contain a lot of information in the form of categorical data.</p>
+<p>In this blog post, we will try a rather naive approach to deal with categorical features. Every categorical feature can be encoded as a set of dummy variables. Next, considering each dummy feature separately, we can occasionally flip the value, switching the person's gender, country of origin or education level with one click. This would introduce some variance in the categorical features and provide TTA with more diverse synthetic applications. This approach is imperfect and can be improved on, but we have to start somewhere, right?</p>
+<p>Now that we have some ideas about how TTA should work and what are the main challenges, let's actually try to implement it!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="3.-Implementing-TTA">
+<a class="anchor" href="#3.-Implementing-TTA" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. Implementing TTA<a class="anchor-link" href="#3.-Implementing-TTA"> </a>
+</h1>
+<p>This section implements a helper function <code>predict_proba_with_tta()</code> to extend the standard <code>predict_proba()</code> method in <code>scikit-learn</code> such that predictions take advantage of the TTA procedure. We focus on a binary classification task, but one could easily extend this framework to regression tasks as well.</p>
+<p>The function <code>predict_proba_with_tta()</code> requires specifying the underlying <code>scikit-learn</code> model and the test set with observations to be predicted. The function operates in four simple steps:</p>
+<ol>
+<li>Creating <code>num_tta</code> copies of the test set.</li>
+<li>Implementing random transformations of the synthetic copies. </li>
+<li>Predicting labels for the real and synthetic observations.</li>
+<li>Aggregating the predictions. </li>
+</ol>
+<p>Considering the challenges discussed in the previous section, we implement the following transformations for the continuous features:</p>
+<ul>
+<li>compute STD of each continuous feature denoted as <code>std</code>
+</li>
+<li>generate a random vector <code>n</code> using the standard normal distribution</li>
+<li>add <code>alpha * n * std</code> to each feature , where <code>alpha</code> is a meta-parameter. </li>
+</ul>
+<p>And for the categorical features:</p>
+<ul>
+<li>convert categorical features into a set of dummies</li>
+<li>flip each dummy variable with a probability <code>beta</code>, where <code>beta</code> is a meta-parameter.</li>
+</ul>
+<p>By varying <code>alpha</code> and <code>beta</code>, we control the transformation magnitude, adjusting the noise scale in the synthetic copies. Higher values imply stronger transformations. The suitable values can be identified through some meta-parameter tuning.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+
+<span class="k">def</span> <span class="nf">predict_proba_with_tta</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> 
+                           <span class="n">model</span><span class="p">,</span> 
+                           <span class="n">dummies</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                           <span class="n">num_tta</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> 
+                           <span class="n">alpha</span>   <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> 
+                           <span class="n">beta</span>    <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> 
+                           <span class="n">seed</span>    <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="sd">'''</span>
+<span class="sd">    Predicts class probabilities using TTA.</span>
+<span class="sd">    </span>
+<span class="sd">    Arguments:</span>
+<span class="sd">    - data (numpy array): data set with the feature values </span>
+<span class="sd">    - model (sklearn model): machine learning model</span>
+<span class="sd">    - dummies (list): list of column names of dummy features</span>
+<span class="sd">    - num_tta (integer): number of test-time augmentations</span>
+<span class="sd">    - alpha (float): noise parameter for continuous features</span>
+<span class="sd">    - beta (float): noise parameter for dummy features</span>
+<span class="sd">    - seed (integer): random seed</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    - array of predicted probabilities</span>
+<span class="sd">    '''</span>
+    
+    <span class="c1"># set random seed</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
+    
+    <span class="c1"># original prediction</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_tta</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+     
+    <span class="c1"># select numeric features</span>
+    <span class="n">num_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="s1">'object'</span><span class="p">]</span>
+        
+    <span class="c1"># find dummies</span>
+    <span class="k">if</span> <span class="n">dummies</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">num_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">num_vars</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">dummies</span><span class="p">))</span>
+    
+    <span class="c1"># synthetic predictions</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_tta</span><span class="p">):</span>
+        
+        <span class="c1"># copy data</span>
+        <span class="n">data_new</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+        <span class="c1"># introduce noise to numeric vars</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">num_vars</span><span class="p">:</span>
+            <span class="n">data_new</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_new</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_new</span><span class="p">))</span> <span class="o">*</span> <span class="n">data_new</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+            
+        <span class="c1"># introduce noise to dummies</span>
+        <span class="k">if</span> <span class="n">dummies</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">dummies</span><span class="p">:</span>
+                <span class="n">probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">beta</span><span class="p">),</span> <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_new</span><span class="p">))</span>
+                <span class="n">data_new</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">probs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">data_new</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">probs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">var</span><span class="p">]</span>
+            
+        <span class="c1"># predict probs</span>
+        <span class="n">preds_new</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">data_new</span><span class="p">)</span> 
+        <span class="n">preds</span>    <span class="o">+=</span> <span class="n">preds_new</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_tta</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># return probs</span>
+    <span class="k">return</span> <span class="n">preds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="4.-Empirical-benchmark">
+<a class="anchor" href="#4.-Empirical-benchmark" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Empirical benchmark<a class="anchor-link" href="#4.-Empirical-benchmark"> </a>
+</h1>
+<p>Let's test our TTA function! This section performs empirical experiment on multiple data sets to check whether TTA can improve the model performance. First, we import relevant modules and load the list of prepared data sets. All data sets come from a credit scoring environment, which represents a binary classification setup. Some of the data sets are publically available, whereas the others are subject to NDA. The public data sets include <a href="http://archive.ics.uci.edu/ml/datasets/statlog+(australian+credit+approval">australian</a>), <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data">german</a>), <a href="https://www.kdnuggets.com/2010/03/f-pakdd-2010-data-mining-competition.html">pakdd</a>, <a href="https://www.kaggle.com/c/GiveMeSomeCredit">gmsc</a>, <a href="https://www.kaggle.com/c/home-credit-default-risk/">homecredit</a> and <a href="https://www.kaggle.com/wendykan/lending-club-loan-data">lendingclub</a>. The sample sizes and the number of features vary greatly across the datasets. This allows us to test the TTA framework in different conditions.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<span class="n">datasets</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">'../data'</span><span class="p">)</span>
+<span class="n">datasets</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>['thomas.csv',
+ 'german.csv',
+ 'hmeq.csv',
+ 'bene2.csv',
+ 'lendingclub.csv',
+ 'bene1.csv',
+ 'cashbus.csv',
+ 'uk.csv',
+ 'australian.csv',
+ 'pakdd.csv',
+ 'gmsc.csv',
+ 'paipaidai.csv']</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Apart from the data sets, TTA needs an underlying ML model. In our experiment, on each data set, we will use a Random Forest classifier with 500 trees, which is a good trade-off between good performance and computational resources. We will not go deep into tuning the classifier and keep the parameters fixed for all data sets. We will then use stratified 5-fold cross-validation to train and test models with and without TTA.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+
+<span class="c1"># classifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># settings</span>
+<span class="n">folds</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span>     <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+                        <span class="n">shuffle</span>      <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> 
+                        <span class="n">random_state</span> <span class="o">=</span> <span class="mi">23</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The cell below implements the following experiment:</p>
+<ol>
+<li>We loop through the datasets and perform cross-validation, training Random Forest on each fold combination. </li>
+<li>Next, we predict labels of the validation cases and calculate the AUC of the model predictions. This is our benchmark.</li>
+<li>We predict labels of the validation cases with the same model but now implement TTA to adjust the predictions.  </li>
+<li>By comparing the average AUC difference before and after TTA, we can judge whether TTA actually helps to boost the predictive performance.</li>
+</ol>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description" open="">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+
+<span class="c1"># placeholders</span>
+<span class="n">auc_change</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># timer</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># modeling loop</span>
+<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
+
+    <span class="c1">##### DATA PREPARATION</span>
+
+    <span class="c1"># import data</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/'</span> <span class="o">+</span> <span class="n">data</span><span class="p">)</span>
+
+    <span class="c1"># convert target to integer</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">BAD</span> <span class="o">==</span> <span class="s1">'BAD'</span><span class="p">,</span>  <span class="s1">'BAD'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">BAD</span> <span class="o">==</span> <span class="s1">'GOOD'</span><span class="p">,</span> <span class="s1">'BAD'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># extract X and y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">'BAD'</span><span class="p">]</span>
+    <span class="k">del</span> <span class="n">X</span><span class="p">[</span><span class="s1">'BAD'</span><span class="p">]</span>
+
+    <span class="c1"># create dummies</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">prefix_sep</span> <span class="o">=</span> <span class="s1">'_dummy_'</span><span class="p">)</span>
+
+    <span class="c1"># data information</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'-------------------------------------'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Dataset:'</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'-------------------------------------'</span><span class="p">)</span>
+
+    
+    <span class="c1">##### CROSS-VALIDATION</span>
+    
+    <span class="c1"># create objects</span>
+    <span class="n">oof_preds_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">nunique</span><span class="p">()))</span>
+    <span class="n">oof_preds_tta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">nunique</span><span class="p">()))</span>
+
+    <span class="c1"># modeling loop</span>
+    <span class="k">for</span> <span class="n">fold_</span><span class="p">,</span> <span class="p">(</span><span class="n">trn_</span><span class="p">,</span> <span class="n">val_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">folds</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">)):</span>
+
+        <span class="c1"># data partitioning</span>
+        <span class="n">trn_x</span><span class="p">,</span> <span class="n">trn_y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">trn_</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">trn_</span><span class="p">]</span>
+        <span class="n">val_x</span><span class="p">,</span> <span class="n">val_y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_</span><span class="p">]</span>
+
+        <span class="c1"># train the model</span>
+        <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trn_x</span><span class="p">,</span> <span class="n">trn_y</span><span class="p">)</span>
+        
+        <span class="c1"># identify dummies</span>
+        <span class="n">dummies</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span> <span class="o">=</span> <span class="s1">'_dummy_'</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+        <span class="c1"># predictions</span>
+        <span class="n">oof_preds_raw</span><span class="p">[</span><span class="n">val_</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span>  <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">val_x</span><span class="p">)</span>
+        <span class="n">oof_preds_tta</span><span class="p">[</span><span class="n">val_</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span>  <span class="n">predict_proba_with_tta</span><span class="p">(</span><span class="n">data</span>    <span class="o">=</span> <span class="n">val_x</span><span class="p">,</span> 
+                                                         <span class="n">model</span>   <span class="o">=</span> <span class="n">clf</span><span class="p">,</span> 
+                                                         <span class="n">dummies</span> <span class="o">=</span> <span class="n">dummies</span><span class="p">,</span>
+                                                         <span class="n">num_tta</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+                                                         <span class="n">alpha</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trn_x</span><span class="p">))</span> <span class="o">/</span> <span class="mi">3000</span><span class="p">,</span>
+                                                         <span class="n">beta</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">trn_x</span><span class="p">))</span> <span class="o">/</span> <span class="mi">30000</span><span class="p">,</span>
+                                                         <span class="n">seed</span>    <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># print performance</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'- AUC before TTA = </span><span class="si">%.6f</span><span class="s1"> '</span> <span class="o">%</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">oof_preds_raw</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'- AUC with TTA   = </span><span class="si">%.6f</span><span class="s1"> '</span> <span class="o">%</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">oof_preds_tta</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'-------------------------------------'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+    
+    <span class="c1"># save the AUC delta</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">oof_preds_tta</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">oof_preds_raw</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">auc_change</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+
+<span class="c1"># display results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'-------------------------------------'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Finished in </span><span class="si">%.1f</span><span class="s1"> minutes'</span> <span class="o">%</span> <span class="p">((</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'-------------------------------------'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'TTA improves AUC in </span><span class="si">%.0f</span><span class="s1">/</span><span class="si">%.0f</span><span class="s1"> cases'</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">auc_change</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Mean AUC change = </span><span class="si">%.6f</span><span class="s1">'</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">auc_change</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'-------------------------------------'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>-------------------------------------
+Dataset: thomas.csv (1225, 28)
+-------------------------------------
+- AUC before TTA = 0.612322 
+- AUC with TTA   = 0.613617 
+-------------------------------------
+
+-------------------------------------
+Dataset: german.csv (1000, 61)
+-------------------------------------
+- AUC before TTA = 0.796233 
+- AUC with TTA   = 0.796300 
+-------------------------------------
+
+-------------------------------------
+Dataset: hmeq.csv (5960, 20)
+-------------------------------------
+- AUC before TTA = 0.975995 
+- AUC with TTA   = 0.976805 
+-------------------------------------
+
+-------------------------------------
+Dataset: bene2.csv (7190, 28)
+-------------------------------------
+- AUC before TTA = 0.801193 
+- AUC with TTA   = 0.799387 
+-------------------------------------
+
+-------------------------------------
+Dataset: lendingclub.csv (43344, 114)
+-------------------------------------
+- AUC before TTA = 0.625029 
+- AUC with TTA   = 0.628207 
+-------------------------------------
+
+-------------------------------------
+Dataset: bene1.csv (3123, 84)
+-------------------------------------
+- AUC before TTA = 0.788607 
+- AUC with TTA   = 0.789447 
+-------------------------------------
+
+-------------------------------------
+Dataset: cashbus.csv (15000, 642)
+-------------------------------------
+- AUC before TTA = 0.629648 
+- AUC with TTA   = 0.624874 
+-------------------------------------
+
+-------------------------------------
+Dataset: uk.csv (30000, 51)
+-------------------------------------
+- AUC before TTA = 0.712042 
+- AUC with TTA   = 0.723359 
+-------------------------------------
+
+-------------------------------------
+Dataset: australian.csv (690, 42)
+-------------------------------------
+- AUC before TTA = 0.931787 
+- AUC with TTA   = 0.931958 
+-------------------------------------
+
+-------------------------------------
+Dataset: pakdd.csv (50000, 373)
+-------------------------------------
+- AUC before TTA = 0.620081 
+- AUC with TTA   = 0.623080 
+-------------------------------------
+
+-------------------------------------
+Dataset: gmsc.csv (150000, 68)
+-------------------------------------
+- AUC before TTA = 0.846187 
+- AUC with TTA   = 0.855176 
+-------------------------------------
+
+-------------------------------------
+Dataset: paipaidai.csv (60000, 1934)
+-------------------------------------
+- AUC before TTA = 0.716398 
+- AUC with TTA   = 0.721679 
+-------------------------------------
+
+-------------------------------------
+Finished in 206.1 minutes
+-------------------------------------
+TTA improves AUC in 10/12 cases
+Mean AUC change = 0.002364
+-------------------------------------
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looks like TTA is working! Overall, TTA improves the AUC in 10 out of 12 data sets. The observed performance gains are rather small: on average, TTA improves AUC by <code>0.00236</code>. The results are visualized in the barplot below:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+
+<span class="n">objects</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">datasets</span><span class="p">)))</span>
+<span class="n">y_pos</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">objects</span><span class="p">))</span>
+<span class="n">perf</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">auc_change2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">perf</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s1">'center'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'blue'</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.66</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Dataset'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">objects</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'AUC Gain'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="s1">'k--'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/images/copied_from_nb/images/fig_tta_gains.jpg" alt=""></p>
+<p>We should bear in mind that performance gains, although appearing rather small, come almost "for free". We don't need to train a new model and only require a relatively small amount of extra resources to create synthetic copies of the loan applications. Sounds good!</p>
+<p>It is possible that further fine-tuning of the TTA meta-parameters can uncover larger performance gains. Furthermore, a considerable variance of the average gains from TTA across the data sets indicates that TTA can be more helpful in specific settings. The important factors influencing the TTA performance may relate to both the data and the classifier used to produce predictions. More research is needed to identify and analyze such factors.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.-Closing-words">
+<a class="anchor" href="#5.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. Closing words<a class="anchor-link" href="#5.-Closing-words"> </a>
+</h1>
+<p>The purpose of this tutorial was to explore TTA applications for tabular data. We have discussed the corresponding challenges, developed a TTA wrapper function for <code>scikit-learn</code> and demonstrated that it could indeed be helpful on multiple credit scoring data sets. I hope you found this post interesting.</p>
+<p>The project described in this blog post is a work in progress. I will update the post once the working paper on the usage of TTA for tabular data is available. Stay tuned and happy learning!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!--<div id="disqus_thread"></div>
+ <script>
+   var disqus_config = function () {
+     this.page.url = 'https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html';
+     this.page.identifier = 'https://kozodoi.me/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html';
+   };
+   (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://kozodoi.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+   })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+-->Liked the post? Share it on social media!
+  <div class="sharethis-inline-share-buttons"></div>
+
+  <a class="u-url" href="/python/structured%20data/test-time%20augmentation/2021/09/08/tta-tabular.html" hidden></a>
+
+  <script src="/assets/js/mode_switcher.js"></script>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+<data class="u-url" href="/"></data>
+
+<div class="wrapper">
+
+  <div class="footer-col-wrapper">
+
+    <div class="footer-col">
+      <p class="feed-subscribe">
+        <a href="/feed.xml">
+          <svg class="svg-icon orange">
+            <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+          </svg><span>RSS feed</span>
+        </a>
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <p><center>Blog on ML, AI and other cool acronyms</center></p>
+    </div>
+
+    <div class="footer-col">
+      <p style="text-align:center;">&#169; 2020 - 2021 Nikita Kozodoi</p>
+    </div>
+
+  </div>
+
+  <div class="social-links">
+    <ul class="social-media-list">
+      <li><a rel="me" href="https://www.linkedin.com/in/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg></a></li>
+      <li><a rel="me" href="https://github.com/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li>
+      <li><a rel="me" href="https://twitter.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+      <li><a rel="me" href="https://www.instagram.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#instagram"></use></svg></a></li>
+    </ul>
+  </div>
+
+</div>
+
+</footer>
+</body>
+
+</html>
