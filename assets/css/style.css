@@ -133,6 +133,8 @@ ul.no-bullets { list-style-type: none; /* Remove bullets */ }
 
 div.tw { max-width: 600px; margin: auto; }
 
+div.tea { transform: scale(0.67); transform-origin: left; margin-top: 1px; text-align: left; align: left; }
+
 #more1 { display: none; }
 
 #more2 { display: none; }
