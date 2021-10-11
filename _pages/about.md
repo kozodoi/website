@@ -44,8 +44,16 @@ This website hosts [my blog](https://kozodoi.me/blog/), where I share machine le
 - &#128218; [my publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
 - &#128483; [my public talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
 
+If you like my blog, you can buy me a cup of tea to support my work. Thanks!
+<div class="tea">
+  <a href="https://www.buymeacoffee.com/kozodoi"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me tea &emoji=&slug=kozodoi&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" align="left"></a>
+</div>
+<br>
+
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+
+
 
 ## Contact
 
