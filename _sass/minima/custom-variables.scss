@@ -54,6 +54,15 @@ div.tw {
   margin: auto;
 }
 
+// div for tea banner
+div.tea {
+  transform: scale(0.67);
+  transform-origin: left;
+  margin-top: 1px;
+  text-align: left;
+  align: left;
+}
+
 // read more / less
 #more1 {display: none;}
 #more2 {display: none;}
