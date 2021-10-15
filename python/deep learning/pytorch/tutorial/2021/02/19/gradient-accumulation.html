@@ -173,7 +173,7 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
 <li class="toc-entry toc-h1"><a href="#1.-Overview">1. Overview </a></li>
-<li class="toc-entry toc-h1"><a href="#2.-What-is-graident-accumulation">2. What is graident accumulation </a></li>
+<li class="toc-entry toc-h1"><a href="#2.-What-is-gradient-accumulation">2. What is gradient accumulation </a></li>
 <li class="toc-entry toc-h1"><a href="#3.-How-to-make-it-work">3. How to make it work </a></li>
 <li class="toc-entry toc-h1"><a href="#4.-Closing-words">4. Closing words </a></li>
 </ul><!--
@@ -195,7 +195,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 24.04.2021</em></p>
+<p><em>Last update: 15.10.2021</em></p>
 
 </div>
 </div>
@@ -207,7 +207,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
 <p>Deep learning models are getting bigger and bigger. It becomes difficult to fit such networks in the GPU memory. This is especially relevant in computer vision applications where we need to reserve some memory for high-resolution images as well. As a result, we are sometimes forced to use small batches during training, which may lead to a slower convergence and lower accuracy.</p>
-<p>This blog post provides a quick tutorial on how to increase the effective batch size by using a trick called graident accumulation. Simply speaking, gradient accumulation means that we will use a small batch size but save the gradients and update network weights once every couple of batches. Automated solutions for this exist in higher-level frameworks such as <code>fast.ai</code> or <code>lightning</code>, but those who love using <code>PyTorch</code> might find this tutorial useful.</p>
+<p>This blog post provides a quick tutorial on how to increase the effective batch size by using a trick called gradient accumulation. Simply speaking, gradient accumulation means that we will use a small batch size but save the gradients and update network weights once every couple of batches. Automated solutions for this exist in higher-level frameworks such as <code>fast.ai</code> or <code>lightning</code>, but those who love using <code>PyTorch</code> might find this tutorial useful.</p>
 
 </div>
 </div>
@@ -215,12 +215,12 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-What-is-graident-accumulation">
-<a class="anchor" href="#2.-What-is-graident-accumulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. What is graident accumulation<a class="anchor-link" href="#2.-What-is-graident-accumulation"> </a>
+<h1 id="2.-What-is-gradient-accumulation">
+<a class="anchor" href="#2.-What-is-gradient-accumulation" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. What is gradient accumulation<a class="anchor-link" href="#2.-What-is-gradient-accumulation"> </a>
 </h1>
 <p>When training a neural network, we usually divide our data in mini-batches and go through them one by one. The network predicts batch labels, which are used to compute the loss with respect to the actual targets. Next, we perform backward pass to compute gradients and update model weights in the direction of those gradients.</p>
-<p>Gradient accumlation modifies the last step of the training process. Instead of updating the network weights on every batch, we can save graident values, proceed to the next batch and add up the new gradients. The weight update is then done only after several batches have been processed by the model.</p>
-<p>Gradient accumulation helps to imitate a larger batch size. Imagine you want to use 32 images in one batch, but your hardware crashes once you go beyond 8. In that case, you can use batches of 8 images and update weights once every 4 batches. If you accumulate graidients from every batch in between, the results will be (almost) the same and you will be able to perform training on a less expensive machine!</p>
+<p>Gradient accumulation modifies the last step of the training process. Instead of updating the network weights on every batch, we can save gradient values, proceed to the next batch and add up the new gradients. The weight update is then done only after several batches have been processed by the model.</p>
+<p>Gradient accumulation helps to imitate a larger batch size. Imagine you want to use 32 images in one batch, but your hardware crashes once you go beyond 8. In that case, you can use batches of 8 images and update weights once every 4 batches. If you accumulate gradients from every batch in between, the results will be (almost) the same and you will be able to perform training on a less expensive machine!</p>
 
 </div>
 </div>
@@ -231,7 +231,7 @@ window.onload = wrap_img;
 <h1 id="3.-How-to-make-it-work">
 <a class="anchor" href="#3.-How-to-make-it-work" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. How to make it work<a class="anchor-link" href="#3.-How-to-make-it-work"> </a>
 </h1>
-<p>The implementation of gradient accumulation is rather straitforward. The standard training loop without accumulation usually looks like this:</p>
+<p>The implementation of gradient accumulation is rather straightforward. The standard training loop without accumulation usually looks like this:</p>
 
 </div>
 </div>
@@ -331,8 +331,8 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It is realy that simple! The gradients are computed when we call <code>loss.backward()</code> and are stored by PyTorch until we call <code>optimizer.zero_grad()</code>. Therefore, we just need to move the weight update performed in <code>optimizer.step()</code> and the gradient reset under the <code>if</code> condition that check the batch index. It is important to also update weights on the last batch when <code>batch_idx + 1 == len(data_loader)</code> - this makes sure that data from the last batches are not discarded and used for optimizaing the network.</p>
-<p>Please also note that some network architectures have batch-specific operations. For instance, batch normalization is performed on a batch level and therefore may yield slightly different results when using the same effective batch size with and without graident accumulation. This means that you should not expect to see a 100% match between the results.</p>
+<p>It is really that simple! The gradients are computed when we call <code>loss.backward()</code> and are stored by PyTorch until we call <code>optimizer.zero_grad()</code>. Therefore, we just need to move the weight update performed in <code>optimizer.step()</code> and the gradient reset under the <code>if</code> condition that check the batch index. It is important to also update weights on the last batch when <code>batch_idx + 1 == len(data_loader)</code> - this makes sure that data from the last batches are not discarded and used for optimizing the network.</p>
+<p>Please also note that some network architectures have batch-specific operations. For instance, batch normalization is performed on a batch level and therefore may yield slightly different results when using the same effective batch size with and without gradient accumulation. This means that you should not expect to see a 100% match between the results.</p>
 <p>In my experience, the potential performance gains from increasing the number of cases used to update the network weights are largest when one is forced to use very small batches (e.g., 8 or 10). Therefore, I always recommend using gradient accumulation when working with large architectures that consume a lof of GPU memory.</p>
 
 </div>
