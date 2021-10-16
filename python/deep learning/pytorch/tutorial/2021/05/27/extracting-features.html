@@ -201,11 +201,12 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last update: 16.10.2021</em></p>
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
-<p>In deep learning tasks, we usually work with preductions outputted by the final layer of a neural network. In some cases, we might also be interested in the outputs of intermediate layers. Whether we want to extract data embeddings or inspect what is learned by earlier layers, it may not be straightforward how to extract the intermediate features from the network.</p>
-<p>This blog post provides a quick tutorial on the extraction of intermediate activations from any layer of a deep learning model in <code>PyTorch</code> using the forward hook functionality. The important advantage of this method is its simplicity and ability to extract features wihout having to run the inference twice, only requiring a single forward pass through the model to save multiple outputs.</p>
+<p>In deep learning tasks, we usually work with predictions outputted by the final layer of a neural network. In some cases, we might also be interested in the outputs of intermediate layers. Whether we want to extract data embeddings or inspect what is learned by earlier layers, it may not be straightforward how to extract the intermediate features from the network.</p>
+<p>This blog post provides a quick tutorial on the extraction of intermediate activations from any layer of a deep learning model in <code>PyTorch</code> using the forward hook functionality. The important advantage of this method is its simplicity and ability to extract features without having to run the inference twice, only requiring a single forward pass through the model to save multiple outputs.</p>
 
 </div>
 </div>
@@ -456,7 +457,7 @@ window.onload = wrap_img;
 <a class="anchor" href="#Model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model<a class="anchor-link" href="#Model"> </a>
 </h2>
 <p>To extract anything from a neural net, we first need to set up this net, right? In the cell below, we define a simple <code>resnet18</code> model with a two-node output layer. We use <code>timm</code> library to instantiate the model, but feature extraction will also work with any neural network written in <code>PyTorch</code>.</p>
-<p>We also print out the architecture of our netowrk. As you can see, there are many intermediate layers through which our image travels during a forward pass before turning into a two-number output. We should note the names of the layers because we will need to provide them to a feature extraction function.</p>
+<p>We also print out the architecture of our network. As you can see, there are many intermediate layers through which our image travels during a forward pass before turning into a two-number output. We should note the names of the layers because we will need to provide them to a feature extraction function.</p>
 
 </div>
 </div>
@@ -592,7 +593,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After the helper function is defined, we can register a hook using <code>.register_forward_hook()</code> method. The hook can be applied to any layer of the neural network.</p>
-<p>Since we work with a CNN, extracting features from the last convolutional layer might be useful to get image embeddings. Therefore, we are regsitering a hook for the outputs of the <code>(global_pool)</code>. To extract features from an earlier layer, we could also access them with, e.g., <code>model.layer1[1].act2</code> and save it under a different name in the <code>feauters</code> dictionary. With this method, we can actually register multiple hooks (one for every layer of interest), but we will only keep one for the purpose of this example.</p>
+<p>Since we work with a CNN, extracting features from the last convolutional layer might be useful to get image embeddings. Therefore, we are registering a hook for the outputs of the <code>(global_pool)</code>. To extract features from an earlier layer, we could also access them with, e.g., <code>model.layer1[1].act2</code> and save it under a different name in the <code>features</code> dictionary. With this method, we can actually register multiple hooks (one for every layer of interest), but we will only keep one for the purpose of this example.</p>
 
 </div>
 </div>
@@ -743,7 +744,7 @@ window.onload = wrap_img;
 <h1 id="4.-Closing-words">
 <a class="anchor" href="#4.-Closing-words" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Closing words<a class="anchor-link" href="#4.-Closing-words"> </a>
 </h1>
-<p>The purpose of this tutorial was to learn you how to extract intermediate outputs from the most intersting layers of your neural networks. With hooks, you can do all feature extraction in a single inference run and avoid complex modifications of your model. I hope you found this post helpful.</p>
+<p>The purpose of this tutorial was to learn you how to extract intermediate outputs from the most interesting layers of your neural networks. With hooks, you can do all feature extraction in a single inference run and avoid complex modifications of your model. I hope you found this post helpful.</p>
 <p>If you are interested, check out my other blog posts to see more tips on deep learning and <code>PyTorch</code>. Happy learning!</p>
 
 </div>
