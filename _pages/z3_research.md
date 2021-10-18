@@ -18,6 +18,9 @@ permalink: /research/
 
 <p><span class="page-desc">This page summarizes my research activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
 
+
+<!----------------------------------------------------------------------------->
+
 <hr style="height:1px; visibility:hidden;" />
 
 <div style="font-size: 100%;">
@@ -33,8 +36,7 @@ permalink: /research/
 </div>
 
 
-
-
+<!----------------------------------------------------------------------------->
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
@@ -147,14 +149,12 @@ permalink: /research/
 <p></p>
 
 
-
 ### Citations
 
 <iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="200" allowtransparency="false"></iframe>
 
 
-
-
+<!----------------------------------------------------------------------------->
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
@@ -173,8 +173,7 @@ I have been acting as an expert reviewer at the following outlets:
 - [Journal of the Royal Statistical Society](https://en.wikipedia.org/wiki/Journal_of_the_Royal_Statistical_Society)
 
 
-
-
+<!----------------------------------------------------------------------------->
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
@@ -200,12 +199,10 @@ I have been acting as an expert reviewer at the following outlets:
 - teaching ML infrastructure (conda, package management, git)
 - supervising student's projects on applied ML topics in credit scoring
 
-
 #### Advanced Data Analytics for Management Support (M.Sc.)
 
 - hosting in-class Kaggle competition on NLP with deep learning
 - answering students' questions in Q&A sessions and discussion forum
-
 
 #### Business Analytics and Data Science (M.Sc.)
 
@@ -214,7 +211,6 @@ I have been acting as an expert reviewer at the following outlets:
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
-
 
 ### Student dissertations
 

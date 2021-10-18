@@ -19,6 +19,7 @@ permalink: /talks/
 <p><span class="page-desc">I regularly give talks on machine learning topics at academic conferences, data science meetups and as part of my teaching activities at HU Berlin. Below you can find links to videos and slides of selected talks.</span></p>
 
 
+<!----------------------------------------------------------------------------->
 ## Meetups
 
 <ul>
@@ -39,6 +40,7 @@ permalink: /talks/
 <p></p>
 
 
+<!----------------------------------------------------------------------------->
 ## Conferences
 
 <ul>
@@ -113,6 +115,7 @@ permalink: /talks/
 
 
 
+<!----------------------------------------------------------------------------->
 ## Teaching
 
 <ul>

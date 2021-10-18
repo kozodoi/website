@@ -21,6 +21,9 @@ image: ../images/menu/photo_portfolio.jpg
 
 <p><span class="page-desc">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and natural language processing. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
 
+
+<!----------------------------------------------------------------------------->
+
 <script src="{{ base.url | prepend: site.url }}/assets/js/read_more.js"></script>
 <script src="{{ base.url | prepend: site.url }}/assets/js/accordion.js"></script>
 
@@ -41,9 +44,9 @@ image: ../images/menu/photo_portfolio.jpg
 </div>
 
 
+<!----------------------------------------------------------------------------->
 
 <hr style="height:1px; visibility:hidden;" />
-
 
 <a id="PROJECT_1"></a>
 
@@ -77,9 +80,9 @@ image: ../images/menu/photo_portfolio.jpg
 
 
 
+<!----------------------------------------------------------------------------->
+
 <br>
-
-
 
 <a id="PROJECT_2"></a>
 
@@ -126,10 +129,9 @@ image: ../images/menu/photo_portfolio.jpg
 </div>
 
 
+<!----------------------------------------------------------------------------->
 
 <br>
-
-
 
 <a id="PROJECT_3"></a>
 
@@ -166,14 +168,9 @@ image: ../images/menu/photo_portfolio.jpg
 </div>
 
 
-
-
+<!----------------------------------------------------------------------------->
 
 <hr style="height:10pt; visibility:hidden;" />
-
-
-
-
 
 <h1> Other projects </h1>
 
@@ -238,6 +235,7 @@ Want to see more? Check out some of my further ML projects grouped by the applic
 </div>
 
 
+<!----------------------------------------------------------------------------->
 
 <div>
   <button class="project_accordion">Tabular data</button>
@@ -279,6 +277,8 @@ Want to see more? Check out some of my further ML projects grouped by the applic
   </div>
 </div>
 
+
+<!----------------------------------------------------------------------------->
 
 <div>
   <button class="project_accordion">Software packages</button>
@@ -322,6 +322,8 @@ Want to see more? Check out some of my further ML projects grouped by the applic
   </div>
 </div>
 
+
+<!----------------------------------------------------------------------------->
 
 <script>
 var acc = document.getElementsByClassName("project_accordion");

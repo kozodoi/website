@@ -19,6 +19,7 @@ permalink: /about/
 <p><span class="page-desc">Click <a href="https://kozodoi.me/cv.pdf">here</a> to download my CV and check out <a href="https://kozodoi.me/portfolio/">my portfolio</a> to see my work.</span></p>
 
 
+<!----------------------------------------------------------------------------->
 ## About me
 
 I am passionate about machine learning, deep learning and data science. With proficiency in Python, rich experience in ML research and competitions, and strong quantitative and economic background, I am enthusiastic about using AI to extract valuable knowledge from data to improve managerial decision-making.
@@ -35,6 +36,7 @@ I am passionate about machine learning, deep learning and data science. With pro
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 
+<!----------------------------------------------------------------------------->
 ## Website
 
 This website hosts [my blog](https://kozodoi.me/blog/), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
@@ -54,7 +56,7 @@ If you like my blog, you can buy me a cup of tea to support my work. Thanks!
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
 
-
+<!----------------------------------------------------------------------------->
 ## Contact
 
 Would like to have a chat? <a href="mailto:n.kozodoi@icloud.com">Click here</a> to send me an e-mail.
