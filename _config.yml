@@ -69,6 +69,7 @@ exclude:
 # this setting allows you to keep pages organized in the _pages folder
 include:
   - _pages
+  - .well-known/pki-validation/916A0E6F24C7BA2F92C06545F456B5D8.txt
 
 # This specifies what badges are turned on by default for notebook posts.
 default_badges:
