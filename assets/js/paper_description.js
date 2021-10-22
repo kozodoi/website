@@ -9,7 +9,7 @@ function paper_abstract_1() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -25,7 +25,7 @@ function paper_abstract_2() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -41,7 +41,7 @@ function paper_abstract_3() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -57,7 +57,7 @@ function paper_abstract_4() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -73,7 +73,7 @@ function paper_abstract_5() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -89,7 +89,7 @@ function paper_abstract_6() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -105,7 +105,7 @@ function paper_abstract_7() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -121,7 +121,7 @@ function paper_abstract_8() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
@@ -137,23 +137,7 @@ function paper_abstract_9() {
     moreText.style.display = "none";
   } else {
     dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
-    moreText.style.display = "inline";
-  }
-}
-
-function paper_abstract_10() {
-  var dots = document.getElementById("dots10");
-  var moreText = document.getElementById("abs10");
-  var btnText = document.getElementById("b10");
-
-  if (dots.style.display === "none") {
-    dots.style.display = "inline";
-    btnText.innerHTML = "&#128220; Abstract";
-    moreText.style.display = "none";
-  } else {
-    dots.style.display = "none";
-    btnText.innerHTML = "Hide abstract";
+    btnText.innerHTML = "&#128220; Hide abstract";
     moreText.style.display = "inline";
   }
 }
