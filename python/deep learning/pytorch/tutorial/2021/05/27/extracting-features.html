@@ -201,7 +201,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 16.10.2021</em></p>
+<p><em>Last update: 23.10.2021</em></p>
 <h1 id="1.-Overview">
 <a class="anchor" href="#1.-Overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Overview<a class="anchor-link" href="#1.-Overview"> </a>
 </h1>
@@ -643,9 +643,9 @@ window.onload = wrap_img;
 </ul>
 <p>The feature extraction happens automatically during the forward pass whenever we run <code>model(inputs)</code>. To store intermediate features and concatenate them over batches, we just need to include the following in our inference loop:</p>
 <ol>
-<li>Create placeholder list <code>FEATS = []</code> for storing intermediate outputs from all batches.</li>
-<li>Create placeholder dict <code>features = {}</code> for storing intermediate outputs from each batch.</li>
-<li>Iteratively send batch features in <code>features</code> to CPU and append them to the list <code>FEATS</code>. </li>
+<li>Create placeholder list <code>FEATS = []</code>. This list will store intermediate outputs from all batches.</li>
+<li>Create placeholder dict <code>features = {}</code>. We will use this dictionary for storing intermediate outputs from each batch.</li>
+<li>Iteratively extract batch features to <code>features</code>, send them to CPU and append to the list <code>FEATS</code>. </li>
 </ol>
 
 </div>
@@ -664,14 +664,14 @@ window.onload = wrap_img;
 <span class="n">PREDS</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">FEATS</span> <span class="o">=</span> <span class="p">[]</span>
 
+<span class="c1"># placeholder for batch features</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">{}</span>
+
 <span class="c1"># loop through batches</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">inputs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_loader</span><span class="p">):</span>
 
     <span class="c1"># move to device</span>
     <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-    
-    <span class="c1"># placeholder for batch features</span>
-    <span class="n">features</span> <span class="o">=</span> <span class="p">{}</span>
        
     <span class="c1"># forward pass [with feature extraction]</span>
     <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
