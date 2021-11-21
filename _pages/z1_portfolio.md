@@ -76,6 +76,8 @@ image: ../images/menu/photo_portfolio.jpg
   <button class="btn" onclick="read_more_1()" id="myBtn1">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">&#128202; Web app</button>
+  <button class="btn" onclick="window.open('https://kozodoi.me/deep%20learning/natural%20language%20processing/web%20app/2021/11/21/text-readability.html')" type="button">&#128203; Blog post</button>
+
 </div>
 
 
