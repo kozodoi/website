@@ -194,7 +194,7 @@ window.onload = wrap_img;
 </h1>
 
 <p>Estimating text complexity and readability is a crucial task for teachers. Offering students text passages at the right level of challenge is important for facilitating a fast development of reading skills. The existing tools to estimate readability rely on weak proxies and heuristics. Deep learning may help to improve the accuracy of the used text complexity scores.</p>
-<p>This blog post overviews <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> that estimates reading complexity of a custom text with deep learning. The app relies on transformer models that are part of my top-9% solution to the <a href="https://www.kaggle.com/c/commonlitreadabilityprize">CommonLit Readability Prize</a> Kaggle competition. The app is built in Python and deployed using the Streamlit package. The blog post provides a demo of the app and includes a summary of the modeling pipeline and app implementation. </p>
+<p>This blog post overviews <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> that estimates reading complexity of a custom text with deep learning. The app relies on transformer models that are part of my top-9% solution to the <a href="https://www.kaggle.com/c/commonlitreadabilityprize">CommonLit Readability Prize</a> Kaggle competition. The app is built in Python and deployed in Streamlit. The blog post provides a demo of the app and includes a summary of the modeling pipeline and the app implementation. </p>
 </div>
 </div>
 </div>
@@ -205,7 +205,7 @@ window.onload = wrap_img;
 <h1 id="2.-App-demo">
 <a class="anchor" href="#2.-App-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. App demo<a class="anchor-link" href="#2.-App-demo"></a>
 </h1>
-<p>You can open the app in a new browser window by clicking on <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">this link</a>. Alternatively, just scroll down to see the app embedded in this blog post. Feel free to play around with the app by typing or pasting custom texts and estimating their complexity with different models! Scroll further down to read some details on the app and the underlying models.</p>
+<p>You can open the app in a new browser tab by clicking on <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">this link</a>. Alternatively, just scroll down to see the app embedded in this blog post. Feel free to play around with the app by typing or pasting custom texts and estimating their complexity with different models! Scroll further down to read some details on the app and the underlying models.</p>
 </div>
 </div>
 </div>
@@ -223,19 +223,19 @@ window.onload = wrap_img;
 <a class="anchor" href="#3.1.-Modeling-pipeline" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.1. Modeling pipeline<a class="anchor-link" href="#3.1.-Modeling-pipeline"></a>
 </h2>
 <p>The app is developed in the scope of the <a href="https://www.kaggle.com/c/commonlitreadabilityprize">CommonLit Readability Prize</a> Kaggle competition on text complexity prediction. My solution is an ensemble of eight transformer models, including variants of BERT, RoBERTa and other architectures. All transformers are implemented in <code>PyTorch</code> and feature a custom regression head that uses a concatenated output of multiple hidden layers. </p>
-<p>The project uses pre-trained transfomer weights published on the <a href="https://huggingface.co/models">HuggingFace model hub</a>. Each model is then fine-tuned on a data set with 2834 text snippets, where readability of each snippet was evaluated by human experts. To avoid overfitting, the fine-tuning relies on text augmentations such as sentence order shuffle, backtranslation and injecting target noise in the readability scores.</p>
-<p>Each transformer model is fine-tuned using a five-fold cross-validation repeated three times with different random splits. <a href="https://github.com/kozodoi/Text_Readability_Prediction">This GitHub repo</a> provides the source code and documentation for the modeling pipeline. The table below summarizes the main architecture and training parameters.</p>
+<p>The project uses pre-trained transfomer weights published on the <a href="https://huggingface.co/models">HuggingFace model hub</a>. Each model is then fine-tuned on a data set with 2834 text snippets, where readability of each snippet was evaluated by human experts. To avoid overfitting, fine-tuning relies on text augmentations such as sentence order shuffle, backtranslation and injecting target noise in the readability scores.</p>
+<p>Each transformer model is fine-tuned using five-fold cross-validation repeated three times with different random splits. <a href="https://github.com/kozodoi/Text_Readability_Prediction">This GitHub repo</a> provides the source code and documentation for the modeling pipeline. The table below summarizes the main architecture and training parameters.</p>
 <p><img src="https://i.postimg.cc/JnY0HdWQ/read-params.jpg" alt="Models"></p>
-<p>The ensemble of eight transformer models places in the top-9% of the Kaggle competition leaderboard. The web app only includes two light-weight models from a single fold to ensure fast inference on CPU: DistilBERT and DistilRoBERTa.</p>
+<p>The ensemble of eight transformer models places in the top-9% of the Kaggle competition leaderboard. The web app only includes two lightweight models from a single fold to ensure fast inference on CPU: DistilBERT and DistilRoBERTa.</p>
 
 
 <h2 id="3.2.-App-implementation">
 <a class="anchor" href="#3.2.-App-implementation" aria-hidden="true"><span class="octicon octicon-link"></span></a>3.2. App implementation<a class="anchor-link" href="#3.2.-App-implementation"></a>
 </h2>
-<p>The app is built in Python using the Streamlit library. Streamlit allows implementing a web app in a single Python code file and deploying the app to the cloud server so that anyone with the Internet access can check out your app.</p>
-<p>The whole app is implemented in <code>web_app.py</code> located in the root folder of the project GitHub repo. The app is hosted on a virtual machine provided by Streamlit and installs the list of dependencies specified in the file <code>requirements.txt</code>. It also imports some of the helper functions used within the modeling pipeline for text preprocessing and model initialization. </p>
-<p>The app works by downloading the weights of the selected model to the virtual machine after a user selects which model to use for text readability prediction. The weights of each model are made available as release files on GitHub. After downloading the weights, the app transforms the text entered by a user into the token sequence using the text processing settings specified in the model configuration file. Next, the app runs a single forward pass through the initialized transformer network and displays the output prediction.</p>
-<p>The snippet below provides the app source code.</p>
+<p>The app is built in Python using the Streamlit library. Streamlit allows implementing a web app in a single Python code file and deploying the app to the cloud server so that anyone with the Internet access can check it out.</p>
+<p>The app code is provided in <code>web_app.py</code> located in the root folder of the project <a href="https://github.com/kozodoi/Text_Readability_Prediction">GitHub repo</a>. The app is hosted on a virtual machine provided by Streamlit, which includes the list of dependencies specified in <code>requirements.txt</code>. It also imports some helper functions used within the modeling pipeline for text preprocessing and model initialization. </p>
+<p>The app works by downloading weights of the selected transfomer model to the virtual machine after a user selects which model to use for text readability prediction. The weights of each model are made available as <a href="https://github.com/kozodoi/Text_Readability_Prediction/releases/tag/0e96d53">release files</a> on GitHub. After downloading the weights, the app transforms the text entered by a user into the token sequence with the tokenizer that uses text processing settings specified in the model configuration file. Next, the app runs a single forward pass through the initialized transformer network and displays the output prediction.</p>
+<p>The snippet below provides the app source code. The code imports relevant Python modules and configures the app page. Next, it provides functionality for entering the custom text and selecting the NLP model. Finally, the code includes the inference function and some further documentation. </p>
 
 </div>
 </div>
@@ -281,9 +281,6 @@ window.onload = wrap_img;
         <span class="n">mybar</span><span class="o">.</span><span class="n">progress</span><span class="p">(</span><span class="n">downloaded</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">mybar</span><span class="o">.</span><span class="n">progress</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-
-
-<span class="c1">##### CONFIG</span>
 
 <span class="c1"># page config</span>
 <span class="n">st</span><span class="o">.</span><span class="n">set_page_config</span><span class="p">(</span><span class="n">page_title</span>            <span class="o">=</span> <span class="s2">"Readability prediction"</span><span class="p">,</span>
