@@ -171,6 +171,7 @@ I have been acting as an expert reviewer at the following outlets:
 - [Expert Systems with Applications](https://www.journals.elsevier.com/expert-systems-with-applications)
 - [Journal of Business Analytics](https://www.tandfonline.com/toc/tjba20/current)
 - [Journal of the Royal Statistical Society](https://en.wikipedia.org/wiki/Journal_of_the_Royal_Statistical_Society)
+- [The R Journal](https://journal.r-project.org)
 
 
 <!----------------------------------------------------------------------------->
@@ -207,7 +208,7 @@ I have been acting as an expert reviewer at the following outlets:
 #### Business Analytics and Data Science (M.Sc.)
 
 - preparing Python notebooks with machine learning exercises
-- answering students' questions in Q&A sessions and discussion forum
+- hosting tutorial coding sessions
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
