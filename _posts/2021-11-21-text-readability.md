@@ -199,7 +199,7 @@ layout: notebook
 
         <span class="c1"># print output</span>
         <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;Readability score&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;**Note:** readability varies in [-4, 2]. A higher score means that the text is easier to read.&#39;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;**Note:** readability scores are scaled to [0, 100%]. A higher score means that the text is easier to read.&#39;</span><span class="p">)</span>
         <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Success! Thanks for scoring your text :)&#39;</span><span class="p">)</span>
 
 
