@@ -192,13 +192,14 @@ layout: notebook
         <span class="k">if</span> <span class="n">input_text</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
             <span class="n">prediction</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">masks</span><span class="p">,</span> <span class="n">token_type_ids</span><span class="p">)</span>
             <span class="n">prediction</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">[</span><span class="s1">&#39;logits&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">prediction</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="n">prediction</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span> <span class="o">/</span> <span class="mi">6</span> <span class="c1"># scale to [0,100]</span>
 
         <span class="c1"># clear memory</span>
         <span class="k">del</span> <span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">masks</span><span class="p">,</span> <span class="n">token_type_ids</span>
         <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 
         <span class="c1"># print output</span>
-        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;Readability score&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="s1">&#39;Readability score:&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
         <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;**Note:** readability scores are scaled to [0, 100%]. A higher score means that the text is easier to read.&#39;</span><span class="p">)</span>
         <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="s1">&#39;Success! Thanks for scoring your text :)&#39;</span><span class="p">)</span>
 
