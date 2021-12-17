@@ -22,13 +22,13 @@ permalink: /about/
 <!----------------------------------------------------------------------------->
 ## About me
 
-I am passionate about machine learning, deep learning and data science. With proficiency in Python, rich experience in ML research and competitions, and strong quantitative and economic background, I am enthusiastic about using AI to extract valuable knowledge from data to improve managerial decision-making.
+I am passionate about machine learning, deep learning and data science. With rich experience in ML research and competitions, strong coding skills and solid quantitative background, I am enthusiastic about extracting findings from data, turning them into actionable insights and improving decision-making. 
 
 - &#127891; PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc)
 - &#128421; Data science research associate at [Monedo](https://www.monedo.com)
 - &#127974; Working on ML/DL applications in credit risk analytics
 - &#129351; Enjoy participating in data science competitions and hackathons
-- &#129513; Love football, beach volleyball, scooters and piano
+- &#129513; Love football, beach volleyball and piano
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
