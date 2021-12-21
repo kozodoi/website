@@ -139,7 +139,7 @@ image: ../images/menu/photo_portfolio.jpg
 
 <div class="card">
 
-  <h2><b> Image-to-Text Translation of Chemical Structures with Deep Learning </b></h2>
+  <h2><b> Image-to-Text Translation of Molecules with Deep Learning </b></h2>
 
   <img src="https://kozodoi.me/images/portfolio/fig_inchi.jpg" alt="Notebook" style="width:100%">
 
