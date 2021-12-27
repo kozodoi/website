@@ -15,11 +15,11 @@ image: ../images/menu/photo_portfolio.jpg
   </div>  
   <div class="content">
     <h1>Portfolio</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and natural language processing. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three data science projects on different topics focusing on computer vision and natural language processing and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">My portfolio includes three data science projects on different topics focusing on tabular data, computer vision and natural language processing. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
+<p><span class="page-desc">My portfolio includes three data science projects on different topics focusing on computer vision and natural language processing and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
 
 
 <!----------------------------------------------------------------------------->
@@ -35,8 +35,8 @@ image: ../images/menu/photo_portfolio.jpg
 
   <ul style="margin-top: -10px;">
   <li> &#128214; <a href="#PROJECT_1">Text reading complexity prediction with transformers </a></li>
-  <li> &#128200; <a href="#PROJECT_2">Profit-driven demand forecasting with gradient boosting </a></li>
   <li> &#129516; <a href="#PROJECT_3">Image-to-text translation of chemical structures with deep learning </a></li>
+  <li> &#128200; <a href="#PROJECT_2">Profit-driven demand forecasting with gradient boosting </a></li>
   </ul>
 
   <p>Click "read more" to see the project summaries. Follow the GitHub links for the code and documentation. Scroll down to see more ML and DL projects in different application areas.</p>
@@ -77,6 +77,46 @@ image: ../images/menu/photo_portfolio.jpg
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">&#128202; Web app</button>
   <button class="btn" onclick="window.open('https://kozodoi.me/deep%20learning/natural%20language%20processing/web%20app/2021/11/21/text-readability.html')" type="button">&#128203; Blog post</button>
+
+</div>
+
+
+
+<!----------------------------------------------------------------------------->
+
+<br>
+
+<a id="PROJECT_3"></a>
+
+<div class="card">
+
+  <h2><b> Image-to-Text Translation of Molecules with Deep Learning </b></h2>
+
+  <img src="https://kozodoi.me/images/portfolio/fig_inchi.jpg" alt="Notebook" style="width:100%">
+
+  <h3> Highlights </h3>
+  <ul>
+  <li> built a CNN-LSTM encoder-decoder architecture to translate images into chemical formulas </li>
+  <li> developed a comprehensive PyTorch GPU/TPU image captioning pipeline </li>
+  <li> finished in the top-5% of the Kaggle competition leaderboard with a silver medal </li>
+  </ul>
+
+  <p> <b>Tags:</b> computer vision, natural language processing, deep learning </p>
+
+  <span id="dots3"><p></p></span>
+  <span id="more3">
+  <h3> Summary </h3>
+
+  <p>Organic chemists frequently draw molecular work using structural graph notations. As a result, decades of scanned publications and medical documents contain drawings not annotated with chemical formulas. Time-consuming manual work of experts is required to reliably convert such images into machine-readable formulas. Automated recognition of optical chemical structures could speed up research and development in the field.</p>
+
+  <p>The goal of this project is to develop a deep learning based algorithm for chemical image captioning. In other words, the project aims at translating unlabeled chemical images into the text formula strings. To do that, I work with a large dataset of more than 4 million chemical images provided by Bristol-Myers Squibb.</p>
+
+  <p>My solution is an ensemble of CNN-LSTM Encoder-Decoder models implemented in PyTorch.The solution reaches the test score of 1.31 Levenstein Distance and places in the top-5% of the competition leaderboard. The code is documented and published on <a href="https://github.com/kozodoi/BMS_Molecular_Translation">GitHub</a>.</p>
+  </span>
+
+  <button class="btn" onclick="read_more_3()" id="myBtn3">&#128220; Read more</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/BMS_Molecular_Translation')" type="button">&#128187; GitHub repo</button>
+  <button class="btn" onclick="window.open('https://www.kaggle.com/c/bms-molecular-translation/discussion/243845')" type="button">&#128214; Writeup on Kaggle</button>
 
 </div>
 
@@ -131,52 +171,14 @@ image: ../images/menu/photo_portfolio.jpg
 </div>
 
 
-<!----------------------------------------------------------------------------->
-
-<br>
-
-<a id="PROJECT_3"></a>
-
-<div class="card">
-
-  <h2><b> Image-to-Text Translation of Molecules with Deep Learning </b></h2>
-
-  <img src="https://kozodoi.me/images/portfolio/fig_inchi.jpg" alt="Notebook" style="width:100%">
-
-  <h3> Highlights </h3>
-  <ul>
-  <li> built a CNN-LSTM encoder-decoder architecture to translate images into chemical formulas </li>
-  <li> developed a comprehensive PyTorch GPU/TPU image captioning pipeline </li>
-  <li> finished in the top-5% of the Kaggle competition leaderboard with a silver medal </li>
-  </ul>
-
-  <p> <b>Tags:</b> computer vision, natural language processing, deep learning </p>
-
-  <span id="dots3"><p></p></span>
-  <span id="more3">
-  <h3> Summary </h3>
-
-  <p>Organic chemists frequently draw molecular work using structural graph notations. As a result, decades of scanned publications and medical documents contain drawings not annotated with chemical formulas. Time-consuming manual work of experts is required to reliably convert such images into machine-readable formulas. Automated recognition of optical chemical structures could speed up research and development in the field.</p>
-
-  <p>The goal of this project is to develop a deep learning based algorithm for chemical image captioning. In other words, the project aims at translating unlabeled chemical images into the text formula strings. To do that, I work with a large dataset of more than 4 million chemical images provided by Bristol-Myers Squibb.</p>
-
-  <p>My solution is an ensemble of CNN-LSTM Encoder-Decoder models implemented in PyTorch.The solution reaches the test score of 1.31 Levenstein Distance and places in the top-5% of the competition leaderboard. The code is documented and published on <a href="https://github.com/kozodoi/BMS_Molecular_Translation">GitHub</a>.</p>
-  </span>
-
-  <button class="btn" onclick="read_more_3()" id="myBtn3">&#128220; Read more</button>
-  <button class="btn" onclick="window.open('https://github.com/kozodoi/BMS_Molecular_Translation')" type="button">&#128187; GitHub repo</button>
-  <button class="btn" onclick="window.open('https://www.kaggle.com/c/bms-molecular-translation/discussion/243845')" type="button">&#128214; Writeup on Kaggle</button>
-
-</div>
-
 
 <!----------------------------------------------------------------------------->
 
 <hr style="height:10pt; visibility:hidden;" />
 
-<h1> Other projects </h1>
+<h1> Further projects </h1>
 
-Want to see more? Check out some of my further ML projects grouped by the application areas below. You can also visit my <a href="https://github.com/kozodoi">GitHub</a> profile or read my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/research/">academic publications</a>.
+Want to see more? Check out some of my further ML & DL projects grouped by the application areas below. You can also visit my <a href="https://github.com/kozodoi">GitHub</a> profile or read my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/research/">academic publications</a>.
 
 <div>
   <button class="project_accordion">Computer vision</button>
