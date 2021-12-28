@@ -196,6 +196,9 @@
   
 
   
+  
+
+  
 
   
 
@@ -203,7 +206,7 @@
   
 
   
-      ,"page15": {
+      ,"page16": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://kozodoi.me/robots.txt",

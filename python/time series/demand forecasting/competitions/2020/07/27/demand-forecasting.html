@@ -1,4 +1,115 @@
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Profit-Driven Demand Forecasting | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Profit-Driven Demand Forecasting" />
+<meta name="author" content="Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Data Mining Cup 2020 solution with graident boosted trees" />
+<meta property="og:description" content="Data Mining Cup 2020 solution with graident boosted trees" />
+<link rel="canonical" href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
+<meta property="og:url" content="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/demand.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-27T00:00:00-05:00" />
+<script type="application/ld+json">
+{"image":"https://kozodoi.me/images/posts/demand.png","author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Data Mining Cup 2020 solution with graident boosted trees","@type":"BlogPosting","url":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html","headline":"Profit-Driven Demand Forecasting","dateModified":"2020-07-27T00:00:00-05:00","datePublished":"2020-07-27T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+<link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kozodoi.me/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="https://kozodoi.me/images/favicons/site.webmanifest">
+<link rel="mask-icon" href="https://kozodoi.me/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="https://kozodoi.me/images/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Profit-Driven Demand Forecasting | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Profit-Driven Demand Forecasting" />
+<meta name="author" content="Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Data Mining Cup 2020 solution with graident boosted trees" />
+<meta property="og:description" content="Data Mining Cup 2020 solution with graident boosted trees" />
+<link rel="canonical" href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
+<meta property="og:url" content="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/demand.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-27T00:00:00-05:00" />
+<script type="application/ld+json">
+{"image":"https://kozodoi.me/images/posts/demand.png","author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Data Mining Cup 2020 solution with graident boosted trees","@type":"BlogPosting","url":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html","headline":"Profit-Driven Demand Forecasting","dateModified":"2020-07-27T00:00:00-05:00","datePublished":"2020-07-27T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-166063601-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Nikita Kozodoi</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/portfolio/">Portfolio</a><a class="page-link" href="/kaggle/">Kaggle</a><a class="page-link" href="/research/">Research</a><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/search/">Search</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">Profit-Driven Demand Forecasting</h1><p class="page-description">Data Mining Cup 2020 solution with graident boosted trees</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-27T00:00:00-05:00" itemprop="datePublished">
@@ -2524,3 +2635,47 @@ FOLD 7/7: RMSE = 74.46, PROFIT = 3958098
   <script src="/assets/js/mode_switcher.js"></script>
 
 </article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+<data class="u-url" href="/"></data>
+
+<div class="wrapper">
+
+  <div class="footer-col-wrapper">
+
+    <div class="footer-col">
+      <p class="feed-subscribe">
+        <a href="/feed.xml">
+          <svg class="svg-icon orange">
+            <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+          </svg><span>RSS feed</span>
+        </a>
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <p><center>Blog on ML, AI and other cool acronyms</center></p>
+    </div>
+
+    <div class="footer-col">
+      <p style="text-align:center;">&#169; 2020 - 2021 Nikita Kozodoi</p>
+    </div>
+
+  </div>
+
+  <div class="social-links">
+    <ul class="social-media-list">
+      <li><a rel="me" href="https://www.linkedin.com/in/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg></a></li>
+      <li><a rel="me" href="https://github.com/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li>
+      <li><a rel="me" href="https://twitter.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+      <li><a rel="me" href="https://www.instagram.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#instagram"></use></svg></a></li>
+    </ul>
+  </div>
+
+</div>
+
+</footer>
+</body>
+
+</html>
