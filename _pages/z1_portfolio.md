@@ -58,9 +58,9 @@ image: ../images/menu/photo_portfolio.jpg
 
   <h3> Highlights </h3>
   <ul>
-  <li> developed a comprehensive PyTorch pipeline for text classification </li>
-  <li> implemented eight transformers including BERT, RoBERTa and others </li>
-  <li> built an interactive web app for custom text reading complexity estimation </li>
+  <li> developed a comprehensive PyTorch / HuggingFace text classification pipeline </li>
+  <li> build multiple transformers including BERT and RoBERTa with custom pooling layers </li>
+  <li> implemented an interactive web app for custom text reading complexity estimation </li>
   </ul>
 
   <p> <b>Tags:</b> natural language processing, deep learning, web app </p>
