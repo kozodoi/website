@@ -188,7 +188,7 @@ Want to see more? Check out some of my further ML & DL projects grouped by the a
     <div class="card">
       <h3>Pet Popularity Prediction</h3>
 
-      <img src="https://github.com/kozodoi/Pet_Pawpularity/blob/main/app/header.png?raw=true-08-31-18-49-29" alt="Notebook" style="width:100%">
+      <img src="https://i.postimg.cc/43yC8KyY/header.png" alt="Notebook" style="width:100%">
 
       <p><ul>
       <li> built a PyTorch pipeline for predicting pet cuteness from image and tabular data </li>
@@ -200,7 +200,8 @@ Want to see more? Check out some of my further ML & DL projects grouped by the a
       <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/pet_pawpularity/main/web_app.py')" type="button">&#128202; Web app</button>
     </div>
 
-  <div class="project_panel">
+    <br>
+
     <div class="card">
       <h3>Cassava Leaf Disease Classification</h3>
 
