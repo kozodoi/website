@@ -15,11 +15,11 @@ image: ../images/menu/photo_portfolio.jpg
   </div>  
   <div class="content">
     <h1>Portfolio</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three data science projects on different topics focusing on computer vision and natural language processing and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three ML projects on different topics focusing on computer vision, natural language processing and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">My portfolio includes three data science projects on different topics focusing on computer vision and natural language processing and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
+<p><span class="page-desc">My portfolio includes three ML projects on different topics focusing on computer vision, natural language processing and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile or download my <a href="https://kozodoi.me/cv.pdf">CV</a>.</span></p>
 
 
 <!----------------------------------------------------------------------------->
@@ -39,7 +39,7 @@ image: ../images/menu/photo_portfolio.jpg
   <li> &#128200; <a href="#PROJECT_2">Profit-driven demand forecasting with gradient boosting </a></li>
   </ul>
 
-  <p>Click "read more" to see the project summaries. Follow the GitHub links for the code and documentation. Scroll down to see more ML and DL projects in different application areas.</p>
+  <p>Click "read more" to see the project summaries. Follow the GitHub links for code and documentation. Scroll down to see more ML and DL projects grouped by different application areas.</p>
 
 </div>
 
@@ -183,6 +183,22 @@ Want to see more? Check out some of my further ML & DL projects grouped by the a
 
 <div>
   <button class="project_accordion">Computer vision</button>
+
+  <div class="project_panel">
+    <div class="card">
+      <h3>Pet Popularity Prediction</h3>
+
+      <img src="https://github.com/kozodoi/Pet_Pawpularity/blob/main/app/header.png?raw=true-08-31-18-49-29" alt="Notebook" style="width:100%">
+
+      <p><ul>
+      <li> built a PyTorch pipeline for predicting pet cuteness from image and tabular data </li>
+      <li> reached top-4% in the Kaggle competition using Transformers and CNNs </li>
+      <li> implemented an interactive web app for estimating cuteness of custom pet photos </li>
+      </ul></p>
+
+      <button class="btn" onclick="window.open('https://github.com/kozodoi/Pet_Pawpularity')" type="button">&#128187; GitHub repo</button>
+      <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/pet_pawpularity/main/web_app.py')" type="button">&#128202; Web app</button>
+    </div>
 
   <div class="project_panel">
     <div class="card">
