@@ -155,14 +155,11 @@ image: ../images/menu/photo_portfolio.jpg
   <li> cataloging algorithmic options for incorporating fairness goals in the ML model development pipeline </li>
   <li> empirically comparing different fairness algorithms in a profit-oriented credit scoring context using real-world data </li>
   </ul>
-  </p>
 
   <p>The code and documentation are available <a href="https://github.com/kozodoi/Fair_Credit_Scoring">on GitHub</a>. A detailed walkthrough and results are published in <a href="https://arxiv.org/abs/2103.01907">this paper</a>.</p>
 
-  We find that multiple fairness criteria can be approximately satisfied at once and recommend separation as a proper criterion for measuring scorecard fairness. We also find fair in-processors to deliver a good profit-fairness balance and show that algorithmic discrimination can be reduced to a reasonable level at a relatively low cost.
-
+  <p>The study reveals that multiple fairness criteria can be approximately satisfied at once and recommend separation as a proper criterion for measuring scorecard fairness. We also find fair in-processors to deliver a good profit-fairness balance and show that algorithmic discrimination can be reduced to a reasonable level at a relatively low cost.</p>
   <img src="https://i.postimg.cc/5yB7y21M/fair-gif.gif" alt="Notebook" style="width:100%">
-
   </span>
 
   <button class="btn" onclick="read_more_2()" id="myBtn2">&#128220; Read more</button>
@@ -315,7 +312,7 @@ Want to see more? Check out some of my further ML & DL projects grouped by the a
       <p><ul>
       <li> developing and actively maintaining an R package for fair machine learning </li>
       <li> the package offers calculation, visualization and comparison of algorithmic fairness metrics </li>
-      <li> the package is published on CRAN and has more than 11k total downloads </li>
+      <li> the package is published on CRAN and has more than 16k total downloads </li>
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/fairness')" type="button">&#128187; GitHub repo</button>
