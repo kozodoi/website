@@ -137,7 +137,7 @@ window.onload = wrap_img;
   <ul style="margin-top: -10px;">
   <li> &#128214; <a href="#PROJECT_1">Text reading complexity prediction with transformers </a></li>
   <li> &#129516; <a href="#PROJECT_3">Image-to-text translation of chemical structures with deep learning </a></li>
-  <li> &#128200; <a href="#PROJECT_2">Profit-driven demand forecasting with gradient boosting </a></li>
+  <li> &#128200; <a href="#PROJECT_2">Fair machine learning in credit scoring applications </a></li>
   </ul>
 
   <p>Click "read more" to see the project summaries. Follow the GitHub links for code and documentation. Scroll down to see more ML and DL projects grouped by different application areas.</p>
@@ -227,43 +227,43 @@ window.onload = wrap_img;
 
 <div class="card">
 
-  <h2><b>Profit-Driven Demand Forecasting with Gradient Boosting</b></h2>
+  <h2><b>Fair Machine Learning in Credit Scoring</b></h2>
 
-  <img src="https://kozodoi.me/images/portfolio/fig_custom_loss.png" alt="Notebook" style="width:100%" />
+  <img src="https://i.postimg.cc/j2Px4VLN/fig-pipeline.jpg" alt="Notebook" style="width:100%" />
 
   <h3> Highlights </h3>
   <ul>
-  <li> developed a two-stage demand forecasting pipeline with LightGBM models </li>
-  <li> performed a thorough cleaning, aggregation and feature engineering on transactional data </li>
-  <li> implemented custom loss functions aimed at maximizing the retailer's profit </li>
+  <li> benchmarked eight fair ML algorithms on seven credit scoring data sets </li>
+  <li> investigated profit-fairness trade-off to quantify the cost of fairness </li>
+  <li> published a paper with the results at the European Journal of Operational Research </li>
   </ul>
 
-  <p> <b>Tags:</b> tabular data, e-commerce, profit maximization </p>
+  <p> <b>Tags:</b> tabular data, fairness, profit maximization </p>
 
   <span id="dots2"><p></p></span>
   <span id="more2">
   <h3> Summary </h3>
 
-  <p> Forecasting demand is an important managerial task that helps to optimize inventory planning. The optimized stocks can reduce retailer's costs and increase customer satisfaction due to faster delivery time. This project uses historical purchase data to predict future demand for different products. </p>
-
-  <p> The project pipeline includes several crucial steps:
+  <p> The rise of algorithmic decision-making has spawned much research on fair ML. This project focuses on fairness of credit scoring decisions and makes three contributions: </p>
   <ul>
-  <li> thorough data preparation, cleaning and feature engineering </li>
+  <li> revisiting statistical fairness criteria and examining their adequacy for credit scoring </li>
   <li> aggregation of transactional data into the daily format </li>
-  <li> implementation of custom profit-driven loss functions </li>
-  <li> two-stage demand forecasting with LightGBM models</li>
-  <li> hyper-parameter tuning with Bayesian algorithms </li>
-  <li> stacking ensemble to further maximize the performance </li>
+  <li> cataloging algorithmic options for incorporating fairness goals in the ML model development pipeline </li>
+  <li> empirically comparing different fairness algorithms in a profit-oriented credit scoring context using real-world data </li>
   </ul>
-  </p>
+  &lt;/p&gt;
 
-  <p>The code and documentation are available <a href="https://github.com/kozodoi/DMC_2020">on GitHub</a>. A detailed walkthrough is provided in this <a href="https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html">blog post</a>.</p>
+  <p>The code and documentation are available <a href="https://github.com/kozodoi/Fair_Credit_Scoring">on GitHub</a>. A detailed walkthrough and results are published in <a href="https://arxiv.org/abs/2103.01907">this paper</a>.</p>
+
+  We find that multiple fairness criteria can be approximately satisfied at once and recommend separation as a proper criterion for measuring scorecard fairness. We also find fair in-processors to deliver a good profit-fairness balance and show that algorithmic discrimination can be reduced to a reasonable level at a relatively low cost.
+
+  <img src="https://i.postimg.cc/5yB7y21M/fair-gif.gif" alt="Notebook" style="width:100%" />
 
   </span>
 
   <button class="btn" onclick="read_more_2()" id="myBtn2">&#128220; Read more</button>
-  <button class="btn" onclick="window.open('https://github.com/kozodoi/DMC_2020')" type="button">&#128187; GitHub repo</button>
-  <button class="btn" onclick="window.open('https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html')" type="button">&#128203; Blog post</button>
+  <button class="btn" onclick="window.open('https://github.com/kozodoi/Fair_Credit_Scoring')" type="button">&#128187; GitHub repo</button>
+  <button class="btn" onclick="window.open('https://arxiv.org/abs/2103.01907')" type="button">&#128213; Paper</button>
 
 </div>
 
@@ -357,18 +357,18 @@ window.onload = wrap_img;
   <div class="project_panel">
 
     <div class="card">
-      <h3>Fair ML in Credit Scoring</h3>
+      <h3>Profit-Driven Demand Forecasting with Gradient Boosting</h3>
 
-      <img src="https://i.postimg.cc/j2Px4VLN/fig-pipeline.jpg" alt="Notebook" style="width:100%" />
+      <img src="https://kozodoi.me/images/portfolio/fig_custom_loss.png" alt="Notebook" style="width:100%" />
 
       <p><ul>
-      <li> benchmarked eight fair ML algorithms on seven credit scoring data sets </li>
-      <li> investigated profit-fairness trade-off to quantify the cost of fairness </li>
-      <li> published a paper with the results at the European Journal of Operational Research </li>
+      <li> developed a two-stage demand forecasting pipeline with LightGBM models </li>
+      <li> performed a thorough cleaning, aggregation and feature engineering on transactional data </li>
+      <li> implemented custom loss functions aimed at maximizing the retailer's profit </li>
       </ul></p>
 
-      <button class="btn" onclick="window.open('https://github.com/kozodoi/Fair_Credit_Scoring')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://arxiv.org/abs/2103.01907')" type="button">&#128213; Paper</button>
+      <button class="btn" onclick="window.open('https://github.com/kozodoi/DMC_2020')" type="button">&#128187; GitHub repo</button>
+      <button class="btn" onclick="window.open('https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html')" type="button">&#128203; Blog post</button>
 
 
     </div>
