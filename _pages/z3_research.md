@@ -12,11 +12,11 @@ permalink: /research/
   </div>  
   <div class="content">
     <h1>Research</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page summarizes my research activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page summarizes my research activities including publications in academic journals and conference proceedings. Check out my <a href="http://kozodoi.me/talks">public talks</a> or follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> to see all of my work.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">This page summarizes my research activities including my publications in academic journals and conference proceedings. Follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> or <a href="http://researchgate.net/profile/Nikita_Kozodoi">ResearchGate</a> to see all of my latest work.</span></p>
+<p><span class="page-desc">This page summarizes my research activities including publications in academic journals and conference proceedings. Check out my <a href="http://kozodoi.me/talks">public talks</a> or follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> to see all of my work.</span></p>
 
 
 <!----------------------------------------------------------------------------->
@@ -209,7 +209,7 @@ I have been acting as an expert reviewer at the following outlets:
 #### Business Analytics and Data Science (M.Sc.)
 
 - preparing Python notebooks with machine learning exercises
-- hosting tutorial coding sessions
+- hosting tutorial coding sessions and preparing exam questions
 
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
