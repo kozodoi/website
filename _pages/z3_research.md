@@ -169,6 +169,7 @@ I have been acting as an expert reviewer at the following outlets:
 - [Decision Support Systems](https://www.journals.elsevier.com/decision-support-systems)
 - [International Journal of Forecasting](https://www.journals.elsevier.com/international-journal-of-forecasting)
 - [Expert Systems with Applications](https://www.journals.elsevier.com/expert-systems-with-applications)
+- [Business and Information Systems Engineering](https://www.springer.com/journal/12599)
 - [Journal of Business Analytics](https://www.tandfonline.com/toc/tjba20/current)
 - [Journal of the Royal Statistical Society](https://en.wikipedia.org/wiki/Journal_of_the_Royal_Statistical_Society)
 - [The R Journal](https://journal.r-project.org)
