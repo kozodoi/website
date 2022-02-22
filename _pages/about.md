@@ -20,31 +20,20 @@ permalink: /about/
 
 
 <!----------------------------------------------------------------------------->
-## About me
+## About
 
-I am passionate about machine learning, deep learning and data science. With rich experience in ML research and competitions, strong coding skills and solid quantitative background, I am enthusiastic about extracting findings from data, turning them into actionable insights and improving decision-making. 
-
-- &#127891; PhD candidate at [Humboldt University of Berlin](https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc)
-- &#128421; Data science research associate at [Monedo](https://www.monedo.com)
-- &#127974; Working on ML/DL applications in credit risk analytics
-- &#129351; Enjoy participating in data science competitions and hackathons
-- &#129513; Love football, beach volleyball and piano
+I am a Machine Learning researcher and PhD candidate working on the frontier of research and business. With certified AWS ML knowledge, practical experience in different ML areas and strong communication skills, I am passionate about using AI to improve decision-making. My recent projects focus on ML for credit scoring and DL for image and text classification.
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
-<hr style="height:1px; visibility:hidden;" />
-<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. It also includes other sections featuring my work:
 
-
-<!----------------------------------------------------------------------------->
-## Website
-
-This website hosts [my blog](https://kozodoi.me/blog/), where I share machine learning tutorials, competition solutions and interesting findings from different projects. It also includes other sections featuring my work:
-
-- &#128193; [my portfolio](https://kozodoi.me/portfolio/) with data science projects on different topics
+- &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
 - &#128218; [my publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
 - &#128483; [my public talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
+- &#128421; [my certifications](https://kozodoi.me/certifications/) with links to certificates and completed courses
+- &#127891; [my teaching experience](https://kozodoi.me/teaching/) at the Humboldt University of Berlin
 
 If you like my blog, you can buy me a cup of tea to support my work. Thanks!
 <div class="tea">
