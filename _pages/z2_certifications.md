@@ -1,6 +1,6 @@
 ---
 layout: menu_page
-title: 
+title:
 permalink: /certifications/
 ---
 
@@ -27,9 +27,9 @@ permalink: /certifications/
   <p>This page overviews my certifications including:</p>
 
   <ul style="margin-top: -10px;">
-  <li> &#128483; <a href="#PART_1">Machine Learning courses </a></li>
-  <li> &#128218; <a href="#PART_2">Coding courses </a></li>
-  <li> &#127891; <a href="#PART_3">Databases courses </a></li>
+  <li> &#129302; <a href="#PART_1">ML courses </a></li>
+  <li> &#128187; <a href="#PART_2">Coding courses </a></li>
+  <li> &#128190; <a href="#PART_3">Databases courses </a></li>
   </ul>
 
 </div>
@@ -53,7 +53,7 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots1"></span>
-  <li><span id="abs1"><p></p><b>Summary:</b> Demonstrated in-depth understanding of AWS Machine Learning services. Learned to build, train, tune, and deploy ML models using the AWS Cloud.</span></li>
+  <li><span id="abs1"><p></p><b>Summary:</b> Demonstrated in-depth understanding of AWS Machine Learning services. Learned to build, train, tune, and deploy ML models using the AWS Cloud. Showed the ability to derive insight from AWS ML services using either pretrained models or custom models built from open-source frameworks. </span></li>
   <li>
     <button class="btn" onclick="show_summary_1()" id="b1">&#128220; Summary</button>
     <button class="btn" onclick="window.open('https://www.credly.com/badges/a04439a1-fc2a-478b-bdf5-5a233a5b9094/public_url')" type="button">&#127891; Certificate</button>
@@ -69,7 +69,7 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots3"></span>
-  <li><span id="abs3"><p></p><b>Summary:</b> Learned software engineering practices and built a Python package for data processing. Deployed ML and DL models on Amazon SageMaker and used API Gateway and Lambda to integrate deployed models into a web app.</span></li>
+  <li><span id="abs3"><p></p><b>Summary:</b> Learned software engineering and object-oriented programming practices and developed an open-source <a href="https://github.com/kozodoi/dptools">Python package</a> for data processing. Deployed Machine Learning and Deep Learning models using Amazon SageMaker. Used API Gateway and Lambda to integrate deployed models into interactive web apps.</span></li>
   <li>
     <button class="btn" onclick="show_summary_3()" id="b3">&#128220; Summary</button>
     <button class="btn" onclick="window.open('https://confirm.udacity.com/LMMJDA7C')" type="button">&#127891; Certificate</button>
@@ -87,7 +87,7 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots2"></span>
-  <li><span id="abs2"><p></p><b>Summary:</b> Learned theoretical foundations of Deep Learning. Implemented different neural network architectures from scratch. Developed PyTorch modeling pipelines using CNNs, RNNs and LSTMs for a variety of prediction tasks.</span></li>
+  <li><span id="abs2"><p></p><b>Summary:</b> Learned theoretical foundations of Deep Learning. Implemented different neural network architectures from scratch. Developed PyTorch modeling pipelines using CNNs, RNNs and LSTMs for a variety of prediction tasks. Deployed the trained models on Amazon SageMaker.</span></li>
   <li>
     <button class="btn" onclick="show_summary_2()" id="b2">&#128220; Summary</button>
     <button class="btn" onclick="window.open('https://confirm.udacity.com/RFA6N33')" type="button">&#127891; Certificate</button>
@@ -113,7 +113,7 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots5"></span>
-  <li><span id="abs5"><p></p><b>Summary:</b> Learned key algorithmic techniques arising frequently in practical applications: sorting and searching, divide and conquer, greedy algorithms, dynamic programming, recursion. Implemented algorithms to solve a variety of computational problems in Python. </span></li>
+  <li><span id="abs5"><p></p><b>Summary:</b> Learned key algorithmic techniques and concepts arising frequently in practical applications, including sorting and searching, divide and conquer, greedy algorithms, dynamic programming and recursion. Implemented algorithms to solve a variety of computational problems in Python and analyzed their running and memory complexity. </span></li>
   <li>
     <button class="btn" onclick="show_summary_5()" id="b5">&#128220; Summary</button>
     <button class="btn" onclick="window.open('https://coursera.org/share/c211bd2c6611a176d73f90efc9e1da6b')" type="button">&#127891; Certificate</button>
@@ -129,7 +129,7 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots6"></span>
-  <li><span id="abs6"><p></p><b>Summary:</b> Learned common data structures used in various computational problems: arrays, linked lists, stacks, queues, hash tables and trees. Practiced implementing data structures in Python programming assignments.</span></li>
+  <li><span id="abs6"><p></p><b>Summary:</b> Learned common data structures used in various computational problems, including arrays, linked lists, stacks, queues, hash tables and trees. Analyzed typical use cases for these data structures and complexity of common operations. Practiced implementing data structures in Python programming assignments. </span></li>
   <li>
     <button class="btn" onclick="show_summary_6()" id="b6">&#128220; Summary</button>
     <button class="btn" onclick="window.open('https://coursera.org/share/b457743d18ad9a6bc41f2b1a1c62cddb')" type="button">&#127891; Certificate</button>
@@ -145,7 +145,7 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots7"></span>
-  <li><span id="abs7"><p></p><b>Summary:</b> Learned basic data structures and algorithms and practiced implementing them in Python. Learned how to analyze running and space complexity of different data structures and algorithms.</span></li>
+  <li><span id="abs7"><p></p><b>Summary:</b> Reviewed basic data structures and algorithms and extensively practiced their implementation in Python. Practiced analyzing running and memory complexity of different data structures and algorithms. </span></li>
   <li>
     <button class="btn" onclick="show_summary_7()" id="b7">&#128220; Summary</button>
     <button class="btn" onclick="window.open('https://www.codecademy.com/profiles/nikitaKozodoi7009037470/certificates/7a1021b263de1990c643feb15d9f1f7a')" type="button">&#127891; Certificate</button>
@@ -172,10 +172,10 @@ permalink: /certifications/
 </ul>
 <ul class="no-bullets">
   <span id="dots4"></span>
-  <li><span id="abs4"><p></p><b>Summary:</b> Learned the fundamentals of SQL, including data extraction and manipulation for data science purposes. Covered filtering, aggregations, subqueries and joins.</span></li>
+  <li><span id="abs4"><p></p><b>Summary:</b> Learned fundamentals of SQL for Data Science purposes, including extracting, manipulating and combining data. Covered filtering, sorting and aggregating functionality. Practiced subqueries and table joins. Solved a variety of SQL programming tasks. </span></li>
   <li>
     <button class="btn" onclick="show_summary_4()" id="b4">&#128220; Summary</button>
-    <button class="btn" onclick="window.open('https://confirm.udacity.com/RFA6N33')" type="button">&#127891; Certificate</button>
+    <button class="btn" onclick="window.open('https://coursera.org/share/14f75aa6e3546b9c782cef68d67d4d24')" type="button">&#127891; Certificate</button>
   </li>
 </ul>
 <p></p>
