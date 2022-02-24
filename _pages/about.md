@@ -22,7 +22,7 @@ permalink: /about/
 <!----------------------------------------------------------------------------->
 ## About
 
-I am a Machine Learning researcher and PhD candidate working on the frontier of research and business. With certified AWS ML knowledge, practical experience in different ML areas and strong communication skills, I am passionate about using AI to improve decision-making. My recent projects focus on ML for credit scoring and DL for image and text classification.
+I am Machine Learning researcher and PhD candidate working on the frontier of research and business. With certified AWS ML knowledge, practical experience in different ML areas and strong communication skills, I am passionate about using AI to improve decision-making and create value. My recent projects focus on ML for credit scoring and DL for image and text classification.
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
