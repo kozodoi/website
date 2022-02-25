@@ -29,7 +29,7 @@ permalink: /research/
 
   <ul style="margin-top: -10px;">
   <li> &#128218; <a href="#PART_1">Selected list of my academic publications </a></li>
-  <li> &#128221; <a href="#PART_2">List of outlets where I have been acting as a reviewer </a></li>
+  <li> &#128221; <a href="#PART_2">Outlets where I have been acting as a reviewer </a></li>
   </ul>
 
 </div>
@@ -182,7 +182,7 @@ permalink: /research/
 
 ## Reviews
 
-I have been acting as an expert reviewer at the following outlets:
+I have been acting as an expert reviewer at the following academic outlets:
 
 - [European Journal of Operational Research](https://www.journals.elsevier.com/european-journal-of-operational-research)
 - [Decision Support Systems](https://www.journals.elsevier.com/decision-support-systems)
