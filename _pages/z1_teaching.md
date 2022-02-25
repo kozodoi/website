@@ -1,6 +1,6 @@
 ---
 layout: menu_page
-title: 
+title:
 permalink: /teaching/
 ---
 
@@ -10,11 +10,11 @@ permalink: /teaching/
   </div>  
   <div class="content">
     <h1>Teaching</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">I act as a human teacher of machine learning at the <a href="https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc">Chair of Information Systems</a> at HU Berlin. This includes teaching Data Science and supervising dissertations and seminar projects on applied ML topics.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">I act as a human teacher of Machine Learning at the <a href="https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc">Chair of Information Systems</a> at HU Berlin. This includes teaching Data Science and supervising dissertations and seminar projects on applied ML topics.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">I act as a human teacher of machine learning at the <a href="https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc">Chair of Information Systems</a> at HU Berlin. This includes teaching Data Science and supervising dissertations and seminar projects on applied ML topics.</span></p>
+<p><span class="page-desc">I act as a human teacher of Machine Learning at the <a href="https://www.wiwi.hu-berlin.de/en/Professorships/bwl/wi/personen-en/nikita-kozodoi-m-sc/nikita-kozodoi-m-sc">Chair of Information Systems</a> at HU Berlin. This includes teaching Data Science and supervising dissertations and seminar projects on applied ML topics.</span></p>
 
 
 ## Courses
