@@ -22,7 +22,7 @@ permalink: /about/
 <!----------------------------------------------------------------------------->
 ## About
 
-I am Machine Learning researcher and PhD candidate working on the frontier of research and business. With certified AWS ML knowledge, practical experience in different ML areas and strong communication skills, I am passionate about using AI to improve decision-making and create value. My recent projects focus on ML for credit scoring and DL for image and text classification.
+I am ML researcher working on the frontier of research and business. With PhD in ML and certified AWS ML knowledge, practical experience in different ML areas and strong communication skills, I am passionate about using AI to improve decision-making and create value. My recent projects focus on ML for credit scoring and DL for image and text classification.
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
@@ -30,7 +30,7 @@ This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutoria
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
-- &#128218; [my publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
+- &#128218; [my ML publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
 - &#128483; [my public talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
 - &#128421; [my certifications](https://kozodoi.me/certifications/) with links to certificates and completed courses
 - &#127891; [my teaching experience](https://kozodoi.me/teaching/) at the Humboldt University of Berlin
