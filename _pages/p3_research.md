@@ -141,7 +141,7 @@ permalink: /research/
   <li>
     <button class="btn" onclick="show_abstract_5()" id="b5">&#128220; Abstract</button>
     <button class="btn" onclick="window.open('https://www.researchgate.net/publication/335485098_Profit-Oriented_Feature_Selection_in_Credit_Scoring_Applications')" type="button">&#128214; PDF on ResearchGate</button>
-    <button class="btn" onclick="window.open('https://link.springer.com/chapter/10.1007%2F978-3-030-18500-8_9')" type="button">&#128213; Published version</button>
+    <button class="btn" onclick="window.open('https://link.springer.com/chapter/10.1007/978-3-030-18500-8_9')" type="button">&#128213; Published version</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/OR_2018.pdf')" type="button">&#128202; Slides</button>
   </li>
 </ul>
