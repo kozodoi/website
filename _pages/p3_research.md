@@ -44,27 +44,6 @@ permalink: /research/
 
 ## Publications
 
-### 2022
-
-<ul>
-  <li>
-  Kozodoi, N. (2022).
-  <dd><b>Machine Learning for Credit Risk Analytics.</b></dd>
-  <dd>Doctoral Dissertation at HU Berlin.</dd>
-  </li>
-</ul>
-<ul class="no-bullets">
-  <span id="dots7"></span>
-  <li><span id="abs7"><p></p><b>Abstract:</b> The rise of machine learning (ML) and the rapid digitization of the economy has substantially changed decision processes in the financial industry. Financial institutions increasingly rely on ML to support decision-making. Credit scoring is one of the prominent ML applications in finance. The task of credit scoring is to distinguish between applicants who will pay back the loan or default. Financial institutions use ML to develop scoring models to estimate a borrower's probability of default and automate approval decisions. This dissertation focuses on three major challenges associated with building ML-based scorecards in consumer credit scoring: (i) optimizing data acquisition and storage costs when dealing with high-dimensional data of loan applicants; (ii) addressing the adverse effects of sampling bias on training and evaluation of scoring models; (iii) measuring and ensuring the scorecard fairness while maintaining high profitability. The thesis offers a set of tools to remedy each of these challenges and improve decision-making practices in financial institutions. First, we develop feature selection strategies that optimize multiple business-inspired objectives. Our propositions reduce data acquisition costs and improve model profitability and interpretability. Second, the thesis illustrates the adverse effects of sampling bias on model training and evaluation and suggests novel bias correction frameworks. The proposed methods partly recover the loss due to bias, provide more reliable estimates of the future scorecard performance and increase the resulting model profitability. Third, the thesis investigates fair ML practices in consumer credit scoring. We catalog algorithmic options for incorporating fairness goals in the model development pipeline and perform empirical experiments to clarify the profit-fairness trade-off in lending decisions and identify suitable options to implement fair credit scoring and measure the scorecard fairness.</span></li>
-  <li>
-    <button class="btn" onclick="show_abstract_7()" id="b7">&#128220; Abstract</button>
-    <button class="btn" onclick="window.open('https://edoc.hu-berlin.de/bitstream/handle/18452/25386/dissertation_kozodoi_nikita.pdf?sequence=5')" type="button">&#128214; PDF</button>
-    <button class="btn" onclick="window.open('https://edoc.hu-berlin.de/handle/18452/25386')" type="button">&#128213; Published version</button>
-  </li>
-</ul>
-<p></p>
-
-
 ### 2021
 
 <ul>
