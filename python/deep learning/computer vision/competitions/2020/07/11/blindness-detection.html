@@ -18,7 +18,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-11T00:00:00-05:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html"},"author":{"@type":"Person","name":"Nikita Kozodoi"},"image":"https://kozodoi.me/images/posts/retina.png","description":"Using CNNs to detect diabetic retinopathy in retina photos","@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html","headline":"Detecting Blindness with Deep Learning","dateModified":"2020-07-11T00:00:00-05:00","datePublished":"2020-07-11T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Using CNNs to detect diabetic retinopathy in retina photos","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html"},"@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html","headline":"Detecting Blindness with Deep Learning","dateModified":"2020-07-11T00:00:00-05:00","datePublished":"2020-07-11T00:00:00-05:00","image":"https://kozodoi.me/images/posts/retina.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -50,7 +50,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-07-11T00:00:00-05:00" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html"},"author":{"@type":"Person","name":"Nikita Kozodoi"},"image":"https://kozodoi.me/images/posts/retina.png","description":"Using CNNs to detect diabetic retinopathy in retina photos","@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html","headline":"Detecting Blindness with Deep Learning","dateModified":"2020-07-11T00:00:00-05:00","datePublished":"2020-07-11T00:00:00-05:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Using CNNs to detect diabetic retinopathy in retina photos","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html"},"@type":"BlogPosting","url":"https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html","headline":"Detecting Blindness with Deep Learning","dateModified":"2020-07-11T00:00:00-05:00","datePublished":"2020-07-11T00:00:00-05:00","image":"https://kozodoi.me/images/posts/retina.png","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -207,7 +207,7 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 20.10.2021</em></p>
+<p><em>Last update: 09.06.2022</em></p>
 
 </div>
 </div>
@@ -1242,7 +1242,7 @@ Name: diagnosis, dtype: float64
     <span class="n">val_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
 
     <span class="c1"># placeholders</span>
-    <span class="n">fold_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">data_valid</span><span class="p">),</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">fold_preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">),</span> <span class="mi">5</span><span class="p">))</span>
 
 
     <span class="c1">##### TRAINING</span>
@@ -1305,12 +1305,12 @@ Name: diagnosis, dtype: float64
 
     <span class="c1"># evaluate performance</span>
     <span class="n">fold_preds_round</span> <span class="o">=</span> <span class="n">fold_preds</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">val_kappa</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">cohen_kappa_score</span><span class="p">(</span><span class="n">data_valid</span><span class="p">[</span><span class="s1">'diagnosis'</span><span class="p">],</span> <span class="n">fold_preds_round</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">),</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">'quadratic'</span><span class="p">)</span>
+    <span class="n">val_kappa</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">cohen_kappa_score</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">'diagnosis'</span><span class="p">],</span> <span class="n">fold_preds_round</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">),</span> <span class="n">weights</span> <span class="o">=</span> <span class="s1">'quadratic'</span><span class="p">)</span>
 
     <span class="c1"># save perfoirmance values</span>
     <span class="n">val_kappas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_kappa</span><span class="p">)</span>
-    <span class="n">val_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_valid</span><span class="p">))</span>
-    <span class="n">trn_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trn_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="p">))</span>
+    <span class="n">val_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+    <span class="n">trn_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trn_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">))</span>
 
 
     <span class="c1">##### EARLY STOPPING</span>
@@ -1318,7 +1318,7 @@ Name: diagnosis, dtype: float64
     <span class="c1"># display info</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'- epoch </span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1"> | lr = </span><span class="si">{}</span><span class="s1"> | trn_loss = </span><span class="si">{:.4f}</span><span class="s1"> | val_loss = </span><span class="si">{:.4f}</span><span class="s1"> | val_kappa = </span><span class="si">{:.4f}</span><span class="s1"> | </span><span class="si">{:.2f}</span><span class="s1"> min'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_epochs</span><span class="p">,</span> <span class="n">scheduler</span><span class="o">.</span><span class="n">get_lr</span><span class="p">()[</span><span class="nb">len</span><span class="p">(</span><span class="n">scheduler</span><span class="o">.</span><span class="n">get_lr</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span>
-        <span class="n">trn_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_train</span><span class="p">),</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_valid</span><span class="p">),</span> <span class="n">val_kappa</span><span class="p">,</span>
+        <span class="n">trn_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">),</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">),</span> <span class="n">val_kappa</span><span class="p">,</span>
         <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">epoch_start</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">))</span>
 
     <span class="c1"># check if there is any improvement</span>
