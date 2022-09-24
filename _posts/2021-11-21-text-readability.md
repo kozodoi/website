@@ -17,7 +17,7 @@ layout: notebook
 <h1 id="1.-Overview">1. Overview<a class="anchor-link" href="#1.-Overview"> </a></h1>
 
 <p>Estimating text complexity and readability is a crucial task for teachers. Offering students text passages at the right level of challenge is important for facilitating a fast development of reading skills. The existing tools to estimate readability rely on weak proxies and heuristics. Deep learning may help to improve the accuracy of the used text complexity scores.</p>
-<p>This blog post overviews <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> that estimates reading complexity of a custom text with deep learning. The app relies on transformer models that are part of my top-9% solution to the <a href="https://www.kaggle.com/c/commonlitreadabilityprize">CommonLit Readability Prize</a> Kaggle competition. The app is built in Python and deployed in Streamlit. The blog post provides a demo of the app and includes a summary of the modeling pipeline and the app implementation. </p>
+<p>This blog post overviews <a href="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/">an interactive web app</a> that estimates reading complexity of a custom text with deep learning. The app relies on transformer models that are part of my top-9% solution to the <a href="https://www.kaggle.com/c/commonlitreadabilityprize">CommonLit Readability Prize</a> Kaggle competition. The app is built in Python and deployed in Streamlit. The blog post provides a demo of the app and includes a summary of the modeling pipeline and the app implementation. </p>
 </div>
 </div>
 </div>
@@ -26,12 +26,12 @@ layout: notebook
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="2.-App-demo">2. App demo<a class="anchor-link" href="#2.-App-demo"></a></h1>
-<p>You can open the app in a new browser tab by clicking on <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">this link</a>. Alternatively, just scroll down to see the app embedded in this blog post. Feel free to play around with the app by typing or pasting custom texts and estimating their complexity with different models! Scroll further down to read some details on the app and the underlying models.</p>
+<p>You can open the app in a new browser tab by clicking on <a href="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/">this link</a>. Alternatively, just scroll down to see the app embedded in this blog post. Feel free to play around with the app by typing or pasting custom texts and estimating their complexity with different models! Scroll further down to read some details on the app and the underlying models.</p>
 </div>
 </div>
 </div>
 
-<iframe src="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py"
+<iframe src="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/"
     			border="0"
           width="100%"
           frameborder="1"

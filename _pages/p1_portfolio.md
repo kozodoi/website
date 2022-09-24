@@ -70,13 +70,13 @@ image: ../images/menu/photo_portfolio.jpg
   <h3> Summary </h3>
   <p> Estimating text reading complexity is a crucial task for school teachers. Offering students text passages at the right level of challenge is important for facilitating a fast development of reading skills. The existing tools to estimate text complexity rely on weak proxies and heuristics, which results in a suboptimal accuracy. In this project, I use deep learning to predict the readability scores of text passages. </p>
   <p> My solution implements eight transformer models, including BERT, RoBERTa and others in PyTorch. The models feature a custom regression head that uses a concatenated output of multiple hidden layers. The modeling pipeline includes text augmentations such as sentence order shuffle, backtranslation and injecting target noise. The solution places in the top-9% of the Kaggle competition leaderboard. </p>
-  <p> The project also includes <a href="https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transformer models. The code and documentation are available <a href="https://github.com/kozodoi/Text_Readability_Prediction">on GitHub</a>. </p>
+  <p> The project also includes <a href="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transformer models. The code and documentation are available <a href="https://github.com/kozodoi/Text_Readability_Prediction">on GitHub</a>. </p>
   <img src="https://kozodoi.me/images/portfolio/gif_books.gif" alt="Notebook" style="width:100%">
   </span>
 
   <button class="btn" onclick="read_more_1()" id="myBtn1">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
-  <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/text_readability_prediction/main/web_app.py')" type="button">&#128202; Web app</button>
+  <button class="btn" onclick="window.open('https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/')" type="button">&#128202; Web app</button>
   <button class="btn" onclick="window.open('https://kozodoi.me/deep%20learning/natural%20language%20processing/web%20app/2021/11/21/text-readability.html')" type="button">&#128203; Blog post</button>
 
 </div>
@@ -193,7 +193,7 @@ Want to see more? Check out my further ML and DL projects grouped by application
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/Pet_Pawpularity')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://share.streamlit.io/kozodoi/pet_pawpularity/main/web_app.py')" type="button">&#128202; Web app</button>
+      <button class="btn" onclick="window.open('https://kozodoi-pet-pawpularity-web-app-kvzxqr.streamlitapp.com')" type="button">&#128202; Web app</button>
     </div>
 
     <br>
