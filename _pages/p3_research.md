@@ -44,6 +44,26 @@ permalink: /research/
 
 ## Publications
 
+### 2022
+
+<ul>
+  <li>
+  Kozodoi, N. (2022).
+  <dd><b>Machine Learning for Credit Risk Analytics</b></dd>
+  <dd>PhD Thesis. Humboldt University of Berlin.</dd>
+  </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots7"></span>
+  <li><span id="abs7"><p></p><b>Abstract:</b> The rise of machine learning (ML) and the rapid digitization of the economy has substantially changed decision processes in the financial industry. Financial institutions increasingly rely on ML to support decision-making. Credit scoring is one of the prominent ML applications in finance. The task of credit scoring is to distinguish between applicants who will pay back the loan or default. Financial institutions use ML to develop scoring models to estimate a borrower's probability of default and automate approval decisions. This dissertation focuses on three major challenges associated with building ML-based scorecards in consumer credit scoring: (i) optimizing data acquisition and storage costs when dealing with high-dimensional data of loan applicants; (ii) addressing the adverse effects of sampling bias on training and evaluation of scoring models; (iii) measuring and ensuring the scorecard fairness while maintaining high profitability. The thesis offers a set of tools to remedy each of these challenges and improve decision-making practices in financial institutions. </span></li>
+  <li>
+    <button class="btn" onclick="show_abstract_7()" id="b7">&#128220; Abstract</button>
+    <button class="btn" onclick="window.open('https://edoc.hu-berlin.de/handle/18452/25386?locale-attribute=en')" type="button">&#128214; PDF</button>
+  </li>
+</ul>
+<p></p>
+
+
 ### 2021
 
 <ul>
