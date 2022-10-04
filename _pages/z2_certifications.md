@@ -24,12 +24,13 @@ permalink: /certifications/
 
 <div style="font-size: 100%;">
 
-  <p>This page overviews my certifications including:</p>
+  <p>This page overviews my certifications and courses:</p>
 
   <ul style="margin-top: -10px;">
-  <li> &#129302; <a href="#PART_1">ML courses </a></li>
-  <li> &#128187; <a href="#PART_2">Coding courses </a></li>
-  <li> &#128190; <a href="#PART_3">Databases courses </a></li>
+  <li> &#9729; <a href="#PART_0">Cloud services </a></li>
+  <li> &#129302; <a href="#PART_1">Machine learning </a></li>
+  <li> &#128187; <a href="#PART_2">Coding </a></li>
+  <li> &#128190; <a href="#PART_3">Databases </a></li>
   </ul>
 
 </div>
@@ -41,9 +42,9 @@ permalink: /certifications/
 <hr style="height:1px; visibility:hidden;" />
 <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
-<a id="PART_1"></a>
+<a id="PART_0"></a>
 
-## Machine Learning
+## Cloud services
 
 <ul>
     <li>
@@ -60,6 +61,29 @@ permalink: /certifications/
   </li>
 </ul>
 <p></p>
+
+<ul>
+    <li>
+    <b>AWS Certified Cloud Practitioner</b>
+    <dd><bb>Amazon Web Services</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots8"></span>
+  <li><span id="abs8"><p></p><b>Summary:</b> Gained a fundamental understanding of IT services and their uses in the AWS Cloud. Demonstrated cloud fluency and foundational AWS knowledge. Learned to identify essential AWS services necessary to set up AWS-focused projects. </span></li>
+  <li>
+    <button class="btn" onclick="show_summary_8()" id="b8">&#128220; Summary</button>
+    <button class="btn" onclick="window.open('https://www.credly.com/badges/31f6241b-d2ee-448f-8bb8-326a0ff5a85a/public_url')" type="button">&#127891; Certificate</button>
+  </li>
+</ul>
+<p></p>
+
+
+<!----------------------------------------------------------------------------->
+
+<a id="PART_1"></a>
+
+## Machine Learning
 
 <ul>
     <li>
