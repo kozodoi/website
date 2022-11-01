@@ -26,7 +26,7 @@ Hi! I am an applied ML scientist working on the frontier of research and busines
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
-This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. It also includes other sections featuring my work:
+This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. All opinions published here are my own. It also includes other sections featuring my work:
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
