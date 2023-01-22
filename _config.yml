@@ -39,11 +39,11 @@ baseurl: "" # the subpath of your site, e.g. "/blog".
 # Github and twitter are optional:
 minima:
   social_links:
-    linkedin: kozodoi
-    github: kozodoi
-    twitter: n_kozodoi
-    instagram: n_kozodoi
-    facebook: n.kozodoi
+    linkedin: "https://www.linkedin.com/in/kozodoi/"
+    github: "https://github.com/kozodoi"
+    twitter: "https://twitter.com/n_kozodoi"
+    instagram: "https://www.instagram.com/n_kozodoi/"
+    facebook: "https://www.facebook.com/n.kozodoi/"
 
 
 # Set this to true to get LaTeX math equation support
