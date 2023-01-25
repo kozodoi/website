@@ -64,6 +64,38 @@ permalink: /certifications/
 
 <ul>
     <li>
+    <b>AWS Certified Developer - Associate</b>
+    <dd><bb>Amazon Web Services</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots9"></span>
+  <li><span id="abs9"><p></p><b>Summary:</b> Showed a comprehensive understanding of application life-cycle management. Demonstrated proficiency in deploying with a CI/CD pipeline and using containers. Showed ability to develop, deploy and debug cloud-based applications that follow AWS best practices. </span></li>
+  <li>
+    <button class="btn" onclick="show_summary_9()" id="b9">&#128220; Summary</button>
+    <button class="btn" onclick="window.open('https://www.credly.com/badges/2e706051-29ae-4ae5-9d38-3ab13caa3adc/public_url')" type="button">&#127891; Certificate</button>
+  </li>
+</ul>
+<p></p>
+
+<ul>
+    <li>
+    <b>AWS Certified Solutions Architect - Associate</b>
+    <dd><bb>Amazon Web Services</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots10"></span>
+  <li><span id="abs10"><p></p><b>Summary:</b> Gained a comprehensive understanding of AWS services and technologies. Demonstrated the ability to design well-architected cloud solutions that are scalable, secure, resilient, efficient and fault-tolerant. </span></li>
+  <li>
+    <button class="btn" onclick="show_summary_10()" id="b10">&#128220; Summary</button>
+    <button class="btn" onclick="window.open('https://www.credly.com/badges/5a65e104-74b5-4dc9-95c6-f961bec2c067/public_url')" type="button">&#127891; Certificate</button>
+  </li>
+</ul>
+<p></p>
+
+<ul>
+    <li>
     <b>AWS Certified Cloud Practitioner</b>
     <dd><bb>Amazon Web Services</bb></dd>
     </li>

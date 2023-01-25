@@ -141,3 +141,35 @@ function show_summary_9() {
     moreText.style.display = "inline";
   }
 }
+
+function show_summary_10() {
+  var dots = document.getElementById("dots10");
+  var moreText = document.getElementById("abs10");
+  var btnText = document.getElementById("b10");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "&#128220; Summary";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "&#128220; Hide summary";
+    moreText.style.display = "inline";
+  }
+}
+
+function show_summary_11() {
+  var dots = document.getElementById("dots11");
+  var moreText = document.getElementById("abs11");
+  var btnText = document.getElementById("b11");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "&#128220; Summary";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "&#128220; Hide summary";
+    moreText.style.display = "inline";
+  }
+}
