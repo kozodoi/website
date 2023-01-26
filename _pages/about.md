@@ -22,7 +22,7 @@ permalink: /about/
 <!----------------------------------------------------------------------------->
 ## About
 
-Hi! I am an applied ML scientist working on the frontier of research and business. With Ph.D. in ML and certified AWS knowledge, practical experience in diverse ML/DL areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. Currently, I work at AWS, where I develop cutting-edge ML solutions to solve diverse business problems across industries.
+Hi! I am Applied ML Scientist working on the frontier of research and business. With PhD in ML, certified AWS expertise, practical experience in diverse ML areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. Currently, I work at AWS, where I design and build cutting-edge ML solutions to solve diverse business problems across industries.
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
@@ -31,7 +31,7 @@ This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutoria
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
 - &#128218; [my ML publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
-- &#128483; [my public talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
+- &#128483; [my tech talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
 - &#128421; [my certifications](https://kozodoi.me/certifications/) with links to certificates and completed courses
 - &#127891; [my teaching experience](https://kozodoi.me/teaching/) at the Humboldt University of Berlin
 
