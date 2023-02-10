@@ -22,11 +22,11 @@ permalink: /about/
 <!----------------------------------------------------------------------------->
 ## About
 
-Hi! I am Applied ML Scientist working on the frontier of research and business. With PhD in ML, certified AWS expertise, practical experience in diverse ML areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. Currently, I work at AWS, where I design and build cutting-edge ML solutions to solve diverse business problems across industries.
+Hi! I am Applied ML Scientist working on the frontier of research and business. With PhD in ML, certified AWS expertise, practical experience in diverse ML areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. In my working time, I design and build cutting-edge ML solutions to solve diverse business problems across industries.
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
-This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. All opinions published here are my own. It also includes other sections featuring my work:
+This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. All opinions published here are my own. The website includes different sections featuring my work:
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
