@@ -22,7 +22,11 @@ permalink: /kaggle/
 <!----------------------------------------------------------------------------->
 ## Overall rank
 
-I am in the top-1% Kaggle users in Competitions, Notebooks, Datasets and Discussion. My current ranks and medals are displayed in the badges below. Scroll down for more details on the competitions and notebooks.
+I am in the top-1% Kaggle users in Competitions, Notebooks, Datasets and Discussion. My highest user ranks are:
+- &#127942; **Competitions**: 293 (Master)
+- &#128202; **Notebooks**: 330 (Expert)
+- &#128193; **Datasets**: 75 (Expert)
+- &#128483; **Discussion**: 194 (Expert)
 
 <div class="social-links" align = "left">
 <ul class = "badge-list">
