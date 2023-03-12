@@ -6,17 +6,7 @@
   <div class="footer-col-wrapper">
 
     <div class="footer-col">
-      <p class="feed-subscribe">
-        <a href="/feed.xml">
-          <svg class="svg-icon orange">
-            <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
-          </svg><span>RSS feed</span>
-        </a>
-      </p>
-    </div>
-
-    <div class="footer-col">
-      <p><center>Blog on ML, AI & other acronyms. Opinions are my own.</center></p>
+      <p><center>Blog on ML, AI & other acronyms. All opinions are my own.</center></p>
     </div>
 
     <div class="footer-col">
@@ -27,10 +17,9 @@
 
   <div class="social-links">
     <ul class="social-media-list">
-      <li><a rel="me" href="https://www.linkedin.com/in/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg></a></li>
-      <li><a rel="me" href="https://github.com/kozodoi" title="kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li>
-      <li><a rel="me" href="https://twitter.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
-      <li><a rel="me" href="https://www.instagram.com/n_kozodoi" title="n_kozodoi"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#instagram"></use></svg></a></li>
+      {%- for entry in site.minima.social_links -%}
+        {%- include social-item.html item = entry -%}
+      {%- endfor -%}
     </ul>
   </div>
 
