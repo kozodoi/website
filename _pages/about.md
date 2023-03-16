@@ -22,7 +22,7 @@ permalink: /about/
 <!----------------------------------------------------------------------------->
 ## About
 
-Hi! I am Applied ML Scientist working on the frontier of research and business. With PhD in ML, certified AWS expertise, practical experience in diverse ML areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. In my working time, I design and build cutting-edge ML solutions to solve diverse business problems across industries.
+Hi! I am Applied ML Scientist working on the frontier of research and business. With PhD in ML, certified AWS expertise, practical experience in diverse ML areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. Currently, I work at AWS, where I design and build cutting-edge ML solutions to solve diverse business problems across industries.
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
@@ -30,7 +30,7 @@ This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutoria
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
-- &#128218; [my ML publications](https://kozodoi.me/research/) with paper abstracts and full-text PDFs
+- &#128218; [my ML publications](https://kozodoi.me/papers/) with paper abstracts and full-text PDFs
 - &#128483; [my tech talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
 - &#128421; [my certifications](https://kozodoi.me/certifications/) with links to certificates and completed courses
 - &#127891; [my teaching experience](https://kozodoi.me/teaching/) at the Humboldt University of Berlin
@@ -58,7 +58,6 @@ I am also happy to connect on different social and professional platforms. Click
     <li><a href="https://www.twitter.com/n_kozodoi"><img src="https://img.shields.io/badge/-Twitter-4B9AE5?style=flat&logo=Twitter&logoColor=white&link=https://www.twitter.com/n_kozodoi"/></a></li>
     <li><a href="https://www.kaggle.com/kozodoi"><img src="https://img.shields.io/badge/-Kaggle-5DB0DB?style=flat&logo=Kaggle&logoColor=white&link=https://www.kaggle.com/kozodoi"/></a></li>
     <li><a href="https://www.github.com/kozodoi"><img src="https://img.shields.io/badge/-GitHub-2F2F2F?style=flat&logo=github&logoColor=white&link=https://www.github.com/kozodoi"/></a></li>
-    <li><a href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en"><img src="https://img.shields.io/badge/-Google_Scholar-676767?style=flat&logo=google-scholar&logoColor=white&link=https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en"/></a>  </li>
-    <li><a href="https://www.researchgate.net/profile/Nikita_Kozodoi"><img src="https://img.shields.io/badge/-ResearchGate-59C3B5?style=flat&logo=researchgate&logoColor=white&link=https://www.researchgate.net/profile/Nikita_Kozodoi"/></a></li>
+    <li><a href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en"><img src="https://img.shields.io/badge/-Google_Scholar-676767?style=flat&logo=google-scholar&logoColor=white&link=https://scholar.google.com/citations?user=58tMuD0AAAAJ&amp;hl=en"/></a></li>
   </ul>
 </div>
