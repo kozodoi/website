@@ -70,14 +70,14 @@ image: ../images/menu/photo_portfolio.jpg
   <h3> Summary </h3>
   <p> Estimating text reading complexity is a crucial task for school teachers. Offering students text passages at the right level of challenge is important for facilitating a fast development of reading skills. The existing tools to estimate text complexity rely on weak proxies and heuristics, which results in a suboptimal accuracy. In this project, I use deep learning to predict the readability scores of text passages. </p>
   <p> My solution implements eight transformer models, including BERT, RoBERTa and others in PyTorch. The models feature a custom regression head that uses a concatenated output of multiple hidden layers. The modeling pipeline includes text augmentations such as sentence order shuffle, backtranslation and injecting target noise. The solution places in the top-9% of the Kaggle competition leaderboard. </p>
-  <p> The project also includes <a href="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transformer models. The code and documentation are available <a href="https://github.com/kozodoi/Text_Readability_Prediction">on GitHub</a>. </p>
+  <p> The project also includes <a href="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlit.app">an interactive web app</a> built in Python. The app allows to estimate reading complexity of a custom text using two of the trained transformer models. The code and documentation are available <a href="https://github.com/kozodoi/Text_Readability_Prediction">on GitHub</a>. </p>
   <img src="https://kozodoi.me/images/portfolio/gif_books.gif" alt="Notebook" style="width:100%">
   </span>
 
-  <button class="btn" onclick="read_more_1()" id="myBtn1">&#128220; Read more</button>
+  <button class="btn" onclick="read_more(dots_id='dots1', mor_id='more1', btn_id='btn1')" id="btn1">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Kaggle_Readability')" type="button">&#128187; GitHub repo</button>
-  <button class="btn" onclick="window.open('https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlitapp.com/')" type="button">&#128202; Web app</button>
-  <button class="btn" onclick="window.open('https://kozodoi.me/deep%20learning/natural%20language%20processing/web%20app/2021/11/21/text-readability.html')" type="button">&#128203; Blog post</button>
+  <button class="btn" onclick="window.open('https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlit.app')" type="button">&#128202; Web app</button>
+  <button class="btn" onclick="window.open('https://kozodoi.me/blog/20211121/text-readability')" type="button">&#128203; Blog post</button>
 
 </div>
 
@@ -115,7 +115,7 @@ image: ../images/menu/photo_portfolio.jpg
   <p>My solution is an ensemble of CNN-LSTM Encoder-Decoder models implemented in PyTorch.The solution reaches the test score of 1.31 Levenstein Distance and places in the top-5% of the competition leaderboard. The code is documented and published on <a href="https://github.com/kozodoi/BMS_Molecular_Translation">GitHub</a>.</p>
   </span>
 
-  <button class="btn" onclick="read_more_3()" id="myBtn3">&#128220; Read more</button>
+  <button class="btn" onclick="read_more(dots_id='dots3', mor_id='more3', btn_id='btn3')" id="btn3">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/BMS_Molecular_Translation')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://www.kaggle.com/c/bms-molecular-translation/discussion/243845')" type="button">&#128214; Writeup on Kaggle</button>
 
@@ -161,7 +161,7 @@ image: ../images/menu/photo_portfolio.jpg
   <img src="https://i.postimg.cc/5yB7y21M/fair-gif.gif" alt="Notebook" style="width:100%">
   </span>
 
-  <button class="btn" onclick="read_more_2()" id="myBtn2">&#128220; Read more</button>
+  <button class="btn" onclick="read_more(dots_id='dots2', mor_id='more2', btn_id='btn2')" id="btn2">&#128220; Read more</button>
   <button class="btn" onclick="window.open('https://github.com/kozodoi/Fair_Credit_Scoring')" type="button">&#128187; GitHub repo</button>
   <button class="btn" onclick="window.open('https://arxiv.org/abs/2103.01907')" type="button">&#128213; Paper</button>
 
@@ -175,7 +175,7 @@ image: ../images/menu/photo_portfolio.jpg
 
 <h1> Further projects </h1>
 
-Want to see more? Check out my further ML and DL projects grouped by application areas below. You can also visit my <a href="https://github.com/kozodoi">GitHub</a> profile, read my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/research/">academic publications</a>.
+Want to see more? Check out my further ML and DL projects grouped by application areas below. You can also visit my <a href="https://github.com/kozodoi">GitHub</a> profile, read my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/papers/">academic publications</a>.
 
 <div>
   <button class="project_accordion">Computer vision</button>
@@ -193,7 +193,7 @@ Want to see more? Check out my further ML and DL projects grouped by application
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/Pet_Pawpularity')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://kozodoi-pet-pawpularity-web-app-kvzxqr.streamlitapp.com')" type="button">&#128202; Web app</button>
+      <button class="btn" onclick="window.open('https://kozodoi-pet-pawpularity-web-app-kvzxqr.streamlit.app')" type="button">&#128202; Web app</button>
     </div>
 
     <br>
@@ -244,7 +244,7 @@ Want to see more? Check out my further ML and DL projects grouped by application
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://kozodoi.me/python/deep%20learning/computer%20vision/competitions/2020/07/11/blindness-detection.html')" type="button">&#128203; Blog post</button>
+      <button class="btn" onclick="window.open('https://kozodoi.me/blog/20200711/blindness-detection')" type="button">&#128203; Blog post</button>
       <button class="btn" onclick="window.open('https://github.com/kozodoi/Udacity_Blindness_Detection/raw/master/report.pdf')" type="button">&#128214; Detailed report</button>
     </div>
 
@@ -271,7 +271,7 @@ Want to see more? Check out my further ML and DL projects grouped by application
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/DMC_2020')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://kozodoi.me/python/time%20series/demand%20forecasting/competitions/2020/07/27/demand-forecasting.html')" type="button">&#128203; Blog post</button>
+      <button class="btn" onclick="window.open('https://kozodoi.me/blog/20200727/demand-forecasting')" type="button">&#128203; Blog post</button>
 
 
     </div>
@@ -315,7 +315,7 @@ Want to see more? Check out my further ML and DL projects grouped by application
       </ul></p>
 
       <button class="btn" onclick="window.open('https://github.com/kozodoi/fairness')" type="button">&#128187; GitHub repo</button>
-      <button class="btn" onclick="window.open('https://kozodoi.me/r/fairness/packages/2020/05/01/fairness-tutorial.html')" type="button">&#128203; Blog post</button>
+      <button class="btn" onclick="window.open('https://kozodoi.me/blog/20200501/fairness-tutorial')" type="button">&#128203; Blog post</button>
 
     </div>
 
