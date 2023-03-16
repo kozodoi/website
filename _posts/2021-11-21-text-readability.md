@@ -9,6 +9,7 @@ categories: [deep learning, natural language processing, web app]
 image: images/posts/readability.png
 cover: images/portfolio/fig_books.jpg
 layout: notebook
+permalink: /blog/:year:month:day/text-readability
 ---
 
 <div class="cell border-box-sizing text_cell rendered">
@@ -31,7 +32,7 @@ layout: notebook
 </div>
 </div>
 
-<iframe src="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlit.app/?embed=true"
+<iframe src="https://kozodoi-text-readability-prediction-web-app-ddrfmw.streamlit.app/?embed=true" 
     	border="0"
         width="100%"
         frameborder="1"
