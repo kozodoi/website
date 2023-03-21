@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://kozodoi.me/images/menu/photo_blog.jpg" />
 <link rel="next" href="https://kozodoi.me/page2/" />
 <script type="application/ld+json">
-{"description":"Blog on ML, AI and other cool acronyms","@type":"WebSite","headline":"Nikita Kozodoi","url":"https://kozodoi.me/","name":"Nikita Kozodoi","image":"https://kozodoi.me/images/menu/photo_blog.jpg","@context":"https://schema.org"}</script>
+{"description":"Blog on ML, AI and other cool acronyms","@type":"WebSite","url":"https://kozodoi.me/","name":"Nikita Kozodoi","headline":"Nikita Kozodoi","image":"https://kozodoi.me/images/menu/photo_blog.jpg","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://kozodoi.me/images/menu/photo_blog.jpg" />
 <link rel="next" href="https://kozodoi.me/page2/" />
 <script type="application/ld+json">
-{"description":"Blog on ML, AI and other cool acronyms","@type":"WebSite","headline":"Nikita Kozodoi","url":"https://kozodoi.me/","name":"Nikita Kozodoi","image":"https://kozodoi.me/images/menu/photo_blog.jpg","@context":"https://schema.org"}</script>
+{"description":"Blog on ML, AI and other cool acronyms","@type":"WebSite","url":"https://kozodoi.me/","name":"Nikita Kozodoi","headline":"Nikita Kozodoi","image":"https://kozodoi.me/images/menu/photo_blog.jpg","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -140,24 +140,17 @@ window.onload = wrap_img;
 </label></p>
 
 
-  
-
-  <!-- Hide posts if front matter flag hide:true -->
+  <!-- Paginate settings -->
   
   
-
-  <!-- Sort posts by rank, then date -->
+  <!-- Find sticky posts -->
   
   
   
 
-
-  
-
-   <!-- Assemble final sorted posts array -->
-  
-  <ul class="post-list"><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/knn_scratch.png" />
+  <!-- Sticky posts -->
+  <h2>Popular posts</h2><ul class="post-list"><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
+      <img class="image-preview " src="/images/posts/knn_scratch.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
       </div><div class="col-11 d-table-cell p-3 h-align-left">
         <h3>
           <a class="post-link" href="/blog/20230319/knn-from-scratch">
@@ -176,7 +169,7 @@ window.onload = wrap_img;
       </div>
   </div>
 </li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/lr.png" />
+      <img class="image-preview " src="/images/posts/lr.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
       </div><div class="col-11 d-table-cell p-3 h-align-left">
         <h3>
           <a class="post-link" href="/blog/20220329/discriminative-lr">
@@ -195,7 +188,64 @@ window.onload = wrap_img;
       </div>
   </div>
 </li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/readability.png" />
+      <img class="image-preview " src="/images/posts/readability.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
+      </div><div class="col-11 d-table-cell p-3 h-align-left">
+        <h3>
+          <a class="post-link" href="/blog/20211121/text-readability">
+            Estimating Text Readability with Transformers
+          </a>
+        </h3>
+        <p class="post-meta-description">ML solution and web app for predicting reading complexity of your texts</p>
+        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
+          Nov 21, 2021
+          &middot;
+          
+          
+            7 min read
+          
+        </p>
+      </div>
+  </div>
+</li></ul><!-- Non-sticky posts --><h2>Recent posts</h2><ul class="post-list"><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
+      <img class="image-preview " src="/images/posts/knn_scratch.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
+      </div><div class="col-11 d-table-cell p-3 h-align-left">
+        <h3>
+          <a class="post-link" href="/blog/20230319/knn-from-scratch">
+            Implementing KNN from Scratch
+          </a>
+        </h3>
+        <p class="post-meta-description">Implementing K Nearest Neighbors in Python and NumPy</p>
+        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
+          Mar 19, 2023
+          &middot;
+          
+          
+            8 min read
+          
+        </p>
+      </div>
+  </div>
+</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
+      <img class="image-preview " src="/images/posts/lr.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
+      </div><div class="col-11 d-table-cell p-3 h-align-left">
+        <h3>
+          <a class="post-link" href="/blog/20220329/discriminative-lr">
+            Layer-Wise Learning Rate in PyTorch
+          </a>
+        </h3>
+        <p class="post-meta-description">Implementing discriminative learning rate across model layers</p>
+        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
+          Mar 29, 2022
+          &middot;
+          
+          
+            8 min read
+          
+        </p>
+      </div>
+  </div>
+</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
+      <img class="image-preview " src="/images/posts/readability.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
       </div><div class="col-11 d-table-cell p-3 h-align-left">
         <h3>
           <a class="post-link" href="/blog/20211121/text-readability">
@@ -214,7 +264,7 @@ window.onload = wrap_img;
       </div>
   </div>
 </li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/tta.png" />
+      <img class="image-preview " src="/images/posts/tta.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
       </div><div class="col-11 d-table-cell p-3 h-align-left">
         <h3>
           <a class="post-link" href="/blog/20210908/tta-tabular">
@@ -233,7 +283,7 @@ window.onload = wrap_img;
       </div>
   </div>
 </li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/extraction.png" />
+      <img class="image-preview " src="/images/posts/extraction.png" style = "margin-left:-10px; margin-top:-10px; margin-bottom:-10px; border: 2px solid #555;"/>
       </div><div class="col-11 d-table-cell p-3 h-align-left">
         <h3>
           <a class="post-link" href="/blog/20210527/extracting-features">
@@ -251,103 +301,7 @@ window.onload = wrap_img;
         </p>
       </div>
   </div>
-</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/neptune.png" />
-      </div><div class="col-11 d-table-cell p-3 h-align-left">
-        <h3>
-          <a class="post-link" href="/blog/20210430/tracking-experiments">
-            Tracking ML Experiments with Neptune.ai
-          </a>
-        </h3>
-        <p class="post-meta-description">Switching from spreadsheets to Neptune to improve model building</p>
-        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
-          Apr 30, 2021
-          &middot;
-          
-          
-            11 min read
-          
-        </p>
-      </div>
-  </div>
-</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/stats.png" />
-      </div><div class="col-11 d-table-cell p-3 h-align-left">
-        <h3>
-          <a class="post-link" href="/blog/20210308/compute-image-stats">
-            Computing Mean &amp; STD in Image Dataset
-          </a>
-        </h3>
-        <p class="post-meta-description">How to get channel-speicific mean and std in PyTorch</p>
-        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
-          Mar 8, 2021
-          &middot;
-          
-          
-            6 min read
-          
-        </p>
-      </div>
-  </div>
-</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/accumulation.png" />
-      </div><div class="col-11 d-table-cell p-3 h-align-left">
-        <h3>
-          <a class="post-link" href="/blog/20210219/gradient-accumulation">
-            Gradient Accumulation in PyTorch
-          </a>
-        </h3>
-        <p class="post-meta-description">Increasing batch size to overcome memory constraints</p>
-        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
-          Feb 19, 2021
-          &middot;
-          
-          
-            4 min read
-          
-        </p>
-      </div>
-  </div>
-</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/tpu.png" />
-      </div><div class="col-11 d-table-cell p-3 h-align-left">
-        <h3>
-          <a class="post-link" href="/blog/20201030/pytorch-xla-tpu">
-            Training PyTorch Models on TPU
-          </a>
-        </h3>
-        <p class="post-meta-description">Tutorial on using PyTorch/XLA 1.7 with TPUs</p>
-        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
-          Oct 30, 2020
-          &middot;
-          
-          
-            15 min read
-          
-        </p>
-      </div>
-  </div>
-</li><li><div class="Box box-shadow-medium rounded-1 col-15"><div class="col-3 d-table-cell p-4 v-align-middle">
-      <img class="image-preview " src="/images/posts/pretrain.png" />
-      </div><div class="col-11 d-table-cell p-3 h-align-left">
-        <h3>
-          <a class="post-link" href="/blog/20200830/pre-training">
-            Pre-Training with Surrogate Labels
-          </a>
-        </h3>
-        <p class="post-meta-description">Using the test sample to improve CNN performance</p>
-        <p class="post-meta" style = "font-size: 15px; color: var(--low-emph);">
-          Aug 30, 2020
-          &middot;
-          
-          
-            14 min read
-          
-        </p>
-      </div>
-  </div>
 </li></ul>
-
     
       <div class="pager">
         <ul class="pagination">
@@ -355,14 +309,11 @@ window.onload = wrap_img;
           <li><div class="current-page">1</div></li>
           <li><a href="/page2/" class="next-page">2</a></li>
         </ul>
-      </div><hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
-
+      </div><!-- Social media feeds -->
+  <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
   <div class="one_row">
-
     <div class="two_column">
-
       <h2>Twitter</h2>
-
       <div class = "tw">
         <a class             = "twitter-timeline"
            href              = "https://twitter.com/n_kozodoi"
@@ -373,13 +324,10 @@ window.onload = wrap_img;
            data-chrome       = "nofooter, noheader">
         </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
-
     </div>
 
     <div class="two_column">
-
       <h2>Instagram</h2>
-
       <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
       <script type="text/javascript">
       (function(){
@@ -392,9 +340,7 @@ window.onload = wrap_img;
   </div>
 
   <script src="/assets/js/mode_switcher.js"></script>
-
 </div>
-
       </div>
     </main><footer class="site-footer h-card">
 <data class="u-url" href="/"></data>
