@@ -6,39 +6,43 @@ layout: base
 
   {{ content | markdownify }}
 
+  <!-- Paginate settings -->
   {% if site.paginate %}
-    {% assign rawposts = paginator.posts %}
+    {% assign posts = paginator.posts %}
   {% else %}
-    {% assign rawposts = site.posts %}
+    {% assign posts = site.posts %}
   {% endif %}
-
-  <!-- Hide posts if front matter flag hide:true -->
-  {% assign posts = ''|split:'' %}
-  {% for post in rawposts %}
-    {% if post.hide != true %}
-      {% assign posts = posts|push:post%}
-    {% endif %}
-  {% endfor %}
-
-  <!-- Sort posts by rank, then date -->
-  {% assign grouped_posts = posts | group_by: "sticky_rank" | sort: "name", "last" %}
-  {% assign sticky_posts = ''|split:'' %}
-  {% assign non_sticky_posts = '' | split:'' %}
-
-
-  {% for gp in grouped_posts %}
-    {%- if gp.name == "" -%}
-      {% assign non_sticky_posts = gp.items | sort: "date" | reverse %}
-    {%- else %}
-      {% assign sticky_posts = sticky_posts | concat: gp.items %}
-    {%- endif -%}
-  {% endfor %}
-
-   <!-- Assemble final sorted posts array -->
+  
+  <!-- Find sticky posts -->
+  {% assign sticky_posts = site.posts %}
   {% assign sticky_posts = sticky_posts | sort: "sticky_rank", "last" %}
-  {% assign posts = sticky_posts | concat: non_sticky_posts %}
+  {% assign sticky_posts = sticky_posts | slice: 0, 3 %}
 
+  <!-- Sticky posts -->
+  {% if site.paginate and paginator.page == 1 %}
+    {%- if sticky_posts.size > 0 -%}
+      <h2>Popular posts</h2>
+      {%- if page.list_title -%}
+        <h2 class="post-list-heading">{{ page.list_title }}</h2>
+      {%- endif -%}
+      <ul class="post-list">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {%- for post in sticky_posts -%}
+        <li>
+          {%- if site.show_image -%}
+              {%- include post_list_image_card.html -%}
+          {% else %}
+              {%- include post_list.html -%}
+          {%- endif -%}
+        </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {%- endif -%}
+
+  <!-- Non-sticky posts -->
   {%- if posts.size > 0 -%}
+    <h2>Recent posts</h2>
     {%- if page.list_title -%}
       <h2 class="post-list-heading">{{ page.list_title }}</h2>
     {%- endif -%}
@@ -54,7 +58,6 @@ layout: base
       </li>
       {%- endfor -%}
     </ul>
-
     {% if site.paginate and site.posts.size > site.paginate %}
       <div class="pager">
         <ul class="pagination">
@@ -72,17 +75,13 @@ layout: base
         </ul>
       </div>
     {%- endif %}
-
   {%- endif -%}
 
+  <!-- Social media feeds -->
   <hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
-
   <div class="one_row">
-
     <div class="two_column">
-
       <h2>Twitter</h2>
-
       <div class = "tw">
         <a class             = "twitter-timeline"
            href              = "https://twitter.com/n_kozodoi"
@@ -93,13 +92,10 @@ layout: base
            data-chrome       = "nofooter, noheader">
         </a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
-
     </div>
 
     <div class="two_column">
-
       <h2>Instagram</h2>
-
       <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
       <script type="text/javascript">
       (function(){
@@ -112,5 +108,4 @@ layout: base
   </div>
 
   <script src="/assets/js/mode_switcher.js"></script>
-
 </div>
