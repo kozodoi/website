@@ -57,9 +57,6 @@ show_image: true
 # Set this to true to display tags on each post
 show_tags: true
 
-# Add your Google Analytics ID here if you have one and want to use it
-google_analytics: G-303PJS70LR
-
 exclude:
   - docker-compose.yml
   - action.yml
