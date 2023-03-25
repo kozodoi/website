@@ -21,16 +21,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Implementing discriminative learning rate across model layers" />
 <meta property="og:description" content="Implementing discriminative learning rate across model layers" />
-<link rel="canonical" href="http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html" />
-<meta property="og:url" content="http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html" />
+<meta property="og:url" content="https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
-<meta property="og:image" content="http://0.0.0.0:4000/images/posts/lr.png" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/lr.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-03-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"datePublished":"2022-03-29T00:00:00-05:00","@type":"BlogPosting","image":"http://0.0.0.0:4000/images/posts/lr.png","dateModified":"2022-03-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html"},"url":"http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html","author":{"@type":"Person","name":"Nikita Kozodoi"},"headline":"Layer-Wise Learning Rate in PyTorch","description":"Implementing discriminative learning rate across model layers","@context":"https://schema.org"}</script>
+{"datePublished":"2022-03-29T00:00:00-05:00","@type":"BlogPosting","image":"https://kozodoi.me/images/posts/lr.png","dateModified":"2022-03-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html"},"url":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html","author":{"@type":"Person","name":"Nikita Kozodoi"},"headline":"Layer-Wise Learning Rate in PyTorch","description":"Implementing discriminative learning rate across model layers","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Nikita Kozodoi" /><link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="https://kozodoi.me/images/favicons/favicon-16x16.png">
 <link rel="manifest" href="https://kozodoi.me/images/favicons/site.webmanifest">
@@ -47,18 +46,17 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Implementing discriminative learning rate across model layers" />
 <meta property="og:description" content="Implementing discriminative learning rate across model layers" />
-<link rel="canonical" href="http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html" />
-<meta property="og:url" content="http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html" />
+<meta property="og:url" content="https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html" />
 <meta property="og:site_name" content="Nikita Kozodoi" />
-<meta property="og:image" content="http://0.0.0.0:4000/images/posts/lr.png" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/lr.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-03-29T00:00:00-05:00" />
 <script type="application/ld+json">
-{"datePublished":"2022-03-29T00:00:00-05:00","@type":"BlogPosting","image":"http://0.0.0.0:4000/images/posts/lr.png","dateModified":"2022-03-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html"},"url":"http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html","author":{"@type":"Person","name":"Nikita Kozodoi"},"headline":"Layer-Wise Learning Rate in PyTorch","description":"Implementing discriminative learning rate across model layers","@context":"https://schema.org"}</script>
+{"datePublished":"2022-03-29T00:00:00-05:00","@type":"BlogPosting","image":"https://kozodoi.me/images/posts/lr.png","dateModified":"2022-03-29T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html"},"url":"https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html","author":{"@type":"Person","name":"Nikita Kozodoi"},"headline":"Layer-Wise Learning Rate in PyTorch","description":"Implementing discriminative learning rate across model layers","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
-<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="http://0.0.0.0:4000/feed.xml" title="Nikita Kozodoi" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" />
 
 <script>
 function wrap_img(fn) {
@@ -623,8 +621,8 @@ Each item in <code>parameters</code> becomes a dictionary with two elements:</p>
   </div><!--<div id="disqus_thread"></div>
  <script>
    var disqus_config = function () {
-     this.page.url = 'http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html';
-     this.page.identifier = 'http://0.0.0.0:4000/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html';
+     this.page.url = 'https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html';
+     this.page.identifier = 'https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2022/03/29/discriminative-lr.html';
    };
    (function() {
      var d = document, s = d.createElement('script');
