@@ -15,6 +15,8 @@ permalink: /blog/:year:month:day/text-readability
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last update: 21.11.2021. All opinions are my own.</em></p>
+
 <h1 id="1.-Overview">1. Overview<a class="anchor-link" href="#1.-Overview"> </a></h1>
 
 <p>Estimating text complexity and readability is a crucial task for teachers. Offering students text passages at the right level of challenge is important for facilitating a fast development of reading skills. The existing tools to estimate readability rely on weak proxies and heuristics. Deep learning may help to improve the accuracy of the used text complexity scores.</p>
