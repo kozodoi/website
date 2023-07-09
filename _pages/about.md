@@ -29,9 +29,9 @@ Hi! I am Applied ML Scientist working on the frontier of research and business. 
 This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. All opinions published here are my own. The website includes different sections featuring my work:
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
-- &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
-- &#128218; [my ML publications](https://kozodoi.me/papers/) with paper abstracts and full-text PDFs
 - &#128483; [my tech talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
+- &#128218; [my ML publications](https://kozodoi.me/papers/) with paper abstracts and full-text PDFs
+- &#129351; [my Kaggle solutions](https://kozodoi.me/kaggle/) with links to code and write-ups
 - &#128421; [my certifications](https://kozodoi.me/certifications/) with links to certificates and completed courses
 - &#127891; [my teaching experience](https://kozodoi.me/teaching/) at the Humboldt University of Berlin
 
