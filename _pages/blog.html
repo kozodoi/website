@@ -13,36 +13,50 @@ search_exclude: true
   </div>
   <div class="content">
     <h1>Blog</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">In my blog, I write about machine learning and AI. My posts include ML tutorials, package overviews, competition solutions and interesting project findings. All opinions are my own.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">In my blog, I write about machine learning and deep learning. My posts include ML tutorials, package overviews, competition solutions and interesting project findings. All opinions are my own.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">In my blog, I write about machine learning and AI. My posts include ML tutorials, package overviews, competition solutions and interesting project findings. All opinions are my own.</span></p>
+<p><span class="page-desc">In my blog, I write about machine learning and deep learning. My posts include ML tutorials, package overviews, competition solutions and interesting project findings. All opinions are my own.</span></p>
+
 
 <!----------------------------------------------------------------------------->
 
-<!-- Paginate settings -->
-{% if site.paginate %}
-{% assign posts = paginator.posts %}
-{% else %}
-{% assign posts = site.posts %}
-{% endif %}
+{% assign rawposts = site.posts %}
 
-<!-- Find sticky posts -->
-{% assign sticky_posts = site.posts %}
+<!-- Hide posts if front matter flag hide:true -->
+{% assign posts = ''|split:'' %}
+{% for post in rawposts %}
+  {% if post.hide != true %}
+    {% assign posts = posts|push:post%}
+  {% endif %}
+{% endfor %}
+
+<!-- Sort posts by rank, then date -->
+{% assign grouped_posts = posts | group_by: "sticky_rank" | sort: "name", "last" %}
+{% assign sticky_posts = ''|split:'' %}
+{% assign non_sticky_posts = '' | split:'' %}
+
+
+{% for gp in grouped_posts %}
+  {%- if gp.name == "" -%}
+    {% assign non_sticky_posts = gp.items | sort: "date" | reverse %}
+  {%- else %}
+    {% assign sticky_posts = sticky_posts | concat: gp.items %}
+  {%- endif -%}
+{% endfor %}
+
+ <!-- Assemble final sorted posts array -->
 {% assign sticky_posts = sticky_posts | sort: "sticky_rank", "last" %}
-{% assign sticky_posts = sticky_posts | slice: 0, 3 %}
+{% assign posts = sticky_posts | concat: non_sticky_posts %}
 
-<!-- Sticky posts -->
-{% if site.paginate and paginator.page == 1 %}
-{%- if sticky_posts.size > 0 -%}
-  <h2>Popular posts</h2>
+{%- if posts.size > 0 -%}
   {%- if page.list_title -%}
     <h2 class="post-list-heading">{{ page.list_title }}</h2>
   {%- endif -%}
   <ul class="post-list">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-    {%- for post in sticky_posts -%}
+    {%- for post in posts -%}
     <li>
       {%- if site.show_image -%}
           {%- include post_list_image_card.html -%}
@@ -52,42 +66,5 @@ search_exclude: true
     </li>
     {%- endfor -%}
   </ul>
-{%- endif -%}
-{%- endif -%}
 
-<!-- Non-sticky posts -->
-{%- if posts.size > 0 -%}
-<h2>Recent posts</h2>
-{%- if page.list_title -%}
-  <h2 class="post-list-heading">{{ page.list_title }}</h2>
-{%- endif -%}
-<ul class="post-list">
-  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-  {%- for post in posts -%}
-  <li>
-    {%- if site.show_image -%}
-        {%- include post_list_image_card.html -%}
-    {% else %}
-        {%- include post_list.html -%}
-    {%- endif -%}
-  </li>
-  {%- endfor -%}
-</ul>
-{% if site.paginate and site.posts.size > site.paginate %}
-  <div class="pager">
-    <ul class="pagination">
-    {%- if paginator.previous_page %}
-      <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-    {%- else %}
-      <li><div class="pager-edge">•</div></li>
-    {%- endif %}
-      <li><div class="current-page">{{ paginator.page }}</div></li>
-    {%- if paginator.next_page %}
-      <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-    {%- else %}
-      <li><div class="pager-edge">•</div></li>
-    {%- endif %}
-    </ul>
-  </div>
-{%- endif %}
 {%- endif -%}
