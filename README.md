@@ -1,4 +1,4 @@
-# kozodoi.me: Blog on ML, AI and other cool acronyms
+# kozodoi.me: Blog on AI, ML and other cool acronyms
 
 ![website_snippet](https://i.postimg.cc/4yLPcHcf/ezgif-com-gif-maker-2.gif)
 
