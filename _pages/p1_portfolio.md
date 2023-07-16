@@ -15,11 +15,11 @@ image: ../images/menu/photo_portfolio.jpg
   </div>  
   <div class="content">
     <h1>Portfolio</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three ML projects on different topics focusing on computer vision, NLP and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile, download my <a href="https://kozodoi.me/cv.pdf">CV</a> or check out the <a href="https://kozodoi.me/about/">about</a> page.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">My portfolio includes three ML projects on different topics focusing on computer vision, NLP and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub page</a>, download my <a href="https://kozodoi.me/cv.pdf">CV</a> or check out the <a href="https://kozodoi.me/about/">about</a> page.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">My portfolio includes three ML projects on different topics focusing on computer vision, NLP and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub</a> profile, download my <a href="https://kozodoi.me/cv.pdf">CV</a> or check out the <a href="https://kozodoi.me/about/">about</a> page.</span></p>
+<p><span class="page-desc">My portfolio includes three ML projects on different topics focusing on computer vision, NLP and tabular data. To see more of my work, visit my <a href="https://github.com/kozodoi">GitHub page</a>, download my <a href="https://kozodoi.me/cv.pdf">CV</a> or check out the <a href="https://kozodoi.me/about/">about</a> page.</span></p>
 
 
 <!----------------------------------------------------------------------------->
@@ -39,7 +39,7 @@ image: ../images/menu/photo_portfolio.jpg
   <li> &#128200; <a href="#PROJECT_2">Fair machine learning in credit scoring applications </a></li>
   </ul>
 
-  <p>Click "read more" to see project summaries. Follow GitHub links for code and documentation. Scroll down to see more Machine Learning and Deep Learning projects grouped by application areas.</p>
+  <p>Click "read more" to see project summaries. Follow GitHub links for code and documentation. Scroll down to see more ML projects grouped by application domainas and links to further pages with my work.</p>
 
 </div>
 
@@ -175,7 +175,7 @@ image: ../images/menu/photo_portfolio.jpg
 
 <h1> Further projects </h1>
 
-Want to see more? Check out my further ML and DL projects grouped by application areas below. You can also visit my <a href="https://github.com/kozodoi">GitHub</a> profile, read my recent <a href="https://kozodoi.me">blog posts</a>, <a href="https://kozodoi.me/kaggle/">competition solutions</a> and <a href="https://kozodoi.me/papers/">academic publications</a>.
+Want to see more? Check out my further ML projects grouped by application areas below. You can also visit my <a href="https://github.com/kozodoi">GitHub page</a>, check my recent <a href="https://kozodoi.me">blog posts</a>, watch <a href="https://kozodoi.me/talks/">public tech talks</a> and read <a href="https://kozodoi.me/papers/">academic publications</a>.
 
 <div>
   <button class="project_accordion">Computer vision</button>

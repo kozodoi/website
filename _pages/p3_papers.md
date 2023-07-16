@@ -12,11 +12,11 @@ permalink: /papers/
   </div>  
   <div class="content">
     <h1>Research</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page summarizes my research activities including publications in academic journals and conference proceedings. Check out my <a href="http://kozodoi.me/talks">public talks</a> or follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> to see all of my work.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">This page summarizes my research activities, including publications in academic journals and conference papers. Check out my <a href="http://kozodoi.me/talks">public talks</a> or follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> to see all of my work.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">This page summarizes my research activities including publications in academic journals and conference proceedings. Check out my <a href="http://kozodoi.me/talks">public talks</a> or follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> to see all of my work.</span></p>
+<p><span class="page-desc">This page summarizes my research activities, including publications in academic journals and conference papers. Check out my <a href="http://kozodoi.me/talks">public talks</a> or follow me on <a href="https://scholar.google.com/citations?hl=en&authuser=1&user=58tMuD0AAAAJ">Google Scholar</a> to see all of my work.</span></p>
 
 
 <!----------------------------------------------------------------------------->
@@ -25,11 +25,12 @@ permalink: /papers/
 
 <div style="font-size: 100%;">
 
-  <p>This page overviews my research activities including:</p>
+  <p>This page overviews my research activities:</p>
 
   <ul style="margin-top: -10px;">
-  <li> &#128218; <a href="#PART_1">Selected list of my academic publications </a></li>
-  <li> &#128221; <a href="#PART_2">Outlets where I have been acting as a reviewer </a></li>
+  <li> &#128218; <a href="#PART_1">Selected academic publications </a></li>
+  <li> &#128200; <a href="#PART_2">My citation statistics </a></li>
+  <li> &#128221; <a href="#PART_3">Outlets where I was acting as a reviewer </a></li>
   </ul>
 
 </div>
@@ -187,8 +188,15 @@ permalink: /papers/
 </ul>
 <p></p>
 
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
 
-### Citations
+
+<!----------------------------------------------------------------------------->
+
+<a id="PART_2"></a>
+
+## Citations
 
 <iframe src="https://www.jung.ms/citations.php?id=58tMuD0AAAAJ&amp;lang=en" name="meiniframe" border="0" width="100%" frameborder="0" height="200" allowtransparency="false"></iframe>
 
@@ -198,7 +206,7 @@ permalink: /papers/
 
 <!----------------------------------------------------------------------------->
 
-<a id="PART_2"></a>
+<a id="PART_3"></a>
 
 ## Reviews
 

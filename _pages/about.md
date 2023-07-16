@@ -8,7 +8,7 @@ permalink: /about/
 
 <div class="container">
   <div style="width:100%;height:0; padding-top:50%;position:relative;">
-    <img src="../images/menu/photo_about.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
+    <img src="../images/menu/photo_talks.jpg" style="width:100%; opacity:0.8; position:absolute; top:0; left:0">
   </div>  
   <div class="content">
     <h1>Hi, I am Nikita!</h1>
@@ -20,13 +20,23 @@ permalink: /about/
 
 
 <!----------------------------------------------------------------------------->
-## About
+## About me
 
-Hi! I am Applied ML Scientist working on the frontier of research and business. With PhD in ML, certified AWS expertise, practical experience in diverse ML areas and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. Currently, I work at AWS, where I design and build cutting-edge ML solutions to solve diverse business problems across industries.
+I am Applied ML Scientist working on the frontier of research and business. With PhD in ML and certified AWS expertise, rich experience in diverse areas of ML, and strong communication skills, I am passionate about using AI to solve challenging business problems and create value. 
+
+Currently, I work at AWS, where I design and build cutting-edge generative AI and ML solutions to solve diverse business problems across industries. My team interacts with large-scale customers to identify amd implement high-value AI usecases. Before AWS, I was doing my PhD at the Humboldt Univeristy of Berlin, wehre I worked on ML applications for credit risk analytics in collaboration with Monedo.
+
+In my free time, I enjoy playing beach volleyball and challenging myself in ML competitions. 
 
 <button class="btn" onclick="window.open('https://kozodoi.me/cv.pdf')"><i class="fas fa-download"></i>  Curriculum Vitae</button>
 
-This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competition solutions and interesting project findings. All opinions published here are my own. The website includes different sections featuring my work:
+<hr style="height:1px; visibility:hidden;" />
+<hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+
+<!----------------------------------------------------------------------------->
+## About this website
+
+This website hosts [my blog](https://kozodoi.me/blog/), where I share ML tutorials, competitive ML tricks, and interesting project findings. All opinions published here are my own. The website includes different sections featuring my work:
 
 - &#128193; [my portfolio](https://kozodoi.me/portfolio/) with ML projects on different topics
 - &#128483; [my tech talks](https://kozodoi.me/talks/) with links to presentation slides and talk videos
