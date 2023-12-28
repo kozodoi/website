@@ -45,6 +45,25 @@ permalink: /papers/
 
 ## Publications
 
+### 2023
+
+<ul>
+  <li>
+  Kozodoi, N., Zinovyeva, L., Valentin, S., Pereira, J., Agundez, R. (2023).
+  <dd><b>Probabilistic demand forecasting with graph neural networks</b></dd>
+  <dd>In Workshop on ML for Irregular Time Series at ECML PKDD 2023.</dd>
+  </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots8"></span>
+  <li><span id="abs8"><p></p><b>Abstract:</b> Demand forecasting is a prominent business use case that allows retailers to optimize inventory planning, logistics, and core business decisions. One of the key challenges in demand forecasting is accounting for relationships and interactions between articles. Most modern forecasting approaches provide independent article-level predictions that do not consider the impact of related articles. Recent research has attempted addressing this challenge using Graph Neural Networks (GNNs) and showed promising results. This paper builds on previous research on GNNs and makes two contributions. First, we integrate a GNN encoder into a state-of-the-art DeepAR model. The combined model produces probabilistic forecasts, which are crucial for decision-making under uncertainty. Second, we propose to build graphs using article attribute similarity, which avoids reliance on a pre-defined graph structure. Experiments on three real-world datasets show that the proposed approach consistently outperforms non-graph benchmarks. We also show that our approach produces article embeddings that encode article similarity and demand dynamics and are useful for other downstream business tasks beyond forecasting. </span></li>
+  <li>
+    <button class="btn" onclick="show_abstract(dots_id = 'dots8', abs_id = 'abs8', btn_id = 'b8')" id="b8">&#128220; Abstract</button>
+    <button class="btn" onclick="window.open('https://assets.amazon.science/e5/bd/d9b681ab4ece87ea6396b0e7bffd/probabilistic-demand-forecasting-with-graph-neural-networks.pdf')" type="button">&#128214; PDF</button>
+  </li>
+</ul>
+<p></p>
+
 ### 2022
 
 <ul>
