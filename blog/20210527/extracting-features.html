@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-05-27T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Simple way to extract activations from deep networks with hooks","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210527/extracting-features","headline":"Extracting Intermediate Layer Outputs in PyTorch","dateModified":"2021-05-27T00:00:00-05:00","datePublished":"2021-05-27T00:00:00-05:00","image":"https://kozodoi.me/images/posts/extraction.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210527/extracting-features"},"@context":"https://schema.org"}</script>
+{"headline":"Extracting Intermediate Layer Outputs in PyTorch","dateModified":"2021-05-27T00:00:00-05:00","datePublished":"2021-05-27T00:00:00-05:00","description":"Simple way to extract activations from deep networks with hooks","author":{"@type":"Person","name":"Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210527/extracting-features"},"image":"https://kozodoi.me/images/posts/extraction.png","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210527/extracting-features","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
@@ -51,7 +51,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-05-27T00:00:00-05:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"Simple way to extract activations from deep networks with hooks","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210527/extracting-features","headline":"Extracting Intermediate Layer Outputs in PyTorch","dateModified":"2021-05-27T00:00:00-05:00","datePublished":"2021-05-27T00:00:00-05:00","image":"https://kozodoi.me/images/posts/extraction.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210527/extracting-features"},"@context":"https://schema.org"}</script>
+{"headline":"Extracting Intermediate Layer Outputs in PyTorch","dateModified":"2021-05-27T00:00:00-05:00","datePublished":"2021-05-27T00:00:00-05:00","description":"Simple way to extract activations from deep networks with hooks","author":{"@type":"Person","name":"Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210527/extracting-features"},"image":"https://kozodoi.me/images/posts/extraction.png","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210527/extracting-features","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -247,7 +247,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-hide</span>
 
 <span class="c1">##### PACKAGES</span>
 
@@ -267,7 +267,7 @@ window.onload = wrap_img;
 <span class="kn">import</span> <span class="nn">cv2</span>
 <span class="kn">import</span> <span class="nn">os</span>
 
-<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cuda"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -288,35 +288,33 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-hide</span>
 
 <span class="c1">##### DATASET</span>
 
+
 <span class="k">class</span> <span class="nc">ImageData</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    
     <span class="c1"># init</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-                 <span class="n">data</span><span class="p">,</span> 
-                 <span class="n">directory</span><span class="p">,</span> 
-                 <span class="n">transform</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span>      <span class="o">=</span> <span class="n">data</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
-        
+
     <span class="c1"># length</span>
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    
-    <span class="c1"># get item  </span>
+
+    <span class="c1"># get item</span>
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-        
         <span class="c1"># import</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s1">'image_id'</span><span class="p">]))</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">"image_id"</span><span class="p">])</span>
+        <span class="p">)</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
-            
+
         <span class="c1"># augmentations</span>
-        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">)[</span><span class="s1">'image'</span><span class="p">]</span>
-        
+        <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)[</span><span class="s2">"image"</span><span class="p">]</span>
+
         <span class="k">return</span> <span class="n">image</span>
 </pre></div>
 
@@ -346,29 +344,26 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
 
 <span class="c1">##### DATA LOADER</span>
 
 <span class="c1"># import data</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../input/cassava-leaf-disease-classification/train.csv'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../input/cassava-leaf-disease-classification/train.csv"</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
 <span class="c1"># augmentations</span>
-<span class="n">transforms</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">A</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">128</span><span class="p">),</span>
-                        <span class="n">A</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(),</span>
-                        <span class="n">ToTensorV2</span><span class="p">()])</span>
+<span class="n">transforms</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">A</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">128</span><span class="p">),</span> <span class="n">A</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(),</span> <span class="n">ToTensorV2</span><span class="p">()])</span>
 
 <span class="c1"># dataset</span>
-<span class="n">data_set</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span><span class="n">data</span>      <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
-                     <span class="n">directory</span> <span class="o">=</span> <span class="s1">'../input/cassava-leaf-disease-classification/train_images/'</span><span class="p">,</span>
-                     <span class="n">transform</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">)</span>
+<span class="n">data_set</span> <span class="o">=</span> <span class="n">ImageData</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">"../input/cassava-leaf-disease-classification/train_images/"</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">transforms</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="c1"># dataloader</span>
-<span class="n">data_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">data_set</span><span class="p">,</span> 
-                         <span class="n">batch_size</span>  <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> 
-                         <span class="n">shuffle</span>     <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
-                         <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">data_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">data_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -465,7 +460,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##### DEFINE MODEL</span>
 
-<span class="n">model</span>    <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="n">model_name</span> <span class="o">=</span> <span class="s1">'resnet18'</span><span class="p">,</span> <span class="n">pretrained</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">timm</span><span class="o">.</span><span class="n">create_model</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">"resnet18"</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
@@ -570,9 +565,11 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##### HELPER FUNCTION FOR FEATURE EXTRACTION</span>
 
+
 <span class="k">def</span> <span class="nf">get_features</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">hook</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
         <span class="n">features</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+
     <span class="k">return</span> <span class="n">hook</span>
 </pre></div>
 
@@ -601,7 +598,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##### REGISTER HOOK</span>
 
-<span class="n">model</span><span class="o">.</span><span class="n">global_pool</span><span class="o">.</span><span class="n">register_forward_hook</span><span class="p">(</span><span class="n">get_features</span><span class="p">(</span><span class="s1">'feats'</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">global_pool</span><span class="o">.</span><span class="n">register_forward_hook</span><span class="p">(</span><span class="n">get_features</span><span class="p">(</span><span class="s2">"feats"</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -663,16 +660,15 @@ window.onload = wrap_img;
 
 <span class="c1"># loop through batches</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">inputs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_loader</span><span class="p">):</span>
-
     <span class="c1"># move to device</span>
     <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-       
+
     <span class="c1"># forward pass [with feature extraction]</span>
     <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-    
+
     <span class="c1"># add feats and preds to lists</span>
     <span class="n">PREDS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preds</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
-    <span class="n">FEATS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s1">'feats'</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+    <span class="n">FEATS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="s2">"feats"</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 
     <span class="c1"># early stop</span>
     <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="mi">9</span><span class="p">:</span>
@@ -706,8 +702,8 @@ window.onload = wrap_img;
 <span class="n">PREDS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">PREDS</span><span class="p">)</span>
 <span class="n">FEATS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">FEATS</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'- preds shape:'</span><span class="p">,</span> <span class="n">PREDS</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'- feats shape:'</span><span class="p">,</span> <span class="n">FEATS</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"- preds shape:"</span><span class="p">,</span> <span class="n">PREDS</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"- feats shape:"</span><span class="p">,</span> <span class="n">FEATS</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>

@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-03-08T00:00:00-06:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"How to get channel-speicific mean and std in PyTorch","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210308/compute-image-stats","headline":"Computing Mean &amp; STD in Image Dataset","dateModified":"2021-03-08T00:00:00-06:00","datePublished":"2021-03-08T00:00:00-06:00","image":"https://kozodoi.me/images/posts/stats.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210308/compute-image-stats"},"@context":"https://schema.org"}</script>
+{"headline":"Computing Mean &amp; STD in Image Dataset","dateModified":"2021-03-08T00:00:00-06:00","datePublished":"2021-03-08T00:00:00-06:00","description":"How to get channel-speicific mean and std in PyTorch","author":{"@type":"Person","name":"Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210308/compute-image-stats"},"image":"https://kozodoi.me/images/posts/stats.png","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210308/compute-image-stats","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
@@ -51,7 +51,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-03-08T00:00:00-06:00" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Nikita Kozodoi"},"description":"How to get channel-speicific mean and std in PyTorch","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210308/compute-image-stats","headline":"Computing Mean &amp; STD in Image Dataset","dateModified":"2021-03-08T00:00:00-06:00","datePublished":"2021-03-08T00:00:00-06:00","image":"https://kozodoi.me/images/posts/stats.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210308/compute-image-stats"},"@context":"https://schema.org"}</script>
+{"headline":"Computing Mean &amp; STD in Image Dataset","dateModified":"2021-03-08T00:00:00-06:00","datePublished":"2021-03-08T00:00:00-06:00","description":"How to get channel-speicific mean and std in PyTorch","author":{"@type":"Person","name":"Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20210308/compute-image-stats"},"image":"https://kozodoi.me/images/posts/stats.png","@type":"BlogPosting","url":"https://kozodoi.me/blog/20210308/compute-image-stats","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 <link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
@@ -228,7 +228,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-hide</span>
 
 <span class="c1">####### PACKAGES</span>
 
@@ -247,16 +247,17 @@ window.onload = wrap_img;
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
 <span class="o">%</span><span class="k">matplotlib</span> inline
 
 
 <span class="c1">####### PARAMS</span>
 
-<span class="n">device</span>      <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span> 
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span>
 <span class="n">num_workers</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">image_size</span>  <span class="o">=</span> <span class="mi">512</span> 
-<span class="n">batch_size</span>  <span class="o">=</span> <span class="mi">8</span>
-<span class="n">data_path</span>   <span class="o">=</span> <span class="s1">'/kaggle/input/cassava-leaf-disease-classification/'</span>
+<span class="n">image_size</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s2">"/kaggle/input/cassava-leaf-disease-classification/"</span>
 </pre></div>
 
     </div>
@@ -285,9 +286,9 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span> <span class="o">+</span> <span class="s1">'train.csv'</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span> <span class="o">+</span> <span class="s2">"train.csv"</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 
@@ -374,31 +375,27 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
+
 
 <span class="k">class</span> <span class="nc">LeafData</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-                 <span class="n">data</span><span class="p">,</span> 
-                 <span class="n">directory</span><span class="p">,</span> 
-                 <span class="n">transform</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span>      <span class="o">=</span> <span class="n">data</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">transform</span>
-        
+
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-    
+
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
-        
         <span class="c1"># import</span>
-        <span class="n">path</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s1">'image_id'</span><span class="p">])</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="s2">"image_id"</span><span class="p">])</span>
         <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
-            
+
         <span class="c1"># augmentations</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">)[</span><span class="s1">'image'</span><span class="p">]</span>
-        
+            <span class="n">image</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">)[</span><span class="s2">"image"</span><span class="p">]</span>
+
         <span class="k">return</span> <span class="n">image</span>
 </pre></div>
 
@@ -428,13 +425,15 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-show</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># collapse-show</span>
 
-<span class="n">augs</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span><span class="n">A</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">height</span> <span class="o">=</span> <span class="n">image_size</span><span class="p">,</span> 
-                           <span class="n">width</span>  <span class="o">=</span> <span class="n">image_size</span><span class="p">),</span>
-                  <span class="n">A</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-                              <span class="n">std</span>  <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
-                  <span class="n">ToTensorV2</span><span class="p">()])</span>
+<span class="n">augs</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">Compose</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">Resize</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="n">image_size</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">image_size</span><span class="p">),</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">std</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+        <span class="n">ToTensorV2</span><span class="p">(),</span>
+    <span class="p">]</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -463,22 +462,22 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">####### EXAMINE SAMPLE BATCH</span>
 
 <span class="c1"># dataset</span>
-<span class="n">image_dataset</span> <span class="o">=</span> <span class="n">LeafData</span><span class="p">(</span><span class="n">data</span>      <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
-                         <span class="n">directory</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="s1">'train_images/'</span><span class="p">,</span>
-                         <span class="n">transform</span> <span class="o">=</span> <span class="n">augs</span><span class="p">)</span>
+<span class="n">image_dataset</span> <span class="o">=</span> <span class="n">LeafData</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">data_path</span> <span class="o">+</span> <span class="s2">"train_images/"</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">augs</span><span class="p">)</span>
 
 <span class="c1"># data loader</span>
-<span class="n">image_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">image_dataset</span><span class="p">,</span> 
-                          <span class="n">batch_size</span>  <span class="o">=</span> <span class="n">batch_size</span><span class="p">,</span> 
-                          <span class="n">shuffle</span>     <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
-                          <span class="n">num_workers</span> <span class="o">=</span> <span class="n">num_workers</span><span class="p">,</span>
-                          <span class="n">pin_memory</span>  <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">image_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">image_dataset</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">num_workers</span><span class="o">=</span><span class="n">num_workers</span><span class="p">,</span>
+    <span class="n">pin_memory</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
 
 <span class="c1"># display images</span>
 <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="n">inputs</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_loader</span><span class="p">):</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
-        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span> <span class="o">=</span> <span class="p">[],</span> <span class="n">yticks</span> <span class="o">=</span> <span class="p">[])</span>     
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="k">break</span>
 </pre></div>
@@ -541,13 +540,13 @@ window.onload = wrap_img;
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">####### COMPUTE MEAN / STD</span>
 
 <span class="c1"># placeholders</span>
-<span class="n">psum</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">psum</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
 <span class="n">psum_sq</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
 
 <span class="c1"># loop through images</span>
 <span class="k">for</span> <span class="n">inputs</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">image_loader</span><span class="p">):</span>
-    <span class="n">psum</span>    <span class="o">+=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span>        <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">psum_sq</span> <span class="o">+=</span> <span class="p">(</span><span class="n">inputs</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">psum</span> <span class="o">+=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+    <span class="n">psum_sq</span> <span class="o">+=</span> <span class="p">(</span><span class="n">inputs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 
     </div>
@@ -641,12 +640,12 @@ window.onload = wrap_img;
 
 <span class="c1"># mean and std</span>
 <span class="n">total_mean</span> <span class="o">=</span> <span class="n">psum</span> <span class="o">/</span> <span class="n">count</span>
-<span class="n">total_var</span>  <span class="o">=</span> <span class="p">(</span><span class="n">psum_sq</span> <span class="o">/</span> <span class="n">count</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">total_mean</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">total_std</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">total_var</span><span class="p">)</span>
+<span class="n">total_var</span> <span class="o">=</span> <span class="p">(</span><span class="n">psum_sq</span> <span class="o">/</span> <span class="n">count</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">total_mean</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">total_std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">total_var</span><span class="p">)</span>
 
 <span class="c1"># output</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'mean: '</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total_mean</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">'std:  '</span>  <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total_std</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"mean: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total_mean</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"std:  "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">total_std</span><span class="p">))</span>
 </pre></div>
 
     </div>

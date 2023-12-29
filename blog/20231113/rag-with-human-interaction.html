@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en"><head><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-303PJS70LR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-303PJS70LR');
+</script><meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>RAG with User Interaction | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="RAG with User Interaction" />
+<meta name="author" content="Antonia Wiebeler, Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Improve LLM responses in RAG use cases by interacting with the user" />
+<meta property="og:description" content="Improve LLM responses in RAG use cases by interacting with the user" />
+<link rel="canonical" href="https://kozodoi.me/blog/20231113/rag-with-human-interaction" />
+<meta property="og:url" content="https://kozodoi.me/blog/20231113/rag-with-human-interaction" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/rag.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-13T00:00:00-06:00" />
+<script type="application/ld+json">
+{"headline":"RAG with User Interaction","dateModified":"2023-11-13T00:00:00-06:00","datePublished":"2023-11-13T00:00:00-06:00","description":"Improve LLM responses in RAG use cases by interacting with the user","author":{"@type":"Person","name":"Antonia Wiebeler, Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20231113/rag-with-human-interaction"},"image":"https://kozodoi.me/images/posts/rag.png","@type":"BlogPosting","url":"https://kozodoi.me/blog/20231113/rag-with-human-interaction","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" /><link rel="apple-touch-icon" sizes="76x76" href="https://kozodoi.me/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://kozodoi.me/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://kozodoi.me/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="https://kozodoi.me/site.webmanifest">
+<link rel="mask-icon" href="https://kozodoi.me/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="https://kozodoi.me/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>RAG with User Interaction | Nikita Kozodoi</title>
+<meta name="generator" content="Jekyll v4.0.1" />
+<meta property="og:title" content="RAG with User Interaction" />
+<meta name="author" content="Antonia Wiebeler, Nikita Kozodoi" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Improve LLM responses in RAG use cases by interacting with the user" />
+<meta property="og:description" content="Improve LLM responses in RAG use cases by interacting with the user" />
+<link rel="canonical" href="https://kozodoi.me/blog/20231113/rag-with-human-interaction" />
+<meta property="og:url" content="https://kozodoi.me/blog/20231113/rag-with-human-interaction" />
+<meta property="og:site_name" content="Nikita Kozodoi" />
+<meta property="og:image" content="https://kozodoi.me/images/posts/rag.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-13T00:00:00-06:00" />
+<script type="application/ld+json">
+{"headline":"RAG with User Interaction","dateModified":"2023-11-13T00:00:00-06:00","datePublished":"2023-11-13T00:00:00-06:00","description":"Improve LLM responses in RAG use cases by interacting with the user","author":{"@type":"Person","name":"Antonia Wiebeler, Nikita Kozodoi"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://kozodoi.me/blog/20231113/rag-with-human-interaction"},"image":"https://kozodoi.me/images/posts/rag.png","@type":"BlogPosting","url":"https://kozodoi.me/blog/20231113/rag-with-human-interaction","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://kozodoi.me/feed.xml" title="Nikita Kozodoi" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Nikita Kozodoi</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/blog/">Blog</a><a class="page-link" href="/portfolio/">Portfolio</a><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/papers/">Papers</a><a class="page-link" href="/kaggle/">Kaggle</a><a class="page-link" href="/search/">Search</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">RAG with User Interaction</h1><p class="page-description">Improve LLM responses in RAG use cases by interacting with the user</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-11-13T00:00:00-06:00" itemprop="datePublished">
+        Nov 13, 2023
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Antonia Wiebeler, Nikita Kozodoi</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i>
+      
+        <a class="category-tags-link" href="/categories/#generative ai">generative ai</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#natural language processing">natural language processing</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#web app">web app</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+  <label class="switch">
+    <input type="checkbox" href="/blog/20231113/rag-with-human-interaction" id="theme-toggle" checked onclick="modeSwitcher();">
+      <span class="slider round"></span>
+  </label>
+</div>
+
+          <div class="px-2">
+
+    <a href="https://github.com/kozodoi/website/tree/master/" role="button" target="_blank">
+<img class="notebook-badge-image" src="/assets/badges/github.svg" alt="View on GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/kozodoi/website/blob/master/" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open in Colab"/>
+    </a>
+</div>
+        </div>
+      
+      <img src="/images/covers/rag.png" style="width:100%"/>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=607a88d1f94d5c00182f2b41&product=inline-share-buttons" async="async"></script>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#1.-Introduction">1. Introduction 
+</a></li>
+<li class="toc-entry toc-h1"><a href="#2.-Full Post">2. Full Post 
+</a></li>
+</ul><p>This post is also published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a>. All opinions are my own.</p>
+
+<h1 id="1.-Introduction">
+<a class="anchor" href="#1.-Introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Introduction<a class="anchor-link" href="#1.-Introduction"> </a>
+</h1><p>One of the most common applications of generative AI and large language models (LLMs) is answering questions based on a specific external knowledge corpus. Retrieval-Augmented Generation (RAG) is a popular technique for building question answering systems that use an external knowledge base. To learn more, refer to Build a powerful question answering bot with Amazon SageMaker, Amazon OpenSearch Service, Streamlit, and LangChain.</p>
+<p>Traditional RAG systems often struggle to provide satisfactory answers when users ask vague or ambiguous questions without providing sufficient context. This leads to unhelpful responses like “I don’t know” or incorrect, made-up answers provided by an LLM. In this post, we demonstrate a solution to improve the quality of answers in such use cases over traditional RAG systems by introducing an interactive clarification component using LangChain.</p>
+<p>The key idea is to enable the RAG system to engage in a conversational dialogue with the user when the initial question is unclear. By asking clarifying questions, prompting the user for more details, and incorporating the new contextual information, the RAG system can gather the necessary context to provide an accurate, helpful answer—even from an ambiguous initial user query.</p>
+
+<h1 id="2.-Full Post">
+<a class="anchor" href="#2.-Full%20Post" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Full Post<a class="anchor-link" href="#2.-Full%20Post"> </a>
+</h1><p>... <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/"> (continue reading here)</a></p>
+
+
+
+  </div><!--<div id="disqus_thread"></div>
+ <script>
+   var disqus_config = function () {
+     this.page.url = 'https://kozodoi.me/blog/20231113/rag-with-human-interaction';
+     this.page.identifier = 'https://kozodoi.me/blog/20231113/rag-with-human-interaction';
+   };
+   (function() {
+     var d = document, s = d.createElement('script');
+     s.src = 'https://kozodoi.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+   })();
+ </script>
+ <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+--><hr style="height:1px;border-width:0;color:rgb(50,50,50);background-color:rgb(50,50,50)">
+
+  Liked the post? Share it on social media!
+  <div class="sharethis-inline-share-buttons" style = "margin-top: 3px;"></div>
+
+  <br>
+
+  You can also buy me a cup of tea to support my work. Thanks!
+  <div class="tea">
+    <a href="https://www.buymeacoffee.com/kozodoi"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me tea &emoji=&slug=kozodoi&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" align="left"></a>
+  </div>
+
+  <a class="u-url" href="/blog/20231113/rag-with-human-interaction" hidden></a>
+
+  <script src="/assets/js/mode_switcher.js"></script>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+<data class="u-url" href="/"></data>
+
+<div class="wrapper">
+
+  <div class="footer-col-wrapper">
+
+    <div class="footer-col">
+      <p><center>Blog on ML, AI & other acronyms. All opinions are my own.</center></p>
+    </div>
+
+    <div class="footer-col">
+      <p style="text-align:center;">&#169; 2020 - 2023 Nikita Kozodoi</p>
+    </div>
+
+  </div>
+
+  <div class="social-links">
+    <ul class="social-media-list"><li>
+  <a rel="me" href="https://www.linkedin.com/in/kozodoi/" target="_blank" title="linkedin">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#linkedin"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://github.com/kozodoi" target="_blank" title="github">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://scholar.google.com/citations?user=58tMuD0AAAAJ&hl=en" target="_blank" title="google_scholar">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#google_scholar"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://twitter.com/n_kozodoi" target="_blank" title="twitter">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#twitter"></use>
+    </svg>
+  </a>
+</li>
+<li>
+  <a rel="me" href="https://www.instagram.com/n_kozodoi/" target="_blank" title="instagram">
+    <svg class="svg-icon grey">
+      <use xlink:href="/assets/minima-social-icons.svg#instagram"></use>
+    </svg>
+  </a>
+</li>
+</ul>
+  </div>
+
+</div>
+
+</footer>
+</body>
+
+</html>
