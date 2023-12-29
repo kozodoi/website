@@ -63,7 +63,7 @@ permalink: /talks/
 
 <ul>
     <li>
-    <b>Lesson for Industry from Kaggle Competitions</b>
+    <b>Lessons for Industry from Kaggle Competitions</b>
     <dd><bb>Street Smart AI, 2023 (Berlin)</bb></dd>
     </li>
 </ul>
@@ -104,6 +104,22 @@ permalink: /talks/
 <a id="PART_2"></a>
 
 ## Conferences
+
+<ul>
+    <li>
+    <b>Probabilistic demand forecasting with graph neural networks</b>
+    <dd><bb>Workshop at European Conference on Machine Learning and PKDD, 2023 (Turin)</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots9"></span>
+  <li><span id="abs9"><p></p><b>Abstract:</b> Demand forecasting is a prominent business use case that allows retailers to optimize inventory planning, logistics, and core business decisions. One of the key challenges in demand forecasting is accounting for relationships and interactions between articles. Most modern forecasting approaches provide independent article-level predictions that do not consider the impact of related articles. Recent research has attempted addressing this challenge using Graph Neural Networks (GNNs) and showed promising results. This paper builds on previous research on GNNs and makes two contributions. First, we integrate a GNN encoder into a state-of-the-art DeepAR model. The combined model produces probabilistic forecasts, which are crucial for decision-making under uncertainty. Second, we propose to build graphs using article attribute similarity, which avoids reliance on a pre-defined graph structure. Experiments on three real-world datasets show that the proposed approach consistently outperforms non-graph benchmarks. We also show that our approach produces article embeddings that encode article similarity and demand dynamics and are useful for other downstream business tasks beyond forecasting.</span></li>
+  <li>
+    <button class="btn" onclick="show_abstract(dots_id = 'dots9', abs_id = 'abs9', btn_id = 'b9')" id="b9">&#128220; Abstract</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/ECML_2023.pdf')" type="button">&#128202; Slides</button>
+  </li>
+</ul>
+<p></p>
 
 <ul>
     <li>
