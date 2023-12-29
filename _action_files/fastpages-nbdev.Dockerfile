@@ -1,4 +1,5 @@
 FROM python:3-slim-stretch
+USER root
 
 RUN pip install --upgrade pip
 RUN apt-get update; apt-get -y install wget git jq dos2unix curl
