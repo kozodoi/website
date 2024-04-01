@@ -52,8 +52,8 @@ permalink: /talks/
     </li>
 </ul>
 <ul class="no-bullets">
-  <span id="dots10"></span>
-  <li><span id="abs10"><p></p><b>Abstract:</b> Generative AI is rapidly spreading across different industries. Retrieval Augmented Generation (RAG) is one of the most popular applications of generative AI and LLMs. In this talk, we will explain how to build conversational assistants that leverage RAG to tap into your company’s data and provide accurate answers on user questions. We will walk through the main components of RAG systems and discuss important techniques to improve and evaluate their quality.</span></li>
+  <span id="dots11"></span>
+  <li><span id="abs11"><p></p><b>Abstract:</b> Generative AI is rapidly spreading across different industries. Retrieval Augmented Generation (RAG) is one of the most popular applications of generative AI and LLMs. In this talk, we will explain how to build conversational assistants that leverage RAG to tap into your company’s data and provide accurate answers on user questions. We will walk through the main components of RAG systems and discuss important techniques to improve and evaluate their quality.</span></li>
   <li>
     <button class="btn" onclick="show_abstract(dots_id = 'dots11', abs_id = 'abs11', btn_id = 'b11')" id="b11">&#128220; Abstract</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/SSAI_2024.pdf')" type="button">&#128202; Slides</button>
