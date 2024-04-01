@@ -50,7 +50,7 @@ permalink: /papers/
 <ul>
   <li>
   Kozodoi, N., Zinovyeva, L., Valentin, S., Pereira, J., Agundez, R. (2023).
-  <dd><b>Probabilistic demand forecasting with graph neural networks</b></dd>
+  <dd><b>Probabilistic Demand Forecasting with Graph Neural Networks</b></dd>
   <dd>In Workshop on ML for Irregular Time Series at ECML PKDD 2023.</dd>
   </li>
 </ul>
