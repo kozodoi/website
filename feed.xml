@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://kozodoi.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kozodoi.me/" rel="alternate" type="text/html" /><updated>2024-04-01T09:33:57-05:00</updated><id>https://kozodoi.me/feed.xml</id><title type="html">Nikita Kozodoi</title><subtitle>Blog on AI, ML and other cool acronyms</subtitle><entry><title type="html">RAG with User Interaction</title><link href="https://kozodoi.me/blog/20231113/rag-with-human-interaction" rel="alternate" type="text/html" title="RAG with User Interaction" /><published>2023-11-13T00:00:00-06:00</published><updated>2023-11-13T00:00:00-06:00</updated><id>https://kozodoi.me/blog/20231113/rag-with-user</id><content type="html" xml:base="https://kozodoi.me/blog/20231113/rag-with-human-interaction"><![CDATA[<p>This post is also published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a>. All opinions are my own.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="https://kozodoi.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kozodoi.me/" rel="alternate" type="text/html" /><updated>2024-07-13T03:00:34-05:00</updated><id>https://kozodoi.me/feed.xml</id><title type="html">Nikita Kozodoi</title><subtitle>Blog on AI, ML and other cool acronyms</subtitle><entry><title type="html">Automated content generation and revision</title><link href="https://kozodoi.me/blog/20240703/rag-with-human-interaction" rel="alternate" type="text/html" title="Automated content generation and revision" /><published>2024-07-03T00:00:00-05:00</published><updated>2024-07-03T00:00:00-05:00</updated><id>https://kozodoi.me/blog/20240703/medical-content</id><content type="html" xml:base="https://kozodoi.me/blog/20240703/rag-with-human-interaction"><![CDATA[<p>This post is also published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a>. All opinions are my own.</p>
+
+<h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction"> </a>
+<p>Generative AI and transformer-based large language models (LLMs) have been in the top headlines recently. These models demonstrate impressive performance in question answering, text summarization, code, and text generation. Today, LLMs are being used in real settings by companies, including the heavily-regulated healthcare and life sciences industry (HCLS). The use cases can range from medical information extraction and clinical notes summarization to marketing content generation and medical-legal review automation (MLR process). In this post, we explore how LLMs can be used to design marketing content for disease awareness.</p>
+<p>Marketing content is a key component in the communication strategy of HCLS companies.  It’s also a highly non-trivial balance exercise, because the technical content should be as accurate and precise as possible, yet engaging and empowering for the target audience. The main goal of the marketing content is to raise awareness about certain health conditions and disseminate knowledge of possible therapies among patients and healthcare providers. By accessing up-to-date and accurate information, healthcare providers can adapt their patients’ treatment in a more informed and knowledgeable way. However, medical content being highly sensitive, the generation process can be relatively slow (from days to weeks), and may go through numerous peer-review cycles, with thorough regulatory compliance and evaluation protocols.</p>
+<p>Could LLMs, with their advanced text generation capabilities, help streamline this process by assisting brand managers and medical experts in their generation and review process?</p>
+<p>To answer this question, the AWS Generative AI Innovation Center recently developed an AI assistant for medical content generation. The system is built upon Amazon Bedrock and leverages LLM capabilities to generate curated medical content for disease awareness. With this AI assistant, we can effectively reduce the overall generation time from weeks to hours, while giving the subject matter experts (SMEs) more control over the generation process. This is accomplished through an automated revision functionality, which allows the user to interact and send instructions and comments directly to the LLM via an interactive feedback loop. This is especially important since the revision of content is usually the main bottleneck in the process.</p>
+<p>Since every piece of medical information can profoundly impact the well-being of patients, medical content generation comes with additional requirements and hinges upon the content’s accuracy and precision. For this reason, our system has been augmented with additional guardrails for fact-checking and rules evaluation. The goal of these modules is to assess the factuality of the generated text and its alignment with pre-specified rules and regulations. With these additional features, you have more transparency and control over the underlying generative logic of the LLM.</p>
+<p>This post walks you through the implementation details and design choices, focusing primarily on the content generation and revision modules. Fact-checking and rules evaluation require special coverage and will be discussed in an upcoming post.</p>
+
+<h1 id="2.-Full Post">2. Full Post<a class="anchor-link" href="#2.-Full Post"> </a>
+<p>... <a href="https://aws.amazon.com/blogs/machine-learning/medical-content-creation-in-the-age-of-generative-ai/"> (continue reading here)</a></p>
+</h1></h1>]]></content><author><name>Sarah Boufelja Y., Liza Zinovyeva, Nikita Kozodoi, Aiham Taleb, Nuno Castro</name></author><category term="generative ai" /><category term="natural language processing" /><category term="web app" /><summary type="html"><![CDATA[Medical content creation in the age of generative AI]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kozodoi.me/images/posts/content.png" /><media:content medium="image" url="https://kozodoi.me/images/posts/content.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">RAG with User Interaction</title><link href="https://kozodoi.me/blog/20231113/rag-with-human-interaction" rel="alternate" type="text/html" title="RAG with User Interaction" /><published>2023-11-13T00:00:00-06:00</published><updated>2023-11-13T00:00:00-06:00</updated><id>https://kozodoi.me/blog/20231113/rag-with-user</id><content type="html" xml:base="https://kozodoi.me/blog/20231113/rag-with-human-interaction"><![CDATA[<p>This post is also published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a>. All opinions are my own.</p>
 
 <h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction"> </a>
 <p>One of the most common applications of generative AI and large language models (LLMs) is answering questions based on a specific external knowledge corpus. Retrieval-Augmented Generation (RAG) is a popular technique for building question answering systems that use an external knowledge base. To learn more, refer to Build a powerful question answering bot with Amazon SageMaker, Amazon OpenSearch Service, Streamlit, and LangChain.</p>
@@ -3491,158 +3503,4 @@ std:  tensor([0.2330, 0.2358, 0.2247])
 </div>
 </div>
 </div>
-</div>]]></content><author><name>Nikita Kozodoi</name></author><category term="python" /><category term="deep learning" /><category term="pytorch" /><category term="tutorial" /><summary type="html"><![CDATA[How to get channel-speicific mean and std in PyTorch]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kozodoi.me/images/posts/stats.png" /><media:content medium="image" url="https://kozodoi.me/images/posts/stats.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Gradient Accumulation in PyTorch</title><link href="https://kozodoi.me/blog/20210219/gradient-accumulation" rel="alternate" type="text/html" title="Gradient Accumulation in PyTorch" /><published>2021-02-19T00:00:00-06:00</published><updated>2021-02-19T00:00:00-06:00</updated><id>https://kozodoi.me/blog/20210219/gradient-accumulation</id><content type="html" xml:base="https://kozodoi.me/blog/20210219/gradient-accumulation"><![CDATA[<!--
-#################################################
-### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
-#################################################
-# file to edit: _notebooks/2021-02-19-gradient-accumulation.ipynb
--->
-
-<div class="container" id="notebook-container">
-        
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last update: 15.10.2021. All opinions are my own.</em></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="1.-Overview">1. Overview<a class="anchor-link" href="#1.-Overview"> </a></h1><p>Deep learning models are getting bigger and bigger. It becomes difficult to fit such networks in the GPU memory. This is especially relevant in computer vision applications where we need to reserve some memory for high-resolution images as well. As a result, we are sometimes forced to use small batches during training, which may lead to a slower convergence and lower accuracy.</p>
-<p>This blog post provides a quick tutorial on how to increase the effective batch size by using a trick called gradient accumulation. Simply speaking, gradient accumulation means that we will use a small batch size but save the gradients and update network weights once every couple of batches. Automated solutions for this exist in higher-level frameworks such as <code>fast.ai</code> or <code>lightning</code>, but those who love using <code>PyTorch</code> might find this tutorial useful.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="2.-What-is-gradient-accumulation">2. What is gradient accumulation<a class="anchor-link" href="#2.-What-is-gradient-accumulation"> </a></h1><p>When training a neural network, we usually divide our data in mini-batches and go through them one by one. The network predicts batch labels, which are used to compute the loss with respect to the actual targets. Next, we perform backward pass to compute gradients and update model weights in the direction of those gradients.</p>
-<p>Gradient accumulation modifies the last step of the training process. Instead of updating the network weights on every batch, we can save gradient values, proceed to the next batch and add up the new gradients. The weight update is then done only after several batches have been processed by the model.</p>
-<p>Gradient accumulation helps to imitate a larger batch size. Imagine you want to use 32 images in one batch, but your hardware crashes once you go beyond 8. In that case, you can use batches of 8 images and update weights once every 4 batches. If you accumulate gradients from every batch in between, the results will be (almost) the same and you will be able to perform training on a less expensive machine!</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="3.-How-to-make-it-work">3. How to make it work<a class="anchor-link" href="#3.-How-to-make-it-work"> </a></h1><p>The implementation of gradient accumulation is rather straightforward. The standard training loop without accumulation usually looks like this:</p>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># loop through batches</span>
-<span class="k">for</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">data_loader</span><span class="p">:</span>
-    <span class="c1"># extract inputs and labels</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-
-    <span class="c1"># passes and weights update</span>
-    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
-        <span class="c1"># forward pass</span>
-        <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-
-        <span class="c1"># backward pass</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-
-        <span class="c1"># weights update</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's implement gradient accumulation! There are three things we need to do:</p>
-<ol>
-<li>Specify the <code>accum_iter</code> parameter. This is just an integer value indicating once in how many batches we would like to update the network weights.</li>
-<li>Condition the weight update on the index of the running batch. This requires using <code>enumerate(data_loader)</code> to store the batch index when looping through the data.</li>
-<li>Divide the running loss by <code>acum_iter</code>. This normalizes the loss to reduce the contribution of each mini-batch we are actually processing. Depending on the way you compute the loss, you might not need this step: if you average loss within each batch, the division is already correct and there is no need for extra normalization.</li>
-</ol>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># batch accumulation parameter</span>
-<span class="n">accum_iter</span> <span class="o">=</span> <span class="mi">4</span>
-
-<span class="c1"># loop through enumaretad batches</span>
-<span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_loader</span><span class="p">):</span>
-    <span class="c1"># extract inputs and labels</span>
-    <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-    <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
-
-    <span class="c1"># passes and weights update</span>
-    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
-        <span class="c1"># forward pass</span>
-        <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">preds</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-
-        <span class="c1"># normalize loss to account for batch accumulation</span>
-        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss</span> <span class="o">/</span> <span class="n">accum_iter</span>
-
-        <span class="c1"># backward pass</span>
-        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-
-        <span class="c1"># weights update</span>
-        <span class="k">if</span> <span class="p">((</span><span class="n">batch_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">accum_iter</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">batch_idx</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_loader</span><span class="p">)):</span>
-            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It is really that simple! The gradients are computed when we call <code>loss.backward()</code> and are stored by PyTorch until we call <code>optimizer.zero_grad()</code>. Therefore, we just need to move the weight update performed in <code>optimizer.step()</code> and the gradient reset under the <code>if</code> condition that check the batch index. It is important to also update weights on the last batch when <code>batch_idx + 1 == len(data_loader)</code> - this makes sure that data from the last batches are not discarded and used for optimizing the network.</p>
-<p>Please also note that some network architectures have batch-specific operations. For instance, batch normalization is performed on a batch level and therefore may yield slightly different results when using the same effective batch size with and without gradient accumulation. This means that you should not expect to see a 100% match between the results.</p>
-<p>In my experience, the potential performance gains from increasing the number of cases used to update the network weights are largest when one is forced to use very small batches (e.g., 8 or 10). Therefore, I always recommend using gradient accumulation when working with large architectures that consume a lof of GPU memory.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="4.-Closing-words">4. Closing words<a class="anchor-link" href="#4.-Closing-words"> </a></h1><p>This is it! I hope this brief tutorial helps you to finally fit that model on your machine and train it with the batch size it deserves. If you are interested, check out my other blog posts on tips on deep learning and <code>PyTorch</code>. Happy learning!</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<script type="application/vnd.jupyter.widget-state+json">
-{"state": {"13c1b0b60dc243baa0859d1c6bd17129": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "FloatProgressModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "100%", "description_tooltip": null, "layout": "IPY_MODEL_6ec176035b11447582886c6d337eeff6", "max": 87306240, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_b89c0127f3a94527b58b7d710c43e951", "value": 87306240}}, "149e60260f0b49268d9e6ce0c8461dce": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "19703cdff07249fab2d78d23d35192f3": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_149e60260f0b49268d9e6ce0c8461dce", "placeholder": "\u200b", "style": "IPY_MODEL_68071ef4d8ad4ce782ddc9b045860848", "value": " 83.3M/83.3M [00:00&lt;00:00, 116MB/s]"}}, "44310773133f44999edfef5f5ff34fbb": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "HBoxModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_13c1b0b60dc243baa0859d1c6bd17129", "IPY_MODEL_19703cdff07249fab2d78d23d35192f3"], "layout": "IPY_MODEL_ef696dddbf0e4bdf851a3c08acd0a3c9"}}, "68071ef4d8ad4ce782ddc9b045860848": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "DescriptionStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "6ec176035b11447582886c6d337eeff6": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b89c0127f3a94527b58b7d710c43e951": {"model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "model_name": "ProgressStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": "initial"}}, "ef696dddbf0e4bdf851a3c08acd0a3c9": {"model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}
-</script>]]></content><author><name>Nikita Kozodoi</name></author><category term="python" /><category term="deep learning" /><category term="pytorch" /><category term="tutorial" /><summary type="html"><![CDATA[Increasing batch size to overcome memory constraints]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kozodoi.me/images/posts/accumulation.png" /><media:content medium="image" url="https://kozodoi.me/images/posts/accumulation.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+</div>]]></content><author><name>Nikita Kozodoi</name></author><category term="python" /><category term="deep learning" /><category term="pytorch" /><category term="tutorial" /><summary type="html"><![CDATA[How to get channel-speicific mean and std in PyTorch]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://kozodoi.me/images/posts/stats.png" /><media:content medium="image" url="https://kozodoi.me/images/posts/stats.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
