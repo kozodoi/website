@@ -12,11 +12,11 @@ permalink: /talks/
   </div>  
   <div class="content">
     <h1>Talks</h1>
-    <p><span class="cover-desc" style="color:var(--page-desc-color)">I regularly give talks on ML topics at academic conferences, AI meetups and other events. Below, you can find links to videos and slides of selected talks.</span></p>
+    <p><span class="cover-desc" style="color:var(--page-desc-color)">I regularly give talks on AI and ML topics at academic conferences, AI meetups and other events. Below, you can find links to videos and slides of selected talks.</span></p>
   </div>
 </div>
 
-<p><span class="page-desc">I regularly give talks on ML topics at academic conferences, AI meetups and other events. Below, you can find links to videos and slides of selected talks.</span></p>
+<p><span class="page-desc">I regularly give talks on AI and ML topics at academic conferences, AI meetups and other events. Below, you can find links to videos and slides of selected talks.</span></p>
 
 
 <!----------------------------------------------------------------------------->
@@ -44,6 +44,22 @@ permalink: /talks/
 <a id="PART_1"></a>
 
 ## Meetups
+
+<ul>
+    <li>
+    <b>AI for Credit Risk Analytics</b>
+    <dd><bb>GuildData, 2024 (Berlin)</bb></dd>
+    </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots11"></span>
+  <li><span id="abs11" style="display: none;"><p></p><b>Abstract:</b> In financial institutions, ML-based credit scorecards are only trained over the labeled data of previously accepted applicants, whose repayment behavior has been observed. This creates sampling bias: the training data represent a limited region of the distribution on which the model is deployed for screening new customers. In this talk, I will illustrate the adverse impact of sampling bias on training and evaluation of scoring models. I will also overview possible methods to address this problem.</span></li>
+  <li>
+    <button class="btn" onclick="show_abstract(dots_id = 'dots11', abs_id = 'abs11', btn_id = 'b11')" id="b10">&#128220; Abstract</button>
+    <button class="btn" onclick="window.open('https://kozodoi.me/talks/GD_2024.pdf')" type="button">&#128202; Slides</button>
+  </li>
+</ul>
+<p></p>
 
 <ul>
     <li>
