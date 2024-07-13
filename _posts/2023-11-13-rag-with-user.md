@@ -13,7 +13,7 @@ permalink: /blog/:year:month:day/rag-with-human-interaction
 sticky_rank: 2
 ---
 
-<p>This post is also published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a>. All opinions are my own.</p>
+<p>This post was originally published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a></p>
 
 <h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction"> </a>
 <p>One of the most common applications of generative AI and large language models (LLMs) is answering questions based on a specific external knowledge corpus. Retrieval-Augmented Generation (RAG) is a popular technique for building question answering systems that use an external knowledge base. To learn more, refer to Build a powerful question answering bot with Amazon SageMaker, Amazon OpenSearch Service, Streamlit, and LangChain.</p>

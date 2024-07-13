@@ -9,11 +9,11 @@ categories: [generative ai, natural language processing, web app]
 image: images/posts/content.png
 cover: images/covers/content.png
 layout: notebook
-permalink: /blog/:year:month:day/rag-with-human-interaction
+permalink: /blog/:year:month:day/medical-content-generation
 sticky_rank: 1
 ---
 
-<p>This post is also published on the <a href="https://aws.amazon.com/blogs/machine-learning/improve-llm-responses-in-rag-use-cases-by-interacting-with-the-user/">AWS ML Blog</a>. All opinions are my own.</p>
+<p>This post was originally published on the <a href="https://aws.amazon.com/blogs/machine-learning/medical-content-creation-in-the-age-of-generative-ai/">AWS ML Blog</a></p>
 
 <h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction"> </a>
 <p>Generative AI and transformer-based large language models (LLMs) have been in the top headlines recently. These models demonstrate impressive performance in question answering, text summarization, code, and text generation. Today, LLMs are being used in real settings by companies, including the heavily-regulated healthcare and life sciences industry (HCLS). The use cases can range from medical information extraction and clinical notes summarization to marketing content generation and medical-legal review automation (MLR process). In this post, we explore how LLMs can be used to design marketing content for disease awareness.</p>
