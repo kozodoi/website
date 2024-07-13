@@ -55,7 +55,7 @@ permalink: /talks/
   <span id="dots11"></span>
   <li><span id="abs11" style="display: none;"><p></p><b>Abstract:</b> In financial institutions, ML-based credit scorecards are only trained over the labeled data of previously accepted applicants, whose repayment behavior has been observed. This creates sampling bias: the training data represent a limited region of the distribution on which the model is deployed for screening new customers. In this talk, I will illustrate the adverse impact of sampling bias on training and evaluation of scoring models. I will also overview possible methods to address this problem.</span></li>
   <li>
-    <button class="btn" onclick="show_abstract(dots_id = 'dots11', abs_id = 'abs11', btn_id = 'b11')" id="b10">&#128220; Abstract</button>
+    <button class="btn" onclick="show_abstract(dots_id = 'dots11', abs_id = 'abs11', btn_id = 'b11')" id="b11">&#128220; Abstract</button>
     <button class="btn" onclick="window.open('https://kozodoi.me/talks/GD_2024.pdf')" type="button">&#128202; Slides</button>
   </li>
 </ul>

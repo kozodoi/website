@@ -1,10 +1,10 @@
 ---
-description: Medical content creation in the age of generative AI
-title: Automated content generation and revision
+description: Automated content generation and revision with LLMs
+title: Medical content creation in the age of generative AI
 toc: true
 badges: true
 comments: true
-author: Sarah Boufelja Y., Liza Zinovyeva, Nikita Kozodoi, Aiham Taleb, Nuno Castro
+author: Sarah Boufelja Y., Liza Zinovyeva, Nikita Kozodoi, Aiham Taleb, Nuno Castro, Marion Eigner
 categories: [generative ai, natural language processing, web app]
 image: images/posts/content.png
 cover: images/covers/content.png
