@@ -45,6 +45,27 @@ permalink: /papers/
 
 ## Publications
 
+### 2024
+
+<ul>
+  <li>
+  Kozodoi, N., Lessmann, S., Alamgir, M., Moreira-Matias, L. Papakonstantinou, K.
+  <dd><b>Fighting Sampling Bias: A Framework for Training and Evaluating Credit Scoring Models</b></dd>
+  <dd>ArXiv preprint.</dd>
+  </li>
+</ul>
+<ul class="no-bullets">
+  <span id="dots9"></span>
+  <li><span id="abs9"><p></p><b>Abstract:</b> Scoring models support decision-making in financial institutions. Their estimation and evaluation are based on the data of previously accepted applicants with known repayment behavior. This creates sampling bias: the available labeled data offers a partial picture of the distribution of candidate borrowers, which the model is supposed to score. The paper addresses the adverse effect of sampling bias on model training and evaluation. To improve scorecard training, we propose bias-aware self-learning - a reject inference framework that augments the biased training data by inferring labels for selected rejected applications. For scorecard evaluation, we propose a Bayesian framework that extends standard accuracy measures to the biased setting and provides a reliable estimate of future scorecard performance. Extensive experiments on synthetic and real-world data confirm the superiority of our propositions over various benchmarks in predictive performance and profitability. By sensitivity analysis, we also identify boundary conditions affecting their performance. Notably, we leverage real-world data from a randomized controlled trial to assess the novel methodologies on holdout data that represent the true borrower population. Our findings confirm that reject inference is a difficult problem with modest potential to improve scorecard performance. Addressing sampling bias during scorecard evaluation is a much more promising route to improve scoring practices. For example, our results suggest a profit improvement of about eight percent, when using Bayesian evaluation to decide on acceptance rates. </span></li>
+  <li>
+    <button class="btn" onclick="show_abstract(dots_id = 'dots9', abs_id = 'abs9', btn_id = 'b9')" id="b9">&#128220; Abstract</button>
+    <button class="btn" onclick="window.open('https://arxiv.org/abs/2407.13009')" type="button">&#128214; PDF</button>
+  </li>
+</ul>
+<p></p>
+
+
+
 ### 2023
 
 <ul>
