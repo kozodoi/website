@@ -1,6 +1,6 @@
 ---
 description: Automated content generation and revision with LLMs
-title: Medical content creation in the age of generative AI
+title: Medical Content Creation in the Age of Generative AI
 toc: true
 badges: true
 comments: true
